@@ -1,0 +1,8 @@
+{
+  "name": "com.tapsdk.common",
+  "displayName": "Tap Common",
+  "description": "TapTap Develop Service!",
+  "version": "1.0.0",
+  "unity": "2013.3",
+  "license": "MIT"
+}
