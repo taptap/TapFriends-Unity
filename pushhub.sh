@@ -14,10 +14,8 @@ git branch -D tapdb-upm
 
 git config --local http.postBuffer 524288000
 
-#var=("tapcommon-upm" "tapdb-upm" "tapmoment-upm" "tapbootstrap-upm" "taplogin-upm")
-var=("tapcommon-upm")
-module=("TapCommon")
-#module=("TapCommon" "TapDB" "TapMoment" "TapBootstrap" "TapLogin")
+var=("tapcommon-upm" "tapdb-upm" "tapmoment-upm" "tapbootstrap-upm" "taplogin-upm")
+module=("TapCommon" "TapDB" "TapMoment" "TapBootstrap" "TapLogin")
 
 tag=$1
 
@@ -33,5 +31,3 @@ function pushhub(){
 for ((i=0;i<${#var[@]};i++));do
     pushhub ${module[$i]} ${var[$i]} $tag
 done   
-
-echo $currentBranch
