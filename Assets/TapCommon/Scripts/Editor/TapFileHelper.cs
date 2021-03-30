@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace TapCommon.Editor
+namespace TapCommon.Scripts.Editor
 {
     public class TapFileHelper : System.IDisposable
     {

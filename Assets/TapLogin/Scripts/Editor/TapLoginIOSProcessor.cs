@@ -1,9 +1,9 @@
-using TapCommon.Editor;
+using TapCommon.Scripts.Editor;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-namespace TapLogin.Editor
+namespace TapLogin.Scripts.Editor
 {
     public class TapLoginIOSProcessor : MonoBehaviour
     {

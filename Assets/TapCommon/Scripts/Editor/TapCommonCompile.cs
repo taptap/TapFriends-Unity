@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEditor.iOS.Xcode;
 using UnityEngine;
 
-namespace TapCommon.Editor
+namespace TapCommon.Scripts.Editor
 {
     public static class TapCommonCompile
     {

@@ -1,9 +1,9 @@
-using TapCommon.Editor;
+using TapCommon.Scripts.Editor;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-namespace TapBootstrap.Editor
+namespace TapBootstrap.Scripts.Editor
 {
     public class TapBootstrapIOSProcessor : MonoBehaviour
     {

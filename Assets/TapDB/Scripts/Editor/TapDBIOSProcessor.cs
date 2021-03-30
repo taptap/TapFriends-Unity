@@ -1,9 +1,9 @@
-using TapCommon.Editor;
+using TapCommon.Scripts.Editor;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-namespace TapDB.Editor
+namespace TapDB.Scripts.Editor
 {
     public class TapDBIOSProcessor : MonoBehaviour
     {

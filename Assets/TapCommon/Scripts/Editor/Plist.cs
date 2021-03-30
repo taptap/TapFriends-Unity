@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using System.Xml;
 
-namespace TapCommon.Editor
+namespace TapCommon.Scripts.Editor
 {
     public static class Plist
     {

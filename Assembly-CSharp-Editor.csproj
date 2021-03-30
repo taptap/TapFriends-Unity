@@ -63,14 +63,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\TapBootstrap\Editor\TapBootstrapIOSProcessor.cs" />
-    <Compile Include="Assets\TapCommon\Editor\Plist.cs" />
-    <Compile Include="Assets\TapCommon\Editor\TapCommonCompile.cs" />
-    <Compile Include="Assets\TapCommon\Editor\TapCommonIOSProcessor.cs" />
-    <Compile Include="Assets\TapCommon\Editor\TapFileHelper.cs" />
-    <Compile Include="Assets\TapDB\Editor\TapMomentIOSProcessor.cs" />
-    <Compile Include="Assets\TapLogin\Editor\TapLoginIOSProcessor.cs" />
-    <Compile Include="Assets\TapMoment\Editor\TapMomentIOSProcessor.cs" />
+    <Compile Include="Assets\TapBootstrap\Scripts\Editor\TapBootstrapIOSProcessor.cs" />
+    <Compile Include="Assets\TapCommon\Scripts\Editor\Plist.cs" />
+    <Compile Include="Assets\TapCommon\Scripts\Editor\TapCommonCompile.cs" />
+    <Compile Include="Assets\TapCommon\Scripts\Editor\TapCommonIOSProcessor.cs" />
+    <Compile Include="Assets\TapCommon\Scripts\Editor\TapFileHelper.cs" />
+    <Compile Include="Assets\TapDB\Scripts\Editor\TapDBIOSProcessor.cs" />
+    <Compile Include="Assets\TapLogin\Scripts\Editor\TapLoginIOSProcessor.cs" />
+    <Compile Include="Assets\TapMoment\Scripts\Editor\TapMomentIOSProcessor.cs" />
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
@@ -329,8 +329,20 @@
     <Reference Include="UnityEditor.OSXStandalone.Extensions">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="TapBootstrap">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrap/Plugins/TapBootstrap.dll</HintPath>
+    </Reference>
     <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
+    </Reference>
+    <Reference Include="TapDB">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapDB/Plugins/TapDB.dll</HintPath>
+    </Reference>
+    <Reference Include="TapMoment">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapMoment/Plugins/TapMoment.dll</HintPath>
+    </Reference>
+    <Reference Include="TapCommon">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapCommon/Plugins/TapCommon.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
@@ -343,18 +355,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="TapCommon">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapCommon/Plugins/TapCommon.dll</HintPath>
-    </Reference>
-    <Reference Include="TapBootstrap">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrap/Plugins/TapBootstrap.dll</HintPath>
-    </Reference>
-    <Reference Include="TapMoment">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapMoment/Plugins/TapMoment.dll</HintPath>
-    </Reference>
-    <Reference Include="TapDB">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapDB/Plugins/TapDB.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

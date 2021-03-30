@@ -1,11 +1,9 @@
-using System.Collections.Generic;
-using System.IO;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEditor.iOS.Xcode;
 using UnityEngine;
 
-namespace TapCommon.Editor
+namespace TapCommon.Scripts.Editor
 {
     public class TapCommonIOSProcessor : MonoBehaviour
     {
