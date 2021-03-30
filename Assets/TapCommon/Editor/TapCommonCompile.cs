@@ -25,8 +25,8 @@ namespace TapCommon.Editor
             string target = proj.GetUnityFrameworkTargetGuid();
             return target;
 #endif
-            var target = proj.TargetGuidByName("Unity-iPhone");
-            return target;
+            var unityPhoneTarget = proj.TargetGuidByName("Unity-iPhone");
+            return unityPhoneTarget;
         }
 
         public static string GetUnityTarget(PBXProject proj)
@@ -35,8 +35,8 @@ namespace TapCommon.Editor
             string target = proj.GetUnityMainTargetGuid();
             return target;
 #endif
-            var target = proj.TargetGuidByName("Unity-iPhone");
-            return target;
+            var unityPhoneTarget = proj.TargetGuidByName("Unity-iPhone");
+            return unityPhoneTarget;
         }
 
         public static bool CheckTarget(string target)
