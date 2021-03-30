@@ -1,7 +1,14 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FApplications_002FUnity_002FHub_002FEditor_002F2018_002E4_002E30f1_002FUnity_002Eapp_002FContents_002FManaged_002FUnityEngine_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Fxiaoyi_002FDocuments_002FUnityProject_002FTapSDK2_002DUnity_002FTapCommon_002FTapBridgeAndroid_002Fbin_002FDebug_002FTapBridge_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Fxiaoyi_002FDocuments_002FUnityProject_002FTapSDK2_002DUnity_002FTapCommon_002FTapBridgeAndroid_002Fbin_002FDebug_002FTapBridgeAndroid_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Fxiaoyi_002FDocuments_002FUnityProject_002FTapSDK2_002DUnity_002FTapCommon_002FTapBridgeAndroid_002Fbin_002FDebug_002FUnityEngine_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Fxiaoyi_002FDocuments_002FUnityProject_002FTapSDK2_002DUnity_002FTapCommon_002FTapBridgeIOS_002Fbin_002FDebug_002FTapBridgeIOS_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Fxiaoyi_002FDocuments_002FUnityProject_002FTapSDK2_002DUnity_002FTapCommon_002FTapBridgeIOS_002FBridgeIOS_002Ecs/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Fxiaoyi_002FDocuments_002FUnityProject_002FTapSDK2_002DUnity_002FTapSDK_002FTapCommon_002FTapCommom_002EBridge_002Fbin_002FDebug_002FTapCommom_002EBridge_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Fxiaoyi_002FDocuments_002FUnityProject_002FTapSDK2_002DUnity_002FTapSDK_002FTapCommon_002FTapCommon_002EBridge_002EIOS_002Fobj_002FDebug_002FTapCommon_002EBridge_002EIOS_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Fxiaoyi_002FDocuments_002FUnityProject_002FTapSDK2_002DUnity_002FTapSDK_002FTapCommon_002FTapCommon_002EBridge_002Fobj_002FDebug_002FTapCommon_002EBridge_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/TapSDK/TapCommon/TapCommom.Bridge/bin/Debug/TapCommom.Bridge.dll" /&gt;
+&lt;/AssemblyExplorer&gt;</s:String>
 	</wpf:ResourceDictionary>

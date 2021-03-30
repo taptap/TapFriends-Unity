@@ -37,7 +37,7 @@
         <Reference Include="System.Data" />
         <Reference Include="System.Xml" />
         <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\TapBridgeAndroid\bin\Debug\UnityEngine.dll</HintPath>
+          <HintPath>..\..\..\..\..\..\..\Applications\Unity\Hub\Editor\2018.4.30f1\Unity.app\Contents\Managed\UnityEngine.dll</HintPath>
         </Reference>
     </ItemGroup>
     <ItemGroup>

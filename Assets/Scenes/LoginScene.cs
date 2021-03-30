@@ -1,7 +1,7 @@
 ﻿using TapBootstrap;
 using UnityEngine;
 
-public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatusChangedListener
+public class LoginScene : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,153 +15,62 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
 
     private string label;
 
-    private bool isCN = true;
-
-    private bool isCorner = true;
-
-    public void OnLoginSuccess(AccessToken token)
-    {
-        label = $"Login Success:{token.ToJSON()}";
-    }
-
-    public void OnLoginCancel()
-    {
-        label = "Login Cancel";
-    }
-
-    public void OnLoginError(TapError error)
-    {
-        if (error != null)
-        {
-            label = $"Login Error:{error.code} desc:{error.errorDescription}";
-        }
-        else
-        {
-            label = "Login Error";
-        }
-    }
-
-    public void OnLogout(TapError error)
-    {
-        if (error != null)
-        {
-            label = $"OnLogout Error:{error.code} desc:{error.errorDescription}";
-        }
-        else
-        {
-            label = "OnLogout Error";
-        }
-    }
-
-    public void OnBind(TapError error)
-    {
-        if (error != null)
-        {
-            label = $"OnBind Error:{error.code} desc:{error.errorDescription}";
-        }
-        else
-        {
-            label = "OnBind Error";
-        }
-    }
-
     private void OnGUI()
     {
-        GUIStyle myButtonStyle = new GUIStyle(GUI.skin.button)
-        {
-            fontSize = 20
-        };
+        var style = new GUIStyle(GUI.skin.button) {fontSize = 40};
 
         GUI.depth = 0;
 
-        GUIStyle myLabelStyle = new GUIStyle(GUI.skin.label)
+        var labelStyle = new GUIStyle(GUI.skin.label)
         {
             fontSize = 20
         };
 
-        GUIStyle myToggleStyle = new GUIStyle(GUI.skin.toggle)
+        GUI.Label(new Rect(400, 1500, 400, 300), label, labelStyle);
+
+        if (GUI.Button(new Rect(60, 150, 180, 100), "登录", style))
         {
-            fontSize = 20
-        };
-
-        GUI.Label(new Rect(400, 600, 400, 300), label, myLabelStyle);
-
-        GUI.Toggle(new Rect(50, 50, 100, 30), isCN, "国内", myToggleStyle);
-
-        GUI.Toggle(new Rect(50, 100, 100, 30), isCorner, "圆角", myToggleStyle);
-
-        if (GUI.Button(new Rect(50, 200, 200, 60), "初始化", myButtonStyle))
-        {
-            TapBootstrap.TapBootstrap.Init(new TapConfig("KFV9Pm9ojdmWkkRJeb", false));
-        }
-
-        if (GUI.Button(new Rect(50, 300, 200, 60), "带参初始化", myButtonStyle))
-        {
-        }
-
-        if (GUI.Button(new Rect(50, 400, 200, 60), "注册回调", myButtonStyle))
-        {
-            TapBootstrap.TapBootstrap.RegisterLoginResultListener(this);
-            TapBootstrap.TapBootstrap.RegisterUserStatusChangedListener(this);
-        }
-
-        if (GUI.Button(new Rect(50, 500, 200, 60), "开始登陆", myButtonStyle))
-        {
-            TapBootstrap.TapBootstrap.Login(LoginType.TAPTAP, new[]
+            TapBootstrap.TapBootstrap.GetAccessToken((token, error) =>
             {
-                "public_profile"
-            });
-        }
-
-        if (GUI.Button(new Rect(50, 600, 200, 60), "获取token", myButtonStyle))
-        {
-            TapBootstrap.TapBootstrap.GetAccessToken((accessToken, error) =>
-            {
-                if (accessToken != null)
+                if (token != null)
                 {
-                    Debug.Log("accessToken:" + accessToken.ToJSON());
-                    this.label = accessToken.ToJSON();
+                    label = $"LoginSuccess:{token.ToJSON()}";
                 }
                 else
                 {
-                    this.label = "accessToken is Null,Please login first!";
+                    TapBootstrap.TapBootstrap.Login(LoginType.TAPTAP, new[] {"public_profile"});
                 }
             });
         }
 
-        if (GUI.Button(new Rect(300, 50, 200, 60), "获取UserInfo", myButtonStyle))
-        {
-            TapBootstrap.TapBootstrap.GetUser((user, error) =>
-            {
-                if (user != null)
-                {
-                    label = $"user:{user.ToJSON()}";
-                }
-                else if (error != null)
-                {
-                    label = $"error:{error.code} desc:{error.errorDescription}";
-                }
-            });
-        }
-
-        if (GUI.Button(new Rect(300, 150, 200, 60), "退出登录", myButtonStyle))
+        if (GUI.Button(new Rect(60, 300, 180, 100), "退出登录", style))
         {
             TapBootstrap.TapBootstrap.Logout();
         }
 
-        if (GUI.Button(new Rect(300, 250, 200, 60), "UserDetail", myButtonStyle))
+        if (GUI.Button(new Rect(60, 450, 180, 100), "用户信息", style))
+        {
+            TapBootstrap.TapBootstrap.GetUser((user, error) =>
+            {
+                label = user != null
+                    ? $"user:{user.ToJSON()}"
+                    : $"Error:{error.code} Descrption:{error.errorDescription}";
+            });
+        }
+
+        if (GUI.Button(new Rect(60, 600, 260, 100), "用户详细信息", style))
         {
             TapBootstrap.TapBootstrap.GetDetailUser((user, error) =>
             {
-                if (user != null)
-                {
-                    label = $"user:{user.ToJSON()} \n isMomentEnable:{user.userCenterEntry.isMomentEnabled}";
-                }
-                else if (error != null)
-                {
-                    label = $"error:{error.code} desc:{error.errorDescription}";
-                }
+                label = user != null
+                    ? $"detailUser:{user.ToJSON()}"
+                    : $"Error:{error.code} Descrption:{error.errorDescription}";
             });
+        }
+
+        if (GUI.Button(new Rect(60, 750, 180, 100), "返回", style))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         }
     }
 }

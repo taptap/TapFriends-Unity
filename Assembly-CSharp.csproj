@@ -66,6 +66,21 @@
     <Compile Include="Assets\Scenes\LoginScene.cs" />
     <Compile Include="Assets\Scenes\MomentScene.cs" />
     <Compile Include="Assets\Scenes\Sample.cs" />
+    <Compile Include="Assets\Scenes\TapDBScene.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\Bridge.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\BridgeAndroid.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\BridgeCallback.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\BridgeIOS.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\Command.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\IBridge.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\ITapCommon.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\Json.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\Platform.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\Result.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\SafeDictionary.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\TapCommon.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\TapCommonImpl.cs" />
+    <Compile Include="Assets\TapCommon\Script\Runtime\TapUUID.cs" />
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
@@ -285,11 +300,14 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="TapBootstrap">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrap/Script/Runtime/TapBootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="TapDB">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapDB/Script/Runtime/TapDB.dll</HintPath>
+    </Reference>
     <Reference Include="TapMoment">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapMoment/Script/Runtime/TapMoment.dll</HintPath>
-    </Reference>
-    <Reference Include="TapCommon">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapCommon/Script/Runtime/TapCommon.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
@@ -299,12 +317,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="TapBootstrap">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrap/Script/Runtime/TapBootstrap.dll</HintPath>
-    </Reference>
-    <Reference Include="TapDB">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapDB/Script/Runtime/TapDB.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
