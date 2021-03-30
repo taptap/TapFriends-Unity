@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace TapMoment.Scripts.Editor
 {
-    public class TapMomentIOSProcessor : MonoBehaviour
+    public static class TapMomentIOSProcessor
     {
-        [PostProcessBuild(100)]
+        [PostProcessBuildAttribute(101)]
         public static void OnPostprocessBuild(BuildTarget buildTarget, string path)
         {
             if (buildTarget != BuildTarget.iOS) return;

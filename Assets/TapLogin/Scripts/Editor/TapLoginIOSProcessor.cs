@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace TapLogin.Scripts.Editor
 {
-    public class TapLoginIOSProcessor : MonoBehaviour
+    public static class TapLoginIOSProcessor
     {
-        [PostProcessBuild(100)]
+        [PostProcessBuildAttribute(102)]
         public static void OnPostprocessBuild(BuildTarget buildTarget, string path)
         {
             if (buildTarget != BuildTarget.iOS) return;

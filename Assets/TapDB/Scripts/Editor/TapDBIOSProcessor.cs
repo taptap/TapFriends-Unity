@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace TapDB.Scripts.Editor
 {
-    public class TapDBIOSProcessor : MonoBehaviour
+    public class TapDBIOSProcessor
     {
-        [PostProcessBuild(100)]
+        [PostProcessBuildAttribute(104)]
         public static void OnPostprocessBuild(BuildTarget buildTarget, string path)
         {
             if (buildTarget != BuildTarget.iOS) return;

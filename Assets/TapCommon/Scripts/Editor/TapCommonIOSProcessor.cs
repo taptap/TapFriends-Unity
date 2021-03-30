@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace TapCommon.Scripts.Editor
 {
-    public class TapCommonIOSProcessor : MonoBehaviour
+    public static class TapCommonIOSProcessor
     {
         // 添加标签，unity导出工程后自动执行该函数
-        [PostProcessBuild(99)]
+        [PostProcessBuildAttribute(99)]
         public static void OnPostprocessBuild(BuildTarget buildTarget, string path)
         {
             if (buildTarget != BuildTarget.iOS) return;
