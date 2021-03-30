@@ -12,16 +12,15 @@ git branch -D taplogin-upm
 
 git branch -D tapdb-upm
 
-# 删除gitlab的tag以及本地缓存的Tag
-# shellcheck disable=SC2046
-git tag -d $(git tag)
-
 git config --local http.postBuffer 524288000
 
 #var=("tapcommon-upm" "tapdb-upm" "tapmoment-upm" "tapbootstrap-upm" "taplogin-upm")
 var=("tapcommon-upm")
 
-function pushhub(){
+tag=$1
+
+function pushhub(){  
+  git tag -d $(git tag)
   git subtree split --prefix=Assets/$1 --branch $1
   git checkout $1 --force
   git tag $2
@@ -32,9 +31,9 @@ function pushhub(){
 # shellcheck disable=SC2068
 for str in ${var[@]}; do
 
-echo $str
+echo current repo :$str
 
-pushhub $str $1
+pushhub $str $tag
 
 done
 
