@@ -1,16 +1,43 @@
 ﻿using TapBootstrap;
 using UnityEngine;
 
-public class LoginScene : MonoBehaviour
+public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatusChangedListener
 {
     // Start is called before the first frame update
     void Start()
     {
+        TapBootstrap.TapBootstrap.RegisterLoginResultListener(this);
+        TapBootstrap.TapBootstrap.RegisterUserStatusChangedListener(this);
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void OnLoginSuccess(AccessToken token)
+    {
+        label = $"Login Success:{token.ToJSON()}";
+    }
+
+    public void OnLoginCancel()
+    {
+        label = "Login Cancel";
+    }
+
+    public void OnLoginError(TapError error)
+    {
+        label = $"Login Error:{error.code} desc:{error.errorDescription}";
+    }
+
+    public void OnLogout(TapError error)
+    {
+        label = $"Logout:{error.code} desc:{error.errorDescription}";
+    }
+
+    public void OnBind(TapError error)
+    {
+        label = $"Bind:{error.code} + desc:{error.errorDescription}";
     }
 
     private string label;
@@ -26,7 +53,7 @@ public class LoginScene : MonoBehaviour
             fontSize = 20
         };
 
-        GUI.Label(new Rect(400, 1500, 400, 300), label, labelStyle);
+        GUI.Label(new Rect(400, 100, 400, 300), label, labelStyle);
 
         if (GUI.Button(new Rect(60, 150, 180, 100), "登录", style))
         {

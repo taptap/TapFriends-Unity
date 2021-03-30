@@ -8,7 +8,7 @@ public class Sample : MonoBehaviour
     {
         TapBootstrap.TapBootstrap.Init(new TapConfig("KFV9Pm9ojdmWkkRJeb", false));
     }
-
+    
     // Update is called once per frame
     void Update()
     {

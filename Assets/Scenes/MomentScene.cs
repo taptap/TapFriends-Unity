@@ -8,15 +8,17 @@ public class MomentScene : MonoBehaviour
     void Start()
     {
         TapMoment.TapMoment.Init("KFV9Pm9ojdmWkkRJeb", false);
-        
+
         TapMoment.TapMoment.SetCallback((code, msg) =>
         {
             Debug.Log("---- moment 回调  code: " + code + " msg: " + msg + "----");
             if (code == 20100)
             {
+                
             }
             else if (code == 20000)
             {
+                
             }
         });
     }
@@ -32,7 +34,9 @@ public class MomentScene : MonoBehaviour
         TapMoment.TapMoment.Close();
     }
 
-    private string sceneId = "Please input sceneId";
+    private string sceneId = "Input sceneId";
+
+    private string userId = "Input UserId";
 
     private void OnGUI()
     {
@@ -43,6 +47,8 @@ public class MomentScene : MonoBehaviour
         inputStyle.fontSize = 35;
 
         sceneId = GUI.TextArea(new Rect(60, 450, 250, 100), sceneId, inputStyle);
+
+        userId = GUI.TextArea(new Rect(60, 600, 250, 100), sceneId, inputStyle);
 
         GUI.depth = 0;
 
@@ -61,7 +67,12 @@ public class MomentScene : MonoBehaviour
             TapMoment.TapMoment.OpenSceneEntry(Orientation.ORIENTATION_DEFAULT, sceneId);
         }
 
-        if (GUI.Button(new Rect(60, 600, 180, 100), "返回", style))
+        if (GUI.Button(new Rect(360, 600, 245, 100), "用户中心入口", style))
+        {
+            TapMoment.TapMoment.OpenUserCenter(Orientation.ORIENTATION_DEFAULT, userId);
+        }
+
+        if (GUI.Button(new Rect(60, 750, 180, 100), "返回", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         }
