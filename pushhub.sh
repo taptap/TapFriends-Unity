@@ -16,25 +16,22 @@ git config --local http.postBuffer 524288000
 
 #var=("tapcommon-upm" "tapdb-upm" "tapmoment-upm" "tapbootstrap-upm" "taplogin-upm")
 var=("tapcommon-upm")
+module=("TapCommon")
+#module=("TapCommon" "TapDB" "TapMoment" "TapBootstrap" "TapLogin")
 
 tag=$1
 
 function pushhub(){  
   git tag -d $(git tag)
-  git subtree split --prefix=Assets/$1 --branch $1
-  git checkout $1 --force
-  git tag $2
-  git push $1 $1 --force --tags
+  git subtree split --prefix=Assets/$1 --branch $2
+  git checkout $2 --force
+  git tag $3
+  git push $2 $2 --force --tags
   git checkout $currentBranch --force
 }
 
-# shellcheck disable=SC2068
-for str in ${var[@]}; do
-
-echo current repo :$str
-
-pushhub $str $tag
-
-done
+for ((i=0;i<${#var[@]};i++));do
+    pushhub ${module[$i]} ${var[$i]} $tag
+done   
 
 echo $currentBranch
