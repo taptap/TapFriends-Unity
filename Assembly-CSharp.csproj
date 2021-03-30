@@ -653,6 +653,28 @@
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="TapBootstrap.Editor.csproj">
+      <Project>{4DA99EDF-0B40-9D40-44E2-110909805589}</Project>
+      <Name>TapBootstrap.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TapCommon.Editor.csproj">
+      <Project>{3FBD6AFC-7BE1-9C36-3BAD-9FA6A55A8491}</Project>
+      <Name>TapCommon.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TapMoment.Editor.csproj">
+      <Project>{21C5A48A-BA7E-B498-6E72-01BD0046E4C1}</Project>
+      <Name>TapMoment.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TapLogin.Editor.csproj">
+      <Project>{36493C2E-D2C8-1926-21B8-10C6FCBAC8F9}</Project>
+      <Name>TapLogin.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TapDB.Editor.csproj">
+      <Project>{70261E78-FD41-8AAB-305A-3E723A50C2CF}</Project>
+      <Name>TapDB.Editor</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
