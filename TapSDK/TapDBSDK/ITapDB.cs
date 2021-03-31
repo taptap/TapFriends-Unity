@@ -2,7 +2,7 @@
 {
     public interface ITapDB
     {
-        void Init(string clientId, string channel, string gameVersion);
+        void Init(string clientId, string channel, string gameVersion, bool isCN);
 
         void SetUser(string userId);
 

@@ -42,7 +42,7 @@
         <Reference Include="System.Core" />
         <Reference Include="System.Xml" />
         <Reference Include="TapCommonSDK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\TapCommonSDK\bin\ANDROID\TapCommonSDK.dll</HintPath>
+          <HintPath>..\TapCommonSDK\bin\IOS\TapCommonSDK.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine">
             <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/Managed/UnityEngine.dll</HintPath>

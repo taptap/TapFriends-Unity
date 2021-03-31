@@ -1,5 +1,6 @@
 using System;
 using TapCommonSDK;
+using UnityEngine;
 
 namespace TapBootstrapSDK
 {
@@ -78,7 +79,7 @@ namespace TapBootstrapSDK
                 }
 
                 var wrapper = new TapUserStatusWrapper(result.content);
-                var error = new TapError(wrapper.wrapper);
+                var error = TapError.SafeConstructorTapError(wrapper.wrapper);
                 if (wrapper.userStatusCallbackCode == 1)
                 {
                     listener.OnLogout(error);
@@ -117,7 +118,7 @@ namespace TapBootstrapSDK
                         listener.OnLoginCancel();
                         return;
                     default:
-                        listener.OnLoginError(new TapError(wrapper.wrapper));
+                        listener.OnLoginError(TapError.SafeConstructorTapError(wrapper.wrapper));
                         break;
                 }
             });
@@ -139,16 +140,16 @@ namespace TapBootstrapSDK
                     action(null, new TapError(TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE, "TapSDK GetUser Error!"));
                     return;
                 }
-                
+
                 var wrapper = new TapUserInfoWrapper(result.content);
 
                 if (wrapper.getUserInfoCode == 0)
                 {
-                    action(new TapUser(wrapper.wrapper), TapError.UndefinedError());
+                    action(new TapUser(wrapper.wrapper), null);
                     return;
                 }
 
-                action(null, new TapError(wrapper.wrapper));
+                action(null, TapError.SafeConstructorTapError(wrapper.wrapper));
             });
         }
 
@@ -176,7 +177,7 @@ namespace TapBootstrapSDK
                     return;
                 }
 
-                action(null, new TapError(detailInfoWrapper.wrapper));
+                action(null, TapError.SafeConstructorTapError(detailInfoWrapper.wrapper));
             });
         }
 
@@ -196,7 +197,6 @@ namespace TapBootstrapSDK
                     action(null, new TapError(TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE, "TapSDK GetAccessToken Error!"));
                     return;
                 }
-
                 action(new AccessToken(result.content), null);
             });
         }

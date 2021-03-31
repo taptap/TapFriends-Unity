@@ -1,8 +1,8 @@
 namespace TapDBSDK
 {
-    public class TapDBConstants
+    public static class TapDBConstants
     {
-        public static string TAPDB_SERVICE = "TapDBService";
+        public static string TAPDB_SERVICE = "TDSTapDBService";
 
         public static string TAPDB_CLZ = "com.tds.tapdb.wrapper.TapDBService";
 

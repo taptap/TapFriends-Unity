@@ -27,13 +27,14 @@ namespace TapDBSDK
             return _sInstance;
         }
 
-        public void Init(string clientId, string channel, string gameVersion)
+        public void Init(string clientId, string channel, string gameVersion, bool isCN)
         {
             var command = new Command.Builder()
                 .Service(TapDBConstants.TAPDB_SERVICE)
                 .Method("init")
                 .Args("clientId", clientId)
                 .Args("channel", channel)
+                .Args("isCN", isCN)
                 .Args("gameVersion", gameVersion).CommandBuilder();
             EngineBridge.GetInstance().CallHandler(command);
         }
@@ -130,7 +131,7 @@ namespace TapDBSDK
         public void Track(string eventName, string properties)
         {
             var dic = new Dictionary<string, object> {{"eventName", eventName}, {"properties", properties}};
-            var command = new Command(TapDBConstants.TAPDB_SERVICE, "track", false, dic);
+            var command = new Command(TapDBConstants.TAPDB_SERVICE, "trackEvent", false, dic);
             EngineBridge.GetInstance().CallHandler(command);
         }
 

@@ -40,7 +40,7 @@ namespace TapMomentSDK
             MomentImpl.GetInstance().PublishVideo(config, videoPaths, title, desc);
         }
 
-        public static void GetNoticeData()
+        public static void FetchNotification()
         {
             MomentImpl.GetInstance().FetchNotification();
         }

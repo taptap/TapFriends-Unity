@@ -2,9 +2,9 @@ namespace TapDBSDK
 {
     public class TapDB
     {
-        public static void Init(string clientId, string channel, string gameVersion)
+        public static void Init(string clientId, string channel, string gameVersion, bool isCN)
         {
-            TapDBImpl.GetInstance().Init(clientId, channel, gameVersion);
+            TapDBImpl.GetInstance().Init(clientId, channel, gameVersion, isCN);
         }
 
         public static void SetUser(string userId)

@@ -15,7 +15,7 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
     void Update()
     {
     }
-    
+
     public void OnLoginSuccess(AccessToken token)
     {
         label = $"Login Success:{token.ToJSON()}";
@@ -28,17 +28,38 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
 
     public void OnLoginError(TapError error)
     {
-        label = $"Login Error:{error.code} desc:{error.errorDescription}";
+        if (error != null)
+        {
+            label = $"Login Error:{error.code} desc:{error.errorDescription}";
+        }
+        else
+        {
+            label = "Login Error";
+        }
     }
 
     public void OnLogout(TapError error)
     {
-        label = $"Logout:{error.code} desc:{error.errorDescription}";
+        if (error != null)
+        {
+            label = $"Logout:{error.code} desc:{error.errorDescription}";
+        }
+        else
+        {
+            label = "Logout";
+        }
     }
 
     public void OnBind(TapError error)
     {
-        label = $"Bind:{error.code} + desc:{error.errorDescription}";
+        if (error != null)
+        {
+            label = $"Bind:{error.code} + desc:{error.errorDescription}";
+        }
+        else
+        {
+            label = $"Bind";
+        }
     }
 
     private string label;

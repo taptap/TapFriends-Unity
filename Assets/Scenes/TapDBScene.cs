@@ -6,7 +6,14 @@ public class TapDBScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TapDBSDK.TapDB.Init("0RiAlMny7jiz086FaU", "channel", "gameVersion");
+        TapBootstrapSDK.TapBootstrap.GetUser((user, error) =>
+        {
+            if (user != null)
+            {
+                TapDBSDK.TapDB.Init("0RiAlMny7jiz086FaU", "channel", "gameVersion", true);
+                TapDBSDK.TapDB.SetUser(user.name);
+            }
+        });
     }
 
     // Update is called once per frame
@@ -143,7 +150,7 @@ public class TapDBScene : MonoBehaviour
 
         if (GUI.Button(new Rect(60, 1510, 160, 100), "返回", style))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(6);
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         }
     }
 }

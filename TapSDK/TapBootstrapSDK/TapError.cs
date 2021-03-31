@@ -12,15 +12,24 @@ namespace TapBootstrapSDK
 
         public TapError(string json)
         {
-            Dictionary<string, object> dic = Json.Deserialize(json) as Dictionary<string, object>;
-            int parseCode = SafeDictionary.GetValue<int>(dic, "code");
-            this.code = ParseCode(parseCode);
-            this.errorDescription = SafeDictionary.GetValue<string>(dic, "error_description");
+            if (string.IsNullOrEmpty(json))
+            {
+                return;
+            }
+
+            var dic = Json.Deserialize(json) as Dictionary<string, object>;
+            var parseCode = SafeDictionary.GetValue<int>(dic, "code");
+            code = ParseCode(parseCode);
+            errorDescription = SafeDictionary.GetValue<string>(dic, "error_description");
         }
 
         public TapError()
         {
-            
+        }
+
+        public static TapError SafeConstructorTapError(string json)
+        {
+            return string.IsNullOrEmpty(json) ? null : new TapError(json);
         }
 
         public static TapError UndefinedError()
@@ -34,7 +43,7 @@ namespace TapBootstrapSDK
             this.errorDescription = errorDescription;
         }
 
-        public TapErrorCode ParseCode(int parseCode)
+        private static TapErrorCode ParseCode(int parseCode)
         {
             return Enum.IsDefined(typeof(TapErrorCode), parseCode)
                 ? (TapErrorCode) Enum.ToObject(typeof(TapErrorCode), parseCode)
