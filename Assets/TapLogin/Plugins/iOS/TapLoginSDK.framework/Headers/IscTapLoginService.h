@@ -6,10 +6,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <TapLoginSDK/TapLoginSDK.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface IscTapLoginService : NSObject
++ (void)addSDKLoginResultDelegate:(NSString *)sdkName delegate:(id <TapLoginResultDelegate>)delegate;
+
++ (void)removeSDKLoginResultDelegate:(NSString *)sdkName;
+
++ (void)startSDKLogin:(NSString *)sdkName permission:(NSArray *)permissions;
+
 + (void)handleLoginError:(NSDictionary *)params;
 @end
 

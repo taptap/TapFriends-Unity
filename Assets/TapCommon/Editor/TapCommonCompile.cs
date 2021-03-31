@@ -119,50 +119,49 @@ namespace TapCommon.Editor
             plist.ReadFromString(File.ReadAllText(plistPath));
             var rootDic = plist.root;
 
-           var items = new List<string>()
-            {
+           var items = new List<string>
+           {
                 "tapsdk",
                 "tapiosdk",
             };
             var plistElementList = rootDic.CreateArray("LSApplicationQueriesSchemes");
-            for (var i = 0; i < items.Count; i++)
+            foreach (var t in items)
             {
-                plistElementList.AddString(items[i]);
+                plistElementList.AddString(t);
             }
 
-            if (!string.IsNullOrEmpty(infoPlistPath))
-            {
-                var dic = (Dictionary<string, object>) Plist.readPlist(infoPlistPath);
-                var taptapId = "";
+            if (string.IsNullOrEmpty(infoPlistPath)) return false;
+            var dic = (Dictionary<string, object>) Plist.readPlist(infoPlistPath);
+            var taptapId = "";
 
-                foreach (var item in dic)
+            foreach (var item in dic)
+            {
+                if (item.Key.Equals("taptap"))
                 {
-                    if (item.Key.Equals("taptap"))
+                    var taptapDic = (Dictionary<string, object>) item.Value;
+                    foreach (var taptapItem in taptapDic)
                     {
-                        var taptapDic = (Dictionary<string, object>) item.Value;
-                        foreach (var taptapItem in taptapDic)
+                        if (taptapItem.Key.Equals("client_id"))
                         {
-                            if (taptapItem.Key.Equals("client_id"))
-                            {
-                                taptapId = "tt" + (string) taptapItem.Value;
-                            }
+                            taptapId = "tt" + (string) taptapItem.Value;
                         }
                     }
-                    else
-                    {
-                        //Copy TDS-Info.plist中的数据
-                        rootDic.SetString(item.Key.ToString(), item.Value.ToString());
-                    }
                 }
-                //添加url
-                var dict = plist.root.AsDict();
-                var array = dict.CreateArray("CFBundleURLTypes");
-                var dict2 = array.AddDict();
-                dict2.SetString("CFBundleURLName", "TapTap");
-                var array2 = dict2.CreateArray("CFBundleURLSchemes");
-                array2.AddString(taptapId);
+                else
+                {
+                    //Copy TDS-Info.plist中的数据
+                    rootDic.SetString(item.Key.ToString(), item.Value.ToString());
+                }
             }
-
+            //添加url
+            var dict = plist.root.AsDict();
+            var array = dict.CreateArray("CFBundleURLTypes");
+            var dict2 = array.AddDict();
+            dict2.SetString("CFBundleURLName", "TapTap");
+            var array2 = dict2.CreateArray("CFBundleURLSchemes");
+            array2.AddString(taptapId);
+                
+            Debug.Log("TapSDK change plist Success");
             File.WriteAllText(plistPath, plist.WriteToString());
             return true;
         }

@@ -1,4 +1,4 @@
-﻿using TapBootstrap;
+﻿using TapBootstrapSDK;
 using UnityEngine;
 
 public class Sample : MonoBehaviour
@@ -6,7 +6,7 @@ public class Sample : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TapBootstrap.TapBootstrap.Init(new TapConfig("KFV9Pm9ojdmWkkRJeb", false));
+        TapBootstrapSDK.TapBootstrap.Init(new TapConfig("0RiAlMny7jiz086FaU", true));
     }
     
     // Update is called once per frame

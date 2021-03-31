@@ -1,4 +1,5 @@
-﻿using TapBootstrap;
+﻿using System;
+using TapBootstrapSDK;
 using UnityEngine;
 
 public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatusChangedListener
@@ -6,15 +7,15 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
     // Start is called before the first frame update
     void Start()
     {
-        TapBootstrap.TapBootstrap.RegisterLoginResultListener(this);
-        TapBootstrap.TapBootstrap.RegisterUserStatusChangedListener(this);
+        TapBootstrapSDK.TapBootstrap.RegisterLoginResultListener(this);
+        TapBootstrapSDK.TapBootstrap.RegisterUserStatusChangedListener(this);
     }
 
     // Update is called once per frame
     void Update()
     {
     }
-
+    
     public void OnLoginSuccess(AccessToken token)
     {
         label = $"Login Success:{token.ToJSON()}";
@@ -57,7 +58,7 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
 
         if (GUI.Button(new Rect(60, 150, 180, 100), "登录", style))
         {
-            TapBootstrap.TapBootstrap.GetAccessToken((token, error) =>
+            TapBootstrapSDK.TapBootstrap.GetAccessToken((token, error) =>
             {
                 if (token != null)
                 {
@@ -65,19 +66,19 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
                 }
                 else
                 {
-                    TapBootstrap.TapBootstrap.Login(LoginType.TAPTAP, new[] {"public_profile"});
+                    TapBootstrapSDK.TapBootstrap.Login(LoginType.TAPTAP, new[] {"public_profile"});
                 }
             });
         }
 
         if (GUI.Button(new Rect(60, 300, 180, 100), "退出登录", style))
         {
-            TapBootstrap.TapBootstrap.Logout();
+            TapBootstrapSDK.TapBootstrap.Logout();
         }
 
         if (GUI.Button(new Rect(60, 450, 180, 100), "用户信息", style))
         {
-            TapBootstrap.TapBootstrap.GetUser((user, error) =>
+            TapBootstrapSDK.TapBootstrap.GetUser((user, error) =>
             {
                 label = user != null
                     ? $"user:{user.ToJSON()}"
@@ -87,7 +88,7 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
 
         if (GUI.Button(new Rect(60, 600, 260, 100), "用户详细信息", style))
         {
-            TapBootstrap.TapBootstrap.GetDetailUser((user, error) =>
+            TapBootstrapSDK.TapBootstrap.GetDetailUser((user, error) =>
             {
                 label = user != null
                     ? $"detailUser:{user.ToJSON()}"
@@ -95,7 +96,12 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
             });
         }
 
-        if (GUI.Button(new Rect(60, 750, 180, 100), "返回", style))
+        if (GUI.Button(new Rect(60, 750, 260, 100), "用户中心", style))
+        {
+            TapBootstrapSDK.TapBootstrap.OpenUserCenter();
+        }
+
+        if (GUI.Button(new Rect(60, 900, 180, 100), "返回", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         }

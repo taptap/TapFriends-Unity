@@ -1,4 +1,12 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/TapSDK/TapCommon/TapCommon.Bridge/bin/Release/TapCommon.Bridge.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrap/Plugins/TapBootstrap.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrap/Plugins/iOS/TapBootstrap.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/TapSDK/TapBootstrap/bin/IOS/TapBootstrap.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/TapSDK/TapCommon/bin/IOS/TapCommon.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/TapSDK/TapCommonSDK/bin/ANDROID/TapCommonSDK.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/TapSDK/TapCommonSDK/bin/IOS/TapCommonSDK.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrap/Plugins/TapBootstrapSDK.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapDB/Plugins/iOS/TapDBSDK.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>

@@ -1,3 +1,4 @@
+using System.IO;
 using TapCommon.Editor;
 using UnityEditor;
 using UnityEditor.Callbacks;
@@ -23,6 +24,15 @@ namespace TapBootstrap.Editor
                 return;
             }
 
+            var parentFolder = Directory.GetParent(Application.dataPath).FullName;
+
+            var plistFile = TapFileHelper.RecursionFilterFile(parentFolder + "/Assets/Plugins/", "TDS-Info.plist");
+            
+            if (!plistFile.Exists)
+            {
+                Debug.LogError("TapSDK Can't find TDS-Info.plist in Project/Assets/Plugins/!");
+            }
+            TapCommonCompile.HandlerPlist(path, plistFile.FullName);
             if (TapCommonCompile.HandlerBundle(path,
                 Application.dataPath,
                 "TapBootstrapResource",

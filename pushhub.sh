@@ -14,12 +14,14 @@ git branch -D tapdb-upm
 
 git config --local http.postBuffer 524288000
 
+# shellcheck disable=SC2039
 var=("tapcommon-upm" "tapdb-upm" "tapmoment-upm" "tapbootstrap-upm" "taplogin-upm")
+# shellcheck disable=SC2039
 module=("TapCommon" "TapDB" "TapMoment" "TapBootstrap" "TapLogin")
 
 tag=$1
 
-function pushhub(){  
+function pushGithub(){  
   git tag -d $(git tag)
   git subtree split --prefix=Assets/$1 --branch $2
   git checkout $2 --force
@@ -29,5 +31,5 @@ function pushhub(){
 }
 
 for ((i=0;i<${#var[@]};i++));do
-    pushhub ${module[$i]} ${var[$i]} $tag
+    pushGithub ${module[$i]} ${var[$i]} $tag
 done   

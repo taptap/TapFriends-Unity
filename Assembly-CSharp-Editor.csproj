@@ -63,7 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\TapDB\Editor\TapDBIOSProcessor.cs" />
+    <Compile Include="Assets\Editor\BuildProcessor.cs" />
+    <Compile Include="Assets\Editor\ExportPackage.cs" />
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
@@ -322,20 +323,8 @@
     <Reference Include="UnityEditor.OSXStandalone.Extensions">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="TapBootstrap">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrap/Plugins/TapBootstrap.dll</HintPath>
-    </Reference>
     <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
-    </Reference>
-    <Reference Include="TapDB">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapDB/Plugins/TapDB.dll</HintPath>
-    </Reference>
-    <Reference Include="TapMoment">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapMoment/Plugins/TapMoment.dll</HintPath>
-    </Reference>
-    <Reference Include="TapCommon">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapCommon/Plugins/TapCommon.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
@@ -348,6 +337,18 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="TapBootstrapSDK">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrap/Plugins/TapBootstrapSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="TapCommonSDK">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapCommon/Plugins/TapCommonSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="TapDBSDK">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapDB/Plugins/TapDBSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="TapMomentSDK">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapMoment/Plugins/TapMomentSDK.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -715,6 +716,18 @@
       <Project>{6A8167CD-5EE2-6F3F-045C-DCF632D4DEAB}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="TapLogin.Editor.csproj">
+      <Project>{36493C2E-D2C8-1926-21B8-10C6FCBAC8F9}</Project>
+      <Name>TapLogin.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TapDB.Editor.csproj">
+      <Project>{70261E78-FD41-8AAB-305A-3E723A50C2CF}</Project>
+      <Name>TapDB.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TapMoment.Editor.csproj">
+      <Project>{21C5A48A-BA7E-B498-6E72-01BD0046E4C1}</Project>
+      <Name>TapMoment.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="TapBootstrap.Editor.csproj">
       <Project>{4DA99EDF-0B40-9D40-44E2-110909805589}</Project>
       <Name>TapBootstrap.Editor</Name>
@@ -723,17 +736,6 @@
       <Project>{3FBD6AFC-7BE1-9C36-3BAD-9FA6A55A8491}</Project>
       <Name>TapCommon.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="TapMoment.Editor.csproj">
-      <Project>{21C5A48A-BA7E-B498-6E72-01BD0046E4C1}</Project>
-      <Name>TapMoment.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="TapLogin.Editor.csproj">
-      <Project>{36493C2E-D2C8-1926-21B8-10C6FCBAC8F9}</Project>
-      <Name>TapLogin.Editor</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Assets\TapDB\Editor\TapDB.Editor.asmdef" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

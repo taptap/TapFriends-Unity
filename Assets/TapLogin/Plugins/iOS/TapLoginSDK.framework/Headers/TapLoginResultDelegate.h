@@ -6,8 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AccountGlobalError.h"
-#import "TTSDKAccessToken.h"
+#import <TapLoginSDK/AccountGlobalError.h>
+#import <TapLoginSDK/TTSDKAccessToken.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol TapLoginResultDelegate <NSObject>
