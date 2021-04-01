@@ -4,4 +4,4 @@ path=$(cd "$(dirname "$0")";pwd)
 
 echo $path
 
-$unityPath -projectPath $path -batchmode -executeMethod Plugins.Editor.ExportPackage.PushUnityPackage -quit
+$unityPath -projectPath $path -batchmode -executeMethod Editor.ExportPackage.PushUnityPackage -quit
