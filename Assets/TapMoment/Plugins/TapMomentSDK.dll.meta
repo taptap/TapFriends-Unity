@@ -24,7 +24,7 @@ PluginImporter:
         Exclude OSXUniversal: 0
         Exclude Win: 0
         Exclude Win64: 0
-        Exclude iOS: 1
+        Exclude iOS: 0
   - first:
       Android: Android
     second:
@@ -34,7 +34,7 @@ PluginImporter:
   - first:
       Any: 
     second:
-      enabled: 0
+      enabled: 1
       settings: {}
   - first:
       Editor: Editor
@@ -101,7 +101,7 @@ PluginImporter:
   - first:
       iPhone: iOS
     second:
-      enabled: 0
+      enabled: 1
       settings:
         AddToEmbeddedBinaries: false
         CompileFlags: 

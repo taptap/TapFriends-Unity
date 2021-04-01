@@ -323,8 +323,20 @@
     <Reference Include="UnityEditor.OSXStandalone.Extensions">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="TapBootstrapSDK">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrap/Plugins/TapBootstrapSDK.dll</HintPath>
+    </Reference>
     <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
+    </Reference>
+    <Reference Include="TapDBSDK">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapDB/Plugins/TapDBSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="TapMomentSDK">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapMoment/Plugins/TapMomentSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="TapCommonSDK">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapCommon/Plugins/TapCommonSDK.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
@@ -337,18 +349,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="TapBootstrapSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrap/Plugins/TapBootstrapSDK.dll</HintPath>
-    </Reference>
-    <Reference Include="TapCommonSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapCommon/Plugins/TapCommonSDK.dll</HintPath>
-    </Reference>
-    <Reference Include="TapDBSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapDB/Plugins/TapDBSDK.dll</HintPath>
-    </Reference>
-    <Reference Include="TapMomentSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapMoment/Plugins/TapMomentSDK.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

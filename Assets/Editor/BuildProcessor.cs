@@ -15,7 +15,7 @@ namespace Editor
             {
                 return;
             }
-
+            
             var proj = TapCommonCompile.ParseProjPath(path);
             var target = TapCommonCompile.GetUnityTarget(proj);
             var unityFrameworkTarget = TapCommonCompile.GetUnityFrameworkTarget(proj);
@@ -35,6 +35,7 @@ namespace Editor
             proj.SetBuildProperty(target, "PRODUCT_BUNDLE_IDENTIFIER", "com.tdssdk.demo");
 
             proj.SetBuildProperty(unityFrameworkTarget, "CODE_SIGN_STYLE", "Manual");
+            
             File.WriteAllText(TapCommonCompile.GetProjPath(path), proj.WriteToString());
 
             Debug.Log("TapSDK Unity Sign Success!");

@@ -8,3 +8,5 @@ bin
 obj
 node_modules
 .unitypackage
+TapSDK-UnityPackage
+TapSDK2-Unity
