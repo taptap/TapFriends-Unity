@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 #define TapSDK @"TapSDK"
-#define TapSDK_VERSION_NUMBER @"1"
+#define TapSDK_VERSION_NUMBER @"2"
 #define TapSDK_VERSION        @"2.0.0"
 
 FOUNDATION_EXTERN int const ERROR_CODE_UNDEFINED;
