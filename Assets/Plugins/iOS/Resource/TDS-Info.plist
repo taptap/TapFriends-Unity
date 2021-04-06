@@ -7,7 +7,7 @@
       <string>0RiAlMny7jiz086FaU</string>
     </dict>
     <key>Apple_SignIn_Enable</key>
-    <string>true</string>
+    <string>false</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>App需要您的同意,才能访问相册</string>
     <key>NSCameraUsageDescription</key>

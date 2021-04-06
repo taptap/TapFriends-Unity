@@ -6,7 +6,6 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-		ANDROID|Any CPU = ANDROID|Any CPU
 		IOS|Any CPU = IOS|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
@@ -14,8 +13,6 @@ Global
 		{5C2D22B1-476B-4BCD-86D0-7FD5DD4531A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C2D22B1-476B-4BCD-86D0-7FD5DD4531A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C2D22B1-476B-4BCD-86D0-7FD5DD4531A9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C2D22B1-476B-4BCD-86D0-7FD5DD4531A9}.ANDROID|Any CPU.ActiveCfg = ANDROID|Any CPU
-		{5C2D22B1-476B-4BCD-86D0-7FD5DD4531A9}.ANDROID|Any CPU.Build.0 = ANDROID|Any CPU
 		{5C2D22B1-476B-4BCD-86D0-7FD5DD4531A9}.IOS|Any CPU.ActiveCfg = IOS|Any CPU
 		{5C2D22B1-476B-4BCD-86D0-7FD5DD4531A9}.IOS|Any CPU.Build.0 = IOS|Any CPU
 	EndGlobalSection
