@@ -16,7 +16,7 @@ namespace Editor
                 return;
             }
             
-            var proj = TapCommonCompile.ParseProjPath(path);
+            var proj = TapCommonCompile.ParseProjPath(TapCommonCompile.GetProjPath(path));
             var target = TapCommonCompile.GetUnityTarget(proj);
             var unityFrameworkTarget = TapCommonCompile.GetUnityFrameworkTarget(proj);
             // 企业证书
