@@ -16,7 +16,7 @@
         <PlatformTarget>AnyCPU</PlatformTarget>
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
-        <Optimize>false</Optimize>
+        <Optimize>true</Optimize>
         <OutputPath>bin\Debug\</OutputPath>
         <DefineConstants>DEBUG;TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
@@ -34,10 +34,14 @@
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ANDROID|AnyCPU' ">
       <OutputPath>bin\ANDROID\</OutputPath>
       <DefineConstants>TRACE</DefineConstants>
+      <DebugSymbols>true</DebugSymbols>
+      <DebugType>pdbonly</DebugType>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'IOS|AnyCPU' ">
       <OutputPath>bin\IOS\</OutputPath>
       <DefineConstants>TRACE;UNITY_IOS</DefineConstants>
+      <DebugSymbols>true</DebugSymbols>
+      <DebugType>pdbonly</DebugType>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="System" />

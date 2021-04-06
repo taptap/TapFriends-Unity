@@ -30,9 +30,12 @@
         <DefineConstants>TRACE</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
+        <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'IOS|AnyCPU' ">
       <OutputPath>bin\IOS\</OutputPath>
+      <DebugSymbols>true</DebugSymbols>
+      <DebugType>pdbonly</DebugType>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ANDROID|AnyCPU' ">
       <OutputPath>bin\ANDROID\</OutputPath>

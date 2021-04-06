@@ -326,6 +326,18 @@
     <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
     </Reference>
+    <Reference Include="TapDBSDK">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapDBSDK/Plugins/TapDBSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="TapCommonSDK">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapCommonSDK/Plugins/TapCommonSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="TapMomentSDK">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapMomentSDK/Plugins/TapMomentSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="TapBootstrapSDK">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrapSDK/Plugins/TapBootstrapSDK.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -337,18 +349,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="TapBootstrapSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrapSDK/Plugins/TapBootstrapSDK.dll</HintPath>
-    </Reference>
-    <Reference Include="TapCommonSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapCommonSDK/Plugins/TapCommonSDK.dll</HintPath>
-    </Reference>
-    <Reference Include="TapDBSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapDBSDK/Plugins/TapDBSDK.dll</HintPath>
-    </Reference>
-    <Reference Include="TapMomentSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapMomentSDK/Plugins/TapMomentSDK.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -716,18 +716,6 @@
       <Project>{6A8167CD-5EE2-6F3F-045C-DCF632D4DEAB}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="TapBootstrapSDK.Editor.csproj">
-      <Project>{F368A551-2E63-6385-D80F-B3F5919B336E}</Project>
-      <Name>TapBootstrapSDK.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="TapCommonSDK.Editor.csproj">
-      <Project>{D47097CC-96F1-956F-A0A4-F6CC20E99859}</Project>
-      <Name>TapCommonSDK.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="TapDBSDK.Editor.csproj">
-      <Project>{BC82964A-F2AA-35F2-6F67-8CDE73316639}</Project>
-      <Name>TapDBSDK.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="TapLoginSDK.Editor.csproj">
       <Project>{098035E8-F5D9-BDE4-C4F6-86AB5C02E983}</Project>
       <Name>TapLoginSDK.Editor</Name>
@@ -735,6 +723,18 @@
     <ProjectReference Include="TapMomentSDK.Editor.csproj">
       <Project>{39EAF064-F3E0-E246-1A5A-EA29A8AD04B8}</Project>
       <Name>TapMomentSDK.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TapDBSDK.Editor.csproj">
+      <Project>{BC82964A-F2AA-35F2-6F67-8CDE73316639}</Project>
+      <Name>TapDBSDK.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TapBootstrapSDK.Editor.csproj">
+      <Project>{F368A551-2E63-6385-D80F-B3F5919B336E}</Project>
+      <Name>TapBootstrapSDK.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TapCommonSDK.Editor.csproj">
+      <Project>{D47097CC-96F1-956F-A0A4-F6CC20E99859}</Project>
+      <Name>TapCommonSDK.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

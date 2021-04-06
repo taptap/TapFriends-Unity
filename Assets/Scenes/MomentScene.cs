@@ -57,7 +57,7 @@ public class MomentScene : MonoBehaviour
 
         if (GUI.Button(new Rect(60, 300, 180, 100), "动态红点", style))
         {
-            TapMoment.GetNoticeData();
+            TapMoment.FetchNotification();
         }
 
         if (GUI.Button(new Rect(360, 450, 245, 100), "场景化入口", style))
