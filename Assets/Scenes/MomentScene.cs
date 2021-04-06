@@ -7,7 +7,7 @@ public class MomentScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TapMomentSDK.TapMoment.SetCallback((code, msg) =>
+        TapMoment.SetCallback((code, msg) =>
         {
             Debug.Log("---- moment 回调  code: " + code + " msg: " + msg + "----");
             if (code == 20100)
@@ -29,7 +29,7 @@ public class MomentScene : MonoBehaviour
     public IEnumerator Delay()
     {
         yield return new WaitForSeconds(6);
-        TapMomentSDK.TapMoment.Close();
+        TapMoment.Close();
     }
 
     private string sceneId = "Input sceneId";
@@ -52,22 +52,22 @@ public class MomentScene : MonoBehaviour
 
         if (GUI.Button(new Rect(60, 150, 180, 100), "打开动态", style))
         {
-            TapMomentSDK.TapMoment.Open(Orientation.ORIENTATION_DEFAULT);
+            TapMoment.Open(Orientation.ORIENTATION_DEFAULT);
         }
 
         if (GUI.Button(new Rect(60, 300, 180, 100), "动态红点", style))
         {
-            TapMomentSDK.TapMoment.GetNoticeData();
+            TapMoment.GetNoticeData();
         }
 
         if (GUI.Button(new Rect(360, 450, 245, 100), "场景化入口", style))
         {
-            TapMomentSDK.TapMoment.OpenSceneEntry(Orientation.ORIENTATION_DEFAULT, sceneId);
+            TapMoment.OpenSceneEntry(Orientation.ORIENTATION_DEFAULT, sceneId);
         }
 
         if (GUI.Button(new Rect(360, 600, 245, 100), "用户中心入口", style))
         {
-            TapMomentSDK.TapMoment.OpenUserCenter(Orientation.ORIENTATION_DEFAULT, userId);
+            TapMoment.OpenUserCenter(Orientation.ORIENTATION_DEFAULT, userId);
         }
 
         if (GUI.Button(new Rect(60, 750, 180, 100), "返回", style))

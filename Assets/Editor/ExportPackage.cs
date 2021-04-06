@@ -24,10 +24,10 @@ namespace Editor
             AssetDatabase.ExportPackage(assetsPathNames, path, ExportPackageOptions.Recurse);
 
         }
-
+        
         static void PushUnityPackage()
         {
-            string[] moduleNames = {"TapCommon", "TapBootstrap", "TapMoment", "TapDB", "TapLogin"};
+            string[] moduleNames = {"TapCommonSDK", "TapBootstrapSDK", "TapMomentSDK", "TapDBSDK", "TapLoginSDK"};
 
             foreach (var module in moduleNames)
             {
