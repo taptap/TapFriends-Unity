@@ -19,7 +19,10 @@ function pushGithub(){
   
   git tag -d $(git tag)
   
+  git branch -D main
+  
   git subtree split --prefix=Assets/$1 --branch main
+    
   if [ "$5" == "true" ]; then
       git remote add $2 git@github.com:TapTap/$4-Unity.git 
   else
