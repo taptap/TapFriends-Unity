@@ -13,7 +13,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{4DA99EDF-0B40-9D40-44E2-110909805589}</ProjectGuid>
+    <ProjectGuid>{2465E920-6EF5-CE9E-29BF-2E47C43E7BB4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>TapBootstrap.Editor</AssemblyName>
@@ -303,31 +303,31 @@
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="TapBootstrapSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrap/Plugins/TapBootstrapSDK.dll</HintPath>
+      <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapBootstrap/Plugins/TapBootstrapSDK.dll</HintPath>
     </Reference>
     <Reference Include="JetBrains.Rider.Unity.Editor.Plugin.Repacked">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
+      <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll</HintPath>
     </Reference>
     <Reference Include="TapDBSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapDB/Plugins/TapDBSDK.dll</HintPath>
+      <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapDB/Plugins/TapDBSDK.dll</HintPath>
     </Reference>
     <Reference Include="TapMomentSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapMoment/Plugins/TapMomentSDK.dll</HintPath>
+      <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapMoment/Plugins/TapMomentSDK.dll</HintPath>
     </Reference>
     <Reference Include="TapCommonSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapCommon/Plugins/TapCommonSDK.dll</HintPath>
+      <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapCommon/Plugins/TapCommonSDK.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -692,7 +692,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="TapCommon.Editor.csproj">
-      <Project>{3FBD6AFC-7BE1-9C36-3BAD-9FA6A55A8491}</Project>
+      <Project>{6D0E8B54-8B58-1F47-4611-400A9E6A41AA}</Project>
       <Name>TapCommon.Editor</Name>
     </ProjectReference>
   </ItemGroup>
