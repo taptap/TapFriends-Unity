@@ -25,11 +25,11 @@
 
     * 在你打开的 Unity 项目中，依次转到 **Assets > Import Packages > Custom Packages**。
     * 从解压缩中的 **TapSDK** 中，选择您希望在应用中使用的**TapSDK**产品导入。
-        * TapBootstrap.unitypackage ： **必选**。TapSDK 启动器
-        * TapCommon.unitypackag ： **必选**。TapSDK 基础库
-        * TapLogin.unitypackage ：**必选** TapTap登陆
-        * TapMoment.unitypackage ： TapTap内嵌动态
-        * TapDB.unitypackage ：TapDB 数据统计
+        * TapBootstrapSDK.unitypackage ： **必选**。TapSDK 启动器
+        * TapCommonSDK.unitypackage ： **必选**。TapSDK 基础库
+        * TapLoginSDK.unitypackage ：**必选** TapTap登陆
+        * TapMomentSDK.unitypackage ： TapTap内嵌动态
+        * TapDBSDK.unitypackage ：TapDB 数据统计
 
 
 2.  使用 Unity Package Manager 导入 TapSDK。

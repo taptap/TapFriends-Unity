@@ -8,7 +8,7 @@ namespace Editor
     {
         static void ExportUnityPackage(string moduleName)
         {
-            string exportPath = Directory.GetParent(Application.dataPath).FullName + "/TapSDK-UnityPackage";
+            var exportPath = Directory.GetParent(Application.dataPath).FullName + "/TapSDK-UnityPackage";
 
             if (!Directory.Exists(exportPath))
             {
