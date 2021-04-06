@@ -8,7 +8,7 @@ namespace Editor
     {
         static void ExportUnityPackage(string moduleName)
         {
-            string exportPath = Directory.GetParent(Application.dataPath).FullName + "/TapSDK-UnityPackage";
+            var exportPath = Directory.GetParent(Application.dataPath).FullName + "/TapSDK-UnityPackage";
 
             if (!Directory.Exists(exportPath))
             {
@@ -24,10 +24,10 @@ namespace Editor
             AssetDatabase.ExportPackage(assetsPathNames, path, ExportPackageOptions.Recurse);
 
         }
-
+        
         static void PushUnityPackage()
         {
-            string[] moduleNames = {"TapCommon", "TapBootstrap", "TapMoment", "TapDB", "TapLogin"};
+            string[] moduleNames = {"TapCommonSDK", "TapBootstrapSDK", "TapMomentSDK", "TapDBSDK", "TapLoginSDK"};
 
             foreach (var module in moduleNames)
             {

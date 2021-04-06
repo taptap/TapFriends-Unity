@@ -1,0 +1,16 @@
+{
+  "name": "TapLoginSDK.Editor",
+  "references": [
+    "TapCommonSDK.Editor"
+  ],
+  "optionalUnityReferences": [],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": []
+}

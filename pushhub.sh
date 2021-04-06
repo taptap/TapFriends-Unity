@@ -7,7 +7,7 @@ git branch -D main
 # shellcheck disable=SC2039
 var=("tapcommon-upm" "tapdb-upm" "tapmoment-upm" "tapbootstrap-upm" "taplogin-upm")
 # shellcheck disable=SC2039
-module=("TapCommon" "TapDB" "TapMoment" "TapBootstrap" "TapLogin")
+module=("TapCommonSDK" "TapDBSDK" "TapMomentSDK" "TapBootstrapSDK" "TapLoginSDK")
 
 tag=$1
 

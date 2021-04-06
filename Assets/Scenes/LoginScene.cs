@@ -6,8 +6,8 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
     // Start is called before the first frame update
     void Start()
     {
-        TapBootstrapSDK.TapBootstrap.RegisterLoginResultListener(this);
-        TapBootstrapSDK.TapBootstrap.RegisterUserStatusChangedListener(this);
+        TapBootstrap.RegisterLoginResultListener(this);
+        TapBootstrap.RegisterUserStatusChangedListener(this);
     }
 
     // Update is called once per frame
@@ -78,7 +78,7 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
 
         if (GUI.Button(new Rect(60, 150, 180, 100), "登录", style))
         {
-            TapBootstrapSDK.TapBootstrap.GetAccessToken((token, error) =>
+            TapBootstrap.GetAccessToken((token, error) =>
             {
                 if (token != null)
                 {
@@ -86,19 +86,19 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
                 }
                 else
                 {
-                    TapBootstrapSDK.TapBootstrap.Login(LoginType.TAPTAP, new[] {"public_profile"});
+                    TapBootstrap.Login(LoginType.TAPTAP, new[] {"public_profile"});
                 }
             });
         }
 
         if (GUI.Button(new Rect(60, 300, 180, 100), "退出登录", style))
         {
-            TapBootstrapSDK.TapBootstrap.Logout();
+            TapBootstrap.Logout();
         }
 
         if (GUI.Button(new Rect(60, 450, 180, 100), "用户信息", style))
         {
-            TapBootstrapSDK.TapBootstrap.GetUser((user, error) =>
+            TapBootstrap.GetUser((user, error) =>
             {
                 label = user != null
                     ? $"user:{user.ToJSON()}"
@@ -108,7 +108,7 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
 
         if (GUI.Button(new Rect(60, 600, 260, 100), "用户详细信息", style))
         {
-            TapBootstrapSDK.TapBootstrap.GetDetailUser((user, error) =>
+            TapBootstrap.GetDetailUser((user, error) =>
             {
                 label = user != null
                     ? $"detailUser:{user.ToJSON()}"
@@ -118,7 +118,7 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
 
         if (GUI.Button(new Rect(60, 750, 260, 100), "用户中心", style))
         {
-            TapBootstrapSDK.TapBootstrap.OpenUserCenter();
+            TapBootstrap.OpenUserCenter();
         }
 
         if (GUI.Button(new Rect(60, 900, 180, 100), "返回", style))

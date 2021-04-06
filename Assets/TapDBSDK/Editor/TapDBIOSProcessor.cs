@@ -3,14 +3,15 @@ using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-namespace TapFriends.Editor
+namespace TapDBSDK.Editor
 {
-    public class TapFriendsIOSProcessor
+    public class TapDBIOSProcessor
     {
-        [PostProcessBuild(105)]
+        [PostProcessBuild(104)]
         public static void OnPostprocessBuild(BuildTarget buildTarget, string path)
         {
             if (buildTarget != BuildTarget.iOS) return;
+
             var projPath = TapCommonCompile.GetProjPath(path);
             var proj = TapCommonCompile.ParseProjPath(projPath);
             var target = TapCommonCompile.GetUnityTarget(proj);
@@ -20,7 +21,12 @@ namespace TapFriends.Editor
                 Debug.LogError("Unity-iPhone is NUll");
                 return;
             }
-            //待续...
+            
+            proj.AddFrameworkToProject(unityFrameworkTarget, "AdSupport.framework", false);
+            proj.AddFrameworkToProject(unityFrameworkTarget, "CoreMotion.framework", false);
+            proj.AddFrameworkToProject(unityFrameworkTarget, "Security.framework", false);
+            proj.AddFrameworkToProject(unityFrameworkTarget, "SystemConfiguration.framework", false);
+            proj.AddFrameworkToProject(unityFrameworkTarget, "AppTrackingTransparency.framework", true);
             
         }
     }
