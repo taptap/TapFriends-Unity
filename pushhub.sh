@@ -9,17 +9,37 @@ var=("tapcommon-upm" "tapdb-upm" "tapmoment-upm" "tapbootstrap-upm" "taplogin-up
 # shellcheck disable=SC2039
 module=("TapCommonSDK" "TapDBSDK" "TapMomentSDK" "TapBootstrapSDK" "TapLoginSDK")
 
+githubRepoName=("TapCommon" "TapDB" "TapMoment" "TapBootstrap" "TapLogin")
+
 tag=$1
 
+isTapTapRepo=false
+
 function pushGithub(){  
+  
   git tag -d $(git tag)
+  
+  git branch -D main
+  
   git subtree split --prefix=Assets/$1 --branch main
-  git checkout $2 --force
+    
+  if [ "$5" == "true" ]; then
+      git remote add $2 git@github.com:TapTap/$4-Unity.git 
+  else
+      git remote add $2 git@github.com:EingShaw/$4.git
+  fi;
+  
+  git checkout main --force
+  
   git tag $3
+  
+  git fetch --unshallow main
+  
   git push $2 main --force --tags
+  
   git checkout $currentBranch --force
 }
 
 for ((i=0;i<${#var[@]};i++));do
-    pushGithub ${module[$i]} ${var[$i]} $tag
+    pushGithub ${module[$i]} ${var[$i]} $tag ${githubRepoName[$i]} $isTapTapRepo
 done   

@@ -1,7 +1,6 @@
 using TapCommonSDK;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace TapFriendsSDK
 {

@@ -335,9 +335,6 @@
     <Reference Include="TapMomentSDK">
       <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapMomentSDK/Plugins/TapMomentSDK.dll</HintPath>
     </Reference>
-    <Reference Include="TapFriendsSDK">
-      <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapFriends/Plugins/TapFriendsSDK.dll</HintPath>
-    </Reference>
     <Reference Include="TapBootstrapSDK">
       <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapBootstrapSDK/Plugins/TapBootstrapSDK.dll</HintPath>
     </Reference>
@@ -352,6 +349,9 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="TapFriendsSDK">
+      <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapFriendsSDK/Plugins/TapFriendsSDK.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -739,9 +739,6 @@
       <Project>{B4366C26-718B-5764-E5CA-F01FA3A82E87}</Project>
       <Name>TapCommonSDK.Editor</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\TapFriends" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
