@@ -146,7 +146,7 @@ namespace TapFriendsSDK
         }
 
         public void GetFollowingList(int from, int mutualAttention, int limit,
-            Action<List<TapFriendRelation>, TapError> action)
+            Action<List<TapUserRelationShip>, TapError> action)
         {
             var command = new Command.Builder()
                 .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
@@ -179,7 +179,7 @@ namespace TapFriendsSDK
             });
         }
 
-        public void GetFollowerList(int from, int limit, Action<List<TapFriendRelation>, TapError> action)
+        public void GetFollowerList(int from, int limit, Action<List<TapUserRelationShip>, TapError> action)
         {
             var command = new Command.Builder()
                 .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
@@ -211,7 +211,7 @@ namespace TapFriendsSDK
             });
         }
 
-        public void GetBlockList(int from, int limit, Action<List<TapFriendRelation>, TapError> action)
+        public void GetBlockList(int from, int limit, Action<List<TapUserRelationShip>, TapError> action)
         {
             var command = new Command.Builder()
                 .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)

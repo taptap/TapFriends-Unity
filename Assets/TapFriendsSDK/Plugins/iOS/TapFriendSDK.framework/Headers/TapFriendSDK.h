@@ -18,4 +18,4 @@ FOUNDATION_EXPORT const unsigned char TapFriendSDKVersionString[];
 #define TapFriendSDK_VERSION        @"2.0.0"
 
 #import <TapFriendSDK/TapFriends.h>
-#import <TapFriendSDK/TapFriendRelation.h>
+#import <TapFriendSDK/TapUserRelationShip.h>

@@ -7,18 +7,18 @@ namespace TapFriendsSDK
 {
     public class TapFriendRelationWrapper
     {
-        public List<TapFriendRelation> wrapper;
+        public List<TapUserRelationShip> wrapper;
         public TapFriendRelationWrapper(List<object> list)
         {
             if (list == null)
             {
                 return;
             }
-            this.wrapper = new List<TapFriendRelation>();
+            this.wrapper = new List<TapUserRelationShip>();
             foreach (var tmp in list)
             {
                 Dictionary<string, object> dic = tmp as Dictionary<string, object>;
-                TapFriendRelation relation = new TapFriendRelation(dic);
+                TapUserRelationShip relation = new TapUserRelationShip(dic);
                 wrapper.Add(relation);
             }
         }

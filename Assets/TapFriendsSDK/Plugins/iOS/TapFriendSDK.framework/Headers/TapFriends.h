@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TapFriendSDK/TapFriendRelation.h>
+#import <TapFriendSDK/TapUserRelationShip.h>
 #import <TapCommonSDK/TapCommonSDK.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 #define TAPFRIEND_VERSION        @"1.0.0"
 
 typedef void (^TapSimpleHandler)(NSError *_Nullable error);
-typedef void (^TapFriendUserInfoMultiHandler)(NSArray<TapFriendRelation *> *_Nullable userList, NSError *_Nullable error);
-typedef void (^TapFriendRelationHandler)(NSArray<TapFriendRelation *> *_Nullable userList, NSError *_Nullable error);
+typedef void (^TapFriendUserInfoMultiHandler)(NSArray<TapUserRelationShip *> *_Nullable userList, NSError *_Nullable error);
+typedef void (^TapFriendRelationHandler)(NSArray<TapUserRelationShip *> *_Nullable userList, NSError *_Nullable error);
 
 @interface TapFriends : NSObject
 

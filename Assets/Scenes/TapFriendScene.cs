@@ -26,7 +26,7 @@ public class TapFriendScene : MonoBehaviour
         
         var labelStyle = new GUIStyle(GUI.skin.label)
         {
-            fontSize = 20
+            fontSize = 25
         };
         GUI.Label(new Rect(400, 400, 400, 300), label, labelStyle);
         
@@ -42,7 +42,7 @@ public class TapFriendScene : MonoBehaviour
             {
                 if (error != null)
                 {
-                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
                 }
                 else
                 {
@@ -57,7 +57,7 @@ public class TapFriendScene : MonoBehaviour
             {
                 if (error != null)
                 {
-                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
                 }
                 else
                 {
@@ -68,18 +68,27 @@ public class TapFriendScene : MonoBehaviour
 
         if (GUI.Button(new Rect(60, 500, 280, 80), "好友列表", style))
         {
-            TapFriends.GetFollowingList(1,0,10, (list, error) =>
+            int handleFrom = int.Parse(from);
+            int handleLimit = int.Parse(limit);
+            TapFriends.GetFollowingList(handleFrom,0,handleLimit, (list, error) =>
             {
                 if (error != null)
                 {
-                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
                 }
                 else
                 {
-                    label = "好友列表成功";
-                    foreach (TapFriendRelation relation in list)
+                    if (list.Count != 0)
                     {
-                        this.label = this.label + relation.ToJson();
+                        label = "获取好友列表成功: ";
+                        foreach (TapUserRelationShip relation in list)
+                        {
+                            this.label = this.label + relation.ToJson();
+                        } 
+                    }
+                    else
+                    {
+                        this.label = "获取好友列表为空"; 
                     }
                 }
             });
@@ -93,14 +102,21 @@ public class TapFriendScene : MonoBehaviour
             {
                 if (error != null)
                 {
-                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
                 }
                 else
                 {
-                    this.label = "互关好友列表成功: ";
-                    foreach (TapFriendRelation relation in list)
+                    if (list.Count != 0)
                     {
-                        this.label = this.label + relation.ToJson();
+                        this.label = "获取互关好友列表成功: ";
+                        foreach (TapUserRelationShip relation in list)
+                        {
+                            this.label = this.label + relation.ToJson();
+                        } 
+                    }
+                    else
+                    {
+                        this.label = "获取互关好友列表为空";
                     }
                 }
             });
@@ -114,13 +130,21 @@ public class TapFriendScene : MonoBehaviour
             {
                 if (error != null)
                 {
-                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
                 }
                 else
                 {
-                    foreach (TapFriendRelation relation in list)
+                    if (list.Count != 0)
                     {
-                        this.label = this.label + relation.ToJson();
+                        this.label = "获取粉丝列表成功: ";
+                        foreach (TapUserRelationShip relation in list)
+                        {
+                            this.label = this.label + relation.ToJson();
+                        } 
+                    }
+                    else
+                    {
+                        this.label = "获取粉丝列表为空"; 
                     }
                 }
             });
@@ -132,7 +156,7 @@ public class TapFriendScene : MonoBehaviour
             {
                 if (error != null)
                 {
-                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
                 }
                 else
                 {
@@ -147,7 +171,7 @@ public class TapFriendScene : MonoBehaviour
             {
                 if (error != null)
                 {
-                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
                 }
                 else
                 {
@@ -164,19 +188,25 @@ public class TapFriendScene : MonoBehaviour
             {
                 if (error != null)
                 {
-                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
                 }
                 else
                 {
-                    label = "获取拉黑列表成功";
-                    foreach (TapFriendRelation relation in list)
+                    if (list.Count != 0)
                     {
-                        this.label = this.label + relation.userId +
-                                     relation.name +
-                                     relation.avatar +
-                                     relation.isGuest +
-                                     relation.gender +
-                                     relation.mutualFans;
+                        label = "获取拉黑列表成功";
+                        foreach (TapUserRelationShip relation in list)
+                        {
+                            this.label = this.label + relation.userId +
+                                         relation.name +
+                                         relation.avatar +
+                                         relation.gender +
+                                         relation.mutualAttention;
+                        }  
+                    }
+                    else
+                    {
+                        label = "获取拉黑列表为空";
                     }
                 }
             });
