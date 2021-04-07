@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TapFriendsSDK;
 
 public class TapFriendScene : MonoBehaviour
@@ -33,7 +31,10 @@ public class TapFriendScene : MonoBehaviour
         {
             TapFriends.AddFriend("110", error =>
             {
-                label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                if (error != null)
+                {
+                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                }
             });
         }
         
@@ -41,7 +42,10 @@ public class TapFriendScene : MonoBehaviour
         {
             TapFriends.DeleteFriend("110", error =>
             {
-                label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                if (error != null)
+                {
+                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                }
             });
         }
 
@@ -79,7 +83,10 @@ public class TapFriendScene : MonoBehaviour
         {
             TapFriends.BlockUser("110", error =>
             {
-                label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                if (error != null)
+                {
+                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                }
             });
         }
         
@@ -87,7 +94,10 @@ public class TapFriendScene : MonoBehaviour
         {
             TapFriends.UnBlockUser("110", error =>
             {
-                label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                if (error != null)
+                {
+                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                }
             });
         }
         
