@@ -1,9 +1,7 @@
 using System;
-using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
 
-namespace TapFriendsSDK
+namespace TapTap.Friends
 {
     public interface ITapFriends
     {

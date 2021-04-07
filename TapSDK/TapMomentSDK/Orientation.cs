@@ -1,4 +1,4 @@
-namespace TapMomentSDK
+namespace TapTap.Moment
 {
     public enum Orientation : int
     {

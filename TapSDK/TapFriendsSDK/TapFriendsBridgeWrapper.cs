@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using TapCommonSDK;
+using TapTap.Common;
 
-namespace TapFriendsSDK
+namespace TapTap.Friends
 {
     public class TapAddFriendWrapper
     {

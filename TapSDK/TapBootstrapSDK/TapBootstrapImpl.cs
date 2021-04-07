@@ -1,8 +1,7 @@
 using System;
-using TapCommonSDK;
-using UnityEngine;
+using TapTap.Common;
 
-namespace TapBootstrapSDK
+namespace TapTap.Bootstrap
 {
     public class TapBootstrapImpl : ITapBootstrap
     {

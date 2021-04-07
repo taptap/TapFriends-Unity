@@ -1,4 +1,4 @@
-namespace TapFriendsSDK
+namespace TapTap.Friends
 {
     public class TapFriendsConstants
     {

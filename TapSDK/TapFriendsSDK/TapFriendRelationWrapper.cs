@@ -1,9 +1,6 @@
-using System;
 using System.Collections.Generic;
-using TapCommonSDK;
-using UnityEngine;
 
-namespace TapFriendsSDK
+namespace TapTap.Friends
 {
     public class TapFriendRelationWrapper
     {

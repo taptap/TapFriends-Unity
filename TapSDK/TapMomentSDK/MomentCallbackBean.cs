@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using TapCommonSDK;
+using TapTap.Common;
 
-namespace TapMomentSDK
+namespace TapTap.Moment
 {
     public class MomentCallbackBean
     {

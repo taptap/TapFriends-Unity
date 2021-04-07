@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TapCommonSDK
+namespace TapTap.Common
 {
     public class Command
     {

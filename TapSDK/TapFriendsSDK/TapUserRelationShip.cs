@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using TapCommonSDK;
+using TapTap.Common;
 using UnityEngine;
 
-namespace TapFriendsSDK
+namespace TapTap.Friends
 {
     public class TapUserRelationShip
     {

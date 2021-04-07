@@ -1,8 +1,7 @@
-using TapCommonSDK;
 using System;
 using System.Collections.Generic;
 
-namespace TapFriendsSDK
+namespace TapTap.Friends
 {
     public class TapFriends
     {

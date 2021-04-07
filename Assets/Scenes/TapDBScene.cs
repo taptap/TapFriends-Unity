@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using TapBootstrapSDK;
-using TapDBSDK;
+using TapTap.Bootstrap;
+using TapTap.TapDB;
 
 public class TapDBScene : MonoBehaviour
 {

@@ -1,4 +1,4 @@
-namespace TapDBSDK
+namespace TapTap.TapDB
 {
     public class TapDBLoginType
     {

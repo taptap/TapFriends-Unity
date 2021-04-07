@@ -1,9 +1,8 @@
 using System;
-using UnityEngine;
-using TapCommonSDK;
 using System.Collections.Generic;
+using TapTap.Common;
 
-namespace TapFriendsSDK
+namespace TapTap.Friends
 {
     public class TapFriendsImpl : ITapFriends
     {

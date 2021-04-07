@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace TapCommonSDK
+namespace TapTap.Common
 {
     public static class SafeDictionary
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace TapCommonSDK
+namespace TapTap.Common
 {
     public class BridgeAndroid : IBridge
     {

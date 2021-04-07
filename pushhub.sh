@@ -7,7 +7,7 @@ git branch -D main
 # shellcheck disable=SC2039
 var=("tapcommon-upm" "tapdb-upm" "tapmoment-upm" "tapbootstrap-upm" "taplogin-upm")
 # shellcheck disable=SC2039
-module=("TapCommonSDK" "TapDBSDK" "TapMomentSDK" "TapBootstrapSDK" "TapLoginSDK")
+module=("Common" "TapDB" "Moment" "Bootstrap" "Login")
 
 githubRepoName=("TapCommon" "TapDB" "TapMoment" "TapBootstrap" "TapLogin")
 
@@ -21,7 +21,7 @@ function pushGithub(){
   
   git branch -D main
   
-  git subtree split --prefix=Assets/$1 --branch main
+  git subtree split --prefix=Assets/TapTap/$1 --branch main
     
   if [ "$5" == "true" ]; then
       git remote add $2 git@github.com:TapTap/$4-Unity.git 

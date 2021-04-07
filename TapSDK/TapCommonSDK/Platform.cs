@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TapCommonSDK
+namespace TapTap.Common
 {
     public class Platform
     {

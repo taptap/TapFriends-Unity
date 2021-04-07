@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using TapCommonSDK;
+using TapTap.Common;
 using UnityEngine;
 
-namespace TapBootstrapSDK
+namespace TapTap.Bootstrap
 {
     public class TapLoginWrapper
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using TapCommonSDK;
+using TapTap.Common;
 
-namespace TapDBSDK
+namespace TapTap.TapDB
 {
     public class TapDBImpl : ITapDB
     {

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using TapFriendsSDK;
+using TapTap.Friends;
 
 public class TapFriendScene : MonoBehaviour
 {
