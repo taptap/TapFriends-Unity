@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TapCommonSDK
+namespace TapTap.Common
 {
     public interface ITapCommon
     {

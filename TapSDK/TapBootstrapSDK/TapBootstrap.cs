@@ -1,6 +1,6 @@
 using System;
 
-namespace TapBootstrapSDK
+namespace TapTap.Bootstrap
 {
     public class TapBootstrap
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace TapCommonSDK
+namespace TapTap.Common
 {
     public class TapCommon
     {

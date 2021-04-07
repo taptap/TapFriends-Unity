@@ -2,7 +2,8 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <ReleaseVersion>2.0.0</ReleaseVersion>
-        <RootNamespace>TapCommonSDK</RootNamespace>
+        <RootNamespace>TapTap.Common</RootNamespace>
+        <AssemblyName>TapTap.Common</AssemblyName>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
         <Configurations>Debug;Release;IOS</Configurations>
         <Platforms>AnyCPU</Platforms>

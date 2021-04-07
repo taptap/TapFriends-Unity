@@ -2,7 +2,8 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <ReleaseVersion>2.0.0</ReleaseVersion>
-        <RootNamespace>TapDBSDK</RootNamespace>
+        <RootNamespace>TapTap.TapDB</RootNamespace>
+        <AssemblyName>TapTap.TapDB</AssemblyName>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -11,8 +12,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Reference Include="TapCommonSDK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\Assets\TapCommonSDK\Plugins\TapCommonSDK.dll</HintPath>
+        <Reference Include="TapTap.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <HintPath>..\..\Assets\TapTap\Common\Plugins\TapTap.Common.dll</HintPath>
         </Reference>
         <Reference Include="UnityEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\..\..\..\..\..\..\Applications\Unity\Hub\Editor\2018.4.30f1\Unity.app\Contents\Managed\UnityEditor.dll</HintPath>

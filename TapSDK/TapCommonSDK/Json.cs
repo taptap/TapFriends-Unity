@@ -34,7 +34,7 @@ using System.Text;
 
 //Serializer,Serialize
 
-namespace TapCommonSDK
+namespace TapTap.Common
 {
     // Example usage:
     //

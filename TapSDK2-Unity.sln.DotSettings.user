@@ -2,4 +2,7 @@
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/TapSDK/TapCommonSDK/bin/IOS/netstandard2.1/TapCommonSDK.dll" /&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/TapSDK/TapCommonSDK/obj/IOS/netstandard2.0/TapCommonSDK.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Bootstrap/Plugins/TapTap.Bootstrap.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/TapSDK/TapCommonSDK/bin/IOS/netstandard2.0/TapTap.Common.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/TapSDK/TapCommonSDK/bin/Release/netstandard2.0/TapTap.Common.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>

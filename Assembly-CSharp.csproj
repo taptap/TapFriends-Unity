@@ -286,17 +286,17 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="TapDBSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapDBSDK/Plugins/TapDBSDK.dll</HintPath>
+    <Reference Include="TapTap.Bootstrap">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Bootstrap/Plugins/TapTap.Bootstrap.dll</HintPath>
     </Reference>
-    <Reference Include="TapCommonSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapCommonSDK/Plugins/TapCommonSDK.dll</HintPath>
+    <Reference Include="TapTap.Moment">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Moment/Plugins/TapTap.Moment.dll</HintPath>
     </Reference>
-    <Reference Include="TapMomentSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapMomentSDK/Plugins/TapMomentSDK.dll</HintPath>
+    <Reference Include="TapTap.TapDB">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/TapDB/Plugins/TapTap.TapDB.dll</HintPath>
     </Reference>
-    <Reference Include="TapBootstrapSDK">
-      <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapBootstrapSDK/Plugins/TapBootstrapSDK.dll</HintPath>
+    <Reference Include="TapTap.Common">
+      <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Common/Plugins/TapTap.Common.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
@@ -654,25 +654,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="TapLoginSDK.Editor.csproj">
-      <Project>{447101A6-6108-D4B9-8A9C-A47DC036B29C}</Project>
-      <Name>TapLoginSDK.Editor</Name>
+    <ProjectReference Include="TapTap.Login.Editor.csproj">
+      <Project>{AD7390AA-B0A3-CC24-14B7-B5AFA956416A}</Project>
+      <Name>TapTap.Login.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="TapMomentSDK.Editor.csproj">
-      <Project>{62F02E12-D0D9-B629-C74A-C8CAB2570A64}</Project>
-      <Name>TapMomentSDK.Editor</Name>
+    <ProjectReference Include="TapTap.TapDB.Editor.csproj">
+      <Project>{5765D10D-359B-E057-2F3A-AF5846471C9B}</Project>
+      <Name>TapTap.TapDB.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="TapDBSDK.Editor.csproj">
-      <Project>{96AEEBDE-1A93-A42D-F2BB-CC6B12F7530F}</Project>
-      <Name>TapDBSDK.Editor</Name>
+    <ProjectReference Include="TapTap.Common.Editor.csproj">
+      <Project>{86E461B3-6638-4420-2A0E-9D2DD34A1498}</Project>
+      <Name>TapTap.Common.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="TapBootstrapSDK.Editor.csproj">
-      <Project>{75E7FFCE-16D4-C0E5-7FD1-77C1802E620A}</Project>
-      <Name>TapBootstrapSDK.Editor</Name>
+    <ProjectReference Include="TapTap.Moment.Editor.csproj">
+      <Project>{E48A2DA7-335B-6231-AF31-23F14ED3F0D4}</Project>
+      <Name>TapTap.Moment.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="TapCommonSDK.Editor.csproj">
-      <Project>{B4366C26-718B-5764-E5CA-F01FA3A82E87}</Project>
-      <Name>TapCommonSDK.Editor</Name>
+    <ProjectReference Include="TapTap.Bootstrap.Editor.csproj">
+      <Project>{D9F4D7B4-D16D-AEBC-0157-A8702B6C61C3}</Project>
+      <Name>TapTap.Bootstrap.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

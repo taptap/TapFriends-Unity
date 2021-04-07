@@ -1,5 +1,5 @@
 using System.IO;
-using TapCommonSDK.Editor;
+using TapTap.Common.Editor;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;

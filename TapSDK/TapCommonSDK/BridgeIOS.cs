@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-namespace TapCommonSDK
+namespace TapTap.Common
 {
     public class BridgeIOS : IBridge
     {

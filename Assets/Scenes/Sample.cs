@@ -1,4 +1,4 @@
-﻿using TapBootstrapSDK;
+﻿using TapTap.Bootstrap;
 using UnityEngine;
 
 public class Sample : MonoBehaviour
@@ -20,12 +20,12 @@ public class Sample : MonoBehaviour
         
         if (GUI.Button(new Rect(60, 100, 280, 100), "国内", style))
         {
-            TapBootstrapSDK.TapBootstrap.Init(new TapConfig("0RiAlMny7jiz086FaU", true));
+            TapBootstrap.Init(new TapConfig("0RiAlMny7jiz086FaU", true));
         }
         
         if (GUI.Button(new Rect(60, 300, 280, 100), "海外", style))
         {
-            TapBootstrapSDK.TapBootstrap.Init(new TapConfig("KFV9Pm9ojdmWkkRJeb", false));
+            TapBootstrap.Init(new TapConfig("KFV9Pm9ojdmWkkRJeb", false));
         }
 
         if (GUI.Button(new Rect(60, 500, 280, 100), "登陆", style))

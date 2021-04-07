@@ -1,6 +1,6 @@
 using System;
 
-namespace TapMomentSDK
+namespace TapTap.Moment
 {
     public class TapMoment
     {

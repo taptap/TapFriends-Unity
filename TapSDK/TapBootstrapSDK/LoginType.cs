@@ -1,4 +1,4 @@
-namespace TapBootstrapSDK
+namespace TapTap.Bootstrap
 {
     public enum LoginType
     {

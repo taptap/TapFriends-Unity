@@ -1,5 +1,5 @@
-﻿using TapBootstrapSDK;
-using UnityEngine;
+﻿using UnityEngine;
+using TapTap.Bootstrap;
 
 public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatusChangedListener
 {

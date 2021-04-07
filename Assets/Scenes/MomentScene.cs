@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using TapMomentSDK;
+using TapTap.Moment;
 using UnityEngine;
 
 public class MomentScene : MonoBehaviour
