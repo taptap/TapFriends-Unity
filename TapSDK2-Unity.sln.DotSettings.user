@@ -5,4 +5,5 @@
   &lt;Assembly Path="/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.CoreModule.dll" /&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapBootstrapSDK/Plugins/TapBootstrapSDK.dll" /&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/TapSDK2-Unity/Assets/TapMoment/Plugins/TapMomentSDK.dll" /&gt;
+  &lt;Assembly Path="/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapFriends/Plugins/TapFriendsSDK.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>

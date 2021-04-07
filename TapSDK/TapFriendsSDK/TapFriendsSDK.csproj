@@ -36,7 +36,7 @@
         <Reference Include="System.Core" />
         <Reference Include="System.Xml" />
         <Reference Include="TapCommonSDK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\Assets\TapCommon\Plugins\TapCommonSDK.dll</HintPath>
+          <HintPath>..\..\Assets\TapCommonSDK\Plugins\TapCommonSDK.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine">
             <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/Managed/UnityEngine.dll</HintPath>
@@ -45,7 +45,12 @@
     <ItemGroup>
         <Compile Include="ITapFriends.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="TapError.cs" />
+        <Compile Include="TapErrorCode.cs" />
+        <Compile Include="TapFriendRelation.cs" />
+        <Compile Include="TapFriendRelationWrapper.cs" />
         <Compile Include="TapFriends.cs" />
+        <Compile Include="TapFriendsBridgeWrapper.cs" />
         <Compile Include="TapFriendsConstants.cs" />
         <Compile Include="TapFriendsImpl.cs" />
     </ItemGroup>

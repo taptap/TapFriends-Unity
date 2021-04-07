@@ -314,6 +314,9 @@
     <Reference Include="TapMomentSDK">
       <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapMomentSDK/Plugins/TapMomentSDK.dll</HintPath>
     </Reference>
+    <Reference Include="TapFriendsSDK">
+      <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapFriends/Plugins/TapFriendsSDK.dll</HintPath>
+    </Reference>
     <Reference Include="TapBootstrapSDK">
       <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapBootstrapSDK/Plugins/TapBootstrapSDK.dll</HintPath>
     </Reference>

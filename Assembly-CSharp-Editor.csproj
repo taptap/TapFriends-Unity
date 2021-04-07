@@ -65,7 +65,6 @@
   <ItemGroup>
     <Compile Include="Assets\Editor\BuildProcessor.cs" />
     <Compile Include="Assets\Editor\ExportPackage.cs" />
-    <Compile Include="Assets\TapFriends\Editor\TapFriendsIOSProcessor.cs" />
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
@@ -335,6 +334,9 @@
     </Reference>
     <Reference Include="TapMomentSDK">
       <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapMomentSDK/Plugins/TapMomentSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="TapFriendsSDK">
+      <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapFriends/Plugins/TapFriendsSDK.dll</HintPath>
     </Reference>
     <Reference Include="TapBootstrapSDK">
       <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapBootstrapSDK/Plugins/TapBootstrapSDK.dll</HintPath>
@@ -737,6 +739,9 @@
       <Project>{B4366C26-718B-5764-E5CA-F01FA3A82E87}</Project>
       <Name>TapCommonSDK.Editor</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\TapFriends" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
