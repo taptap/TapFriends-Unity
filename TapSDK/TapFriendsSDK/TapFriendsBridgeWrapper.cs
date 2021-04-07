@@ -31,27 +31,41 @@ namespace TapFriendsSDK
 
     public class TapGetFollowingListWrapper
     {
-        public string wrapper;
+        public object wrapper;
         public int getFollowingListCode;
 
         public TapGetFollowingListWrapper(string json)
         {
             Dictionary<string, object> dic = Json.Deserialize(json) as Dictionary<string, object>;
-            this.wrapper = SafeDictionary.GetValue<string>(dic, "wrapper");
             this.getFollowingListCode = SafeDictionary.GetValue<int>(dic, "getFollowingList");
+            if (this.getFollowingListCode == 0)
+            {
+                this.wrapper = SafeDictionary.GetValue<List<object>>(dic, "wrapper");
+            }
+            else
+            {
+                this.wrapper = SafeDictionary.GetValue<string>(dic, "wrapper");
+            }
         }
     }
 
-    public class TapGetFansListWrapper
+    public class TapGetFollowerListWrapper
     {
-        public string wrapper;
-        public int getFansListCode;
+        public object wrapper;
+        public int getFollowerListCode;
 
-        public TapGetFansListWrapper(string json)
+        public TapGetFollowerListWrapper(string json)
         {
             Dictionary<string, object> dic = Json.Deserialize(json) as Dictionary<string, object>;
-            this.wrapper = SafeDictionary.GetValue<string>(dic, "wrapper");
-            this.getFansListCode = SafeDictionary.GetValue<int>(dic, "getFansList");
+            this.getFollowerListCode = SafeDictionary.GetValue<int>(dic, "getFollowerList");
+            if (this.getFollowerListCode == 0)
+            {
+                this.wrapper = SafeDictionary.GetValue<List<object>>(dic, "wrapper");
+            }
+            else
+            {
+                this.wrapper = SafeDictionary.GetValue<string>(dic, "wrapper");
+            }
         }
     }
 
@@ -83,51 +97,21 @@ namespace TapFriendsSDK
 
     public class TapGetBlockListWrapper
     {
-        public string wrapper;
+        public object wrapper;
         public int getBlockListCode;
 
         public TapGetBlockListWrapper(string json)
         {
             Dictionary<string, object> dic = Json.Deserialize(json) as Dictionary<string, object>;
-            this.wrapper = SafeDictionary.GetValue<string>(dic, "wrapper");
             this.getBlockListCode = SafeDictionary.GetValue<int>(dic, "getBlockList");
+            if (this.getBlockListCode == 0)
+            {
+                this.wrapper = SafeDictionary.GetValue<List<object>>(dic, "wrapper");
+            }
+            else
+            {
+                this.wrapper = SafeDictionary.GetValue<string>(dic, "wrapper");
+            }
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -13,11 +13,11 @@ namespace TapFriendsSDK
         
         void BlockUser(string userId, Action<TapError> action);
         
-        void UnBlockUser(string userId, Action<TapError> action);
+        void UnblockUser(string userId, Action<TapError> action);
         
-        void GetFollowList(int from, int mutualAttention, int limit, Action<List<TapFriendRelation>, TapError> action);
+        void GetFollowingList(int from, int mutualAttention, int limit, Action<List<TapFriendRelation>, TapError> action);
         
-        void GetFansList(int from, int limit, Action<List<TapFriendRelation>, TapError> action);
+        void GetFollowerList(int from, int limit, Action<List<TapFriendRelation>, TapError> action);
         
         void GetBlockList(int from, int limit, Action<List<TapFriendRelation>, TapError> action);
     }

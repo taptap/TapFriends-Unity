@@ -13,9 +13,8 @@ namespace TapFriendsSDK
         public long gender;
         public int mutualFans;
 
-        public TapFriendRelation(string json)
+        public TapFriendRelation(Dictionary<string, object> dic)
         {
-            Dictionary<string, object> dic = Json.Deserialize(json) as Dictionary<string, object>;
             this.userId = SafeDictionary.GetValue<string>(dic, "userId");
             this.name = SafeDictionary.GetValue<string>(dic, "name");
             this.avatar = SafeDictionary.GetValue<string>(dic, "avatar");

@@ -6,7 +6,7 @@ namespace TapFriendsSDK
 {
     public class TapError
     {
-        public TapErrorCode code;
+        public int code;
         public string errorDescription;
 
         public TapError(string json)
@@ -16,12 +16,11 @@ namespace TapFriendsSDK
                 return;
             }
             var dic = Json.Deserialize(json) as Dictionary<string, object>;
-            var parseCode = SafeDictionary.GetValue<int>(dic, "code");
-            code = ParseCode(parseCode);
+            code = SafeDictionary.GetValue<int>(dic, "code");
             errorDescription = SafeDictionary.GetValue<string>(dic, "error_description");
         }
 
-        public TapError(TapErrorCode code, string errorDescription)
+        public TapError(int code, string errorDescription)
         {
             this.code = code;
             this.errorDescription = errorDescription;

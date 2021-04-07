@@ -9,7 +9,8 @@ namespace TapFriendsSDK
     {
         private TapFriendsImpl()
         {
-            EngineBridge.GetInstance().Register(TapFriendsConstants.TAP_FRIENDS_CLZ, TapFriendsConstants.TAP_FRIENDS_IMPL);
+            EngineBridge.GetInstance()
+                .Register(TapFriendsConstants.TAP_FRIENDS_CLZ, TapFriendsConstants.TAP_FRIENDS_IMPL);
         }
 
         private static volatile TapFriendsImpl sInstance;
@@ -25,6 +26,7 @@ namespace TapFriendsSDK
                     sInstance = new TapFriendsImpl();
                 }
             }
+
             return sInstance;
         }
 
@@ -41,14 +43,17 @@ namespace TapFriendsSDK
             {
                 if (!CheckResultLegal(result))
                 {
-                    action(new TapError(TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE, "TapSDK AddFriend Error!"));
+                    action(new TapError(80080, "TapSDK AddFriend Error!"));
                     return;
                 }
+
                 var wrapper = new TapAddFriendWrapper(result.content);
                 if (wrapper.addFriendCode == 0)
                 {
+                    action(null);
                     return;
                 }
+
                 action(TapError.SafeConstrucTapError(wrapper.wrapper));
             });
         }
@@ -66,14 +71,18 @@ namespace TapFriendsSDK
             {
                 if (!CheckResultLegal(result))
                 {
-                    action(new TapError(TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE, errorDescription: "TapSDK DeleteFriend Error!"));
+                    action(new TapError(80080,
+                        errorDescription: "TapSDK DeleteFriend Error!"));
                     return;
                 }
+
                 var wrapper = new TapDeleteFriendWrapper(result.content);
                 if (wrapper.deleteFriendCode == 0)
                 {
+                    action(null);
                     return;
                 }
+
                 action(TapError.SafeConstrucTapError(wrapper.wrapper));
             });
         }
@@ -91,20 +100,23 @@ namespace TapFriendsSDK
             {
                 if (!CheckResultLegal(result))
                 {
-                    action(new TapError(TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE,
+                    action(new TapError(80080,
                         errorDescription: "TapSDK blockUser Error!"));
                     return;
                 }
+
                 var wrapper = new TapBlockFriendWrapper(result.content);
                 if (wrapper.blockFriendCode == 0)
                 {
+                    action(null);
                     return;
                 }
+
                 action(TapError.SafeConstrucTapError(wrapper.wrapper));
             });
         }
 
-        public void UnBlockUser(string userId, Action<TapError> action)
+        public void UnblockUser(string userId, Action<TapError> action)
         {
             var command = new Command.Builder()
                 .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
@@ -117,52 +129,30 @@ namespace TapFriendsSDK
             {
                 if (!CheckResultLegal(result))
                 {
-                    action(new TapError(TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE, errorDescription: "TapSDK unblockUser Error!"));
+                    action(new TapError(80080,
+                        errorDescription: "TapSDK unblockUser Error!"));
                     return;
                 }
+
                 var wrapper = new TapUnBlockFriendWrapper(result.content);
                 if (wrapper.unblockFriendCode == 0)
                 {
+                    action(null);
                     return;
                 }
+
                 action(TapError.SafeConstrucTapError(wrapper.wrapper));
             });
         }
 
-        public void GetFollowList(int from, int mutualAttention, int limit, Action<List<TapFriendRelation>, TapError> action)
+        public void GetFollowingList(int from, int mutualAttention, int limit,
+            Action<List<TapFriendRelation>, TapError> action)
         {
             var command = new Command.Builder()
                 .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
                 .Method("getFollowingList")
                 .Args("getFollowingList", from)
                 .Args("mutualAttention", mutualAttention)
-                .Args("limit", limit)
-                .CommandBuilder();
-            EngineBridge.GetInstance().CallHandler(command, result =>
-            {
-                if (!CheckResultLegal(result))
-                {
-                    action(null, new TapError(TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE, errorDescription:"TapSDK getFollowingList Error!"));
-                    return;
-                }
-                var wrapper = new TapGetFollowingListWrapper(result.content);
-                if (wrapper.getFollowingListCode == 0)
-                {
-                    //待续
-                    List<TapFriendRelation> list = handleResult(wrapper.wrapper);
-                    action(list, null);
-                    return;
-                }
-                action(null, TapError.SafeConstrucTapError(wrapper.wrapper));
-            });
-        }
-
-        public void GetFansList(int from, int limit, Action<List<TapFriendRelation>, TapError> action)
-        {
-            var command = new Command.Builder()
-                .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
-                .Method("getFansList")
-                .Args("getFansList", from)
                 .Args("limit", limit)
                 .Callback(true)
                 .OnceTime(true)
@@ -171,18 +161,53 @@ namespace TapFriendsSDK
             {
                 if (!CheckResultLegal(result))
                 {
-                    action(null, new TapError(TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE, errorDescription:"TapSDK getFansList Error!"));
+                    action(null,
+                        new TapError(80080,
+                            errorDescription: "TapSDK getFollowingList Error!"));
                     return;
                 }
-                var wrapper = new TapGetFansListWrapper(result.content);
-                if (wrapper.getFansListCode == 0)
+
+                var wrapper = new TapGetFollowingListWrapper(result.content);
+                if (wrapper.getFollowingListCode == 0)
                 {
-                    //待续
-                    List<TapFriendRelation> list = handleResult(wrapper.wrapper);
-                    action(list, null);
+                    TapFriendRelationWrapper relationWrapper = new TapFriendRelationWrapper((List<object>)wrapper.wrapper);
+                    action(relationWrapper.wrapper, null);
                     return;
                 }
-                action(null, TapError.SafeConstrucTapError(wrapper.wrapper));
+
+                action(null, TapError.SafeConstrucTapError((string)wrapper.wrapper));
+            });
+        }
+
+        public void GetFollowerList(int from, int limit, Action<List<TapFriendRelation>, TapError> action)
+        {
+            var command = new Command.Builder()
+                .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
+                .Method("getFollowerList")
+                .Args("getFollowerList", from)
+                .Args("limit", limit)
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command, result =>
+            {
+                if (!CheckResultLegal(result))
+                {
+                    action(null,
+                        new TapError(80080,
+                            errorDescription: "TapSDK getFollowerList Error!"));
+                    return;
+                }
+
+                var wrapper = new TapGetFollowerListWrapper(result.content);
+                if (wrapper.getFollowerListCode == 0)
+                {
+                    TapFriendRelationWrapper relationWrapper = new TapFriendRelationWrapper((List<object>)wrapper.wrapper);
+                    action(relationWrapper.wrapper, null);
+                    return;
+                }
+
+                action(null, TapError.SafeConstrucTapError((string)wrapper.wrapper));
             });
         }
 
@@ -201,22 +226,23 @@ namespace TapFriendsSDK
                 if (!CheckResultLegal(result))
                 {
                     action(null,
-                        new TapError(TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE,
+                        new TapError(80080,
                             errorDescription: "TapSDK getBlockList Error!"));
                     return;
                 }
+
                 var wrapper = new TapGetBlockListWrapper(result.content);
                 if (wrapper.getBlockListCode == 0)
                 {
-                    //待续
-                    List<TapFriendRelation> list = handleResult(wrapper.wrapper);
-                    action(list, null);
+                    TapFriendRelationWrapper relationWrapper = new TapFriendRelationWrapper((List<object>)wrapper.wrapper);
+                    action(relationWrapper.wrapper, null);
                     return;
                 }
-                action(null, TapError.SafeConstrucTapError(wrapper.wrapper));
+
+                action(null, TapError.SafeConstrucTapError((string)wrapper.wrapper));
             });
         }
-        
+
         private bool CheckResultLegal(Result result)
         {
             if (result == null)
@@ -230,13 +256,6 @@ namespace TapFriendsSDK
             }
 
             return !string.IsNullOrEmpty(result.content);
-        }
-
-        private List<TapFriendRelation> handleResult(string json)
-        {
-            TapFriendRelationWrapper<TapFriendRelation> wrapper =
-                JsonUtility.FromJson<TapFriendRelationWrapper<TapFriendRelation>>(json);
-            return wrapper.wrapper;
         }
     }
 }

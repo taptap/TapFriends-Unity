@@ -15,6 +15,10 @@ public class TapFriendScene : MonoBehaviour
         
     }
     private string label = "";
+    
+    private string from = "0";
+    private string limit = "5";
+    private string userId = "f05baed5b5f04eeead7c489267309c1c";
     private void OnGUI()
     {
         GUIStyle style = new GUIStyle(GUI.skin.button);
@@ -24,34 +28,17 @@ public class TapFriendScene : MonoBehaviour
         {
             fontSize = 20
         };
-
         GUI.Label(new Rect(400, 400, 400, 300), label, labelStyle);
         
-        if (GUI.Button(new Rect(60, 150, 280, 80), "添加好友", style))
-        {
-            TapFriends.AddFriend("110", error =>
-            {
-                if (error != null)
-                {
-                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
-                }
-            });
-        }
+        GUIStyle inputStyle = new GUIStyle(GUI.skin.textArea);
+        inputStyle.fontSize = 35;
+        from = GUI.TextArea(new Rect(60, 140, 200, 80), from, inputStyle);
+        limit = GUI.TextArea(new Rect(290, 140, 200, 80), limit, inputStyle);
+        userId = GUI.TextArea(new Rect(520, 140, 380, 80), userId, inputStyle);
         
-        if (GUI.Button(new Rect(60, 270, 280, 80), "删除好友", style))
+        if (GUI.Button(new Rect(60, 260, 280, 80), "添加好友", style))
         {
-            TapFriends.DeleteFriend("110", error =>
-            {
-                if (error != null)
-                {
-                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
-                }
-            });
-        }
-
-        if (GUI.Button(new Rect(60, 390, 280, 80), "获取关注列表", style))
-        {
-            TapFriends.GetFollowList(1,2,10, (list, error) =>
+            TapFriends.AddFriend(userId, error =>
             {
                 if (error != null)
                 {
@@ -59,14 +46,14 @@ public class TapFriendScene : MonoBehaviour
                 }
                 else
                 {
-                    label = "获取关注列表成功";
+                    label = "添加好友成功";
                 }
             });
         }
-
-        if (GUI.Button(new Rect(60, 510, 280, 80), "获取粉丝列表", style))
+        
+        if (GUI.Button(new Rect(60, 380, 280, 80), "删除好友", style))
         {
-            TapFriends.GetFansList(1,10, (list, error) =>
+            TapFriends.DeleteFriend(userId, error =>
             {
                 if (error != null)
                 {
@@ -74,36 +61,106 @@ public class TapFriendScene : MonoBehaviour
                 }
                 else
                 {
-                    label = "获取粉丝列表成功";
+                    label = "删除好友成功";
                 }
             });
         }
 
-        if (GUI.Button(new Rect(60, 630, 280, 80), "拉黑用户", style))
+        if (GUI.Button(new Rect(60, 500, 280, 80), "好友列表", style))
         {
-            TapFriends.BlockUser("110", error =>
+            TapFriends.GetFollowingList(1,0,10, (list, error) =>
             {
                 if (error != null)
                 {
                     label = $"Error:{error.code} Descrption:{error.errorDescription}";
                 }
+                else
+                {
+                    label = "好友列表成功";
+                    foreach (TapFriendRelation relation in list)
+                    {
+                        this.label = this.label + relation.ToJson();
+                    }
+                }
             });
         }
         
-        if (GUI.Button(new Rect(60, 750, 280, 80), "取消拉黑用户", style))
+        if (GUI.Button(new Rect(60, 620, 300, 80), "互关好友列表", style))
         {
-            TapFriends.UnBlockUser("110", error =>
+            int handleFrom = int.Parse(from);
+            int handleLimit = int.Parse(limit);
+            TapFriends.GetFollowingList(handleFrom,1,handleLimit, (list, error) =>
             {
                 if (error != null)
                 {
                     label = $"Error:{error.code} Descrption:{error.errorDescription}";
                 }
+                else
+                {
+                    this.label = "互关好友列表成功: ";
+                    foreach (TapFriendRelation relation in list)
+                    {
+                        this.label = this.label + relation.ToJson();
+                    }
+                }
+            });
+        }
+
+        if (GUI.Button(new Rect(60, 740, 280, 80), "获取粉丝列表", style))
+        {
+            int handleFrom = int.Parse(from);
+            int handleLimit = int.Parse(limit);
+            TapFriends.GetFollowerList(handleFrom,handleLimit, (list, error) =>
+            {
+                if (error != null)
+                {
+                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                }
+                else
+                {
+                    foreach (TapFriendRelation relation in list)
+                    {
+                        this.label = this.label + relation.ToJson();
+                    }
+                }
+            });
+        }
+
+        if (GUI.Button(new Rect(60, 860, 280, 80), "拉黑用户", style))
+        {
+            TapFriends.BlockUser(userId, error =>
+            {
+                if (error != null)
+                {
+                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                }
+                else
+                {
+                    label = "拉黑用户成功";
+                }
             });
         }
         
-        if (GUI.Button(new Rect(60, 870, 280, 80), "拉黑列表", style))
+        if (GUI.Button(new Rect(60, 980, 280, 80), "取消拉黑用户", style))
         {
-            TapFriends.GetBlockList(1,10, (list, error) =>
+            TapFriends.UnblockUser(userId, error =>
+            {
+                if (error != null)
+                {
+                    label = $"Error:{error.code} Descrption:{error.errorDescription}";
+                }
+                else
+                {
+                    label = "取消拉黑用户成功";
+                }
+            });
+        }
+        
+        if (GUI.Button(new Rect(60, 1100, 280, 80), "拉黑列表", style))
+        {
+            int handleFrom = int.Parse(from);
+            int handleLimit = int.Parse(limit);
+            TapFriends.GetBlockList(handleFrom,handleLimit, (list, error) =>
             {
                 if (error != null)
                 {
@@ -112,11 +169,20 @@ public class TapFriendScene : MonoBehaviour
                 else
                 {
                     label = "获取拉黑列表成功";
+                    foreach (TapFriendRelation relation in list)
+                    {
+                        this.label = this.label + relation.userId +
+                                     relation.name +
+                                     relation.avatar +
+                                     relation.isGuest +
+                                     relation.gender +
+                                     relation.mutualFans;
+                    }
                 }
             });
         }
 
-        if (GUI.Button(new Rect(60, 990, 180, 80), "返回", style))
+        if (GUI.Button(new Rect(60, 1220, 180, 80), "返回", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         }

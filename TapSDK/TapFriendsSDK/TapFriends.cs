@@ -18,18 +18,18 @@ namespace TapFriendsSDK
         {
             TapFriendsImpl.GetInstance().BlockUser(userId, action);
         }
-        public static void UnBlockUser(string userId, Action<TapError> action)
+        public static void UnblockUser(string userId, Action<TapError> action)
         {
-            TapFriendsImpl.GetInstance().UnBlockUser(userId, action);
+            TapFriendsImpl.GetInstance().UnblockUser(userId, action);
         }
-        public static void GetFollowList(int from, int mutualAttention, int limit,
+        public static void GetFollowingList(int from, int mutualAttention, int limit,
             Action<List<TapFriendRelation>, TapError> action)
         {
-            TapFriendsImpl.GetInstance().GetFollowList(from, mutualAttention, limit, action);
+            TapFriendsImpl.GetInstance().GetFollowingList(from, mutualAttention, limit, action);
         }
-        public static void GetFansList(int from, int limit, Action<List<TapFriendRelation>, TapError> action)
+        public static void GetFollowerList(int from, int limit, Action<List<TapFriendRelation>, TapError> action)
         {
-            TapFriendsImpl.GetInstance().GetFansList(from, limit, action);
+            TapFriendsImpl.GetInstance().GetFollowerList(from, limit, action);
         }
         public static void GetBlockList(int from, int limit, Action<List<TapFriendRelation>, TapError> action)
         {
