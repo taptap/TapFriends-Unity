@@ -1,4 +1,4 @@
-## [TapTap.Moment](./Documentations/README.md)
+## [TapTap.Moment](./Documentation/README.md)
 
 ## 1.命名空间
 
