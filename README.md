@@ -40,10 +40,12 @@
     {
         "dependencies":{
           "com.taptap.tds.bootstrap": "https://github.com/TapTap/TapBootstrap-Unity.git#{tag}",
-          "com.taptap.tds.common": "https://github.com/TapTap/TapBootstrap-Unity.git#{tag}",
-          "com.taptap.tds.login": "https://github.com/TapTap/TapBootstrap-Unity.git#{tag}",
-          "com.taptap.tds.tapdb": "https://github.com/TapTap/TapBootstrap-Unity.git#{tag}",
-          "com.taptap.tds.moment": "https://github.com/TapTap/TapBootstrap-Unity.git#{tag}"
+          "com.taptap.tds.common": "https://github.com/TapTap/TapCommon-Unity.git#{tag}",
+          "com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#{tag}",
+          "com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#{tag}",
+          "com.taptap.tds.moment": "https://github.com/TapTap/TapMoment-Unity.git#{tag}"
         }
     }
     ```
+    
+### [API文档](./Doc/html/index.html)
