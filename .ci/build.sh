@@ -32,8 +32,6 @@ java -jar ./.ci/release.jar message --title="${CI_PROJECT_TITLE} $BUILD_TYPE bui
 
 PRODUCT_DIR=./Products
 
-cd ..
-
 # 生成Product目录
 mkdir -p $PRODUCT_DIR
 
