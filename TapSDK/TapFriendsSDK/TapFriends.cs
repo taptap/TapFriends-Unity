@@ -21,7 +21,7 @@ namespace TapTap.Friends
         {
             TapFriendsImpl.GetInstance().UnblockUser(userId, action);
         }
-        public static void GetFollowingList(int from, int mutualAttention, int limit,
+        public static void GetFollowingList(int from, bool mutualAttention, int limit,
             Action<List<TapUserRelationShip>, TapError> action)
         {
             TapFriendsImpl.GetInstance().GetFollowingList(from, mutualAttention, limit, action);

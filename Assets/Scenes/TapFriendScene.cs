@@ -28,7 +28,7 @@ public class TapFriendScene : MonoBehaviour
         {
             fontSize = 25
         };
-        GUI.Label(new Rect(400, 400, 400, 300), label, labelStyle);
+        GUI.Label(new Rect(450, 500, 500, 1300), label, labelStyle);
         
         GUIStyle inputStyle = new GUIStyle(GUI.skin.textArea);
         inputStyle.fontSize = 35;
@@ -70,7 +70,7 @@ public class TapFriendScene : MonoBehaviour
         {
             int handleFrom = int.Parse(from);
             int handleLimit = int.Parse(limit);
-            TapFriends.GetFollowingList(handleFrom,0,handleLimit, (list, error) =>
+            TapFriends.GetFollowingList(handleFrom,false,handleLimit, (list, error) =>
             {
                 if (error != null)
                 {
@@ -83,7 +83,11 @@ public class TapFriendScene : MonoBehaviour
                         label = "获取好友列表成功: ";
                         foreach (TapUserRelationShip relation in list)
                         {
-                            this.label = this.label + relation.ToJson();
+                            this.label = this.label + "userId：" + relation.userId +
+                                         " name：" + relation.name +
+                                         " avatar：" + relation.avatar +
+                                         " gender：" + relation.gender +
+                                         " mutualAttention：" + relation.mutualAttention + "\n";
                         } 
                     }
                     else
@@ -98,7 +102,7 @@ public class TapFriendScene : MonoBehaviour
         {
             int handleFrom = int.Parse(from);
             int handleLimit = int.Parse(limit);
-            TapFriends.GetFollowingList(handleFrom,1,handleLimit, (list, error) =>
+            TapFriends.GetFollowingList(handleFrom,true,handleLimit, (list, error) =>
             {
                 if (error != null)
                 {
@@ -111,7 +115,11 @@ public class TapFriendScene : MonoBehaviour
                         this.label = "获取互关好友列表成功: ";
                         foreach (TapUserRelationShip relation in list)
                         {
-                            this.label = this.label + relation.ToJson();
+                            this.label = this.label + "userId：" + relation.userId +
+                                         " name：" + relation.name +
+                                         " avatar：" + relation.avatar +
+                                         " gender：" + relation.gender +
+                                         " mutualAttention：" + relation.mutualAttention + "\n";
                         } 
                     }
                     else
@@ -139,7 +147,11 @@ public class TapFriendScene : MonoBehaviour
                         this.label = "获取粉丝列表成功: ";
                         foreach (TapUserRelationShip relation in list)
                         {
-                            this.label = this.label + relation.ToJson();
+                            this.label = this.label + "userId：" + relation.userId +
+                                         " name：" + relation.name +
+                                         " avatar：" + relation.avatar +
+                                         " gender：" + relation.gender +
+                                         " mutualAttention：" + relation.mutualAttention + "\n";
                         } 
                     }
                     else
@@ -197,11 +209,11 @@ public class TapFriendScene : MonoBehaviour
                         label = "获取拉黑列表成功";
                         foreach (TapUserRelationShip relation in list)
                         {
-                            this.label = this.label + relation.userId +
-                                         relation.name +
-                                         relation.avatar +
-                                         relation.gender +
-                                         relation.mutualAttention;
+                            this.label = this.label + "userId：" + relation.userId +
+                                         " name：" + relation.name +
+                                         " avatar：" + relation.avatar +
+                                         " gender：" + relation.gender +
+                                         " mutualAttention：" + relation.mutualAttention + "\n";
                         }  
                     }
                     else

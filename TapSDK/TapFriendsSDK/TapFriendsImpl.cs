@@ -144,7 +144,7 @@ namespace TapTap.Friends
             });
         }
 
-        public void GetFollowingList(int from, int mutualAttention, int limit,
+        public void GetFollowingList(int from, bool mutualAttention, int limit,
             Action<List<TapUserRelationShip>, TapError> action)
         {
             var command = new Command.Builder()

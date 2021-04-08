@@ -13,7 +13,7 @@ namespace TapTap.Friends
         
         void UnblockUser(string userId, Action<TapError> action);
         
-        void GetFollowingList(int from, int mutualAttention, int limit, Action<List<TapUserRelationShip>, TapError> action);
+        void GetFollowingList(int from, bool mutualAttention, int limit, Action<List<TapUserRelationShip>, TapError> action);
         
         void GetFollowerList(int from, int limit, Action<List<TapUserRelationShip>, TapError> action);
         

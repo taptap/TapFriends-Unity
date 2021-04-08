@@ -43,7 +43,7 @@ typedef void (^TapFriendRelationHandler)(NSArray<TapUserRelationShip *> *_Nullab
 /// @param limit 单页个数限制
 /// @param handler 回调
 + (void)getFollowingList:(NSInteger)from
-         mutualAttention:(NSInteger)mutualAttention
+         mutualAttention:(BOOL)mutualAttention
                    limit:(NSInteger)limit
                  handler:(TapFriendRelationHandler)handler;
 
