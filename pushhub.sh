@@ -13,7 +13,7 @@ githubRepoName=("TapCommon" "TapDB" "TapMoment" "TapBootstrap" "TapLogin")
 
 tag=$1
 
-isTapTapRepo=false
+isTapTapRepo=true
 
 function pushGithub(){  
   
