@@ -21,9 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)config:(NSNumber *)config;
 
-+ (void)config:(NSNumber *)config sceneId:(NSString *)sceneId;
-
-+ (void)config:(NSNumber *)config userId:(NSString *)userId;
++ (void)config:(NSNumber *)config page:(NSString *)page extras:(NSDictionary *)extras;
 
 + (void)close;
 

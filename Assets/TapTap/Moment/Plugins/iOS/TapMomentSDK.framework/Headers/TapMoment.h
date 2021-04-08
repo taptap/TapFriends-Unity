@@ -18,6 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
  v1.2.0
  */
 
+FOUNDATION_EXPORT NSString *const TapMomentPageShortcut;
+FOUNDATION_EXPORT NSString *const TapMomentPageShortcutKey;
+
+FOUNDATION_EXPORT NSString *const TapMomentPageUser;
+FOUNDATION_EXPORT NSString *const TapMomentPageUserKey;
 # pragma mark SDK 公开方法
 @interface TapMoment : NSObject
 
@@ -42,18 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 打开动态
 /// @param config TapMomentConfig
 + (void)open:(TapMomentConfig *)config;
-
-/// 打开好友个人中心
-/// @param config TapMomentConfig
-/// @param userId openId
-+ (void)openUserCenter:(TapMomentConfig *)config
-                userId:(NSString *)userId;
-
-/// 打开动态场景化入口
-/// @param config TapMomentConfig
-/// @param sceneId 场景化入口id
-+ (void)openSceneEntry:(TapMomentConfig *)config
-               sceneId:(NSString *)sceneId;
 
 /// 发布动态
 /// @param content 发布的动态内容

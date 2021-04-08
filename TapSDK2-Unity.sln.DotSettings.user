@@ -5,4 +5,5 @@
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Bootstrap/Plugins/TapTap.Bootstrap.dll" /&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/TapSDK/TapCommonSDK/bin/IOS/netstandard2.0/TapTap.Common.dll" /&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/TapSDK/TapCommonSDK/bin/Release/netstandard2.0/TapTap.Common.dll" /&gt;
+  &lt;Assembly Path="/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapTap/Friends/Plugins/TapTap.Friends.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
