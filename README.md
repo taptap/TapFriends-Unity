@@ -2,13 +2,11 @@
 
 ## 前提条件
 
-* 安装 2018.3 或更高版本。
+    TapSDK 仅支持 Android、iOS 平台。
 
-
-* （仅适用于iOS）安装以下应用
-    * XCode 12.+ 或者更高版本
-
-
+* Unity 2018.3+
+* .NET Core 2.0+
+* XCode 12.+
 * 确保你的 Unity 项目满足以下要求：
     * **对于iOS** - 目标为 iOS 10 或更高版本
     * **对于Android** - 目标为 API 级别 21 或更高版本
@@ -22,20 +20,17 @@
 
 ## **第二步:** 添加 TapSDK
 
-    TapSDK 仅支持 Android、iOS 平台。
-
 添加 TapSDK 有以下几种方式
-
 
 1. 点击下载 **TapSDK.zip**，然后将该 SDK 解压到方便的位置。
 
     * 在你打开的 Unity 项目中，依次转到 **Assets > Import Packages > Custom Packages**。
     * 从解压缩中的 **TapSDK** 中，选择您希望在应用中使用的 **TapSDK** 产品导入。
-        * TapTapBootstrap.unitypackage ： **必选**。TapSDK 启动器
-        * TapTapCommon.unitypackage ： **必选**。TapSDK 基础库
-        * TapTapLogin.unitypackage ：**必选** TapTap 登陆
-        * TapTapMoment.unitypackage ： TapTap 内嵌动态
-        * TapTapTapDB.unitypackage ：TapDB 数据统计
+        * TapTap_Bootstrap.unitypackage ： **必选**。TapSDK 启动器
+        * TapTap_Common.unitypackage ： **必选**。TapSDK 基础库
+        * TapTap_Login.unitypackage ：**必选** TapTap 登陆
+        * TapTap_Moment.unitypackage ： TapTap 内嵌动态
+        * TapTap_TapDB.unitypackage ：TapDB 数据统计
 
 
 2.  使用 Unity Package Manager 导入 TapSDK。
