@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <AssemblyVersion>2.0.0</AssemblyVersion>
+        <AssemblyVersion>2.1.0</AssemblyVersion>
         <RootNamespace>TapTap.TapDB</RootNamespace>
         <AssemblyName>TapTap.TapDB</AssemblyName>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
@@ -12,7 +12,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Reference Include="TapTap.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="TapTap.Common, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\..\Assets\TapTap\Common\Plugins\TapTap.Common.dll</HintPath>
         </Reference>
         <Reference Include="UnityEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
