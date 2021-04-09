@@ -32,7 +32,7 @@ namespace TapTap.Moment.Editor
             if (TapCommonCompile.HandlerIOSSetting(path,
                 Application.dataPath,
                 "TapMomentResource",
-                "com.tapsdk.moment",
+                "com.taptap.tds.moment",
                 "Moment",
                 new[] {"TapMomentResource.bundle"},
                 target, projPath, proj))
