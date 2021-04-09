@@ -15,7 +15,7 @@ FOUNDATION_EXPORT const unsigned char TapMomentSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <TapMomentSDK/PublicHeader.h>
 
-#define TapMomentSDK_VERSION        @"2.0.0"
+#define TapMomentSDK_VERSION        @"2.1.0"
 
 #import <TapMomentSDK/TapMoment.h>
 #import <TapMomentSDK/TapMomentConfig.h>

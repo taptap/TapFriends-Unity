@@ -7,7 +7,7 @@ namespace Editor
 {
     public class ExportPackage : UnityEditor.Editor
     {
-        static void ExportUnityPackage(string moduleName)
+        static void ExportUnityPackage(string moduleName, string version)
         {
             var exportPath = Directory.GetParent(Application.dataPath).FullName + "/TapSDK-UnityPackage";
 
@@ -16,7 +16,7 @@ namespace Editor
                 Directory.CreateDirectory(exportPath);
             }
 
-            var path = exportPath + $"/TapTap_{moduleName}.unitypackage";
+            var path = exportPath + $"/TapTap_{moduleName}_{version}.unitypackage";
 
             string[] resPaths = {$"Assets/TapTap/{moduleName}"};
 
@@ -27,12 +27,24 @@ namespace Editor
 
         static void PushUnityPackage()
         {
-            string[] moduleNames = {"Common", "Bootstrap", "Moment", "TapDB", "Login"};
+            string[] moduleNames = {"Common", "Bootstrap", "Moment", "TapDB", "Login", "Friends"};
 
             foreach (var module in moduleNames)
             {
-                ExportUnityPackage(module);
+                ExportUnityPackage(module, GetCommandLineArgs("-VERSION"));
             }
+        }
+
+        static string GetCommandLineArgs(string key)
+        {
+            foreach (var arg in System.Environment.GetCommandLineArgs())
+            {
+                if (arg.StartsWith(key))
+                {
+                    return arg.Split('=')[1].Trim('"');
+                }
+            }
+            return "UnKnown";
         }
 
         static string[] GetBuildScenes()
@@ -66,7 +78,7 @@ namespace Editor
             PlayerSettings.Android.keystoreName =
                 Application.dataPath.Replace("/Assets", "") + "/sign_password_111111.keystore";
             PlayerSettings.Android.keystorePass = "111111";
-            
+
             var exportPath = "";
             var unityVersion = "";
             foreach (var arg in System.Environment.GetCommandLineArgs())
@@ -82,13 +94,13 @@ namespace Editor
                     unityVersion = arg.Split('=')[1].Trim('"');
                 }
             }
-            
+
             UpdateSetting("AndroidSdkRoot", "ANDROID_SDK",
                 "/Applications/Unity/Hub/Editor/" + unityVersion + "/PlaybackEngines/AndroidPlayer/SDK");
             UpdateSetting("AndroidNdkRoot", "ANDROID_NDK",
                 "/Applications/Unity/Hub/Editor/" + unityVersion + "/PlaybackEngines/AndroidPlayer/NDK");
 
-            var path = (exportPath + "/" + "TapSDK2-Unity"  + ".apk").Replace("//", "/");
+            var path = (exportPath + "/" + "TapSDK2-Unity" + ".apk").Replace("//", "/");
 
             try
             {

@@ -42,5 +42,10 @@ public class Sample : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(3);
         }
+        
+        if (GUI.Button(new Rect(60, 1100, 280, 100), "TapFriend", style))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4);
+        }
     }
 }
