@@ -16,7 +16,7 @@ namespace Editor
                 Directory.CreateDirectory(exportPath);
             }
 
-            var path = exportPath + $"/TapTap-{moduleName}.unitypackage";
+            var path = exportPath + $"/TapTap_{moduleName}.unitypackage";
 
             string[] resPaths = {$"Assets/TapTap/{moduleName}"};
 

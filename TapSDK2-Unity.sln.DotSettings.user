@@ -1,9 +1,10 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
-  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/TapSDK/TapCommonSDK/bin/IOS/netstandard2.1/TapCommonSDK.dll" /&gt;
-  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/TapSDK/TapCommonSDK/obj/IOS/netstandard2.0/TapCommonSDK.dll" /&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Bootstrap/Plugins/TapTap.Bootstrap.dll" /&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/TapSDK/TapCommonSDK/bin/IOS/netstandard2.0/TapTap.Common.dll" /&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/TapSDK/TapCommonSDK/bin/Release/netstandard2.0/TapTap.Common.dll" /&gt;
-  &lt;Assembly Path="/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapTap/Friends/Plugins/TapTap.Friends.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Common/Plugins/TapTap.Common.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Common/Plugins/iOS/TapTap.Common.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Moment/Plugins/TapTap.Moment.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/TapDB/Plugins/TapTap.TapDB.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>

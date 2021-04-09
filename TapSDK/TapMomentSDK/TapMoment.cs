@@ -60,14 +60,5 @@ namespace TapTap.Moment
             MomentImpl.GetInstance().SetUseAutoRotate(auto);
         }
 
-        public static void OpenSceneEntry(Orientation orientation, string sceneId)
-        {
-            MomentImpl.GetInstance().OpenSceneEntry(orientation, sceneId);
-        }
-
-        public static void OpenUserCenter(Orientation orientation, string userId)
-        {
-            MomentImpl.GetInstance().OpenUserCenter(orientation, userId);
-        }
     }
 }

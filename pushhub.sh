@@ -13,7 +13,7 @@ githubRepoName=("TapCommon" "TapDB" "TapMoment" "TapBootstrap" "TapLogin")
 
 tag=$1
 
-isTapTapRepo=false
+isTapTapRepo=true
 
 function pushGithub(){  
   
@@ -22,10 +22,14 @@ function pushGithub(){
   git branch -D main
   
   git subtree split --prefix=Assets/TapTap/$1 --branch main
-    
-  if [ "$5" == "true" ]; then
+  
+  git remote rm $2
+  
+  if [ $5 == true ]; then
+      echo "Start Push $2 to git@github.com:TapTap/$4-Unity.git"
       git remote add $2 git@github.com:TapTap/$4-Unity.git 
   else
+      echo "Start Push $2 to git@github.com:EingShaw/$4.git"
       git remote add $2 git@github.com:EingShaw/$4.git
   fi;
   

@@ -62,12 +62,10 @@ public class MomentScene : MonoBehaviour
 
         if (GUI.Button(new Rect(360, 450, 245, 100), "场景化入口", style))
         {
-            TapMoment.OpenSceneEntry(Orientation.ORIENTATION_DEFAULT, sceneId);
         }
 
         if (GUI.Button(new Rect(360, 600, 245, 100), "用户中心入口", style))
         {
-            TapMoment.OpenUserCenter(Orientation.ORIENTATION_DEFAULT, userId);
         }
 
         if (GUI.Button(new Rect(60, 750, 180, 100), "返回", style))
