@@ -1,13 +1,18 @@
 ## TapTap.Moment
 
-## 1.命名空间
+## 使用前提
+
+使用 TapTap.Moment 前提是必须依赖以下库:
+* [TapTap.Bootstrap](https://github.com/TapTap/TapBootstrap-Unity.git)
+* [TapTap.Common](https://github.com/TapTap/TapCommon-Unity.git)
+
+## 命名空间
 
 ```c#
 using TapTap.Moment;
 ```
 
-
-## 2.接口描述
+## 接口描述
 
 ### 设置回调
 

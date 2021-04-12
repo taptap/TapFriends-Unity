@@ -31,6 +31,7 @@
         * TapTap_Login.unitypackage ：**必选** TapTap 登陆
         * TapTap_Moment.unitypackage ： TapTap 内嵌动态
         * TapTap_TapDB.unitypackage ：TapDB 数据统计
+        * TapTap_Friends.unitypackage: TapFriends 好友系统
 
 
 2.  使用 Unity Package Manager 导入 TapSDK。
@@ -43,9 +44,11 @@
           "com.taptap.tds.common": "https://github.com/TapTap/TapCommon-Unity.git#{tag}",
           "com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#{tag}",
           "com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#{tag}",
-          "com.taptap.tds.moment": "https://github.com/TapTap/TapMoment-Unity.git#{tag}"
+          "com.taptap.tds.moment": "https://github.com/TapTap/TapMoment-Unity.git#{tag}",
+          "com.taptap.tds.friends": "https://github.com/TapTap/TapFriends-Unity.git#{tag}" //暂不对外开放
         }
     }
     ```
-    
-### [API文档](./Doc/html/index.html)
+## 文档
+  
+### [API文档](https://taptap.github.io/TapSDK-Unity/html/)

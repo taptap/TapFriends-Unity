@@ -1,8 +1,8 @@
-# [TapTap.Friends](./Documentation/README.md)
+# TapTap.Friends
 
 ## 使用前提
 
-使用 TapTap.Friends 前提是必须依赖以下库:
+使用TapFriends的前提是必须添加以下依赖库:
 * [TapTap.Bootstrap](https://github.com/TapTap/TapBootstrap-Unity.git)
 * [TapTap.Common](https://github.com/TapTap/TapCommon-Unity.git)
 
