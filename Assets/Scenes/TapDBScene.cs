@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using UnityEngine;
 using TapTap.Bootstrap;
 using TapTap.TapDB;
 
-public class TapDBScene : MonoBehaviour
+public class TapDBScene : MonoBehaviour, IDynamicProperties
 {
     // Start is called before the first frame update
     void Start()
@@ -11,8 +14,10 @@ public class TapDBScene : MonoBehaviour
         {
             if (user != null)
             {
+                TapDB.EnableLog(true);
                 TapDB.Init("0RiAlMny7jiz086FaU", "channel", "gameVersion", true);
                 TapDB.SetUser(user.name);
+                TapDBImpl.GetInstance().RegisterDynamicProperties(this);
             }
         });
     }
@@ -29,6 +34,12 @@ public class TapDBScene : MonoBehaviour
     private string loginMethod = "请输入登录方式";
     private string staticEventKey = "请输入某个事件key";
     private string registerStaticEvent = "请输入json";
+
+    public Dictionary<string, object> GetDynamicProperties()
+    {
+        var dic = new Dictionary<string, object> {{"time", DateTime.Now.ToString(CultureInfo.InvariantCulture)}};
+        return dic;
+    }
 
     private void OnGUI()
     {
@@ -146,7 +157,7 @@ public class TapDBScene : MonoBehaviour
 
         if (GUI.Button(new Rect(310, 1390, 190, 80), "跟踪事件", style))
         {
-            TapDB.Track("eventName", "{\"trackEvent\":\"789\"}");
+            TapDB.TrackEvent("eventName", "{\"trackEvent\":\"789\"}");
         }
 
         if (GUI.Button(new Rect(60, 1510, 160, 100), "返回", style))

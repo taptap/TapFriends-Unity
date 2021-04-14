@@ -54,6 +54,8 @@ namespace TapTap.Common
 
             Debug.Log($"TapSDK iOS BridgeAction last Count:{BridgeIOS.GetInstance().GetConcurrentDictionary().Count}");
         }
+        
+        
 
         public void Register(string serviceClz, string serviceImp)
         {

@@ -1,3 +1,5 @@
+using System;
+
 namespace TapTap.TapDB
 {
     public class TapDB
@@ -36,15 +38,16 @@ namespace TapTap.TapDB
         {
             TapDBImpl.GetInstance().OnCharge(orderId, product, amount, currencyType, payment);
         }
-
+        
+        [Obsolete("已弃用,请调用trackEvent(string eventName, Dictionary<string, object> properties)")]
         public static void OnEvent(string eventCode, string properties)
         {
             TapDBImpl.GetInstance().OnEvent(eventCode, properties);
         }
 
-        public static void Track(string eventName, string properties)
+        public static void TrackEvent(string eventName, string properties)
         {
-            TapDBImpl.GetInstance().Track(eventName, properties);
+            TapDBImpl.GetInstance().TrackEvent(eventName, properties);
         }
 
         public static void RegisterStaticProperties(string properties)
@@ -55,6 +58,11 @@ namespace TapTap.TapDB
         public static void UnregisterStaticProperty(string propertKey)
         {
             TapDBImpl.GetInstance().UnregisterStaticProperty(propertKey);
+        }
+
+        public static void RegisterDynamicProperties(IDynamicProperties properties)
+        {
+            TapDBImpl.GetInstance().RegisterDynamicProperties(properties);
         }
 
         public static void ClearStaticProperties()

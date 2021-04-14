@@ -1,4 +1,7 @@
-﻿namespace TapTap.TapDB
+﻿using System;
+using System.Collections.Generic;
+
+namespace TapTap.TapDB
 {
     public interface ITapDB
     {
@@ -16,9 +19,10 @@
 
         void OnCharge(string orderId, string product, long amount, string currencyType, string payment);
 
+        [Obsolete("已弃用,请调用Track(string eventName, Dictionary<string, object> properties)")]
         void OnEvent(string eventCode, string properties);
 
-        void Track(string eventName, string properties);
+        void TrackEvent(string eventName, string properties);
 
         void RegisterStaticProperties(string properties);
 
@@ -40,6 +44,14 @@
 
         void EnableLog(bool enable);
 
+        void RegisterDynamicProperties(IDynamicProperties dynamicProperties);
+
         void ClearUser();
+        
+    }
+
+    public interface IDynamicProperties
+    {
+        Dictionary<string, object> GetDynamicProperties();
     }
 }
