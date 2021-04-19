@@ -242,7 +242,7 @@ namespace TapTap.TapDB
         }
 
         [DllImport("__Internal")]
-        private static extern string registerDynamicProperties(TapDBDynamicPropertiesDelegate propertiesDelegate);
+        private static extern void registerDynamicProperties(TapDBDynamicPropertiesDelegate propertiesDelegate);
 #endif
     }
 
