@@ -5,10 +5,17 @@
         <RootNamespace>TapTap.TapDB</RootNamespace>
         <AssemblyName>TapTap.TapDB</AssemblyName>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+        <Configurations>Debug;Release;IOS</Configurations>
+        <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <DebugSymbols>true</DebugSymbols>
         <DebugType>pdbonly</DebugType>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'IOS' ">
+      <DefineConstants>TRACE;UNITY_IOS</DefineConstants>
+      <DebugSymbols>true</DebugSymbols>
+      <DebugType>pdbonly</DebugType>
     </PropertyGroup>
 
     <ItemGroup>

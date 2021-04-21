@@ -259,7 +259,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 5
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: sign_password_111111.keystore
+  AndroidKeystoreName: /Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/sign_password_111111.keystore
   AndroidKeyaliasName: wxlogin
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1

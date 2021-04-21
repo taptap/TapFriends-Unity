@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TapTap.Common;
+using UnityEngine;
 
 namespace TapTap.TapDB
 {
@@ -8,11 +11,17 @@ namespace TapTap.TapDB
         private TapDBImpl()
         {
             EngineBridge.GetInstance().Register(TapDBConstants.TAPDB_CLZ, TapDBConstants.TAPDB_IMPL);
+
+            _dbServiceImpl = new AndroidJavaObject(TapDBConstants.TAPDB_IMPL);
         }
 
         private static volatile TapDBImpl _sInstance;
 
         private static readonly object Locker = new object();
+
+        private IDynamicProperties _dynamicProperties;
+
+        private readonly AndroidJavaObject _dbServiceImpl;
 
         public static TapDBImpl GetInstance()
         {
@@ -128,7 +137,7 @@ namespace TapTap.TapDB
             EngineBridge.GetInstance().CallHandler(command);
         }
 
-        public void Track(string eventName, string properties)
+        public void TrackEvent(string eventName, string properties)
         {
             var dic = new Dictionary<string, object> {{"eventName", eventName}, {"properties", properties}};
             var command = new Command(TapDBConstants.TAPDB_SERVICE, "trackEvent", false, dic);
@@ -197,6 +206,61 @@ namespace TapTap.TapDB
                 .Method("enableLog")
                 .Args("enableLog", enable)
                 .CommandBuilder());
+        }
+
+        public void RegisterDynamicProperties(IDynamicProperties properties)
+        {
+            if (Platform.IsAndroid())
+            {
+                if (_dbServiceImpl == null)
+                {
+                    return;
+                }
+                _dbServiceImpl.Call("registerDynamicProperties", new TapDBDynamicProperties(properties));
+            }
+            else if (Platform.IsIOS())
+            {
+                _dynamicProperties = properties;
+#if UNITY_IOS
+                registerDynamicProperties(DynamicPropertiesDelegate);
+#endif
+                EngineBridge.GetInstance().CallHandler(new Command.Builder().Service(TapDBConstants.TAPDB_SERVICE)
+                    .Method("registerDynamicProperties")
+                    .CommandBuilder());
+            }
+        }
+
+#if UNITY_IOS
+        private delegate string TapDBDynamicPropertiesDelegate();
+
+        [AOT.MonoPInvokeCallbackAttribute(typeof(TapDBDynamicPropertiesDelegate))]
+        static string DynamicPropertiesDelegate()
+        {
+            return _sInstance._dynamicProperties == null
+                ? null
+                : Json.Serialize(_sInstance._dynamicProperties.GetDynamicProperties());
+        }
+
+        [DllImport("__Internal")]
+        private static extern void registerDynamicProperties(TapDBDynamicPropertiesDelegate propertiesDelegate);
+#endif
+    }
+
+    public class TapDBDynamicProperties : AndroidJavaProxy
+    {
+        private readonly IDynamicProperties _properties;
+
+        public TapDBDynamicProperties(IDynamicProperties properties) :
+            base(new AndroidJavaClass("com.tds.tapdb.wrapper.TapDBDynamicProperties"))
+        {
+            _properties = properties;
+        }
+
+        public override AndroidJavaObject Invoke(string methodName, object[] args)
+        {
+            return _properties != null
+                ? new AndroidJavaObject("java.lang.String", Json.Serialize(_properties.GetDynamicProperties()))
+                : base.Invoke(methodName, args);
         }
     }
 }

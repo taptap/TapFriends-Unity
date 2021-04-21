@@ -8,4 +8,5 @@
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Moment/Plugins/TapTap.Moment.dll" /&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/TapDB/Plugins/TapTap.TapDB.dll" /&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Friends/Plugins/TapTap.Friends.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/TapDB/Plugins/iOS/TapTap.TapDB.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
