@@ -15,7 +15,6 @@ public class TapDBScene : MonoBehaviour, IDynamicProperties
             if (user != null)
             {
                 TapDB.EnableLog(true);
-                TapDB.Init("0RiAlMny7jiz086FaU", "channel", "gameVersion", true);
                 TapDB.SetUser(user.name);
                 TapDBImpl.GetInstance().RegisterDynamicProperties(this);
             }

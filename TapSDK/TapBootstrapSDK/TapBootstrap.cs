@@ -14,9 +14,15 @@ namespace TapTap.Bootstrap
             TapBootstrapImpl.GetInstance().Login(loginType, permissions);
         }
 
+        [Obsolete("已废弃")]
         public static void Bind(LoginType loginType, string[] permissions)
         {
             TapBootstrapImpl.GetInstance().Bind(loginType, permissions);
+        }
+
+        public static void GetTestQualification(Action<bool, TapError> action)
+        {
+            TapBootstrapImpl.GetInstance().GetTestQualification(action);
         }
 
         public static void RegisterUserStatusChangedListener(ITapUserStatusChangedListener listener)

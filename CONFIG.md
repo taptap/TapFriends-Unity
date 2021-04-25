@@ -13,8 +13,6 @@
       <key>client_id</key>
       <string>0RiAlMny7jiz086FaU</string>
     </dict>
-    <key>Apple_SignIn_Enable</key>
-    <string>false</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>App需要您的同意,才能访问相册</string>
     <key>NSCameraUsageDescription</key>
@@ -28,7 +26,6 @@
 ```
 
 * TapTap Client_Id: 项目在 TapTap 各个位置的唯一标识符
-* Apple_SignIn_Enable: 是否开启 Apple 登陆
   
 ## 权限
 

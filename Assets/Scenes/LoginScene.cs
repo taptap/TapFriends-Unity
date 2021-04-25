@@ -102,7 +102,7 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
             {
                 label = user != null
                     ? $"user:{user.ToJSON()}"
-                    : $"Error:{error.code} Descrption:{error.errorDescription}";
+                    : $"Error:{error?.code} Descrption:{error?.errorDescription}";
             });
         }
 
@@ -112,7 +112,7 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
             {
                 label = user != null
                     ? $"detailUser:{user.ToJSON()}"
-                    : $"Error:{error.code} Descrption:{error.errorDescription}";
+                    : $"Error:{error?.code} Descrption:{error?.errorDescription}";
             });
         }
 
@@ -121,7 +121,15 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
             TapBootstrap.OpenUserCenter();
         }
 
-        if (GUI.Button(new Rect(60, 900, 180, 100), "返回", style))
+        if (GUI.Button(new Rect(60, 900, 260, 100), "篝火测试", style))
+        {
+            TapBootstrap.GetTestQualification((b, error) =>
+            {
+                label = $"篝火测试资格:{b} Error:{error?.code} Descrption:{error?.errorDescription}";
+            });
+        }
+
+        if (GUI.Button(new Rect(60, 1050, 180, 100), "返回", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         }
