@@ -71,9 +71,11 @@ iOS_Url=""
 
 if isiOS ; then
   iOS_Url="https://pkg.xindong.com/i.php?id=${MASK_ID}&package=${BUNDLE_ID}"
+  echo $iOS_Url
+  java -jar ./.ci/release.jar message --title="${CI_PROJECT_TITLE} build Success" --body="<${iOS_Url}|iOS 下载地址>"
 else 
   Android_Url="https://pkg.xindong.com/i.php?id=${MASK_ID}&package=${BUNDLE_ID}&apk=1"
+  echo $Android_Url
+  java -jar ./.ci/release.jar message --title="${CI_PROJECT_TITLE} build Success" --body="<${Android_Url}|Android 下载地址>"
 fi
 
-java -jar ./.ci/release.jar message --title="${CI_PROJECT_TITLE} build Success" --body="<${iOS_Url}|iOS 下载地址>"
-java -jar ./.ci/release.jar message --title="${CI_PROJECT_TITLE} build Success" --body="<${Android_Url}|Android 下载地址>"
