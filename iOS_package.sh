@@ -14,8 +14,15 @@ Configuration="Release"
 #加载各个版本的plist文件
 EnterpriseExportOptionsPlist=$PROJECT_PATH/ExportOptions.plist
 
-ExportIPAPath=$2
+ExportIPAPath=$(pwd)/Products
+
+echo "输出iOS iPA 目录 $ExportIPAPath"
 
 xcodebuild -project $PROJECT_PATH/$Project_Folder/$Project_Name.xcodeproj -scheme $Project_Name -configuration $Configuration -archivePath $PROJECT_PATH/$Project_Folder/build/$Project_Name-enterprise.xcarchive clean archive build
-
+if [ $? -ne 0 ]; then
+    exit 1
+fi
 xcodebuild -exportArchive -archivePath $PROJECT_PATH/$Project_Folder/build/$Project_Name-enterprise.xcarchive -exportOptionsPlist $EnterpriseExportOptionsPlist -exportPath $ExportIPAPath
+if [ $? -ne 0 ]; then
+    exit 1
+fi
