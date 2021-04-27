@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TapTap.Common;
 
 namespace TapTap.Bootstrap
@@ -32,9 +33,9 @@ namespace TapTap.Bootstrap
         {
             var command = new Command.Builder()
                 .Service(TapBootstrapConstants.TAP_BOOTSTARP_SERVICE)
-                .Method("init")
-                .Args("clientID", config.cliendID)
-                .Args("regionType", config.isCN).CommandBuilder();
+                .Method("initWithConfig")
+                .Args("initWithConfig", config.ToJson())
+                .CommandBuilder();
 
             EngineBridge.GetInstance().CallHandler(command);
         }
@@ -50,6 +51,17 @@ namespace TapTap.Bootstrap
             EngineBridge.GetInstance().CallHandler(command);
         }
 
+        public void Login(string[] permissions)
+        {
+            var command = new Command.Builder()
+                .Service(TapBootstrapConstants.TAP_BOOTSTARP_SERVICE)
+                .Method("login")
+                .Args("login", (int) LoginType.TAPTAP)
+                .Args("permissions", permissions)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command);
+        }
+
         public void Bind(LoginType loginType, string[] permissions)
         {
             var command = new Command.Builder()
@@ -59,6 +71,34 @@ namespace TapTap.Bootstrap
                 .Args("permissions", permissions).CommandBuilder();
 
             EngineBridge.GetInstance().CallHandler(command);
+        }
+
+        public void GetTestQualification(Action<bool, TapError> action)
+        {
+            var command = new Command.Builder()
+                .Service(TapBootstrapConstants.TAP_BOOTSTARP_SERVICE)
+                .Method("getTestQualification")
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+
+            EngineBridge.GetInstance().CallHandler(command, result =>
+            {
+                if (!CheckResultLegal(result))
+                {
+                    action(false, TapError.UndefinedError());
+                    return;
+                }
+
+                if (!(Json.Deserialize(result.content) is Dictionary<string, object> dic))
+                {
+                    action(false, TapError.UndefinedError());
+                    return;
+                }
+
+                action(SafeDictionary.GetValue<int>(dic, "userTestQualification") == 1,
+                    TapError.SafeConstructorTapError(SafeDictionary.GetValue<string>(dic, "error")));
+            });
         }
 
         public void RegisterUserStatusChangedListener(ITapUserStatusChangedListener listener)
@@ -196,6 +236,7 @@ namespace TapTap.Bootstrap
                     action(null, new TapError(TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE, "TapSDK GetAccessToken Error!"));
                     return;
                 }
+
                 action(new AccessToken(result.content), null);
             });
         }

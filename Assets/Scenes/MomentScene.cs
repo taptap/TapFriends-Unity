@@ -20,12 +20,7 @@ public class MomentScene : MonoBehaviour
             }
         });
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
+    
     public IEnumerator Delay()
     {
         yield return new WaitForSeconds(6);

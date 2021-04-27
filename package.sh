@@ -1,6 +1,6 @@
 #!/bin/sh
 
-unityVersion=2018.4.30f1
+unityVersion=2019.4.1f1
 
 PROJECT_PATH=$(cd "$(dirname "$0")";pwd)
 

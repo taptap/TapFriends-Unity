@@ -25,7 +25,7 @@ namespace TapTap.Bootstrap
 
         public AccessToken(string json)
         {
-            Dictionary<string,object> dic = Json.Deserialize(json) as Dictionary<string,object>;
+            var dic = Json.Deserialize(json) as Dictionary<string,object>;
             kid = SafeDictionary.GetValue<string>(dic,"kid");
             accessToken = SafeDictionary.GetValue<string>(dic,"access_token");
             macAlgorithm = SafeDictionary.GetValue<string>(dic,"mac_algorithm");
