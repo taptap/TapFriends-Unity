@@ -60,7 +60,9 @@ pkg_mask_id() {
   ipa_list_result=$(curl "${APK_LIST_URL}")
   MASK_ID=$(echo "${ipa_list_result}" | python -c "${get_maskid_script}")
 }
-pkg_mask_id
+
+sleep 5 
+
 pkg_mask_id
 
 echo $MASK_ID
