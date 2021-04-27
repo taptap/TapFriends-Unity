@@ -3,26 +3,6 @@ export LANG="en_US.UTF-8"
 
 BUILD_TYPE=$1
 
-sNightly() {
-    if [ "Nightly" = "$BUILD_TYPE" ];then
-        echo "IS Nightly"
-        return 0
-    else
-        echo "NOT Nightly"
-        return 1
-    fi
-}
-
-isRelease() {
-    if [ "Release" = "$BUILD_TYPE" ];then
-        echo "IS Release"
-        return 0
-    else
-        echo "NOT Release"
-        return 1
-    fi
-}
-
 buildFail() {
     java -jar ./.ci/release.jar message --title="${CI_PROJECT_TITLE} $BUILD_TYPE build " --body="<${CI_JOB_URL}|Package Failed>"
     exit 1
