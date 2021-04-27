@@ -1,2 +1,1 @@
-#!/bin/sh
-sh ./build.sh Release
+. .ci/build.sh "Release"

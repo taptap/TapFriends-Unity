@@ -1,2 +1,1 @@
-#!/bin/sh
-sh ./build.sh Nightly
+. .ci/build.sh "Nightly"
