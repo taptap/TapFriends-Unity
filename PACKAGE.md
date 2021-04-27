@@ -2,8 +2,6 @@
 
 ## 前提条件
 
-    TapSDK 仅支持 Android、iOS 平台。
-
 * Unity 2018.3+
 * .NET Core 2.0+
 * XCode 12.+
@@ -46,6 +44,14 @@ Project
 3. 提交 Merge Request 到 Master 分支
 4. 自动触发 CI 打包并输出到 Slack 中 #tds-client-sdk-ci channel 中。
 
+
+## 输出结果描述
+
+Demo 配置以下三种 Client_id
+
+* RND环境：uZ8Yy6cSXVOR6AMRPj    
+* CN：0RiAlMny7jiz086FaU    
+* IO：KFV9Pm9ojdmWkkRJeb   
 
 
 
