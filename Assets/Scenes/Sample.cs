@@ -24,21 +24,21 @@ public class Sample : MonoBehaviour
                 .ClientID("uZ8Yy6cSXVOR6AMRPj")
                 .ClientSecret("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
                 .RegionType(RegionType.IO)
-                .TapDBConfig("channel", "gameVersion")
+                .TapDBConfig(true, "channel", "gameVersion")
                 .Builder();
-            
+
             TapBootstrap.Init(config);
         }
-        
+
         if (GUI.Button(new Rect(60, 250, 280, 100), "RND-CN", style))
         {
             var config = new TapConfig.TapConfigBuilder()
                 .ClientID("uZ8Yy6cSXVOR6AMRPj")
                 .ClientSecret("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
                 .RegionType(RegionType.CN)
-                .TapDBConfig("channel", "gameVersion")
+                .TapDBConfig(true, "channel", "gameVersion")
                 .Builder();
-            
+
             TapBootstrap.Init(config);
         }
 
@@ -48,9 +48,9 @@ public class Sample : MonoBehaviour
                 .ClientID("KFV9Pm9ojdmWkkRJeb")
                 .ClientSecret("7mpVJdXIOLQxvQdqjEEpiz7eLf82cMwYkdgoAZqF")
                 .RegionType(RegionType.IO)
-                .TapDBConfig("channel", "gameVersion")
+                .EnableTapDB(false)
                 .Builder();
-            
+
             TapBootstrap.Init(config);
         }
 
@@ -60,7 +60,7 @@ public class Sample : MonoBehaviour
                 .ClientID("0RiAlMny7jiz086FaU")
                 .ClientSecret("8V8wemqkpkxmAN7qKhvlh6v0pXc8JJzEZe3JFUnU")
                 .RegionType(RegionType.CN)
-                .TapDBConfig("channel", "gameVersion")
+                .TapDBConfig(true, "channel", "gameVersion")
                 .Builder();
             TapBootstrap.Init(config);
         }
