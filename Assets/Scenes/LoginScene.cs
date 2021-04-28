@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TapTap.Bootstrap;
+using TapTap.Login;
 
 public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatusChangedListener
 {
@@ -89,6 +90,9 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
                     TapBootstrap.Login(LoginType.TAPTAP, new[] {"public_profile"});
                 }
             });
+
+            TapLogin.GetProfile(profile => Debug.Log($"Profile:{profile.ToJson()}"));
+            TapLogin.GetTapToken(token => Debug.Log($"TapLoToken:{token.ToJson()}"));
         }
 
         if (GUI.Button(new Rect(60, 300, 180, 100), "退出登录", style))

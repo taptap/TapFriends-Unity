@@ -38,7 +38,7 @@ namespace TapTap.Bootstrap
                 ["clientID"] = clientID,
                 ["clientSecret"] = clientSecret,
                 ["isCN"] = regionType == RegionType.CN,
-                ["dbConfig"] = dbConfig?.ToJson()
+                ["dbConfig"] = dbConfig?.ToDic()
             };
             return Json.Serialize(dic);
         }
@@ -104,7 +104,7 @@ namespace TapTap.Bootstrap
             this.gameVersion = gameVersion;
         }
 
-        public Dictionary<string, object> ToJson()
+        public Dictionary<string, object> ToDic()
         {
             return new Dictionary<string, object>
             {

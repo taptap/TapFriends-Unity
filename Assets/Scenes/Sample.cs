@@ -18,7 +18,19 @@ public class Sample : MonoBehaviour
         GUIStyle style = new GUIStyle(GUI.skin.button);
         style.fontSize = 40;
 
-        if (GUI.Button(new Rect(60, 100, 280, 100), "RND", style))
+        if (GUI.Button(new Rect(60, 100, 280, 100), "RND-IO", style))
+        {
+            var config = new TapConfig.TapConfigBuilder()
+                .ClientID("uZ8Yy6cSXVOR6AMRPj")
+                .ClientSecret("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
+                .RegionType(RegionType.IO)
+                .TapDBConfig("channel", "gameVersion")
+                .Builder();
+            
+            TapBootstrap.Init(config);
+        }
+        
+        if (GUI.Button(new Rect(60, 250, 280, 100), "RND-CN", style))
         {
             var config = new TapConfig.TapConfigBuilder()
                 .ClientID("uZ8Yy6cSXVOR6AMRPj")
@@ -26,11 +38,11 @@ public class Sample : MonoBehaviour
                 .RegionType(RegionType.CN)
                 .TapDBConfig("channel", "gameVersion")
                 .Builder();
-
+            
             TapBootstrap.Init(config);
         }
 
-        if (GUI.Button(new Rect(60, 250, 280, 100), "海外", style))
+        if (GUI.Button(new Rect(60, 400, 280, 100), "海外", style))
         {
             var config = new TapConfig.TapConfigBuilder()
                 .ClientID("KFV9Pm9ojdmWkkRJeb")
@@ -38,10 +50,11 @@ public class Sample : MonoBehaviour
                 .RegionType(RegionType.IO)
                 .TapDBConfig("channel", "gameVersion")
                 .Builder();
+            
             TapBootstrap.Init(config);
         }
 
-        if (GUI.Button(new Rect(60, 400, 280, 100), "国内", style))
+        if (GUI.Button(new Rect(60, 550, 280, 100), "国内", style))
         {
             var config = new TapConfig.TapConfigBuilder()
                 .ClientID("0RiAlMny7jiz086FaU")
@@ -52,22 +65,22 @@ public class Sample : MonoBehaviour
             TapBootstrap.Init(config);
         }
 
-        if (GUI.Button(new Rect(60, 550, 280, 100), "登陆", style))
+        if (GUI.Button(new Rect(60, 700, 280, 100), "登陆", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1);
         }
 
-        if (GUI.Button(new Rect(60, 700, 280, 100), "动态", style))
+        if (GUI.Button(new Rect(60, 850, 280, 100), "动态", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
         }
 
-        if (GUI.Button(new Rect(60, 850, 280, 100), "TapDB", style))
+        if (GUI.Button(new Rect(60, 1000, 280, 100), "TapDB", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(3);
         }
 
-        if (GUI.Button(new Rect(60, 1000, 280, 100), "TapFriend", style))
+        if (GUI.Button(new Rect(60, 1150, 280, 100), "TapFriend", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4);
         }
