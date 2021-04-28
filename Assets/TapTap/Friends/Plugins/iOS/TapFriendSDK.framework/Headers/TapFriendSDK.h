@@ -15,7 +15,5 @@ FOUNDATION_EXPORT const unsigned char TapFriendSDKVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <TapFriendSDK/PublicHeader.h>
 
-#define TapFriendSDK_VERSION        @"2.1.0"
-
 #import <TapFriendSDK/TapFriends.h>
 #import <TapFriendSDK/TapUserRelationShip.h>

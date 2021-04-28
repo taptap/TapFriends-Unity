@@ -32,14 +32,24 @@ public class Sample : MonoBehaviour
 
         if (GUI.Button(new Rect(60, 250, 280, 100), "海外", style))
         {
-            TapBootstrap.Init(new TapConfig("KFV9Pm9ojdmWkkRJeb", "7mpVJdXIOLQxvQdqjEEpiz7eLf82cMwYkdgoAZqF",
-                RegionType.IO));
+            var config = new TapConfig.TapConfigBuilder()
+                .ClientID("KFV9Pm9ojdmWkkRJeb")
+                .ClientSecret("7mpVJdXIOLQxvQdqjEEpiz7eLf82cMwYkdgoAZqF")
+                .RegionType(RegionType.IO)
+                .TapDBConfig("channel", "gameVersion")
+                .Builder();
+            TapBootstrap.Init(config);
         }
 
         if (GUI.Button(new Rect(60, 400, 280, 100), "国内", style))
         {
-            TapBootstrap.Init(new TapConfig("0RiAlMny7jiz086FaU", "8V8wemqkpkxmAN7qKhvlh6v0pXc8JJzEZe3JFUnU",
-                RegionType.CN));
+            var config = new TapConfig.TapConfigBuilder()
+                .ClientID("0RiAlMny7jiz086FaU")
+                .ClientSecret("8V8wemqkpkxmAN7qKhvlh6v0pXc8JJzEZe3JFUnU")
+                .RegionType(RegionType.CN)
+                .TapDBConfig("channel", "gameVersion")
+                .Builder();
+            TapBootstrap.Init(config);
         }
 
         if (GUI.Button(new Rect(60, 550, 280, 100), "登陆", style))
