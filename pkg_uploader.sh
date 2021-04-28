@@ -61,11 +61,9 @@ pkg_mask_id() {
   MASK_ID=$(echo "${ipa_list_result}" | python -c "${get_maskid_script}")
 }
 
-sleep 5
+sleep 10
 
 pkg_mask_id
-
-sleep 5 
 
 pkg_mask_id
 
