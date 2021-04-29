@@ -12,11 +12,18 @@ public class Sample : MonoBehaviour
     void Update()
     {
     }
-
+    
+    private bool isSwitch = true;
     private void OnGUI()
     {
         GUIStyle style = new GUIStyle(GUI.skin.button);
         style.fontSize = 40;
+        
+        // GUIStyle myToggleStyle = new GUIStyle(GUI.skin.toggle)
+        // {
+        //     fontSize = 20
+        // };
+        // GUI.Toggle(new Rect(380, 100, 120, 30), isSwitch, "TapDB开关",myToggleStyle);
 
         if (GUI.Button(new Rect(60, 100, 280, 100), "RND-IO", style))
         {
