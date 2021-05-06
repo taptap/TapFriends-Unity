@@ -279,6 +279,9 @@
  <Reference Include="TapTap.Common">
  <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Common/Plugins/TapTap.Common.dll</HintPath>
  </Reference>
+ <Reference Include="TapTap.Dlc">
+ <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Dlc/Plugins/TapTap.Dlc.dll</HintPath>
+ </Reference>
  <Reference Include="TapTap.Friends">
  <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Friends/Plugins/TapTap.Friends.dll</HintPath>
  </Reference>

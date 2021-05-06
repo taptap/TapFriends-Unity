@@ -13,5 +13,35 @@ namespace TapTap.Common
         {
             TapCommonImpl.GetInstance().GetRegionCode(callback);
         }
+
+        public static void IsTapTapInstalled(Action<bool> callback)
+        {
+            TapCommonImpl.GetInstance().IsTapTapInstalled(callback);
+        }
+
+        public static void IsTapTapGlobalInstalled(Action<bool> callback)
+        {
+            TapCommonImpl.GetInstance().IsTapTapGlobalInstalled(callback);
+        }
+
+        public static void UpdateGameInTapTap(string appId, Action<bool> callback)
+        {
+            TapCommonImpl.GetInstance().UpdateGameInTapTap(appId, callback);
+        }
+
+        public static void UpdateGameInTapGlobal(string appId, Action<bool> callback)
+        {
+            TapCommonImpl.GetInstance().UpdateGameInTapGlobal(appId, callback);
+        }
+
+        public static void OpenReviewInTapTap(string appId, Action<bool> callback)
+        {
+            TapCommonImpl.GetInstance().OpenReviewInTapTap(appId, callback);
+        }
+
+        public static void OpenReviewInTapTapGlobal(string appId, Action<bool> callback)
+        {
+            TapCommonImpl.GetInstance().OpenReviewInTapTapGlobal(appId, callback);
+        }
     }
 }
