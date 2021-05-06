@@ -9,14 +9,14 @@ namespace TapTap.License
             TapLicenseImpl.GetInstance().SetLicencesCallback(callback);
         }
 
-        public static void SetDlcCallback(ITapDlcCallback callback)
+        public static void SetDLCCallback(ITapDlcCallback callback)
         {
-            TapLicenseImpl.GetInstance().SetDlcCallback(callback);
+            TapLicenseImpl.GetInstance().SetDLCCallback(callback);
         }
 
-        public static void SetDlcCallback(ITapDlcCallback callback, bool checkOnce, string publicKey)
+        public static void SetDLCCallback(ITapDlcCallback callback, bool checkOnce, string publicKey)
         {
-            TapLicenseImpl.GetInstance().SetDlcCallback(callback, checkOnce, publicKey);
+            TapLicenseImpl.GetInstance().SetDLCCallback(callback, checkOnce, publicKey);
         }
 
         public static void Check()
@@ -24,14 +24,14 @@ namespace TapTap.License
             TapLicenseImpl.GetInstance().Check();
         }
 
-        public static void QueryDlc(string[] dlcList)
+        public static void QueryDLC(string[] dlcList)
         {
-            TapLicenseImpl.GetInstance().QueryDlc(dlcList);
+            TapLicenseImpl.GetInstance().QueryDLC(dlcList);
         }
 
-        public static void PurchaseDlc(string dlc)
+        public static void PurchaseDLC(string dlc)
         {
-            TapLicenseImpl.GetInstance().PurchaseDlc(dlc);
+            TapLicenseImpl.GetInstance().PurchaseDLC(dlc);
         }
     }
 }

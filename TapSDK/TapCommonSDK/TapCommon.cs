@@ -39,9 +39,9 @@ namespace TapTap.Common
             TapCommonImpl.GetInstance().OpenReviewInTapTap(appId, callback);
         }
 
-        public static void OpenReviewInTapTapGlobal(string appId, Action<bool> callback)
+        public static void openReviewInTapGlobal(string appId, Action<bool> callback)
         {
-            TapCommonImpl.GetInstance().OpenReviewInTapTapGlobal(appId, callback);
+            TapCommonImpl.GetInstance().openReviewInTapGlobal(appId, callback);
         }
     }
 }

@@ -194,11 +194,11 @@ namespace TapTap.Common
             });
         }
 
-        public void OpenReviewInTapTapGlobal(string appId, Action<bool> callback)
+        public void openReviewInTapGlobal(string appId, Action<bool> callback)
         {
             var command = new Command.Builder()
                 .Service(TAP_COMMON_SERVICE)
-                .Method("openReviewInTapTapGlobal")
+                .Method("openReviewInTapGlobal")
                 .Args("appId", appId)
                 .Callback(true)
                 .OnceTime(true)
@@ -219,7 +219,7 @@ namespace TapTap.Common
                 }
 
                 var dlc = Json.Deserialize(result.content) as Dictionary<string, object>;
-                callback(SafeDictionary.GetValue<bool>(dlc, "openReviewInTapTapGlobal"));
+                callback(SafeDictionary.GetValue<bool>(dlc, "openReviewInTapGlobal"));
             });
         }
     }

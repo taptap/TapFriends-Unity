@@ -7,15 +7,15 @@ namespace TapTap.License
     {
         void SetLicencesCallback(ITapLicenseCallback callback);
     
-        void SetDlcCallback(ITapDlcCallback callback);
+        void SetDLCCallback(ITapDlcCallback callback);
     
-        void SetDlcCallback(ITapDlcCallback callback, bool checkOnce, string publicKey);
+        void SetDLCCallback(ITapDlcCallback callback, bool checkOnce, string publicKey);
     
         void Check();
     
-        void QueryDlc(string[] dlcList);
+        void QueryDLC(string[] dlcList);
     
-        void PurchaseDlc(string dlc);
+        void PurchaseDLC(string dlc);
     
     }
     public interface ITapLicenseCallback
@@ -25,9 +25,9 @@ namespace TapTap.License
 
     public interface ITapDlcCallback
     {
-        void OnQueryCallBack(int code, Dictionary<string, object> queryList);
+        void OnQueryCallBack(TapLicenseQueryCode code, Dictionary<string, object> queryList);
     
-        void OnOrderCallBack(string sku, int status);
+        void OnOrderCallBack(string sku, TapLicensePurchasedCode status);
     }
     
     

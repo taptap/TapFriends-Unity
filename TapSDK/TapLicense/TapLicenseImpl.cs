@@ -55,21 +55,34 @@ namespace TapTap.License
             });
         }
 
-        public void SetDlcCallback(ITapDlcCallback callback)
+        public void SetDLCCallback(ITapDlcCallback callback)
         {
-            SetDlcCallback(callback, false, null);
+            SetDLCCallbackInner(callback, false, null, false);
         }
-        
-        public void SetDlcCallback(ITapDlcCallback callback, bool checkOnce, string publicKey)
+
+        public void SetDLCCallback(ITapDlcCallback callback, bool checkOnce, string publicKey)
         {
-            var command = new Command.Builder()
-                .Service(TapLicenseConstants.TAP_LICENSE_SERVICE)
-                .Method("setDLCCallbackWithParams")
-                .Callback(true)
-                .Args("checkOnce", checkOnce)
-                .Args("publicKey", publicKey)
-                .CommandBuilder();
-            EngineBridge.GetInstance().CallHandler(command, (result) =>
+            SetDLCCallbackInner(callback, checkOnce, publicKey, true);
+        }
+
+        private void SetDLCCallbackInner(ITapDlcCallback callback, bool checkOnce, string publicKey, bool isParams)
+        {
+            var command = new Command.Builder();
+            command.Service(TapLicenseConstants.TAP_LICENSE_SERVICE);
+            if (isParams)
+            {
+                command.Method("setDLCCallbackWithParams")
+                    .Callback(true)
+                    .Args("checkOnce", checkOnce)
+                    .Args("publicKey", publicKey);
+            }
+            else
+            {
+                command.Method("setDLCCallback")
+                    .Callback(true);
+            }
+            
+            EngineBridge.GetInstance().CallHandler(command.CommandBuilder(), (result) =>
             {
                 Debug.Log("result: " + result.ToJSON());
                 if (result.code != Result.RESULT_SUCCESS)
@@ -85,15 +98,45 @@ namespace TapTap.License
                 var dlc = SafeDictionary.GetValue<string>(dic, "orderDLC") as string;
                 if (!string.IsNullOrEmpty(dlc))
                 {
-                    int statusCode = SafeDictionary.GetValue<int>(dic, "orderStatus");
-                    callback.OnOrderCallBack(dlc, statusCode);
+                    var statusCode = SafeDictionary.GetValue<int>(dic, "orderStatus");
+                    callback.OnOrderCallBack(dlc, handlePurchasedCode(statusCode));
                     return;
                 }
                 var code = SafeDictionary.GetValue<int >(dic, "queryCode");
                 var queryListJson = SafeDictionary.GetValue<string>(dic, "queryResult");
                 var queryListDic = Json.Deserialize(queryListJson) as Dictionary<string, object>;
-                callback.OnQueryCallBack(code, queryListDic);
+                callback.OnQueryCallBack(handleQueryCode(code), queryListDic);
             });
+        }
+
+        private TapLicenseQueryCode handleQueryCode(int code)
+        {
+            switch (code)
+            {
+                case 0:
+                    return TapLicenseQueryCode.QUERY_RESULT_OK;
+                case 1:
+                    return TapLicenseQueryCode.QUERY_RESULT_NOT_INSTALL_TAPTAP;
+                case 2:
+                    return TapLicenseQueryCode.QUERY_RESULT_ERR;
+                default:
+                    return TapLicenseQueryCode.ERROR_CODE_UNDEFINED;
+            }
+        }
+        
+        private TapLicensePurchasedCode handlePurchasedCode(int code)
+        {
+            switch (code)
+            {
+                case 0:
+                    return TapLicensePurchasedCode.DLC_NOT_PURCHASED;
+                case 1:
+                    return TapLicensePurchasedCode.DLC_PURCHASED;
+                case -1:
+                    return TapLicensePurchasedCode.DLC_RETURN_ERROR;
+                default:
+                    return TapLicensePurchasedCode.ERROR_CODE_UNDEFINED;
+            }
         }
 
         public void Check()
@@ -105,7 +148,7 @@ namespace TapTap.License
             EngineBridge.GetInstance().CallHandler(command);
         }
 
-        public void QueryDlc(string[] dlcList)
+        public void QueryDLC(string[] dlcList)
         {
             var command = new Command.Builder()
                 .Service(TapLicenseConstants.TAP_LICENSE_SERVICE)
@@ -115,11 +158,12 @@ namespace TapTap.License
             EngineBridge.GetInstance().CallHandler(command);
         }
 
-        public void PurchaseDlc(string dlc)
+        public void PurchaseDLC(string dlc)
         {
             var command = new Command.Builder()
                 .Service(TapLicenseConstants.TAP_LICENSE_SERVICE)
                 .Method("purchaseDLC")
+                .Args("dlc", dlc)
                 .CommandBuilder();
             EngineBridge.GetInstance().CallHandler(command);
         }

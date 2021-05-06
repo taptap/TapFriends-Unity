@@ -9,7 +9,7 @@ public class CommonScene : MonoBehaviour,ITapDlcCallback,ITapLicenseCallback
     // Start is called before the first frame update
     void Start()
     {
-        TapLicense.SetDlcCallback(this);
+        TapLicense.SetDLCCallback(this);
         TapLicense.SetLicenseCallBack(this);
     }
 
@@ -24,7 +24,7 @@ public class CommonScene : MonoBehaviour,ITapDlcCallback,ITapLicenseCallback
         label = "许可成功";
     }
 
-    public void OnQueryCallBack(int code, Dictionary<string, object> queryList)
+    public void OnQueryCallBack(TapLicenseQueryCode code, Dictionary<string, object> queryList)
     {
         //string str = Json.Serialize(queryList);
         var txt = "code:" + code;
@@ -35,14 +35,14 @@ public class CommonScene : MonoBehaviour,ITapDlcCallback,ITapLicenseCallback
         label = txt;
     }
 
-    public void OnOrderCallBack(string sku, int status)
+    public void OnOrderCallBack(string sku, TapLicensePurchasedCode status)
     {
         label = "sku:" + sku + "\n" + "status:" + status;
     }
 
-    private string text = "输入查询DLC以\",\"分割";
+    private string text = "28,30";
 
-    private string purchaseText = "请输入购买DLC";
+    private string purchaseText = "28";
 
     private string appID = "7133";
     
@@ -67,12 +67,12 @@ public class CommonScene : MonoBehaviour,ITapDlcCallback,ITapLicenseCallback
         if (GUI.Button(new Rect(60, 260, 220, 80), "查询DLC", style))
         {
             string[] ss = text.Split(',');
-            TapLicense.QueryDlc(ss);
+            TapLicense.QueryDLC(ss);
         }
 
         if (GUI.Button(new Rect(330, 260, 220, 80), "购买DLC", style))
         {
-            TapLicense.PurchaseDlc(text);
+            TapLicense.PurchaseDLC(purchaseText);
         }
 
         if (GUI.Button(new Rect(600, 260, 350, 80), "检查游戏是否购买", style))
@@ -122,7 +122,7 @@ public class CommonScene : MonoBehaviour,ITapDlcCallback,ITapLicenseCallback
 
         if (GUI.Button(new Rect(410, 620, 430, 80), "Tap国际版中打开页面", style))
         {
-            TapCommon.OpenReviewInTapTapGlobal(appID, (isOpen) =>
+            TapCommon.openReviewInTapGlobal(appID, (isOpen) =>
             {
                 label = isOpen ? "在国际版Tap中打开页面" : "未在国际版Tap中打开页面";
             });
