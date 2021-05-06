@@ -60,11 +60,11 @@
   <ItemGroup>
      <Compile Include="Assets\TapTap\Login\Editor\TapLoginIOSProcessor.cs" />
      <None Include="Assets\TapTap\Login\Editor\TapTap.Login.Editor.asmdef" />
- <Reference Include="UnityEditor.UI">
- <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.TestRunner">
  <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
@@ -267,6 +267,9 @@
  <Reference Include="TapTap.Bootstrap">
  <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapTap/Bootstrap/Plugins/TapTap.Bootstrap.dll</HintPath>
  </Reference>
+ <Reference Include="TapTap.License">
+ <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapTap/License/Plugins/TapTap.License.dll</HintPath>
+ </Reference>
  <Reference Include="TapTap.Moment">
  <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapTap/Moment/Plugins/TapTap.Moment.dll</HintPath>
  </Reference>
@@ -293,9 +296,6 @@
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
- </Reference>
- <Reference Include="TapTap.License">
- <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapTap/License/Plugins/TapTap.License.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Hub/Editor/2019.4.16f1c1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

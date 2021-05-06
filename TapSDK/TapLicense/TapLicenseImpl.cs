@@ -27,7 +27,7 @@ namespace TapTap.License
             return _sInstance;
         }
 
-        public void SetLicencesCallback(Action<bool> action)
+        public void SetLicencesCallback(ITapLicenseCallback callback)
         {
             var command = new Command.Builder()
                 .Service(TapLicenseConstants.TAP_LICENSE_SERVICE)
@@ -48,7 +48,10 @@ namespace TapTap.License
                 }
                 var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
                 var success = SafeDictionary.GetValue<string>(dic, "login") as string;
-                action(success.Equals("success"));
+                if (success.Equals("success"))
+                {
+                    callback.OnLicenseSuccess();
+                }
             });
         }
 

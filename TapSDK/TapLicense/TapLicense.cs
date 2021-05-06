@@ -4,9 +4,9 @@ namespace TapTap.License
 {
     public class TapLicense
     {
-        public static void SetLicenseCallBack(Action<bool> action)
+        public static void SetLicenseCallBack(ITapLicenseCallback callback)
         {
-            TapLicenseImpl.GetInstance().SetLicencesCallback(action);
+            TapLicenseImpl.GetInstance().SetLicencesCallback(callback);
         }
 
         public static void SetDlcCallback(ITapDlcCallback callback)

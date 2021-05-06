@@ -4,22 +4,24 @@ using UnityEngine;
 using TapTap.License;
 using TapTap.Common;
 
-public class CommonScene : MonoBehaviour,ITapDlcCallback
+public class CommonScene : MonoBehaviour,ITapDlcCallback,ITapLicenseCallback
 {
     // Start is called before the first frame update
     void Start()
     {
         TapLicense.SetDlcCallback(this);
-        TapLicense.SetLicenseCallBack((isSuccess) =>
-        {
-            label = isSuccess ? "许可成功" : "许可失败";
-        });
+        TapLicense.SetLicenseCallBack(this);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void OnLicenseSuccess()
+    {
+        label = "许可成功";
     }
 
     public void OnQueryCallBack(int code, Dictionary<string, object> queryList)
@@ -58,9 +60,9 @@ public class CommonScene : MonoBehaviour,ITapDlcCallback
         
         var labelStyle = new GUIStyle(GUI.skin.label)
         {
-            fontSize = 20
+            fontSize = 30
         };
-        GUI.Label(new Rect(400, 100, 400, 300), label, labelStyle);
+        GUI.Label(new Rect(400, 850, 550, 1300), label, labelStyle);
 
         if (GUI.Button(new Rect(60, 260, 220, 80), "查询DLC", style))
         {
@@ -126,15 +128,16 @@ public class CommonScene : MonoBehaviour,ITapDlcCallback
             });
         }
 
-        if (GUI.Button(new Rect(60, 750, 240, 80), "是否国内", style))
-        {
-            TapCommon.GetRegionCode((isMaind) =>
-            {
-                label = isMaind ? "在国内" : "在国外";
-            });
-        }
+        //待定
+        // if (GUI.Button(new Rect(60, 750, 240, 80), "是否国内", style))
+        // {
+        //     TapCommon.GetRegionCode((isMaind) =>
+        //     {
+        //         label = isMaind ? "在国内" : "在国外";
+        //     });
+        // }
 
-        if (GUI.Button(new Rect(340, 750, 160, 80), "返回", style))
+        if (GUI.Button(new Rect(60, 750, 160, 80), "返回", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         }
