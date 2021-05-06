@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TapDlc", "TapDlc.csproj", "{2A3A58D1-9E65-472B-93B9-B1671C908675}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TapLicense", "TapLicense.csproj", "{2A3A58D1-9E65-472B-93B9-B1671C908675}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

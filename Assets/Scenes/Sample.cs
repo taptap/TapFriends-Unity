@@ -122,5 +122,10 @@ public class Sample : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4);
         }
+        
+        if (GUI.Button(new Rect(60, 1300, 280, 100), "Common", style))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(5);
+        }
     }
 }

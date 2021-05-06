@@ -1,8 +1,8 @@
 #!/bin/sh
 
-core=("Common" "TapDB" "Moment" "Bootstrap" "Friends" "Login" "Dlc")
+core=("Common" "TapDB" "Moment" "Bootstrap" "Friends" "Login" "License")
 
-module=("TapCommonSDK" "TapDBSDK" "TapMomentSDK" "TapBootstrapSDK" "TapFriendsSDK" "TapLoginSDK" "TapDlc")
+module=("TapCommonSDK" "TapDBSDK" "TapMomentSDK" "TapBootstrapSDK" "TapFriendsSDK" "TapLoginSDK" "TapLicense")
 
 rootPath=$(cd `dirname $0`; pwd) 
 

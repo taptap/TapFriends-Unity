@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace TapTap.Dlc
+namespace TapTap.License
 {
     public interface ITapLicense
         {
-            void SetLicencesCallback(ITapLicenseCallback callback);
+            void SetLicencesCallback(Action<bool> action);
     
             void SetDlcCallback(ITapDlcCallback callback);
     
@@ -17,13 +18,8 @@ namespace TapTap.Dlc
             void PurchaseDlc(string dlc);
     
         }
-    
-        public interface ITapLicenseCallback
-        {
-            void OnLicenseSuccess();
-        }
-    
-        public interface ITapDlcCallback
+
+    public interface ITapDlcCallback
         {
             void OnQueryCallBack(int code, Dictionary<string, object> queryList);
     
