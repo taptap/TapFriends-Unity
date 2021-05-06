@@ -5,11 +5,11 @@ currentBranch=$(git symbolic-ref --short -q HEAD)
 git branch -D main
 
 # shellcheck disable=SC2039
-var=("tapcommon-upm" "tapdb-upm" "tapmoment-upm" "tapbootstrap-upm" "taplogin-upm")
+var=("tapcommon-upm" "tapdb-upm" "tapmoment-upm" "tapbootstrap-upm" "taplogin-upm" "tapfriend-upm" "tapdlc-upm")
 # shellcheck disable=SC2039
-module=("Common" "TapDB" "Moment" "Bootstrap" "Login")
+module=("Common" "TapDB" "Moment" "Bootstrap" "Login" "Friends" "Dlc")
 
-githubRepoName=("TapCommon" "TapDB" "TapMoment" "TapBootstrap" "TapLogin")
+githubRepoName=("TapCommon" "TapDB" "TapMoment" "TapBootstrap" "TapLogin" "TapFriends" "TapDlc")
 
 tag=$1
 
