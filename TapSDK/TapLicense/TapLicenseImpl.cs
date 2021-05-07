@@ -95,21 +95,21 @@ namespace TapTap.License
                     return;
                 }
                 var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
-                var dlc = SafeDictionary.GetValue<string>(dic, "orderDLC") as string;
+                var dlc = SafeDictionary.GetValue<string>(dic, "orderDLC");
                 if (!string.IsNullOrEmpty(dlc))
                 {
                     var statusCode = SafeDictionary.GetValue<int>(dic, "orderStatus");
-                    callback.OnOrderCallBack(dlc, handlePurchasedCode(statusCode));
+                    callback.OnOrderCallBack(dlc, HandlePurchasedCode(statusCode));
                     return;
                 }
                 var code = SafeDictionary.GetValue<int >(dic, "queryCode");
                 var queryListJson = SafeDictionary.GetValue<string>(dic, "queryResult");
                 var queryListDic = Json.Deserialize(queryListJson) as Dictionary<string, object>;
-                callback.OnQueryCallBack(handleQueryCode(code), queryListDic);
+                callback.OnQueryCallBack(HandleQueryCode(code), queryListDic);
             });
         }
 
-        private TapLicenseQueryCode handleQueryCode(int code)
+        private static TapLicenseQueryCode HandleQueryCode(int code)
         {
             switch (code)
             {
@@ -124,7 +124,7 @@ namespace TapTap.License
             }
         }
         
-        private TapLicensePurchasedCode handlePurchasedCode(int code)
+        private static TapLicensePurchasedCode HandlePurchasedCode(int code)
         {
             switch (code)
             {
