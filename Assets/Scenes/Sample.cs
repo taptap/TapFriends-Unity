@@ -1,6 +1,7 @@
 ﻿using TapTap.Bootstrap;
 using UnityEngine;
 using UnityEngine.UI;
+using TapTap.License;
 
 public class Sample : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Sample : MonoBehaviour
     private Toggle switchButton;
     void Start()
     {
-        
+        TapLicense.Check();
     }
 
     // Update is called once per frame

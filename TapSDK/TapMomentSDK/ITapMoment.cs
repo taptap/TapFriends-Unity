@@ -34,12 +34,12 @@ namespace TapTap.Moment
 
     public class TapMomentConstants
     {
-        public static readonly string TapMomentPageShortCut = "tap://moment/shortcut/{scene_id}";
+        public static readonly string TapMomentPageShortCut = "tap://moment/shortcut/";
 
-        public static readonly string TapMomentPageShortCutKey = "{scene_id}";
+        public static readonly string TapMomentPageShortCutKey = "scene_id";
 
-        public static readonly string TapMomentPageUser = "tap://moment/user/{user_id}";
+        public static readonly string TapMomentPageUser = "tap://moment/user/";
 
-        public static readonly string TapMomentPageUserKey = "{user_id}";
+        public static readonly string TapMomentPageUserKey = "user_id";
     }
 }
