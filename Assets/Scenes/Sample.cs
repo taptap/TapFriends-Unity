@@ -11,7 +11,7 @@ public class Sample : MonoBehaviour
 
     void Start()
     {
-        TapLicense.Check();
+        // TapLicense.Check();
     }
 
     // Update is called once per frame
@@ -58,7 +58,7 @@ public class Sample : MonoBehaviour
 
         isSwitch = GUI.Toggle(new Rect(380, 100, 200, 55), isSwitch, "TapDB开关", myToggleStyle);
 
-        isIDFA = GUI.Toggle(new Rect(380, 200, 200, 55), isSwitch, "IDFA 开关", myToggleStyle);
+        isIDFA = GUI.Toggle(new Rect(380, 200, 200, 55), isIDFA, "IDFA 开关", myToggleStyle);
 
         channel = GUI.TextArea(new Rect(380, 280, 330, 70), channel, inputStyle);
 
