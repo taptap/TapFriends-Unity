@@ -9,6 +9,8 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
     {
         TapBootstrap.RegisterLoginResultListener(this);
         TapBootstrap.RegisterUserStatusChangedListener(this);
+
+        TapLogin.ChangeConfig(true, true);
     }
 
     // Update is called once per frame

@@ -41,7 +41,7 @@ namespace TapTap.Bootstrap
             return Json.Serialize(dic);
         }
 
-        public class TapConfigBuilder
+        public class Builder
         {
             private string _clientID;
 
@@ -55,35 +55,37 @@ namespace TapTap.Bootstrap
 
             private string _gameVersion;
 
-            public TapConfigBuilder()
+            private bool _advertiserIDCollectionEnabled;
+
+            public Builder()
             {
             }
 
-            public TapConfigBuilder ClientID(string clientId)
+            public Builder ClientID(string clientId)
             {
                 _clientID = clientId;
                 return this;
             }
 
-            public TapConfigBuilder ClientSecret(string secret)
+            public Builder ClientSecret(string secret)
             {
                 _clientSecret = secret;
                 return this;
             }
 
-            public TapConfigBuilder RegionType(RegionType type)
+            public Builder RegionType(RegionType type)
             {
                 _regionType = type;
                 return this;
             }
 
-            public TapConfigBuilder EnableTapDB(bool enable)
+            public Builder EnableTapDB(bool enable)
             {
                 _enableTapDB = enable;
                 return this;
             }
-            
-            public TapConfigBuilder TapDBConfig(bool enable, string channel, string gameVersion)
+
+            public Builder TapDBConfig(bool enable, string channel, string gameVersion)
             {
                 _enableTapDB = enable;
                 _channel = channel;
@@ -91,7 +93,17 @@ namespace TapTap.Bootstrap
                 return this;
             }
 
-            public TapConfig Builder()
+            public Builder TapDBConfig(bool enable, string channel, string gameVersion,
+                bool advertiserIDCollectionEnabled)
+            {
+                _enableTapDB = enable;
+                _channel = channel;
+                _gameVersion = gameVersion;
+                _advertiserIDCollectionEnabled = advertiserIDCollectionEnabled;
+                return this;
+            }
+
+            public TapConfig ConfigBuilder()
             {
                 return new TapConfig(_clientID, _clientSecret, _regionType, _enableTapDB, _channel, _gameVersion);
             }
@@ -107,6 +119,8 @@ namespace TapTap.Bootstrap
 
         private readonly string _gameVersion;
 
+        private readonly bool _advertiserIDCollectionEnabled;
+
         public TapDBConfig(bool enable)
         {
             _enable = enable;
@@ -119,13 +133,22 @@ namespace TapTap.Bootstrap
             _gameVersion = gameVersion;
         }
 
+        public TapDBConfig(bool enable, string channel, string gameVersion, bool advertiserIDCollectionEnabled)
+        {
+            _enable = enable;
+            _channel = channel;
+            _gameVersion = gameVersion;
+            _advertiserIDCollectionEnabled = advertiserIDCollectionEnabled;
+        }
+
         public Dictionary<string, object> ToDic()
         {
             return new Dictionary<string, object>
             {
                 ["channel"] = _channel,
                 ["gameVersion"] = _gameVersion,
-                ["enable"] = _enable
+                ["enable"] = _enable,
+                ["advertiserIDCollectionEnabled"] = _advertiserIDCollectionEnabled
             };
         }
     }

@@ -4,6 +4,8 @@ namespace TapTap.Login
 {
     public interface ITapLogin
     {
+        void ChangeConfig(bool roundCorner, bool isPortrait);
+
         void GetProfile(Action<Profile> action);
 
         void GetAccessToken(Action<TapLoginToken> action);

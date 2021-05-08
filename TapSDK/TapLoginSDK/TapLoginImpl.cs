@@ -28,6 +28,15 @@ namespace TapTap.Login
             return _sInstance;
         }
 
+        public void ChangeConfig(bool roundCorner, bool isPortrait)
+        {
+            EngineBridge.GetInstance().CallHandler(new Command.Builder()
+                .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
+                .Method("changeConfig")
+                .Args("roundCorner", roundCorner)
+                .Args("isPortrait", isPortrait)
+                .CommandBuilder());
+        }
 
         public void GetProfile(Action<Profile> action)
         {
