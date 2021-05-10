@@ -28,6 +28,15 @@ namespace TapTap.Bootstrap
             _regionType = regionType;
             _dbConfig = new TapDBConfig(enableTapDB, channel, gameVersion);
         }
+        
+        private TapConfig(string clientID, string clientSecret, RegionType regionType, bool enableTapDB, string channel,
+            string gameVersion,bool advertiserIDCollectionEnabled)
+        {
+            _clientID = clientID;
+            _clientSecret = clientSecret;
+            _regionType = regionType;
+            _dbConfig = new TapDBConfig(enableTapDB, channel, gameVersion,advertiserIDCollectionEnabled);
+        }
 
         public string ToJson()
         {
@@ -105,7 +114,7 @@ namespace TapTap.Bootstrap
 
             public TapConfig ConfigBuilder()
             {
-                return new TapConfig(_clientID, _clientSecret, _regionType, _enableTapDB, _channel, _gameVersion);
+                return new TapConfig(_clientID, _clientSecret, _regionType, _enableTapDB, _channel, _gameVersion,_advertiserIDCollectionEnabled);
             }
         }
     }
