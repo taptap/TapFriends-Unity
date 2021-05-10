@@ -8,6 +8,18 @@ namespace TapTap.Common
         void SetLanguage(string language);
 
         void GetRegionCode(Action<bool> callback);
+        
+        void IsTapTapInstalled(Action<bool> callback);
+
+        void IsTapTapGlobalInstalled(Action<bool> callback);
+
+        void UpdateGameInTapTap(string appId, Action<bool> callback);
+
+        void UpdateGameInTapGlobal(string appId, Action<bool> callback);
+
+        void OpenReviewInTapTap(string appId, Action<bool> callback);
+
+        void openReviewInTapGlobal(string appId, Action<bool> callback);
     }
     
     [Serializable]

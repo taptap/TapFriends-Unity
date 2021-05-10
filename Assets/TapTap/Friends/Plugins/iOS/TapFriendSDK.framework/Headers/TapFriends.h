@@ -11,8 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define TAPFRIEND_VERSION_NUMBER @"1"
-#define TAPFRIEND_VERSION        @"1.0.0"
+#define TapFriendSDK @"TapFriend"
+#define TapFriendSDK_VERSION_NUMBER @"20101001"
+#define TapFriendSDK_VERSION        @"2.1.1"
 
 typedef void (^TapSimpleHandler)(NSError *_Nullable error);
 typedef void (^TapFriendUserInfoMultiHandler)(NSArray<TapUserRelationShip *> *_Nullable userList, NSError *_Nullable error);
@@ -33,14 +34,14 @@ typedef void (^TapFriendRelationHandler)(NSArray<TapUserRelationShip *> *_Nullab
 
 /// 删除好友
 /// @param userId 用户tds_id
-/// @param handler 回
+/// @param handler 回调
 + (void)deleteFriend:(NSString *)userId
              handler:(TapSimpleHandler)handler;
 
 /// 获取关注列表
-/// @param from 起始index
-/// @param mutualAttention 是否互相关注 0:不是互相关注 1: 互相关注
-/// @param limit 单页个数限制
+/// @param from 起始index，从0开始
+/// @param mutualAttention 是否互相关注 false:不是互相关注 true: 互相关注
+/// @param limit 单页个数限制，最大200
 /// @param handler 回调
 + (void)getFollowingList:(NSInteger)from
          mutualAttention:(BOOL)mutualAttention
@@ -48,29 +49,29 @@ typedef void (^TapFriendRelationHandler)(NSArray<TapUserRelationShip *> *_Nullab
                  handler:(TapFriendRelationHandler)handler;
 
 /// 获取粉丝列表
-/// @param from 起始index
-/// @param limit 单页个数限制
-/// @param handler 回
+/// @param from 起始index，从0开始
+/// @param limit 单页个数限制，最大200
+/// @param handler 回调
 + (void)getFollowerList:(NSInteger)from
                   limit:(NSInteger)limit
                 handler:(TapFriendRelationHandler)handler;
 
 /// 拉黑用户
 /// @param userId 用户tds_id
-/// @param handler 回
+/// @param handler 回调
 + (void)blockUser:(NSString *)userId
           handler:(TapSimpleHandler)handler;
 
 /// 取消拉黑用户
 /// @param userId 用户tds_id
-/// @param handler 回
+/// @param handler 回调
 + (void)unblockUser:(NSString *)userId
             handler:(TapSimpleHandler)handler;
 
 /// 黑名单列表
-/// @param from 起始index
-/// @param limit 单页个数限制
-/// @param handler 回
+/// @param from 起始index，从0开始
+/// @param limit 单页个数限制，最大200
+/// @param handler 回调
 + (void)getBlockList:(NSInteger)from
                limit:(NSInteger)limit
              handler:(TapFriendRelationHandler)handler;

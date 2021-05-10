@@ -42,3 +42,12 @@ TapMoment.Close();
 ```c#
 TapMoment.FetchNotification();
 ```
+
+### 打开特定页面
+
+#### 场景化入口
+```c#
+var sceneDic = new Dictionary<string,object>(){{TapMomentConstants.TapMomentPageShortCutKey,sceneId}};
+
+TapMoment.DirectlyOpen(orientation,TapMomentConstants.TapMomentPageShortCut,sceneDic);
+```

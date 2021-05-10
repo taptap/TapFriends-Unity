@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace TapTap.Moment
 {
@@ -45,6 +46,11 @@ namespace TapTap.Moment
             MomentImpl.GetInstance().FetchNotification();
         }
 
+        public static void DirectlyOpen(Orientation orientation, string page, Dictionary<string, object> extras)
+        {
+            MomentImpl.GetInstance().DirectlyOpen(orientation, page, extras);
+        }
+
         public static void Close()
         {
             MomentImpl.GetInstance().Close();
@@ -59,6 +65,5 @@ namespace TapTap.Moment
         {
             MomentImpl.GetInstance().SetUseAutoRotate(auto);
         }
-
     }
 }

@@ -54,7 +54,7 @@ namespace TapTap.Moment
                 .Callback(true)
                 .OnceTime(false)
                 .CommandBuilder();
-            
+
             EngineBridge.GetInstance().CallHandler(command, (result) =>
             {
                 if (result.code != Result.RESULT_SUCCESS)
@@ -194,25 +194,15 @@ namespace TapTap.Moment
             }
         }
 
-        public void OpenSceneEntry(Orientation orientation, string sceneId)
+        public void DirectlyOpen(Orientation orientation, string page, Dictionary<string, object> extras)
         {
             InitOrientationSetting((int) orientation);
             EngineBridge.GetInstance().CallHandler(new Command.Builder()
                 .Service(SERVICE_NAME)
-                .Method("openSceneEntry")
+                .Method("directlyOpen")
                 .Args("config", (int) orientation)
-                .Args("sceneId", sceneId)
-                .CommandBuilder());
-        }
-
-        public void OpenUserCenter(Orientation orientation, string userId)
-        {
-            InitOrientationSetting((int) orientation);
-            EngineBridge.GetInstance().CallHandler(new Command.Builder()
-                .Service(SERVICE_NAME)
-                .Method("openUserCenter")
-                .Args("config", (int) orientation)
-                .Args("userId", userId)
+                .Args("page", page)
+                .Args("extras", Json.Serialize(extras))
                 .CommandBuilder());
         }
 

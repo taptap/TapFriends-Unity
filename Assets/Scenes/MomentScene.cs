@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using TapTap.Moment;
 using UnityEngine;
 
@@ -12,24 +13,22 @@ public class MomentScene : MonoBehaviour
             Debug.Log("---- moment 回调  code: " + code + " msg: " + msg + "----");
             if (code == 20100)
             {
-                
             }
             else if (code == 20000)
             {
-                
             }
         });
     }
-    
+
     public IEnumerator Delay()
     {
         yield return new WaitForSeconds(6);
         TapMoment.Close();
     }
 
-    private string sceneId = "Input sceneId";
+    private string sceneId = "taprl0194610001";
 
-    private string userId = "Input UserId";
+    private string userId = "7KfeZgtnLAZvJG8JZUnYVw==";
 
     private void OnGUI()
     {
@@ -57,10 +56,14 @@ public class MomentScene : MonoBehaviour
 
         if (GUI.Button(new Rect(360, 450, 245, 100), "场景化入口", style))
         {
+            TapMoment.DirectlyOpen(Orientation.ORIENTATION_DEFAULT, TapMomentConstants.TapMomentPageShortCut,
+                new Dictionary<string, object> {{TapMomentConstants.TapMomentPageShortCutKey, sceneId}});
         }
 
         if (GUI.Button(new Rect(360, 600, 245, 100), "用户中心入口", style))
         {
+            TapMoment.DirectlyOpen(Orientation.ORIENTATION_DEFAULT, TapMomentConstants.TapMomentPageUser,
+                new Dictionary<string, object> {{TapMomentConstants.TapMomentPageUserKey, userId}});
         }
 
         if (GUI.Button(new Rect(60, 750, 180, 100), "返回", style))

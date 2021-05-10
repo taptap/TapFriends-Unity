@@ -13,5 +13,10 @@ namespace TapTap.Login
         {
             TapLoginImpl.GetInstance().GetAccessToken(action);
         }
+
+        public static void ChangeConfig(bool roundCorner, bool isPortrait)
+        {
+            TapLoginImpl.GetInstance().ChangeConfig(roundCorner, isPortrait);
+        }
     }
 }

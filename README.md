@@ -32,6 +32,7 @@
         * TapTap_Moment.unitypackage ： TapTap 内嵌动态
         * TapTap_TapDB.unitypackage ：TapDB 数据统计
         * TapTap_Friends.unitypackage: TapFriends 好友系统
+        * TapTap_License.unitypackage: TapLicense DLC 购买认证
 
 
 2.  使用 Unity Package Manager 导入 TapSDK。
@@ -45,7 +46,8 @@
           "com.taptap.tds.login": "https://github.com/TapTap/TapLogin-Unity.git#{tag}",
           "com.taptap.tds.tapdb": "https://github.com/TapTap/TapDB-Unity.git#{tag}",
           "com.taptap.tds.moment": "https://github.com/TapTap/TapMoment-Unity.git#{tag}",
-          "com.taptap.tds.friends": "https://github.com/TapTap/TapFriends-Unity.git#{tag}" //暂不对外开放
+          "com.taptap.tds.license": "https://github.com/TapTap/TapLicense-Unity.git#{tag}",
+          "com.taptap.tds.friends": "https://github.com/TapTap/TapFriends-Unity.git#{tag}"
         }
     }
     ```

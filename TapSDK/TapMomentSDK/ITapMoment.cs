@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace TapTap.Moment
 {
@@ -27,8 +28,18 @@ namespace TapTap.Moment
 
         void SetUseAutoRotate(bool useAuto);
 
-        void OpenSceneEntry(Orientation orientation, string sceneId);
+        void DirectlyOpen(Orientation orientation, string page, Dictionary<string, object> extras);
+        
+    }
 
-        void OpenUserCenter(Orientation orientation, string userId);
+    public class TapMomentConstants
+    {
+        public static readonly string TapMomentPageShortCut = "tap://moment/scene/";
+
+        public static readonly string TapMomentPageShortCutKey = "scene_id";
+
+        public static readonly string TapMomentPageUser = "tap://moment/user/";
+
+        public static readonly string TapMomentPageUserKey = "user_id";
     }
 }

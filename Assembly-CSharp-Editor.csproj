@@ -120,6 +120,9 @@
  <Reference Include="UnityEngine.SpatialTracking">
  <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEngine.Advertisements.Editor">
+ <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Library/ScriptAssemblies/UnityEngine.Advertisements.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
@@ -330,6 +333,9 @@
  <Reference Include="TapTap.Bootstrap">
  <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Bootstrap/Plugins/TapTap.Bootstrap.dll</HintPath>
  </Reference>
+ <Reference Include="TapTap.License">
+ <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/License/Plugins/TapTap.License.dll</HintPath>
+ </Reference>
  <Reference Include="TapTap.Moment">
  <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Moment/Plugins/TapTap.Moment.dll</HintPath>
  </Reference>
@@ -345,9 +351,6 @@
  <Reference Include="TapTap.Login">
  <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Login/Plugins/TapTap.Login.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.Advertisements">
- <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Library/PackageCache/com.unity.ads@3.4.5/Editor/UnityEditor.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
@@ -358,7 +361,7 @@
  <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Hub/Editor/2019.4.1f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

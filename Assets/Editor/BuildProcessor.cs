@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using TapTap.Common.Editor;
 using UnityEditor;
 using UnityEditor.Callbacks;
+using UnityEditor.iOS.Xcode;
 using UnityEngine;
 
 namespace Editor
@@ -15,7 +18,7 @@ namespace Editor
             {
                 return;
             }
-            
+
             var proj = TapCommonCompile.ParseProjPath(TapCommonCompile.GetProjPath(path));
             var target = TapCommonCompile.GetUnityTarget(proj);
             var unityFrameworkTarget = TapCommonCompile.GetUnityFrameworkTarget(proj);
@@ -35,10 +38,51 @@ namespace Editor
             proj.SetBuildProperty(target, "PRODUCT_BUNDLE_IDENTIFIER", "com.tdssdk.demo");
 
             proj.SetBuildProperty(unityFrameworkTarget, "CODE_SIGN_STYLE", "Manual");
+
+            var parentFolder = Directory.GetParent(Application.dataPath).FullName;
             
+            var plistFile = TapFileHelper.RecursionFilterFile(parentFolder + "/Assets/Plugins/", "TDS-Info.plist");
+
+            if (!plistFile.Exists)
+            {
+                Debug.LogError("TapSDK Can't find TDS-Info.plist in Project/Assets/Plugins/!");
+            }
+
+            SetPlist(path, plistFile.FullName);
+
             File.WriteAllText(TapCommonCompile.GetProjPath(path), proj.WriteToString());
 
             Debug.Log("TapSDK Unity Sign Success!");
+        }
+
+        private static void SetPlist(string pathToBuildProject, string infoPlistPath)
+        {
+            //添加info
+            var plistPath = pathToBuildProject + "/Info.plist";
+            var plist = new PlistDocument();
+            plist.ReadFromString(File.ReadAllText(plistPath));
+
+            if (string.IsNullOrEmpty(infoPlistPath)) return;
+
+            //添加url
+            var dict = plist.root.AsDict();
+            var array = dict.CreateArray("CFBundleURLTypes");
+
+            var tapIdList = new List<string>(3)
+            {
+                "ttuZ8Yy6cSXVOR6AMRPj", "tt0RiAlMny7jiz086FaU", "ttKFV9Pm9ojdmWkkRJeb"
+            };
+
+            for (var i = 0; i < tapIdList.Capacity; i++)
+            {
+                var dict2 = array.AddDict();
+                dict2.SetString("CFBundleURLName", "TapTap");
+                var array2 = dict2.CreateArray("CFBundleURLSchemes");
+                array2.AddString(tapIdList[i]);
+            }
+
+            Debug.Log("TapSDK change plist Success");
+            File.WriteAllText(plistPath, plist.WriteToString());
         }
     }
 }
