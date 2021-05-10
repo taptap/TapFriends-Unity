@@ -11,7 +11,6 @@ public class Sample : MonoBehaviour
 
     void Start()
     {
-        TapLicense.Check();
     }
 
     // Update is called once per frame
