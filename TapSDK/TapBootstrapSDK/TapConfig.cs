@@ -49,7 +49,7 @@ namespace TapTap.Bootstrap
 
             private RegionType _regionType;
 
-            private bool _enableTapDB;
+            private bool _enableTapDB = true;
 
             private string _channel;
 
