@@ -331,7 +331,7 @@ namespace TapTap.Friends
                 var error = SafeDictionary.GetValue<string>(dic, "error");
                 if (string.IsNullOrEmpty(error))
                 {
-                    var boolValue = SafeDictionary.GetValue<bool>(dic, "result");
+                    var boolValue = SafeDictionary.GetValue<int>(dic, "result") == 1;
                     action(boolValue, null);
                 }
                 else

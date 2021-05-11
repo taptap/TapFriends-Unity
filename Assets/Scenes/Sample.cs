@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TapTap.License;
+using TapTap.TapDB;
 
 public class Sample : MonoBehaviour
 {
@@ -71,7 +72,9 @@ public class Sample : MonoBehaviour
                 .RegionType(RegionType.IO)
                 .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
                 .ConfigBuilder();
-
+            
+            TapDB.AdvertiserIDCollectionEnabled(isIDFA);
+            
             TapBootstrap.Init(config);
         }
 
@@ -84,6 +87,8 @@ public class Sample : MonoBehaviour
                 .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
                 .ConfigBuilder();
 
+            TapDB.AdvertiserIDCollectionEnabled(isIDFA);
+            
             TapBootstrap.Init(config);
         }
 

@@ -20,6 +20,7 @@ public class TapDBScene : MonoBehaviour, IDynamicProperties
                 TapDB.SetUser(user.name);
             }
         });
+        
     }
 
     // Update is called once per frame
