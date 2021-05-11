@@ -1,9 +1,9 @@
 #!/bin/sh
 
-unityPath=/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/MacOS/Unity
+unityPath=/Applications/Unity/Hub/Editor/2019.4.1f1/Unity.app/Contents/MacOS/Unity
 
 path=$(cd "$(dirname "$0")";pwd)
 
 echo $path
 
-$unityPath -projectPath $path -batchmode -executeMethod Editor.ExportPackage.PushUnityPackage -VERSION=$1 -quit
+$unityPath -projectPath $path  -executeMethod Editor.ExportPackage.PushUnityPackage -VERSION=$1 
