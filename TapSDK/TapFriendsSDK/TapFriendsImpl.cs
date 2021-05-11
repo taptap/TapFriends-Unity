@@ -247,7 +247,7 @@ namespace TapTap.Friends
             var command = new Command.Builder()
                 .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
                 .Method("searchUser")
-                .Args("userId", userId)
+                .Args("searchUser", userId)
                 .Callback(true)
                 .OnceTime(true)
                 .CommandBuilder();
