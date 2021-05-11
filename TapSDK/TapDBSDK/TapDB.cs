@@ -105,6 +105,11 @@ namespace TapTap.TapDB
             TapDBImpl.GetInstance().EnableLog(enable);
         }
 
+        public static void AdvertiserIDCollectionEnabled(bool enable)
+        {
+            TapDBImpl.GetInstance().AdvertiserIDCollectionEnabled(enable);
+        }
+        
         public static void ClearUser()
         {
             TapDBImpl.GetInstance().ClearUser();

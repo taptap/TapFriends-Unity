@@ -208,6 +208,18 @@ namespace TapTap.TapDB
                 .CommandBuilder());
         }
 
+
+        public void AdvertiserIDCollectionEnabled(bool enable)
+        {
+#if UNITY_IOS
+            EngineBridge.GetInstance().CallHandler(new Command.Builder()
+                .Service(TapDBConstants.TAPDB_SERVICE)
+                .Method("advertiserIDCollectionEnabled")
+                .Args("advertiserIDCollectionEnabled", enable)
+                .CommandBuilder());
+#endif
+        }
+
         public void RegisterDynamicProperties(IDynamicProperties properties)
         {
             if (Platform.IsAndroid())
@@ -216,6 +228,7 @@ namespace TapTap.TapDB
                 {
                     return;
                 }
+
                 _dbServiceImpl.Call("registerDynamicProperties", new TapDBDynamicProperties(properties));
             }
             else if (Platform.IsIOS())
