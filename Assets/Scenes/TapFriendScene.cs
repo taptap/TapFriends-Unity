@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using TapTap.Friends;
+using System.Collections.Generic;
+using TapTap.Common;
 
-public class TapFriendScene : MonoBehaviour
+public class TapFriendScene : MonoBehaviour, ITapMessageListener
 {
     // Start is called before the first frame update
     void Start()
     {
-        
+        TapFriends.RegisterMessageListener(this);
     }
 
     // Update is called once per frame
@@ -14,8 +16,14 @@ public class TapFriendScene : MonoBehaviour
     {
         
     }
+
+    public void OnMessageWithCode(int code, Dictionary<string, object> extras)
+    {
+        label = "接受消息：";
+        label = label + "code: " + code + " extras: " + Json.Serialize(extras);
+    }
+
     private string label = "";
-    
     private string from = "0";
     private string limit = "5";
     private string userId = "f05baed5b5f04eeead7c489267309c1c";

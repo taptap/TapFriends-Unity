@@ -341,6 +341,37 @@ namespace TapTap.Friends
             });
         }
 
+        public void RegisterMessageListener(ITapMessageListener listener)
+        {
+            var command = new Command.Builder()
+                .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
+                .Method("registerMessageListener")
+                .Callback(true)
+                .OnceTime(false)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command, result =>
+            {
+                if (!CheckResultLegal(result))
+                {
+                    listener.OnMessageWithCode(80080, null);
+                    return;
+                }
+                
+                var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+                var code = SafeDictionary.GetValue<int>(dic, "messageCallbackCode");
+                var json = SafeDictionary.GetValue<string>(dic, "wrapper");
+                if (string.IsNullOrEmpty(json))
+                {
+                    var message = Json.Deserialize(json) as Dictionary<string, object>;
+                    listener.OnMessageWithCode(code, message);
+                }
+                else
+                {
+                    listener.OnMessageWithCode(code, null);
+                }
+            });
+        }
+
         private bool CheckResultLegal(Result result)
         {
             if (result == null)

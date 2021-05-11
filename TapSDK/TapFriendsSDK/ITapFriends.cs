@@ -24,6 +24,13 @@ namespace TapTap.Friends
         void GenerateFriendInvitation(Action<string, TapError> action);
 
         void SendFriendInvitation(Action<bool, TapError> action);
+
+        void RegisterMessageListener(ITapMessageListener listener);
+    }
+    
+    public interface ITapMessageListener
+    {
+        void OnMessageWithCode(int code, Dictionary<string, object> extras);
     }
 }
 

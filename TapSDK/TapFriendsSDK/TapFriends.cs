@@ -49,5 +49,10 @@ namespace TapTap.Friends
         {
             TapFriendsImpl.GetInstance().SendFriendInvitation(action);
         }
+        
+        public static void RegisterMessageListener(ITapMessageListener listener)
+        {
+            TapFriendsImpl.GetInstance().RegisterMessageListener(listener);
+        }
     }
 }
