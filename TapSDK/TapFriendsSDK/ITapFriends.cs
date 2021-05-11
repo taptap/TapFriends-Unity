@@ -18,5 +18,26 @@ namespace TapTap.Friends
         void GetFollowerList(int from, int limit, Action<List<TapUserRelationShip>, TapError> action);
         
         void GetBlockList(int from, int limit, Action<List<TapUserRelationShip>, TapError> action);
+
+        void SearchUser(string userId, Action<TapUserRelationShip, TapError> action);
+
+        void GenerateFriendInvitation(Action<string, TapError> action);
+
+        void SendFriendInvitation(Action<bool, TapError> action);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

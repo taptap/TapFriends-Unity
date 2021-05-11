@@ -242,6 +242,105 @@ namespace TapTap.Friends
             });
         }
 
+        public void SearchUser(string userId, Action<TapUserRelationShip, TapError> action)
+        {
+            var command = new Command.Builder()
+                .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
+                .Method("searchUser")
+                .Args("userId", userId)
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command, result =>
+            {
+                if (!CheckResultLegal(result))
+                {
+                    action(null,
+                        new TapError(code: 80080,
+                            errorDescription: "TapSDK searchUser Error!"));
+                    return;
+                }
+                
+                var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+                var error = SafeDictionary.GetValue<string>(dic, "error");
+                if (string.IsNullOrEmpty(error))
+                {
+                    var resultJson = SafeDictionary.GetValue<string>(dic, "result");
+                    var resultDic = Json.Deserialize(resultJson) as Dictionary<string, object>;
+                    var relationShip = new TapUserRelationShip(resultDic);
+                    action(relationShip, null);
+                }
+                else
+                {
+                    action(null, TapError.SafeConstrucTapError(error));
+                }
+            });
+        }
+
+        public void GenerateFriendInvitation(Action<string, TapError> action)
+        {
+            var command = new Command.Builder()
+                .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
+                .Method("generateFriendInvitation")
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command, result =>
+            {
+                if (!CheckResultLegal(result))
+                {
+                    action(null,
+                        new TapError(code: 80080,
+                            errorDescription: "TapSDK generateFriendInvitation Error!"));
+                    return;
+                }
+                
+                var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+                var error = SafeDictionary.GetValue<string>(dic, "error");
+                if (string.IsNullOrEmpty(error))
+                {
+                    var resultStr = SafeDictionary.GetValue<string>(dic, "result");
+                    action(resultStr, null);
+                }
+                else
+                {
+                    action(null, TapError.SafeConstrucTapError(error));
+                }
+            });
+        }
+
+        public void SendFriendInvitation(Action<bool, TapError> action)
+        {
+            var command = new Command.Builder()
+                .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
+                .Method("sendFriendInvitation")
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command, result =>
+            {
+                if (!CheckResultLegal(result))
+                {
+                    action(false,
+                        new TapError(code: 80080,
+                            errorDescription: "TapSDK sendFriendInvitation Error!"));
+                    return;
+                }
+                
+                var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+                var error = SafeDictionary.GetValue<string>(dic, "error");
+                if (string.IsNullOrEmpty(error))
+                {
+                    var boolValue = SafeDictionary.GetValue<bool>(dic, "result");
+                    action(boolValue, null);
+                }
+                else
+                {
+                    action(false, TapError.SafeConstrucTapError(error));
+                }
+            });
+        }
+
         private bool CheckResultLegal(Result result)
         {
             if (result == null)

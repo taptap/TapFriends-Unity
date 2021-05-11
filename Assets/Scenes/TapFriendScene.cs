@@ -28,7 +28,7 @@ public class TapFriendScene : MonoBehaviour
         {
             fontSize = 25
         };
-        GUI.Label(new Rect(450, 500, 500, 1300), label, labelStyle);
+        GUI.Label(new Rect(450, 600, 500, 1300), label, labelStyle);
         
         GUIStyle inputStyle = new GUIStyle(GUI.skin.textArea);
         inputStyle.fontSize = 35;
@@ -220,6 +220,58 @@ public class TapFriendScene : MonoBehaviour
                     {
                         label = "获取拉黑列表为空";
                     }
+                }
+            });
+        }
+        
+        if (GUI.Button(new Rect(380, 260, 280, 80), "搜索好友", style))
+        {
+            TapFriends.SearchUser(userId, (relationShip, error) =>
+            {
+                if (error != null)
+                {
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
+                }
+                else
+                {
+                    label = "搜索用户成功";
+                    this.label = this.label + "userId：" + relationShip.userId +
+                                 " name：" + relationShip.name +
+                                 " avatar：" + relationShip.avatar +
+                                 " gender：" + relationShip.gender +
+                                 " mutualAttention：" + relationShip.mutualAttention + "\n";
+                }
+            });
+        }
+        
+        if (GUI.Button(new Rect(380, 380, 280, 80), "好友邀请链接", style))
+        {
+            TapFriends.GenerateFriendInvitation((invitationString, error) =>
+            {
+                if (error != null)
+                {
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
+                }
+                else
+                {
+                    label = "获取好友邀请链接成功: ";
+                    this.label = this.label + invitationString;
+                }
+            });
+        }
+        
+        if (GUI.Button(new Rect(380, 500, 280, 80), "分享好友邀请", style))
+        {
+            TapFriends.SendFriendInvitation((isInvitation, error) =>
+            {
+                if (error != null)
+                {
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
+                }
+                else
+                {
+                    label = "分享好友邀请: ";
+                    this.label = this.label + (isInvitation ? "成功" : "失败");
                 }
             });
         }
