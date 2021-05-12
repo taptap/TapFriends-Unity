@@ -8,9 +8,18 @@ version=2.1.1
 
 module=("Bootstrap" "Common" "Moment" "FriendsUI" "Friends" "License" "Login"  "TapDB")
 
+releaseAndroid=false
+
+releaseIOS=false
+
 function RemoveNativePackage(){
-  rm -fr $rootPath/Assets/TapTap/$1/Plugins/Android/libs/*
-  rm -fr $rootPath/Assets/TapTap/$1/Plugins/iOS/*
+  if [ $releaseAndroid == true ];then
+      rm -fr $rootPath/Assets/TapTap/$1/Plugins/Android/libs/*
+  fi
+  
+  if [ $releaseIOS == true ];then
+      rm -fr $rootPath/Assets/TapTap/$1/Plugins/iOS/*
+  fi
 }
 
 function CopyNativePackage(){
@@ -46,23 +55,20 @@ for ((i=0;i<${#module[@]};i++));do
     fi
   
     echo "Android Binary $aar"   
-          
-    CopyNativePackage $rootPath/NativePackages/$aar $rootPath/Assets/TapTap/${module[$i]}/Plugins/Android/libs/$aar
-        
-    if [ "${module[$i]}" == "Bootstrap" ] || [ "${module[$i]}" == "Common" ] || [ "${module[$i]}" == "Moment" ] || [ "${module[$i]}" == "FriendsUI" ];then
-          
-          echo "iOS Bundle $bundle"   
-          
-          mkdir -p $rootPath/Assets/TapTap/${module[$i]}/Plugins/iOS/Resource 
-          
-          CopyNativePackage $rootPath/NativePackages/$bundle  $rootPath/Assets/TapTap/${module[$i]}/Plugins/iOS/Resource/$bundle
+    if [ $releaseAndroid == true ];then
+        CopyNativePackage $rootPath/NativePackages/$aar $rootPath/Assets/TapTap/${module[$i]}/Plugins/Android/libs/$aar
     fi
     
-    if [ "${module[$i]}" != "License" ];then
-      
-      echo "iOS framework $framework"  
-      
-      CopyNativePackage $rootPath/NativePackages/$framework $rootPath/Assets/TapTap/${module[$i]}/Plugins/iOS/$framework
+    if [ $releaseIOS == true ];then
+      if [ "${module[$i]}" == "Bootstrap" ] || [ "${module[$i]}" == "Common" ] || [ "${module[$i]}" == "Moment" ] || [ "${module[$i]}" == "FriendsUI" ];then
+          echo "iOS Bundle $bundle"   
+          mkdir -p $rootPath/Assets/TapTap/${module[$i]}/Plugins/iOS/Resource 
+          CopyNativePackage $rootPath/NativePackages/$bundle  $rootPath/Assets/TapTap/${module[$i]}/Plugins/iOS/Resource/$bundle
+      fi
+    
+      if [ "${module[$i]}" != "License" ];then
+          echo "iOS framework $framework"  
+          CopyNativePackage $rootPath/NativePackages/$framework $rootPath/Assets/TapTap/${module[$i]}/Plugins/iOS/$framework
+      fi
     fi
-          
 done   
