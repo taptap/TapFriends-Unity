@@ -19,7 +19,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
 
     public void OnMessageWithCode(int code, Dictionary<string, object> extras)
     {
-        label = "接受消息：";
+        label = "接收消息：";
         label = label + "code: " + code + " extras: " + Json.Serialize(extras);
     }
 

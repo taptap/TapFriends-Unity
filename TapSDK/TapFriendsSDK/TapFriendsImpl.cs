@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TapTap.Common;
+using UnityEngine;
 
 namespace TapTap.Friends
 {
@@ -360,7 +361,7 @@ namespace TapTap.Friends
                 var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
                 var code = SafeDictionary.GetValue<int>(dic, "messageCallbackCode");
                 var json = SafeDictionary.GetValue<string>(dic, "wrapper");
-                if (string.IsNullOrEmpty(json))
+                if (!string.IsNullOrEmpty(json))
                 {
                     var message = Json.Deserialize(json) as Dictionary<string, object>;
                     listener.OnMessageWithCode(code, message);
