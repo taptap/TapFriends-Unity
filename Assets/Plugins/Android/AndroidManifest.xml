@@ -18,5 +18,26 @@
             </intent-filter>
             <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
         </activity>
+        <activity
+                android:name="com.tapsdk.friends.TapFriendsRouterPageActivity"
+                android:allowTaskReparenting="true"
+                android:configChanges="keyboardHidden|orientation"
+                android:exported="true"
+                android:launchMode="singleTask"
+                android:screenOrientation="nosensor"
+                android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                        android:host="0rialmny7jiz086fau"
+                        android:path="/friends"
+                        android:scheme="tapsdk" />
+                <!-- scheme不能出现大写或者下划线，<a href="[scheme]://[host]/[path]?[query]">启动应用程序</a> -->
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

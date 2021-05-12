@@ -26,7 +26,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
     private string label = "";
     private string from = "0";
     private string limit = "5";
-    private string userId = "f05baed5b5f04eeead7c489267309c1c";
+    private string userId = "d669eda7fb704e08b1734a590ed899cc";
     private void OnGUI()
     {
         GUIStyle style = new GUIStyle(GUI.skin.button);

@@ -12,10 +12,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5765D10D-359B-E057-2F3A-AF5846471C9B}</ProjectGuid>
+    <ProjectGuid>{CE1BFAD5-74B6-F3C0-4017-9DBCCBB60381}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>TapTap.TapDB.Editor</AssemblyName>
+    <AssemblyName>TapTap.FriendsUI.Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -58,8 +58,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\TapTap\TapDB\Editor\TapDBIOSProcessor.cs" />
-     <None Include="Assets\TapTap\TapDB\Editor\TapTap.TapDB.asmdef" />
+     <Compile Include="Assets\TapTap\FriendsUI\Editor\TapFriendsUIIOSProcessor.cs" />
+     <None Include="Assets\TapTap\FriendsUI\Editor\TapTap.FriendsUI.Editor.asmdef" />
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/taptap-david/Desktop/tapsdk2-unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
