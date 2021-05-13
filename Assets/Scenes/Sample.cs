@@ -1,4 +1,5 @@
-﻿using TapTap.Bootstrap;
+﻿using System.Collections;
+using TapTap.Bootstrap;
 using UnityEngine;
 using UnityEngine.UI;
 using TapTap.License;
@@ -26,6 +27,7 @@ public class Sample : MonoBehaviour
 
     private string channelValue()
     {
+        Hashtable ht = new Hashtable();
         if (channel == "输入TapDB：channel")
         {
             return "";

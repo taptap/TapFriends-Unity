@@ -10,7 +10,7 @@ module=("Bootstrap" "Common" "Moment" "FriendsUI" "Friends" "License" "Login"  "
 
 releaseAndroid=false
 
-releaseIOS=false
+releaseIOS=true
 
 function RemoveNativePackage(){
   if [ $releaseAndroid == true ];then
