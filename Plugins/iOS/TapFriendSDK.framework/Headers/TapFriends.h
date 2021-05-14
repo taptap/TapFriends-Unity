@@ -13,7 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 #define TapFriendSDK                @"TapFriend"
-#define TapFriendSDK_VERSION_NUMBER @"20101002"
+#define TapFriendSDK_VERSION_NUMBER @"20101003"
 #define TapFriendSDK_VERSION        @"2.1.1"
 
 typedef void (^TapSimpleHandler)(NSError *_Nullable error);
