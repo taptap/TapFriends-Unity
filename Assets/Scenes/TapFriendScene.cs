@@ -2,12 +2,14 @@
 using TapTap.Friends;
 using System.Collections.Generic;
 using TapTap.Common;
+using JudgeDevice;
 
 public class TapFriendScene : MonoBehaviour, ITapMessageListener
 {
     // Start is called before the first frame update
     void Start()
     {
+        Judge.JudgeDeviceModel();
         TapFriends.RegisterMessageListener(this);
     }
 
@@ -29,22 +31,31 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
     private string userId = "d669eda7fb704e08b1734a590ed899cc";
     private void OnGUI()
     {
+        float lowHeiht = 50;
+        float fx = Judge.IsIphoneXDevice ? 60 : 30;
+        float sx = Judge.IsIphoneXDevice ? 380 : 340;
+        float height = Judge.IsIphoneXDevice ? 80 : lowHeiht;
+        float margin = 30;
+        float space = lowHeiht + margin;
+        
         GUIStyle style = new GUIStyle(GUI.skin.button);
-        style.fontSize = 40;
+        style.fontSize = Judge.IsIphoneXDevice?40:30;
         
         var labelStyle = new GUIStyle(GUI.skin.label)
         {
             fontSize = 25
         };
-        GUI.Label(new Rect(450, 600, 500, 1300), label, labelStyle);
+        GUI.Label(new Rect(Judge.IsIphoneXDevice?450:30, Judge.IsIphoneXDevice?600:6*space+lowHeiht, 500, 1300), label, labelStyle);
         
         GUIStyle inputStyle = new GUIStyle(GUI.skin.textArea);
         inputStyle.fontSize = 35;
-        from = GUI.TextArea(new Rect(60, 140, 200, 80), from, inputStyle);
-        limit = GUI.TextArea(new Rect(290, 140, 200, 80), limit, inputStyle);
-        userId = GUI.TextArea(new Rect(520, 140, 380, 80), userId, inputStyle);
+        from = GUI.TextArea(new Rect(fx, Judge.IsIphoneXDevice?140:0, Judge.IsIphoneXDevice?200:100, height), from, inputStyle);
+        limit = GUI.TextArea(new Rect(Judge.IsIphoneXDevice?290:150, Judge.IsIphoneXDevice?140:0, Judge.IsIphoneXDevice?200:100, height), limit, inputStyle);
+        userId = GUI.TextArea(new Rect(Judge.IsIphoneXDevice?520:270, Judge.IsIphoneXDevice?140:0, 380, height), userId, inputStyle);
+
         
-        if (GUI.Button(new Rect(60, 260, 280, 80), "添加好友", style))
+        
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice?260:space, 280, height), "添加好友", style))
         {
             TapFriends.AddFriend(userId, error =>
             {
@@ -59,7 +70,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             });
         }
         
-        if (GUI.Button(new Rect(60, 380, 280, 80), "删除好友", style))
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice?380:2*space, 280, height), "删除好友", style))
         {
             TapFriends.DeleteFriend(userId, error =>
             {
@@ -74,7 +85,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             });
         }
 
-        if (GUI.Button(new Rect(60, 500, 280, 80), "好友列表", style))
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice?500:3*space, 280, height), "好友列表", style))
         {
             int handleFrom = int.Parse(from);
             int handleLimit = int.Parse(limit);
@@ -106,7 +117,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             });
         }
         
-        if (GUI.Button(new Rect(60, 620, 300, 80), "互关好友列表", style))
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice?620:4*space, 300, height), "互关好友列表", style))
         {
             int handleFrom = int.Parse(from);
             int handleLimit = int.Parse(limit);
@@ -138,7 +149,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             });
         }
 
-        if (GUI.Button(new Rect(60, 740, 280, 80), "获取粉丝列表", style))
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice?740:5*space, 280, height), "获取粉丝列表", style))
         {
             int handleFrom = int.Parse(from);
             int handleLimit = int.Parse(limit);
@@ -170,7 +181,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             });
         }
 
-        if (GUI.Button(new Rect(60, 860, 280, 80), "拉黑用户", style))
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice?860:6*space, 280, height), "拉黑用户", style))
         {
             TapFriends.BlockUser(userId, error =>
             {
@@ -185,7 +196,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             });
         }
         
-        if (GUI.Button(new Rect(60, 980, 280, 80), "取消拉黑用户", style))
+        if (GUI.Button(new Rect(Judge.IsIphoneXDevice?380:340, Judge.IsIphoneXDevice?620:4*space, 280, height), "取消拉黑用户", style))
         {
             TapFriends.UnblockUser(userId, error =>
             {
@@ -200,7 +211,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             });
         }
         
-        if (GUI.Button(new Rect(60, 1100, 280, 80), "拉黑列表", style))
+        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice?740:5*space, 280, height), "拉黑列表", style))
         {
             int handleFrom = int.Parse(from);
             int handleLimit = int.Parse(limit);
@@ -232,7 +243,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             });
         }
         
-        if (GUI.Button(new Rect(380, 260, 280, 80), "搜索好友", style))
+        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice?260:space, 280, height), "搜索好友", style))
         {
             TapFriends.SearchUser(userId, (relationShip, error) =>
             {
@@ -252,7 +263,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             });
         }
         
-        if (GUI.Button(new Rect(380, 380, 280, 80), "好友邀请链接", style))
+        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice?380:2*space, 280, height), "好友邀请链接", style))
         {
             TapFriends.GenerateFriendInvitation((invitationString, error) =>
             {
@@ -268,7 +279,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             });
         }
         
-        if (GUI.Button(new Rect(380, 500, 280, 80), "分享好友邀请", style))
+        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice?500:3*space, 280, height), "分享好友邀请", style))
         {
             TapFriends.SendFriendInvitation((isInvitation, error) =>
             {
@@ -284,7 +295,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             });
         }
 
-        if (GUI.Button(new Rect(60, 1220, 180, 80), "返回", style))
+        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice?860:6*space, 180, height), "返回", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         }

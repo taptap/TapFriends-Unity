@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scenes\CommonScene.cs" />
+     <Compile Include="Assets\Scenes\JudgeDevice.cs" />
      <Compile Include="Assets\Scenes\LoginScene.cs" />
      <Compile Include="Assets\Scenes\MomentScene.cs" />
      <Compile Include="Assets\Scenes\Sample.cs" />
