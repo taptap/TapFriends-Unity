@@ -13,8 +13,8 @@
 #import <Foundation/Foundation.h>
 
 #define TapMomentSDK                @"TapMoment"
-#define TapMomentSDK_VERSION_NUMBER @"20101001"
-#define TapMomentSDK_VERSION        @"2.1.1"
+#define TapMomentSDK_VERSION_NUMBER @"20102001"
+#define TapMomentSDK_VERSION        @"2.1.2"
 
 NS_ASSUME_NONNULL_BEGIN
 

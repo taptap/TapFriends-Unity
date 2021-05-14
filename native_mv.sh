@@ -8,13 +8,14 @@ version=2.1.2
 
 module=("Bootstrap" "Common" "Moment" "FriendsUI" "Friends" "License" "Login"  "TapDB")
 
-releaseAndroid=false
+releaseAndroid=true
 
 releaseIOS=true
 
 shopt -s extglob
 
 function RemoveNativePackage(){
+  
   if [ $releaseAndroid == true ];then
       rm -fr $rootPath/Assets/TapTap/$1/Plugins/Android/libs/* 
   fi
@@ -82,5 +83,3 @@ for ((i=0;i<${#module[@]};i++));do
       fi
     fi
 done   
-
-sh compile.sh
