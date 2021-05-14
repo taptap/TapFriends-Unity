@@ -15,11 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSString *avatar;
 @property (nonatomic, assign) long gender;
 @property (nonatomic, assign) BOOL mutualAttention;
-@property (nonatomic, assign) NSString *relationship;
 
-- (BOOL)isFollowing;
-- (BOOL)isFollowed;
-- (BOOL)isBlocked;
 - (NSString *)toJsonString;
 @end
 

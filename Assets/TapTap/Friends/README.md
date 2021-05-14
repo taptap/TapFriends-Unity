@@ -49,3 +49,21 @@ TapFriends.GetBlockList(int from, int limit, Action<List<TapUserRelationShip>, T
 TapFriends.UnblockUser(string userId, Action<TapError> action);
 ```
 
+### 搜索好友
+```c#
+
+```
+### 获取好友邀请链接
+```c#
+
+```
+### 分享好友邀请
+
+```c#
+
+```
+### 注册消息回调接口
+```c#
+
+```
+

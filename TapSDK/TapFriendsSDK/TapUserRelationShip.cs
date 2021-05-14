@@ -18,7 +18,7 @@ namespace TapTap.Friends
             this.name = SafeDictionary.GetValue<string>(dic, "name");
             this.avatar = SafeDictionary.GetValue<string>(dic, "avatar");
             this.gender = SafeDictionary.GetValue<long>(dic, "gender");
-            this.mutualAttention = SafeDictionary.GetValue<bool>(dic, key: "mutualAttention");
+            this.mutualAttention = SafeDictionary.GetValue<int>(dic, key: "mutualAttention") == 1;
         }
 
         public string ToJson()

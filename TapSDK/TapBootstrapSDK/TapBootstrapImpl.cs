@@ -253,12 +253,12 @@ namespace TapTap.Bootstrap
 
         public void OpenUserCenter()
         {
-            var command = new Command.Builder()
-                .Service(TapBootstrapConstants.TAP_BOOTSTARP_SERVICE)
-                .Method("openUserCenter")
-                .CommandBuilder();
-
-            EngineBridge.GetInstance().CallHandler(command);
+            // var command = new Command.Builder()
+            //     .Service(TapBootstrapConstants.TAP_BOOTSTARP_SERVICE)
+            //     .Method("openUserCenter")
+            //     .CommandBuilder();
+            //
+            // EngineBridge.GetInstance().CallHandler(command);
         }
 
         public void SetPreferLanguage(TapLanguage tapLanguage)

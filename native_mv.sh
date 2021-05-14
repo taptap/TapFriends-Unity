@@ -4,7 +4,7 @@
 
 rootPath=$(cd `dirname $0`; pwd) 
 
-version=2.1.1
+version=2.1.2
 
 module=("Bootstrap" "Common" "Moment" "FriendsUI" "Friends" "License" "Login"  "TapDB")
 

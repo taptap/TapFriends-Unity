@@ -17,6 +17,3 @@ FOUNDATION_EXPORT const unsigned char TapFriendSDKVersionString[];
 
 #import <TapFriendSDK/TapFriends.h>
 #import <TapFriendSDK/TapUserRelationShip.h>
-#import <TapFriendSDK/TapFriendConstants.h>
-#import <TapFriendSDK/TapFriendConfig.h>
-#import <TapFriendSDK/TapFriendClientInfo.h>

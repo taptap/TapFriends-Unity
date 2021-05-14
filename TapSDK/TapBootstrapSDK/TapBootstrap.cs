@@ -54,10 +54,11 @@ namespace TapTap.Bootstrap
         {
             TapBootstrapImpl.GetInstance().Logout();
         }
-
-        public static void OpenUserCenter()
+        
+        [Obsolete("已弃用")]
+        private static void OpenUserCenter()
         {
-            TapBootstrapImpl.GetInstance().OpenUserCenter();
+            // TapBootstrapImpl.GetInstance().OpenUserCenter();
         }
 
         public static void SetPreferLanguage(TapLanguage tapLanguage)
