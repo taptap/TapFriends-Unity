@@ -40,12 +40,11 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
         
         GUIStyle style = new GUIStyle(GUI.skin.button);
         style.fontSize = Judge.IsIphoneXDevice?40:30;
-        
-        var labelStyle = new GUIStyle(GUI.skin.label)
-        {
-            fontSize = 25
-        };
-        GUI.Label(new Rect(Judge.IsIphoneXDevice?450:30, Judge.IsIphoneXDevice?600:6*space+lowHeiht, 500, 1300), label, labelStyle);
+
+        var labelStyle = new GUIStyle(GUI.skin.label);
+        labelStyle.fontSize = 25;
+        labelStyle.normal.textColor = new Color(255, 0, 0);
+        GUI.Label(new Rect(Judge.IsIphoneXDevice?60:30, Judge.IsIphoneXDevice?950:6*space+lowHeiht, 500, 1300), label, labelStyle);
         
         GUIStyle inputStyle = new GUIStyle(GUI.skin.textArea);
         inputStyle.fontSize = 35;
@@ -106,7 +105,8 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
-                                         " mutualAttention：" + relation.mutualAttention + "\n";
+                                         " mutualAttention：" + relation.mutualAttention +
+                                         " relationship：" + relation.mutualAttention + "\n";
                         } 
                     }
                     else
@@ -138,7 +138,8 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
-                                         " mutualAttention：" + relation.mutualAttention + "\n";
+                                         " mutualAttention：" + relation.mutualAttention +
+                                         " relationship：" + relation.mutualAttention + "\n";
                         } 
                     }
                     else
@@ -170,7 +171,8 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
-                                         " mutualAttention：" + relation.mutualAttention + "\n";
+                                         " mutualAttention：" + relation.mutualAttention +
+                                         " relationship：" + relation.mutualAttention + "\n";
                         } 
                     }
                     else
@@ -232,7 +234,8 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
-                                         " mutualAttention：" + relation.mutualAttention + "\n";
+                                         " mutualAttention：" + relation.mutualAttention + 
+                                         " relationship：" + relation.mutualAttention + "\n";
                         }  
                     }
                     else
@@ -258,7 +261,8 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                  " name：" + relationShip.name +
                                  " avatar：" + relationShip.avatar +
                                  " gender：" + relationShip.gender +
-                                 " mutualAttention：" + relationShip.mutualAttention + "\n";
+                                 " mutualAttention：" + relationShip.mutualAttention +
+                                 " relationship：" + relationShip.mutualAttention + "\n";
                 }
             });
         }
