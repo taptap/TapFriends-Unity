@@ -19,6 +19,10 @@
   ```c#
   TapFriends.GenerateFriendInvitation(Action<string, TapError> action);
   ```
+  
+### BugFix
+
+* 修复 TapUserRelationShip 中 mutualAttention 相互
 
 ### Dependencies
 
