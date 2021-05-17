@@ -148,22 +148,22 @@ namespace TapTap.License
             EngineBridge.GetInstance().CallHandler(command);
         }
 
-        public void QueryDLC(string[] dlcList)
+        public void QueryDLC(string[] skus)
         {
             var command = new Command.Builder()
                 .Service(TapLicenseConstants.TAP_LICENSE_SERVICE)
                 .Method("queryDLC")
-                .Args("dlcList", dlcList)
+                .Args("dlcList", skus)
                 .CommandBuilder();
             EngineBridge.GetInstance().CallHandler(command);
         }
 
-        public void PurchaseDLC(string dlc)
+        public void PurchaseDLC(string sku)
         {
             var command = new Command.Builder()
                 .Service(TapLicenseConstants.TAP_LICENSE_SERVICE)
                 .Method("purchaseDLC")
-                .Args("dlc", dlc)
+                .Args("dlc", sku)
                 .CommandBuilder();
             EngineBridge.GetInstance().CallHandler(command);
         }

@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using TapTap.Friends;
+using System.Collections.Generic;
+using TapTap.Common;
+using JudgeDevice;
 
-public class TapFriendScene : MonoBehaviour
+public class TapFriendScene : MonoBehaviour, ITapMessageListener
 {
     // Start is called before the first frame update
     void Start()
     {
-        
+        Judge.JudgeDeviceModel();
+        TapFriends.RegisterMessageListener(this);
     }
 
     // Update is called once per frame
@@ -14,29 +18,43 @@ public class TapFriendScene : MonoBehaviour
     {
         
     }
+
+    public void OnMessageWithCode(int code, Dictionary<string, object> extras)
+    {
+        label = "接收消息：";
+        label = label + "code: " + code + " extras: " + Json.Serialize(extras);
+    }
+
     private string label = "";
-    
     private string from = "0";
     private string limit = "5";
-    private string userId = "f05baed5b5f04eeead7c489267309c1c";
+    private string userId = "d669eda7fb704e08b1734a590ed899cc";
     private void OnGUI()
     {
-        GUIStyle style = new GUIStyle(GUI.skin.button);
-        style.fontSize = 40;
+        float lowHeiht = 50;
+        float fx = Judge.IsIphoneXDevice ? 60 : 30;
+        float sx = Judge.IsIphoneXDevice ? 380 : 340;
+        float height = Judge.IsIphoneXDevice ? 80 : lowHeiht;
+        float margin = 30;
+        float space = lowHeiht + margin;
         
-        var labelStyle = new GUIStyle(GUI.skin.label)
-        {
-            fontSize = 25
-        };
-        GUI.Label(new Rect(450, 500, 500, 1300), label, labelStyle);
+        GUIStyle style = new GUIStyle(GUI.skin.button);
+        style.fontSize = Judge.IsIphoneXDevice?40:30;
+
+        var labelStyle = new GUIStyle(GUI.skin.label);
+        labelStyle.fontSize = 25;
+        labelStyle.normal.textColor = new Color(255, 0, 0);
+        GUI.Label(new Rect(Judge.IsIphoneXDevice?60:30, Judge.IsIphoneXDevice?950:6*space+lowHeiht, 500, 1300), label, labelStyle);
         
         GUIStyle inputStyle = new GUIStyle(GUI.skin.textArea);
         inputStyle.fontSize = 35;
-        from = GUI.TextArea(new Rect(60, 140, 200, 80), from, inputStyle);
-        limit = GUI.TextArea(new Rect(290, 140, 200, 80), limit, inputStyle);
-        userId = GUI.TextArea(new Rect(520, 140, 380, 80), userId, inputStyle);
+        from = GUI.TextArea(new Rect(fx, Judge.IsIphoneXDevice?140:0, Judge.IsIphoneXDevice?200:100, height), from, inputStyle);
+        limit = GUI.TextArea(new Rect(Judge.IsIphoneXDevice?290:150, Judge.IsIphoneXDevice?140:0, Judge.IsIphoneXDevice?200:100, height), limit, inputStyle);
+        userId = GUI.TextArea(new Rect(Judge.IsIphoneXDevice?520:270, Judge.IsIphoneXDevice?140:0, 380, height), userId, inputStyle);
+
         
-        if (GUI.Button(new Rect(60, 260, 280, 80), "添加好友", style))
+        
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice?260:space, 280, height), "添加好友", style))
         {
             TapFriends.AddFriend(userId, error =>
             {
@@ -51,7 +69,7 @@ public class TapFriendScene : MonoBehaviour
             });
         }
         
-        if (GUI.Button(new Rect(60, 380, 280, 80), "删除好友", style))
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice?380:2*space, 280, height), "删除好友", style))
         {
             TapFriends.DeleteFriend(userId, error =>
             {
@@ -66,7 +84,7 @@ public class TapFriendScene : MonoBehaviour
             });
         }
 
-        if (GUI.Button(new Rect(60, 500, 280, 80), "好友列表", style))
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice?500:3*space, 280, height), "好友列表", style))
         {
             int handleFrom = int.Parse(from);
             int handleLimit = int.Parse(limit);
@@ -87,7 +105,8 @@ public class TapFriendScene : MonoBehaviour
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
-                                         " mutualAttention：" + relation.mutualAttention + "\n";
+                                         " mutualAttention：" + relation.mutualAttention +
+                                         " relationship：" + relation.relationship + "\n";
                         } 
                     }
                     else
@@ -98,7 +117,7 @@ public class TapFriendScene : MonoBehaviour
             });
         }
         
-        if (GUI.Button(new Rect(60, 620, 300, 80), "互关好友列表", style))
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice?620:4*space, 300, height), "互关好友列表", style))
         {
             int handleFrom = int.Parse(from);
             int handleLimit = int.Parse(limit);
@@ -119,7 +138,8 @@ public class TapFriendScene : MonoBehaviour
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
-                                         " mutualAttention：" + relation.mutualAttention + "\n";
+                                         " mutualAttention：" + relation.mutualAttention +
+                                         " relationship：" + relation.relationship + "\n";
                         } 
                     }
                     else
@@ -130,7 +150,7 @@ public class TapFriendScene : MonoBehaviour
             });
         }
 
-        if (GUI.Button(new Rect(60, 740, 280, 80), "获取粉丝列表", style))
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice?740:5*space, 280, height), "获取粉丝列表", style))
         {
             int handleFrom = int.Parse(from);
             int handleLimit = int.Parse(limit);
@@ -151,7 +171,8 @@ public class TapFriendScene : MonoBehaviour
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
-                                         " mutualAttention：" + relation.mutualAttention + "\n";
+                                         " mutualAttention：" + relation.mutualAttention +
+                                         " relationship：" + relation.relationship + "\n";
                         } 
                     }
                     else
@@ -162,7 +183,7 @@ public class TapFriendScene : MonoBehaviour
             });
         }
 
-        if (GUI.Button(new Rect(60, 860, 280, 80), "拉黑用户", style))
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice?860:6*space, 280, height), "拉黑用户", style))
         {
             TapFriends.BlockUser(userId, error =>
             {
@@ -177,7 +198,7 @@ public class TapFriendScene : MonoBehaviour
             });
         }
         
-        if (GUI.Button(new Rect(60, 980, 280, 80), "取消拉黑用户", style))
+        if (GUI.Button(new Rect(Judge.IsIphoneXDevice?380:340, Judge.IsIphoneXDevice?620:4*space, 280, height), "取消拉黑用户", style))
         {
             TapFriends.UnblockUser(userId, error =>
             {
@@ -192,7 +213,7 @@ public class TapFriendScene : MonoBehaviour
             });
         }
         
-        if (GUI.Button(new Rect(60, 1100, 280, 80), "拉黑列表", style))
+        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice?740:5*space, 280, height), "拉黑列表", style))
         {
             int handleFrom = int.Parse(from);
             int handleLimit = int.Parse(limit);
@@ -213,7 +234,8 @@ public class TapFriendScene : MonoBehaviour
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
-                                         " mutualAttention：" + relation.mutualAttention + "\n";
+                                         " mutualAttention：" + relation.mutualAttention + 
+                                         " relationship：" + relation.relationship + "\n";
                         }  
                     }
                     else
@@ -223,8 +245,61 @@ public class TapFriendScene : MonoBehaviour
                 }
             });
         }
+        
+        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice?260:space, 280, height), "搜索好友", style))
+        {
+            TapFriends.SearchUser(userId, (relationShip, error) =>
+            {
+                if (error != null)
+                {
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
+                }
+                else
+                {
+                    label = "搜索用户成功";
+                    this.label = this.label + "userId：" + relationShip.userId +
+                                 " name：" + relationShip.name +
+                                 " avatar：" + relationShip.avatar +
+                                 " gender：" + relationShip.gender +
+                                 " mutualAttention：" + relationShip.mutualAttention +
+                                 " relationship：" + relationShip.relationship + "\n";
+                }
+            });
+        }
+        
+        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice?380:2*space, 280, height), "好友邀请链接", style))
+        {
+            TapFriends.GenerateFriendInvitation((invitationString, error) =>
+            {
+                if (error != null)
+                {
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
+                }
+                else
+                {
+                    label = "获取好友邀请链接成功: ";
+                    this.label = this.label + invitationString;
+                }
+            });
+        }
+        
+        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice?500:3*space, 280, height), "分享好友邀请", style))
+        {
+            TapFriends.SendFriendInvitation((isInvitation, error) =>
+            {
+                if (error != null)
+                {
+                    label = $"Error:{error.code} Description:{error.errorDescription}";
+                }
+                else
+                {
+                    label = "分享好友邀请: ";
+                    this.label = this.label + (isInvitation ? "成功" : "失败");
+                }
+            });
+        }
 
-        if (GUI.Button(new Rect(60, 1220, 180, 80), "返回", style))
+        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice?860:6*space, 180, height), "返回", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         }

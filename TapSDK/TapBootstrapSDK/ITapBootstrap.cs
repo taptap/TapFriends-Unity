@@ -27,7 +27,8 @@ namespace TapTap.Bootstrap
         void GetAccessToken(Action<AccessToken, TapError> action);
 
         void Logout();
-
+        
+        [Obsolete("已弃用")]
         void OpenUserCenter();
 
         void SetPreferLanguage(TapLanguage tapLanguage);

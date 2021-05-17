@@ -124,7 +124,7 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
 
         if (GUI.Button(new Rect(60, 750, 260, 100), "用户中心", style))
         {
-            TapBootstrap.OpenUserCenter();
+            // TapBootstrap.OpenUserCenter();
         }
 
         if (GUI.Button(new Rect(60, 900, 260, 100), "篝火测试", style))

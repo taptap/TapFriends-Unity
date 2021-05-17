@@ -13,9 +13,9 @@ namespace TapTap.License
     
         void Check();
     
-        void QueryDLC(string[] dlcList);
+        void QueryDLC(string[] skus);
     
-        void PurchaseDLC(string dlc);
+        void PurchaseDLC(string sku);
     
     }
     public interface ITapLicenseCallback

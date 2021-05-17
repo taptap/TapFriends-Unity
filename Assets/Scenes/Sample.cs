@@ -1,8 +1,10 @@
-﻿using TapTap.Bootstrap;
+﻿using System.Collections;
+using TapTap.Bootstrap;
 using UnityEngine;
 using UnityEngine.UI;
 using TapTap.License;
 using TapTap.TapDB;
+using JudgeDevice;
 
 public class Sample : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class Sample : MonoBehaviour
 
     void Start()
     {
+        Judge.JudgeDeviceModel();
     }
 
     // Update is called once per frame
@@ -26,6 +29,7 @@ public class Sample : MonoBehaviour
 
     private string channelValue()
     {
+        Hashtable ht = new Hashtable();
         if (channel == "输入TapDB：channel")
         {
             return "";
@@ -56,15 +60,15 @@ public class Sample : MonoBehaviour
         GUIStyle inputStyle = new GUIStyle(GUI.skin.textArea);
         inputStyle.fontSize = 27;
 
-        isSwitch = GUI.Toggle(new Rect(380, 100, 200, 55), isSwitch, "TapDB开关", myToggleStyle);
+        isSwitch = GUI.Toggle(new Rect(380, Judge.IsIphoneXDevice?100:0, 200, 55), isSwitch, "TapDB开关", myToggleStyle);
 
-        isIDFA = GUI.Toggle(new Rect(380, 200, 200, 55), isIDFA, "IDFA 开关", myToggleStyle);
+        isIDFA = GUI.Toggle(new Rect(380, Judge.IsIphoneXDevice?200:60, 200, 55), isIDFA, "IDFA 开关", myToggleStyle);
 
-        channel = GUI.TextArea(new Rect(380, 280, 330, 70), channel, inputStyle);
+        channel = GUI.TextArea(new Rect(380, Judge.IsIphoneXDevice?280:135, 330, 70), channel, inputStyle);
 
-        gameVersion = GUI.TextArea(new Rect(380, 360, 330, 70), gameVersion, inputStyle);
+        gameVersion = GUI.TextArea(new Rect(380, Judge.IsIphoneXDevice?360:215, 330, 70), gameVersion, inputStyle);
 
-        if (GUI.Button(new Rect(60, 100, 280, 100), "RND-IO", style))
+        if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice?100:0, 280, 100), "RND-IO", style))
         {
             var config = new TapConfig.Builder()
                 .ClientID("uZ8Yy6cSXVOR6AMRPj")
@@ -78,7 +82,7 @@ public class Sample : MonoBehaviour
             TapBootstrap.Init(config);
         }
 
-        if (GUI.Button(new Rect(60, 250, 280, 100), "RND-CN", style))
+        if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice?250:150, 280, 100), "RND-CN", style))
         {
             var config = new TapConfig.Builder()
                 .ClientID("uZ8Yy6cSXVOR6AMRPj")
@@ -92,7 +96,7 @@ public class Sample : MonoBehaviour
             TapBootstrap.Init(config);
         }
 
-        if (GUI.Button(new Rect(60, 400, 280, 100), "海外", style))
+        if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice?400:300, 280, 100), "海外", style))
         {
             var config = new TapConfig.Builder()
                 .ClientID("KFV9Pm9ojdmWkkRJeb")
@@ -104,7 +108,7 @@ public class Sample : MonoBehaviour
             TapBootstrap.Init(config);
         }
 
-        if (GUI.Button(new Rect(60, 550, 280, 100), "国内", style))
+        if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice?550:450, 280, 100), "国内", style))
         {
             var config = new TapConfig.Builder()
                 .ClientID("0RiAlMny7jiz086FaU")
@@ -115,27 +119,27 @@ public class Sample : MonoBehaviour
             TapBootstrap.Init(config);
         }
 
-        if (GUI.Button(new Rect(60, 700, 280, 100), "登陆", style))
+        if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice?700:600, 280, 100), "登陆", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1);
         }
 
-        if (GUI.Button(new Rect(60, 850, 280, 100), "动态", style))
+        if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice?850:750, 280, 100), "动态", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
         }
 
-        if (GUI.Button(new Rect(60, 1000, 280, 100), "TapDB", style))
+        if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice?1000:900, 280, 100), "TapDB", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(3);
         }
 
-        if (GUI.Button(new Rect(60, 1150, 280, 100), "TapFriend", style))
+        if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice?470:325, 280, 100), "TapFriend", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4);
         }
 
-        if (GUI.Button(new Rect(60, 1300, 280, 100), "Common", style))
+        if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice?610:465, 280, 100), "Common", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(5);
         }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TapTap.Common;
+using UnityEngine;
 
 namespace TapTap.Friends
 {
@@ -239,6 +240,136 @@ namespace TapTap.Friends
                 }
 
                 action(null, TapError.SafeConstrucTapError((string)wrapper.wrapper));
+            });
+        }
+
+        public void SearchUser(string userId, Action<TapUserRelationShip, TapError> action)
+        {
+            var command = new Command.Builder()
+                .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
+                .Method("searchUser")
+                .Args("searchUser", userId)
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command, result =>
+            {
+                if (!CheckResultLegal(result))
+                {
+                    action(null,
+                        new TapError(code: 80080,
+                            errorDescription: "TapSDK searchUser Error!"));
+                    return;
+                }
+                
+                var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+                var error = SafeDictionary.GetValue<string>(dic, "error");
+                if (string.IsNullOrEmpty(error))
+                {
+                    var resultJson = SafeDictionary.GetValue<string>(dic, "result");
+                    var resultDic = Json.Deserialize(resultJson) as Dictionary<string, object>;
+                    var relationShip = new TapUserRelationShip(resultDic);
+                    action(relationShip, null);
+                }
+                else
+                {
+                    action(null, TapError.SafeConstrucTapError(error));
+                }
+            });
+        }
+
+        public void GenerateFriendInvitation(Action<string, TapError> action)
+        {
+            var command = new Command.Builder()
+                .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
+                .Method("generateFriendInvitation")
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command, result =>
+            {
+                if (!CheckResultLegal(result))
+                {
+                    action(null,
+                        new TapError(code: 80080,
+                            errorDescription: "TapSDK generateFriendInvitation Error!"));
+                    return;
+                }
+                
+                var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+                var error = SafeDictionary.GetValue<string>(dic, "error");
+                if (string.IsNullOrEmpty(error))
+                {
+                    var resultStr = SafeDictionary.GetValue<string>(dic, "result");
+                    action(resultStr, null);
+                }
+                else
+                {
+                    action(null, TapError.SafeConstrucTapError(error));
+                }
+            });
+        }
+
+        public void SendFriendInvitation(Action<bool, TapError> action)
+        {
+            var command = new Command.Builder()
+                .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
+                .Method("sendFriendInvitation")
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command, result =>
+            {
+                if (!CheckResultLegal(result))
+                {
+                    action(false,
+                        new TapError(code: 80080,
+                            errorDescription: "TapSDK sendFriendInvitation Error!"));
+                    return;
+                }
+                
+                var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+                var error = SafeDictionary.GetValue<string>(dic, "error");
+                if (string.IsNullOrEmpty(error))
+                {
+                    var boolValue = SafeDictionary.GetValue<int>(dic, "result") == 1;
+                    action(boolValue, null);
+                }
+                else
+                {
+                    action(false, TapError.SafeConstrucTapError(error));
+                }
+            });
+        }
+
+        public void RegisterMessageListener(ITapMessageListener listener)
+        {
+            var command = new Command.Builder()
+                .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
+                .Method("registerMessageListener")
+                .Callback(true)
+                .OnceTime(false)
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command, result =>
+            {
+                if (!CheckResultLegal(result))
+                {
+                    listener.OnMessageWithCode(80080, null);
+                    return;
+                }
+                
+                var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+                var code = SafeDictionary.GetValue<int>(dic, "messageCallbackCode");
+                var json = SafeDictionary.GetValue<string>(dic, "wrapper");
+                if (!string.IsNullOrEmpty(json))
+                {
+                    var message = Json.Deserialize(json) as Dictionary<string, object>;
+                    listener.OnMessageWithCode(code, message);
+                }
+                else
+                {
+                    listener.OnMessageWithCode(code, null);
+                }
             });
         }
 

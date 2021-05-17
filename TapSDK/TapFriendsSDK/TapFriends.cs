@@ -34,5 +34,25 @@ namespace TapTap.Friends
         {
             TapFriendsImpl.GetInstance().GetBlockList(from, limit, action);
         }
+        
+        public static void SearchUser(string userId, Action<TapUserRelationShip, TapError> action)
+        {
+            TapFriendsImpl.GetInstance().SearchUser(userId, action);
+        }
+
+        public static void GenerateFriendInvitation(Action<string, TapError> action)
+        {
+            TapFriendsImpl.GetInstance().GenerateFriendInvitation(action);
+        }
+
+        public static void SendFriendInvitation(Action<bool, TapError> action)
+        {
+            TapFriendsImpl.GetInstance().SendFriendInvitation(action);
+        }
+        
+        public static void RegisterMessageListener(ITapMessageListener listener)
+        {
+            TapFriendsImpl.GetInstance().RegisterMessageListener(listener);
+        }
     }
 }
