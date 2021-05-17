@@ -51,19 +51,18 @@ TapFriends.UnblockUser(string userId, Action<TapError> action);
 
 ### 搜索好友
 ```c#
-
+TapFriends.SearchUser(string userId, Action<TapUserRelationShip, TapError> action);
 ```
 ### 获取好友邀请链接
 ```c#
-
+TapFriends.GenerateFriendInvitation(Action<string, TapError> action);
 ```
 ### 分享好友邀请
-
 ```c#
-
+TapFriends.SendFriendInvitation(Action<bool, TapError> action);
 ```
 ### 注册消息回调接口
 ```c#
-
+TapFriends.RegisterMessageListener(ITapMessageListener listener);
 ```
 

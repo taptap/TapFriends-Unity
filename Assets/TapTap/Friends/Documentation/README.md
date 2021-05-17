@@ -2,7 +2,7 @@
 
 ## 使用前提
 
-使用TapFriends的前提是必须添加以下依赖库:
+使用 TapTap.Friends 前提是必须依赖以下库:
 * [TapTap.Bootstrap](https://github.com/TapTap/TapBootstrap-Unity.git)
 * [TapTap.Common](https://github.com/TapTap/TapCommon-Unity.git)
 
@@ -47,5 +47,22 @@ TapFriends.GetBlockList(int from, int limit, Action<List<TapUserRelationShip>, T
 ### 解除黑名单
 ```c#
 TapFriends.UnblockUser(string userId, Action<TapError> action);
+```
+
+### 搜索好友
+```c#
+TapFriends.SearchUser(string userId, Action<TapUserRelationShip, TapError> action);
+```
+### 获取好友邀请链接
+```c#
+TapFriends.GenerateFriendInvitation(Action<string, TapError> action);
+```
+### 分享好友邀请
+```c#
+TapFriends.SendFriendInvitation(Action<bool, TapError> action);
+```
+### 注册消息回调接口
+```c#
+TapFriends.RegisterMessageListener(ITapMessageListener listener);
 ```
 
