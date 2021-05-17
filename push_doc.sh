@@ -12,7 +12,7 @@ git remote rm doc
 
 git remote add doc git@github.com:TapTap/TapSDK-Unity.git
 
-git checkout gh-pages -force
+git checkout gh-pages --force
 
 git push doc gh-pages --force
 
