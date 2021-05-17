@@ -698,10 +698,6 @@
       <Project>{AD7390AA-B0A3-CC24-14B7-B5AFA956416A}</Project>
       <Name>TapTap.Login.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="TapTap.FriendsUI.Editor.csproj">
-      <Project>{CE1BFAD5-74B6-F3C0-4017-9DBCCBB60381}</Project>
-      <Name>TapTap.FriendsUI.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="TapTap.TapDB.Editor.csproj">
       <Project>{5765D10D-359B-E057-2F3A-AF5846471C9B}</Project>
       <Name>TapTap.TapDB.Editor</Name>
@@ -717,6 +713,10 @@
     <ProjectReference Include="TapTap.Bootstrap.Editor.csproj">
       <Project>{D9F4D7B4-D16D-AEBC-0157-A8702B6C61C3}</Project>
       <Name>TapTap.Bootstrap.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="TapTap.FriendsUI.Editor.csproj">
+      <Project>{CE1BFAD5-74B6-F3C0-4017-9DBCCBB60381}</Project>
+      <Name>TapTap.FriendsUI.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

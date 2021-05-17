@@ -106,7 +106,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
-                                         " relationship：" + relation.mutualAttention + "\n";
+                                         " relationship：" + relation.relationship + "\n";
                         } 
                     }
                     else
@@ -139,7 +139,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
-                                         " relationship：" + relation.mutualAttention + "\n";
+                                         " relationship：" + relation.relationship + "\n";
                         } 
                     }
                     else
@@ -172,7 +172,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
-                                         " relationship：" + relation.mutualAttention + "\n";
+                                         " relationship：" + relation.relationship + "\n";
                         } 
                     }
                     else
@@ -235,7 +235,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention + 
-                                         " relationship：" + relation.mutualAttention + "\n";
+                                         " relationship：" + relation.relationship + "\n";
                         }  
                     }
                     else
@@ -262,7 +262,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                  " avatar：" + relationShip.avatar +
                                  " gender：" + relationShip.gender +
                                  " mutualAttention：" + relationShip.mutualAttention +
-                                 " relationship：" + relationShip.mutualAttention + "\n";
+                                 " relationship：" + relationShip.relationship + "\n";
                 }
             });
         }
