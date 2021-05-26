@@ -104,6 +104,7 @@ namespace TapTap.Moment
 
         public void Open(Orientation orientation)
         {
+            InitOrientationSetting((int) orientation);
             EngineBridge.GetInstance().CallHandler(new Command.Builder()
                 .Service(SERVICE_NAME)
                 .Method("open")
