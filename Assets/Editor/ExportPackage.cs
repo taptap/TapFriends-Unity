@@ -27,7 +27,8 @@ namespace Editor
 
         static void PushUnityPackage()
         {
-            string[] moduleNames = {"Common", "Bootstrap", "Moment", "TapDB", "Login", "Friends","License"};
+            string[] moduleNames =
+                {"Common", "Bootstrap", "Moment", "TapDB", "Login", "Friends", "License", "FriendsUI"};
 
             foreach (var module in moduleNames)
             {
@@ -44,6 +45,7 @@ namespace Editor
                     return arg.Split('=')[1].Trim('"');
                 }
             }
+
             return "UnKnown";
         }
 
