@@ -2,6 +2,10 @@
 
 ## 2.1.3
 
+### BugFixs
+
+* 修复特殊场景下，好友可能会弹窗多次
+
 ### Dependencies
 
 - TapTap.Common v.2.1.3
