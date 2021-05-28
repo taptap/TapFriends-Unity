@@ -265,7 +265,7 @@ namespace TapTap.Bootstrap
         {
             var command = new Command.Builder()
                 .Service(TapBootstrapConstants.TAP_BOOTSTARP_SERVICE)
-                .Method("setPreferLanguage")
+                .Method("setPreferredLanguage")
                 .Args("preferredLanguage", (int) tapLanguage)
                 .CommandBuilder();
 
