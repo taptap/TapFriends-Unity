@@ -1,6 +1,16 @@
 # ChangeLog
 
-### 2.1.2
+## 2.1.3
+
+### BugFixs
+
+- Android 在部分刘海屏设备上判断失败导致UI可能被遮挡的问题
+
+### Dependencies
+
+- TapTap.Common v2.1.3
+
+## 2.1.2
 
 ### Dependencies
 
