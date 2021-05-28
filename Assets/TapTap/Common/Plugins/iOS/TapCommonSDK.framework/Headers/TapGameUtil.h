@@ -1,5 +1,5 @@
 //
-//  TDSGameUtil.h
+//  TapGameUtil.h
 //  TDSCommon
 //
 //  Created by Bottle K on 2021/2/2.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TDSGameUtil : NSObject
+@interface TapGameUtil : NSObject
 
 + (BOOL)isTapTapInstalled;
 

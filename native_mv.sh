@@ -4,7 +4,7 @@
 
 rootPath=$(cd `dirname $0`; pwd) 
 
-version=2.1.2
+version=$1
 
 module=("Bootstrap" "Common" "Moment" "FriendsUI" "Friends" "License" "Login"  "TapDB")
 
@@ -44,7 +44,7 @@ for ((i=0;i<${#module[@]};i++));do
     RemoveNativePackage ${module[$i]} 
     
     echo "Start to Copy ${module[$i]} binary"   
-
+  
     aar=Tap${module[$i]}_$version.aar
     bundle=Tap${module[$i]}Resource.bundle
     framework=Tap${module[$i]}SDK.framework
