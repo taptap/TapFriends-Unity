@@ -8,7 +8,7 @@ version=$1
 
 module=("Bootstrap" "Common" "Moment" "FriendsUI" "Friends" "License" "Login"  "TapDB")
 
-releaseAndroid=false
+releaseAndroid=true
 
 releaseIOS=true
 
