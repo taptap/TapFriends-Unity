@@ -9,32 +9,38 @@ namespace TapTap.Friends
         {
             TapFriendsImpl.GetInstance().AddFriend(userId, action);
         }
+
         public static void DeleteFriend(string userId, Action<TapError> action)
         {
             TapFriendsImpl.GetInstance().DeleteFriend(userId, action);
         }
+
         public static void BlockUser(string userId, Action<TapError> action)
         {
             TapFriendsImpl.GetInstance().BlockUser(userId, action);
         }
+
         public static void UnblockUser(string userId, Action<TapError> action)
         {
             TapFriendsImpl.GetInstance().UnblockUser(userId, action);
         }
+
         public static void GetFollowingList(int from, bool mutualAttention, int limit,
             Action<List<TapUserRelationShip>, TapError> action)
         {
             TapFriendsImpl.GetInstance().GetFollowingList(from, mutualAttention, limit, action);
         }
+
         public static void GetFollowerList(int from, int limit, Action<List<TapUserRelationShip>, TapError> action)
         {
             TapFriendsImpl.GetInstance().GetFollowerList(from, limit, action);
         }
+
         public static void GetBlockList(int from, int limit, Action<List<TapUserRelationShip>, TapError> action)
         {
             TapFriendsImpl.GetInstance().GetBlockList(from, limit, action);
         }
-        
+
         public static void SearchUser(string userId, Action<TapUserRelationShip, TapError> action)
         {
             TapFriendsImpl.GetInstance().SearchUser(userId, action);
@@ -49,10 +55,20 @@ namespace TapTap.Friends
         {
             TapFriendsImpl.GetInstance().SendFriendInvitation(action);
         }
-        
+
         public static void RegisterMessageListener(ITapMessageListener listener)
         {
             TapFriendsImpl.GetInstance().RegisterMessageListener(listener);
+        }
+
+        public static void SetRichPresence(string key, string value, Action<TapError> action)
+        {
+            TapFriendsImpl.GetInstance().SetRichPresence(key, value, action);
+        }
+
+        public static void ClearRichPresence(string key, Action<TapError> action)
+        {
+            TapFriendsImpl.GetInstance().ClearRichPresence(key, action);
         }
     }
 }
