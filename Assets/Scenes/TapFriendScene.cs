@@ -3,7 +3,6 @@ using TapTap.Friends;
 using System.Collections.Generic;
 using TapTap.Common;
 using JudgeDevice;
-using UnityEditor.PackageManager;
 
 public class TapFriendScene : MonoBehaviour, ITapMessageListener
 {
