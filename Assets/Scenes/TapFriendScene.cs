@@ -48,8 +48,9 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
         var labelStyle = new GUIStyle(GUI.skin.label);
         labelStyle.fontSize = 25;
         labelStyle.normal.textColor = new Color(255, 0, 0);
+        
         GUI.Label(
-            new Rect(Judge.IsIphoneXDevice ? 60 : 30, Judge.IsIphoneXDevice ? 1050 : 9 * space + lowHeiht, 500, 1300),
+            new Rect(Judge.IsIphoneXDevice ? 60 : 30, Judge.IsIphoneXDevice ? 1150 : 9 * space + lowHeiht, 500, 1300),
             label, labelStyle);
 
         GUIStyle inputStyle = new GUIStyle(GUI.skin.textArea);
@@ -66,12 +67,12 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             userId, inputStyle);
 
         richKey = GUI.TextArea(
-            new Rect(Judge.IsIphoneXDevice ? fx : 30, Judge.IsIphoneXDevice ? 860 : 7 * space,
+            new Rect(Judge.IsIphoneXDevice ? fx : 30, Judge.IsIphoneXDevice ? 960 : 7 * space,
                 Judge.IsIphoneXDevice ? 200 : 100, height),
             richKey, inputStyle);
 
         richValue = GUI.TextArea(
-            new Rect(Judge.IsIphoneXDevice ? 300 : 200, Judge.IsIphoneXDevice ? 860 : 7 * space,
+            new Rect(Judge.IsIphoneXDevice ? 300 : 200, Judge.IsIphoneXDevice ? 960 : 7 * space,
                 Judge.IsIphoneXDevice ? 200 : 100, height),
             richValue, inputStyle);
 
@@ -127,7 +128,9 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
-                                         " relationship：" + relation.relationship + "\n";
+                                         " relationship：" + relation.relationship +
+                                         " rich_presence" + Json.Serialize(relation.richPresence) + "\n"
+                                ;
                         }
                     }
                     else
@@ -160,7 +163,9 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
-                                         " relationship：" + relation.relationship + "\n";
+                                         " relationship：" + relation.relationship +
+                                         " rich_presence" + Json.Serialize(relation.richPresence) + "\n"
+                                ;
                         }
                     }
                     else
@@ -193,7 +198,9 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
-                                         " relationship：" + relation.relationship + "\n";
+                                         " relationship：" + relation.relationship +
+                                         " rich_presence" + Json.Serialize(relation.richPresence) + "\n"
+                                ;
                         }
                     }
                     else
@@ -258,7 +265,9 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
-                                         " relationship：" + relation.relationship + "\n";
+                                         " relationship：" + relation.relationship +
+                                         " rich_presence" + Json.Serialize(relation.richPresence) + "\n"
+                                ;
                         }
                     }
                     else
@@ -271,7 +280,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
 
         if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice ? 260 : space, 280, height), "搜索好友", style))
         {
-            TapFriends.SearchUser(userId, (relationShip, error) =>
+            TapFriends.SearchUser(userId, (relation, error) =>
             {
                 if (error != null)
                 {
@@ -280,12 +289,14 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                 else
                 {
                     label = "搜索用户成功";
-                    this.label = this.label + "userId：" + relationShip.userId +
-                                 " name：" + relationShip.name +
-                                 " avatar：" + relationShip.avatar +
-                                 " gender：" + relationShip.gender +
-                                 " mutualAttention：" + relationShip.mutualAttention +
-                                 " relationship：" + relationShip.relationship + "\n";
+                    this.label = this.label + "userId：" + relation.userId +
+                                 " name：" + relation.name +
+                                 " avatar：" + relation.avatar +
+                                 " gender：" + relation.gender +
+                                 " mutualAttention：" + relation.mutualAttention +
+                                 " relationship：" + relation.relationship +
+                                 " rich_presence" + Json.Serialize(relation.richPresence) + "\n"
+                        ;
                 }
             });
         }
@@ -327,7 +338,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         }
 
-        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice ? 960 : 8 * space, 280, height), "设置富信息你", style))
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice ? 1060 : 8 * space, 280, height), "设置富信息", style))
         {
             TapFriends.SetRichPresence(richKey, richKey, error =>
             {
@@ -342,7 +353,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             });
         }
 
-        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice ? 960 : 8 * space, 180, height), "取消富信息", style))
+        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice ? 1060 : 8 * space, 280, height), "取消富信息", style))
         {
             TapFriends.ClearRichPresence(richKey, error =>
             {
