@@ -49,7 +49,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
         labelStyle.fontSize = 25;
         labelStyle.normal.textColor = new Color(255, 0, 0);
         GUI.Label(
-            new Rect(Judge.IsIphoneXDevice ? 60 : 30, Judge.IsIphoneXDevice ? 950 : 6 * space + lowHeiht, 500, 1300),
+            new Rect(Judge.IsIphoneXDevice ? 60 : 30, Judge.IsIphoneXDevice ? 1050 : 9 * space + lowHeiht, 500, 1300),
             label, labelStyle);
 
         GUIStyle inputStyle = new GUIStyle(GUI.skin.textArea);
@@ -327,7 +327,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         }
 
-        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice ? 860 : 8 * space, 280, height), "设置富信息你", style))
+        if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice ? 960 : 8 * space, 280, height), "设置富信息你", style))
         {
             TapFriends.SetRichPresence(richKey, richKey, error =>
             {
@@ -342,7 +342,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
             });
         }
 
-        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice ? 860 : 8 * space, 180, height), "取消富信息", style))
+        if (GUI.Button(new Rect(sx, Judge.IsIphoneXDevice ? 960 : 8 * space, 180, height), "取消富信息", style))
         {
             TapFriends.ClearRichPresence(richKey, error =>
             {
