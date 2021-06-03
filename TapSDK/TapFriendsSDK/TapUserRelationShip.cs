@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using TapTap.Common;
 using UnityEngine;
 
@@ -32,8 +33,7 @@ namespace TapTap.Friends
             gender = SafeDictionary.GetValue<long>(dic, "gender");
             mutualAttention = SafeDictionary.GetValue<bool>(dic, "mutualAttention");
             relationship = SafeDictionary.GetValue<string>(dic, "relationship");
-            string richStr = SafeDictionary.GetValue<string>(dic, "rich_presence");
-            richPresence = Json.Serialize(richStr) as Dictionary<string, object>;
+            richPresence = Json.Serialize(SafeDictionary.GetValue<string>(dic, "richPresence")) as Dictionary<string, object>;
         }
 
         public string ToJson()
