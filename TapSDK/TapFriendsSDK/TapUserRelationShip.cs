@@ -18,7 +18,7 @@ namespace TapTap.Friends
 
         public string relationship;
 
-        public Dictionary<string, string> richPresence;
+        public Dictionary<string, object> richPresence;
 
         public TapUserRelationShip()
         {
@@ -32,7 +32,8 @@ namespace TapTap.Friends
             gender = SafeDictionary.GetValue<long>(dic, "gender");
             mutualAttention = SafeDictionary.GetValue<bool>(dic, "mutualAttention");
             relationship = SafeDictionary.GetValue<string>(dic, "relationship");
-            richPresence = SafeDictionary.GetValue<Dictionary<string, string>>(dic, "rich_presence");
+            string richStr = SafeDictionary.GetValue<string>(dic, "rich_presence");
+            richPresence = Json.Serialize(richStr) as Dictionary<string, object>;
         }
 
         public string ToJson()
