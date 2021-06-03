@@ -129,7 +129,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
                                          " relationship：" + relation.relationship +
-                                         " rich_presence" + Json.Serialize(relation.richPresence) + "\n"
+                                         " rich_presence：" + Json.Serialize(relation.richPresence) + "\n"
                                 ;
                         }
                     }
@@ -164,7 +164,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
                                          " relationship：" + relation.relationship +
-                                         " rich_presence" + Json.Serialize(relation.richPresence) + "\n"
+                                         " rich_presence：" + Json.Serialize(relation.richPresence) + "\n"
                                 ;
                         }
                     }
@@ -199,7 +199,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
                                          " relationship：" + relation.relationship +
-                                         " rich_presence" + Json.Serialize(relation.richPresence) + "\n"
+                                         " rich_presence：" + Json.Serialize(relation.richPresence) + "\n"
                                 ;
                         }
                     }
@@ -266,7 +266,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
                                          " relationship：" + relation.relationship +
-                                         " rich_presence" + Json.Serialize(relation.richPresence) + "\n"
+                                         " rich_presence：" + Json.Serialize(relation.richPresence) + "\n"
                                 ;
                         }
                     }
@@ -295,7 +295,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                  " gender：" + relation.gender +
                                  " mutualAttention：" + relation.mutualAttention +
                                  " relationship：" + relation.relationship +
-                                 " rich_presence" + Json.Serialize(relation.richPresence) + "\n"
+                                 " rich_presence：" + Json.Serialize(relation.richPresence) + "\n"
                         ;
                 }
             });
