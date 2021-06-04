@@ -348,7 +348,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                 }
                 else
                 {
-                    labelStyle = "设置富信息成功";
+                    label = "设置富信息成功";
                 }
             });
         }
@@ -363,7 +363,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                 }
                 else
                 {
-                    labelStyle = "取消富信息成功";
+                    label = "取消富信息成功";
                 }
             });
         }
