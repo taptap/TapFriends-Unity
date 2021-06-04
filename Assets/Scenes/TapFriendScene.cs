@@ -340,7 +340,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
 
         if (GUI.Button(new Rect(fx, Judge.IsIphoneXDevice ? 1060 : 8 * space, 280, height), "设置富信息", style))
         {
-            TapFriends.SetRichPresence(richKey, richKey, error =>
+            TapFriends.SetRichPresence(richKey, richValue, error =>
             {
                 if (error != null)
                 {
