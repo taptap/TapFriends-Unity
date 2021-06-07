@@ -32,6 +32,13 @@ namespace TapTap.Friends
             gender = SafeDictionary.GetValue<long>(dic, "gender");
             mutualAttention = SafeDictionary.GetValue<bool>(dic, "mutualAttention");
             relationship = SafeDictionary.GetValue<string>(dic, "relationship");
+            var richPresenceJson = dic["richPresence"];
+            if (richPresenceJson is string json)
+            {
+                richPresence = Json.Deserialize(json) as Dictionary<string, object>;
+                return;
+            }
+
             richPresence = SafeDictionary.GetValue<Dictionary<string, object>>(dic, "richPresence");
         }
 
