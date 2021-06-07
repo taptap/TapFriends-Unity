@@ -266,10 +266,12 @@ namespace TapTap.Friends
                 }
 
                 var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+
                 var error = SafeDictionary.GetValue<string>(dic, "error");
                 if (string.IsNullOrEmpty(error))
                 {
                     var resultJson = SafeDictionary.GetValue<string>(dic, "result");
+                    Debug.Log("Parse relation:" + resultJson);
                     var resultDic = Json.Deserialize(resultJson) as Dictionary<string, object>;
                     var relationShip = new TapUserRelationShip(resultDic);
                     action(relationShip, null);
