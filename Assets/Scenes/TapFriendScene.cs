@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TapTap.Friends;
 using System.Collections.Generic;
+using System.Linq;
 using TapTap.Common;
 using JudgeDevice;
 
@@ -48,7 +49,7 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
         var labelStyle = new GUIStyle(GUI.skin.label);
         labelStyle.fontSize = 25;
         labelStyle.normal.textColor = new Color(255, 0, 0);
-        
+
         GUI.Label(
             new Rect(Judge.IsIphoneXDevice ? 60 : 30, Judge.IsIphoneXDevice ? 1150 : 9 * space + lowHeiht, 500, 1300),
             label, labelStyle);
@@ -123,13 +124,17 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                         label = "获取好友列表成功: ";
                         foreach (TapUserRelationShip relation in list)
                         {
+                            var richPresence = relation.richPresence.Aggregate("",
+                                (current, richEntry) =>
+                                    current + ("key:" + richEntry.Key + " value:" + (string) richEntry.Value + "\n"));
+
                             this.label = this.label + "userId：" + relation.userId +
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
                                          " relationship：" + relation.relationship +
-                                         " rich_presence：" + Json.Serialize(relation.richPresence) + "\n"
+                                         " rich_presence:" + richPresence
                                 ;
                         }
                     }
@@ -158,13 +163,17 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                         this.label = "获取互关好友列表成功: ";
                         foreach (TapUserRelationShip relation in list)
                         {
+                            var richPresence = relation.richPresence.Aggregate("",
+                                (current, richEntry) =>
+                                    current + ("key:" + richEntry.Key + " value:" + (string) richEntry.Value + "\n"));
+
                             this.label = this.label + "userId：" + relation.userId +
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
                                          " relationship：" + relation.relationship +
-                                         " rich_presence：" + Json.Serialize(relation.richPresence) + "\n"
+                                         " rich_presence:" + richPresence
                                 ;
                         }
                     }
@@ -193,13 +202,17 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                         this.label = "获取粉丝列表成功: ";
                         foreach (TapUserRelationShip relation in list)
                         {
+                            var richPresence = relation.richPresence.Aggregate("",
+                                (current, richEntry) =>
+                                    current + ("key:" + richEntry.Key + " value:" + (string) richEntry.Value + "\n"));
+
                             this.label = this.label + "userId：" + relation.userId +
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
                                          " relationship：" + relation.relationship +
-                                         " rich_presence：" + Json.Serialize(relation.richPresence) + "\n"
+                                         " rich_presence:" + richPresence
                                 ;
                         }
                     }
@@ -260,13 +273,17 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                         label = "获取拉黑列表成功";
                         foreach (TapUserRelationShip relation in list)
                         {
+                            var richPresence = relation.richPresence.Aggregate("",
+                                (current, richEntry) =>
+                                    current + ("key:" + richEntry.Key + " value:" + (string) richEntry.Value + "\n"));
+
                             this.label = this.label + "userId：" + relation.userId +
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
                                          " relationship：" + relation.relationship +
-                                         " rich_presence：" + Json.Serialize(relation.richPresence) + "\n"
+                                         " rich_presence:" + richPresence
                                 ;
                         }
                     }
@@ -289,13 +306,17 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                 else
                 {
                     label = "搜索用户成功";
+                    var richPresence = relation.richPresence.Aggregate("",
+                        (current, richEntry) =>
+                            current + ("key:" + richEntry.Key + " value:" + (string) richEntry.Value + "\n"));
+
                     this.label = this.label + "userId：" + relation.userId +
                                  " name：" + relation.name +
                                  " avatar：" + relation.avatar +
                                  " gender：" + relation.gender +
                                  " mutualAttention：" + relation.mutualAttention +
                                  " relationship：" + relation.relationship +
-                                 " rich_presence：" + Json.Serialize(relation.richPresence) + "\n"
+                                 " rich_presence:" + richPresence
                         ;
                 }
             });
