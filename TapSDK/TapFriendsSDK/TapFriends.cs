@@ -71,4 +71,12 @@ namespace TapTap.Friends
             TapFriendsImpl.GetInstance().ClearRichPresence(key, action);
         }
     }
+
+    public static class TapFriendsUtil
+    {
+        
+        
+        
+    }
+    
 }

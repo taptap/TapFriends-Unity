@@ -25,6 +25,53 @@ namespace TapTap.Friends
 
         public Dictionary<string, object> richPresence;
 
+        public bool IsFollowed()
+        {
+            if (string.IsNullOrEmpty(relationship))
+            {
+                return false;
+            }
+
+            if (relationship.Length<1)
+            {
+                return false;
+            }
+            int index = relationship.Length - 1;
+            return relationship.ToCharArray()[index] == '1';
+        }
+
+        public bool IsFollower()
+        {
+            if (string.IsNullOrEmpty(relationship))
+            {
+                return false;
+            }
+
+            if (relationship.Length<2)
+            {
+                return false;
+            }
+
+            int index = relationship.Length - 2;
+            return relationship.ToCharArray()[index] == '1';
+        }
+
+        public bool IsBlocked()
+        {
+            if (string.IsNullOrEmpty(relationship))
+            {
+                return false;
+            }
+
+            if (relationship.Length<3)
+            {
+                return false;
+            }
+
+            int index = relationship.Length - 3;
+            return relationship.ToCharArray()[index] == '1';
+        }
+        
         public TapUserRelationShip()
         {
         }
