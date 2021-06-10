@@ -15,7 +15,6 @@
 
 1. 创建 TDS-Info.plist [配置文件](./CONFIG.md)。
 
-
 2. 打开 Unity 项目的 Project 窗口，然后在配置文件移到 **Assets/Plugins/iOS/Resource** 文件夹中。
 
 ## **第二步:** 添加 TapSDK
@@ -33,7 +32,9 @@
         * TapTap_TapDB.unitypackage ：TapDB 数据统计
         * TapTap_Friends.unitypackage: TapFriends 好友系统
         * TapTap_License.unitypackage: TapLicense DLC 购买认证
-
+    
+> 注意事项:
+> 如果导入 TapTap.Common 或者 TapTap.TapDB 时出现了 「Multiple precompiled assemblies with the same name TapTap.Common.dll included or the current platform」 类似的错误，需要手动对 TapTap.Common.dll 以及 TapTap.TapDB.dll 设置支持平台。
 
 2.  使用 Unity Package Manager 导入 TapSDK。
 
