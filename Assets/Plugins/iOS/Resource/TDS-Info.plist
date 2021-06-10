@@ -17,7 +17,7 @@
         <string>App需要追踪你的信息</string>
         
         <key>isRND</key>
-        <true/>
+        <false/>
     </dict>
 </plist>
 
