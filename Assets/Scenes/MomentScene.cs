@@ -6,10 +6,14 @@ using UnityEngine;
 public class MomentScene : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    private string label = "";
+
     void Start()
     {
         TapMoment.SetCallback((code, msg) =>
         {
+            label = "---- moment 回调  code: " + code + " msg: " + msg + "----";
             Debug.Log("---- moment 回调  code: " + code + " msg: " + msg + "----");
             if (code == 20100)
             {
@@ -30,6 +34,7 @@ public class MomentScene : MonoBehaviour
 
     private string userId = "7KfeZgtnLAZvJG8JZUnYVw==";
 
+
     private void OnGUI()
     {
         GUIStyle style = new GUIStyle(GUI.skin.button);
@@ -41,6 +46,13 @@ public class MomentScene : MonoBehaviour
         sceneId = GUI.TextArea(new Rect(60, 450, 250, 100), sceneId, inputStyle);
 
         userId = GUI.TextArea(new Rect(60, 600, 250, 100), sceneId, inputStyle);
+
+        var labelStyle = new GUIStyle(GUI.skin.label)
+        {
+            fontSize = 20
+        };
+
+        GUI.Label(new Rect(400, 100, 400, 300), label, labelStyle);
 
         GUI.depth = 0;
 

@@ -18,13 +18,13 @@ isTapTapRepo=true
 function pushGithub(){  
   
   git tag -d $(git tag)
-  
+
   git branch -D main
-  
+
   git subtree split --prefix=Assets/TapTap/$1 --branch main
-  
+
   git remote rm $2
-  
+
   if [ $5 == true ]; then
       echo "Start Push $2 to git@github.com:TapTap/$4-Unity.git"
       git remote add $2 git@github.com:TapTap/$4-Unity.git 
@@ -32,16 +32,20 @@ function pushGithub(){
       echo "Start Push $2 to git@github.com:EingShaw/$4.git"
       git remote add $2 git@github.com:EingShaw/$4.git
   fi;
-  
+
   git checkout main --force
-  
+
   git tag $3
-  
+
   git fetch --unshallow main
-  
+
   git push $2 main --force --tags
-  
+
   git checkout $currentBranch --force
+
+  gh release create $3 TapSDK-UnityPackage/TapTap_$1_$3.unitypackage -t $3 -F ./Assets/TapTap/$1/VERSIONNOTE.md -d -R https://github.com/TapTap/$4-Unity
+  
+  return 0
 }
 
 for ((i=0;i<${#var[@]};i++));do

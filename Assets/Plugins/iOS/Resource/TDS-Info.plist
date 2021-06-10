@@ -15,6 +15,9 @@
         <string>App需要您的同意,才能访问麦克风</string>
         <key>NSUserTrackingUsageDescription</key>
         <string>App需要追踪你的信息</string>
+        
+        <key>isRND</key>
+        <false/>
     </dict>
 </plist>
 

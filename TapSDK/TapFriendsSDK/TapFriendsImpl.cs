@@ -170,12 +170,13 @@ namespace TapTap.Friends
                 var wrapper = new TapGetFollowingListWrapper(result.content);
                 if (wrapper.getFollowingListCode == 0)
                 {
-                    TapFriendRelationWrapper relationWrapper = new TapFriendRelationWrapper((List<object>)wrapper.wrapper);
+                    TapFriendRelationWrapper relationWrapper =
+                        new TapFriendRelationWrapper((List<object>) wrapper.wrapper);
                     action(relationWrapper.wrapper, null);
                     return;
                 }
 
-                action(null, TapError.SafeConstrucTapError((string)wrapper.wrapper));
+                action(null, TapError.SafeConstrucTapError((string) wrapper.wrapper));
             });
         }
 
@@ -202,12 +203,13 @@ namespace TapTap.Friends
                 var wrapper = new TapGetFollowerListWrapper(result.content);
                 if (wrapper.getFollowerListCode == 0)
                 {
-                    TapFriendRelationWrapper relationWrapper = new TapFriendRelationWrapper((List<object>)wrapper.wrapper);
+                    TapFriendRelationWrapper relationWrapper =
+                        new TapFriendRelationWrapper((List<object>) wrapper.wrapper);
                     action(relationWrapper.wrapper, null);
                     return;
                 }
 
-                action(null, TapError.SafeConstrucTapError((string)wrapper.wrapper));
+                action(null, TapError.SafeConstrucTapError((string) wrapper.wrapper));
             });
         }
 
@@ -234,12 +236,13 @@ namespace TapTap.Friends
                 var wrapper = new TapGetBlockListWrapper(result.content);
                 if (wrapper.getBlockListCode == 0)
                 {
-                    TapFriendRelationWrapper relationWrapper = new TapFriendRelationWrapper((List<object>)wrapper.wrapper);
+                    TapFriendRelationWrapper relationWrapper =
+                        new TapFriendRelationWrapper((List<object>) wrapper.wrapper);
                     action(relationWrapper.wrapper, null);
                     return;
                 }
 
-                action(null, TapError.SafeConstrucTapError((string)wrapper.wrapper));
+                action(null, TapError.SafeConstrucTapError((string) wrapper.wrapper));
             });
         }
 
@@ -261,12 +264,14 @@ namespace TapTap.Friends
                             errorDescription: "TapSDK searchUser Error!"));
                     return;
                 }
-                
+
                 var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+
                 var error = SafeDictionary.GetValue<string>(dic, "error");
                 if (string.IsNullOrEmpty(error))
                 {
                     var resultJson = SafeDictionary.GetValue<string>(dic, "result");
+                    Debug.Log("Parse relation:" + resultJson);
                     var resultDic = Json.Deserialize(resultJson) as Dictionary<string, object>;
                     var relationShip = new TapUserRelationShip(resultDic);
                     action(relationShip, null);
@@ -295,7 +300,7 @@ namespace TapTap.Friends
                             errorDescription: "TapSDK generateFriendInvitation Error!"));
                     return;
                 }
-                
+
                 var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
                 var error = SafeDictionary.GetValue<string>(dic, "error");
                 if (string.IsNullOrEmpty(error))
@@ -327,7 +332,7 @@ namespace TapTap.Friends
                             errorDescription: "TapSDK sendFriendInvitation Error!"));
                     return;
                 }
-                
+
                 var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
                 var error = SafeDictionary.GetValue<string>(dic, "error");
                 if (string.IsNullOrEmpty(error))
@@ -357,7 +362,7 @@ namespace TapTap.Friends
                     listener.OnMessageWithCode(80080, null);
                     return;
                 }
-                
+
                 var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
                 var code = SafeDictionary.GetValue<int>(dic, "messageCallbackCode");
                 var json = SafeDictionary.GetValue<string>(dic, "wrapper");
@@ -372,6 +377,73 @@ namespace TapTap.Friends
                 }
             });
         }
+
+
+        public void SetRichPresence(string key, string value, Action<TapError> action)
+        {
+            var command = new Command.Builder()
+                .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
+                .Method("setRichPresence")
+                .Args("setRichPresence", key)
+                .Args("value", value)
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+
+            EngineBridge.GetInstance().CallHandler(command, result =>
+            {
+                if (!CheckResultLegal(result))
+                {
+                    action(
+                        new TapError(code: 80080,
+                            errorDescription: "TapSDK SetRichPresence Error!"));
+                    return;
+                }
+
+                var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+
+                if (SafeDictionary.GetValue<int>(dic, "success") == 1)
+                {
+                    action(null);
+                    return;
+                }
+
+                action(new TapError(SafeDictionary.GetValue<string>(dic, "error")));
+            });
+        }
+
+        public void ClearRichPresence(string key, Action<TapError> action)
+        {
+            var command = new Command.Builder()
+                .Service(TapFriendsConstants.TAP_FRIENDS_SERVICE)
+                .Method("clearRichPresence")
+                .Args("clearRichPresence", key)
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+
+            EngineBridge.GetInstance().CallHandler(command, result =>
+            {
+                if (!CheckResultLegal(result))
+                {
+                    action(
+                        new TapError(code: 80080,
+                            errorDescription: "TapSDK ClearRichPresence Error!"));
+                    return;
+                }
+
+                var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+
+                if (SafeDictionary.GetValue<int>(dic, "success") == 1)
+                {
+                    action(null);
+                    return;
+                }
+
+                action(new TapError(SafeDictionary.GetValue<string>(dic, "error")));
+            });
+        }
+
 
         private bool CheckResultLegal(Result result)
         {
