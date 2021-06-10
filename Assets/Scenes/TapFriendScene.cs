@@ -133,6 +133,8 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
                                          " mutualAttention：" + relation.mutualAttention +
+                                         " onLine：" + relation.online +
+                                         " time：" + relation.time +
                                          " relationship：" + relation.relationship +
                                          " rich_presence:" + richPresence
                                 ;
@@ -171,6 +173,8 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
+                                         " onLine：" + relation.online +
+                                         " time：" + relation.time +
                                          " mutualAttention：" + relation.mutualAttention +
                                          " relationship：" + relation.relationship +
                                          " rich_presence:" + richPresence
@@ -210,6 +214,8 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
+                                         " onLine：" + relation.online +
+                                         " time：" + relation.time +
                                          " mutualAttention：" + relation.mutualAttention +
                                          " relationship：" + relation.relationship +
                                          " rich_presence:" + richPresence
@@ -281,6 +287,8 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                          " name：" + relation.name +
                                          " avatar：" + relation.avatar +
                                          " gender：" + relation.gender +
+                                         " onLine：" + relation.online +
+                                         " time：" + relation.time +
                                          " mutualAttention：" + relation.mutualAttention +
                                          " relationship：" + relation.relationship +
                                          " rich_presence:" + richPresence
@@ -316,6 +324,8 @@ public class TapFriendScene : MonoBehaviour, ITapMessageListener
                                  " gender：" + relation.gender +
                                  " mutualAttention：" + relation.mutualAttention +
                                  " relationship：" + relation.relationship +
+                                 " onLine：" + relation.online +
+                                 " time：" + relation.time +
                                  " rich_presence:" + richPresence
                         ;
                 }
