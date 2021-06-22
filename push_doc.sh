@@ -1,6 +1,6 @@
 #!/bin/sh
 # 生成 Doc 文档
-doxygen Doxyfile   
+#doxygen Doxyfile   
 
 currentBranch=$(git symbolic-ref --short -q HEAD)
 
