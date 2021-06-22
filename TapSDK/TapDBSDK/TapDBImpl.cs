@@ -208,6 +208,17 @@ namespace TapTap.TapDB
                 .CommandBuilder());
         }
 
+        public void CloseFetchTapTapDeviceId()
+        {
+            if (Platform.IsAndroid())
+            {
+                EngineBridge.GetInstance().CallHandler(new Command.Builder()
+                    .Service(TapDBConstants.TAPDB_SERVICE)
+                    .Method("closeFetchTapTapDeviceId")
+                    .CommandBuilder());
+            }
+        }
+
 
         public void AdvertiserIDCollectionEnabled(bool enable)
         {

@@ -109,7 +109,11 @@ namespace TapTap.TapDB
         {
             TapDBImpl.GetInstance().AdvertiserIDCollectionEnabled(enable);
         }
-        
+
+        public static void CloseFetchTapTapDeviceId()
+        {
+            TapDBImpl.GetInstance().CloseFetchTapTapDeviceId();
+        }
         public static void ClearUser()
         {
             TapDBImpl.GetInstance().ClearUser();
