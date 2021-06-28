@@ -49,7 +49,9 @@ namespace TapTap.TapDB
         void AdvertiserIDCollectionEnabled(bool enable);
         
         void ClearUser();
-        
+
+        void CloseFetchTapTapDeviceId();
+
     }
 
     public interface IDynamicProperties

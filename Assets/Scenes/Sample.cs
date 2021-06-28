@@ -75,8 +75,10 @@ public class Sample : MonoBehaviour
         if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice ? 100 : 0, 280, 100), "RND-IO", style))
         {
             var config = new TapConfig.Builder()
-                .ClientID("uZ8Yy6cSXVOR6AMRPj")
-                .ClientSecret("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
+                // .ClientID("uZ8Yy6cSXVOR6AMRPj")
+                .ClientID("UBm5x5JP7ZGEgRsXY5")
+                // .ClientSecret("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
+                .ClientSecret("hlPXHzw2XHpATDxGD8FD1Rtwu0iFOBfuGY2XFXR5")
                 .RegionType(RegionType.IO)
                 .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
                 .ConfigBuilder();
