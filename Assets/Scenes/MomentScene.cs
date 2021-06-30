@@ -83,4 +83,18 @@ public class MomentScene : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         }
     }
+
+    private void OnApplicationPause(bool focus)
+    {
+        //进入程序状态更改为前台
+        if (focus)
+        {
+
+        }
+        else
+        {
+            TapMoment.Close();
+            //离开程序进入到后台状态
+        }
+    }
 }

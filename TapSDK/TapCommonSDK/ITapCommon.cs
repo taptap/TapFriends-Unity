@@ -19,7 +19,8 @@ namespace TapTap.Common
 
         void OpenReviewInTapTap(string appId, Action<bool> callback);
 
-        void openReviewInTapGlobal(string appId, Action<bool> callback);
+        void OpenReviewInTapGlobal(string appId, Action<bool> callback);
+        
     }
     
     [Serializable]
@@ -34,4 +35,5 @@ namespace TapTap.Common
         }
 
     }
+    
 }
