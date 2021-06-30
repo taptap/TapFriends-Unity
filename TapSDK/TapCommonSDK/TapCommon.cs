@@ -43,5 +43,10 @@ namespace TapTap.Common
         {
             TapCommonImpl.GetInstance().OpenReviewInTapGlobal(appId, callback);
         }
+
+        public static void SetXua()
+        {
+            TapCommonImpl.GetInstance().SetXua();
+        }
     }
 }

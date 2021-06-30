@@ -18,10 +18,9 @@ namespace TapTap.Common
         {
             EngineBridge.GetInstance().Register("com.tds.common.wrapper.TDSCommonService",
                 "com.tds.common.wrapper.TDSCommonServiceImpl");
-            SetXua();
         }
 
-        private static void SetXua()
+        public void SetXua()
         {
             var xua = new Dictionary<string, string>
             {

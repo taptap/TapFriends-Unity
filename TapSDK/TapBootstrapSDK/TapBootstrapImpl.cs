@@ -36,8 +36,10 @@ namespace TapTap.Bootstrap
                 .Method("initWithConfig")
                 .Args("initWithConfig", config.ToJson())
                 .CommandBuilder();
-
+            
             EngineBridge.GetInstance().CallHandler(command);
+
+            TapCommon.SetXua();
         }
 
         public void Login(LoginType loginType, string[] permissions)
