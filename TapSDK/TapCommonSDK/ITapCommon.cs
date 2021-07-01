@@ -8,7 +8,7 @@ namespace TapTap.Common
         void SetLanguage(string language);
 
         void GetRegionCode(Action<bool> callback);
-        
+
         void IsTapTapInstalled(Action<bool> callback);
 
         void IsTapTapGlobalInstalled(Action<bool> callback);
@@ -19,9 +19,11 @@ namespace TapTap.Common
 
         void OpenReviewInTapTap(string appId, Action<bool> callback);
 
-        void openReviewInTapGlobal(string appId, Action<bool> callback);
+        void OpenReviewInTapGlobal(string appId, Action<bool> callback);
+
+        void SetXua();
     }
-    
+
     [Serializable]
     public class CommonRegionWrapper
     {
@@ -29,9 +31,8 @@ namespace TapTap.Common
 
         public CommonRegionWrapper(string json)
         {
-            Dictionary<string,object> dic = Json.Deserialize(json) as Dictionary<string,object>;
-            this.isMainland = SafeDictionary.GetValue<bool>(dic,"isMainland");
+            Dictionary<string, object> dic = Json.Deserialize(json) as Dictionary<string, object>;
+            this.isMainland = SafeDictionary.GetValue<bool>(dic, "isMainland");
         }
-
     }
 }

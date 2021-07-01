@@ -4,7 +4,7 @@ using UnityEngine;
 using TapTap.License;
 using TapTap.Common;
 
-public class CommonScene : MonoBehaviour,ITapDlcCallback,ITapLicenseCallback
+public class CommonScene : MonoBehaviour, ITapDlcCallback, ITapLicenseCallback
 {
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,6 @@ public class CommonScene : MonoBehaviour,ITapDlcCallback,ITapLicenseCallback
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void OnLicenseSuccess()
@@ -32,6 +31,7 @@ public class CommonScene : MonoBehaviour,ITapDlcCallback,ITapLicenseCallback
         {
             txt = txt + " key:" + item.Key + " value:" + item.Value;
         }
+
         label = txt;
     }
 
@@ -45,8 +45,9 @@ public class CommonScene : MonoBehaviour,ITapDlcCallback,ITapLicenseCallback
     private string purchaseText = "28";
 
     private string appID = "7133";
-    
+
     private string label;
+
     private void OnGUI()
     {
         GUIStyle style = new GUIStyle(GUI.skin.button);
@@ -55,9 +56,9 @@ public class CommonScene : MonoBehaviour,ITapDlcCallback,ITapLicenseCallback
         GUIStyle inputStyle = new GUIStyle(GUI.skin.textArea);
         inputStyle.fontSize = 35;
         text = GUI.TextArea(new Rect(60, 140, 400, 80), text, inputStyle);
-        
+
         purchaseText = GUI.TextArea(new Rect(500, 140, 360, 80), purchaseText, inputStyle);
-        
+
         var labelStyle = new GUIStyle(GUI.skin.label)
         {
             fontSize = 30
@@ -82,50 +83,33 @@ public class CommonScene : MonoBehaviour,ITapDlcCallback,ITapLicenseCallback
 
         if (GUI.Button(new Rect(60, 380, 300, 80), "是否安装Tap", style))
         {
-            TapCommon.IsTapTapInstalled((isInstalled) =>
-            {
-                label = isInstalled ? "安装TapTap登录" : "未安装TapTap登录";
-            });
+            TapCommon.IsTapTapInstalled((isInstalled) => { label = isInstalled ? "安装TapTap登录" : "未安装TapTap登录"; });
         }
 
         if (GUI.Button(new Rect(410, 380, 400, 80), "是否安装Tap国际版", style))
         {
-            TapCommon.IsTapTapGlobalInstalled((isInstalled) =>
-            {
-                label = isInstalled ? "安装Tap国际版" : "未安装Tap国际版";
-            });
+            TapCommon.IsTapTapGlobalInstalled((isInstalled) => { label = isInstalled ? "安装Tap国际版" : "未安装Tap国际版"; });
         }
 
         if (GUI.Button(new Rect(60, 500, 300, 80), "Tap中更新游戏", style))
         {
-            TapCommon.UpdateGameInTapTap(appID, (isUpdate) =>
-            {
-                label = isUpdate ? "在Tap中更新游戏" : "未在Tap中更新游戏";
-            });
+            TapCommon.UpdateGameInTapTap(appID, (isUpdate) => { label = isUpdate ? "在Tap中更新游戏" : "未在Tap中更新游戏"; });
         }
 
         if (GUI.Button(new Rect(410, 500, 430, 80), "Tap国际版中更新游戏", style))
         {
-            TapCommon.UpdateGameInTapGlobal(appID, (isUpdate) =>
-            {
-                label = isUpdate ? "在国际版Tap中更新游戏" : "未在国际版Tap中更新游戏";
-            });
+            TapCommon.UpdateGameInTapGlobal(appID,
+                (isUpdate) => { label = isUpdate ? "在国际版Tap中更新游戏" : "未在国际版Tap中更新游戏"; });
         }
 
         if (GUI.Button(new Rect(60, 620, 300, 80), "Tap中打开页面", style))
         {
-            TapCommon.OpenReviewInTapTap(appID, (isOpen) =>
-            {
-                label = isOpen ? "在Tap中打开页面" : "未在Tap中打开页面";
-            });
+            TapCommon.OpenReviewInTapTap(appID, (isOpen) => { label = isOpen ? "在Tap中打开页面" : "未在Tap中打开页面"; });
         }
 
         if (GUI.Button(new Rect(410, 620, 430, 80), "Tap国际版中打开页面", style))
         {
-            TapCommon.openReviewInTapGlobal(appID, (isOpen) =>
-            {
-                label = isOpen ? "在国际版Tap中打开页面" : "未在国际版Tap中打开页面";
-            });
+            TapCommon.OpenReviewInTapGlobal(appID, (isOpen) => { label = isOpen ? "在国际版Tap中打开页面" : "未在国际版Tap中打开页面"; });
         }
 
         //待定
@@ -143,31 +127,3 @@ public class CommonScene : MonoBehaviour,ITapDlcCallback,ITapLicenseCallback
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

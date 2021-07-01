@@ -6,7 +6,7 @@
             <key>client_id</key>
             <string>uZ8Yy6cSXVOR6AMRPj</string>
         </dict>
-        
+
         <key>NSPhotoLibraryUsageDescription</key>
         <string>App需要您的同意,才能访问相册</string>
         <key>NSCameraUsageDescription</key>
@@ -15,7 +15,7 @@
         <string>App需要您的同意,才能访问麦克风</string>
         <key>NSUserTrackingUsageDescription</key>
         <string>App需要追踪你的信息</string>
-        
+
         <key>isRND</key>
         <false/>
     </dict>

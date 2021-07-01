@@ -31,12 +31,14 @@ namespace TapTap.Bootstrap
 
         public void Init(TapConfig config)
         {
+            TapCommon.SetXua();
+
             var command = new Command.Builder()
                 .Service(TapBootstrapConstants.TAP_BOOTSTARP_SERVICE)
                 .Method("initWithConfig")
                 .Args("initWithConfig", config.ToJson())
                 .CommandBuilder();
-
+            
             EngineBridge.GetInstance().CallHandler(command);
         }
 

@@ -20,6 +20,20 @@ namespace TapTap.Common
                 "com.tds.common.wrapper.TDSCommonServiceImpl");
         }
 
+        public void SetXua()
+        {
+            var xua = new Dictionary<string, string>
+            {
+                {Constants.VersionKey, System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()},
+                {Constants.PlatformKey, "Unity"}
+            };
+            var command = new Command.Builder()
+                .Service(TAP_COMMON_SERVICE)
+                .Method("setXUA")
+                .Args("setXUA", Json.Serialize(xua)).CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command);
+        }
+
         public void SetLanguage(string language)
         {
             var dic = new Dictionary<string, object> {{"language", language}};
@@ -194,7 +208,7 @@ namespace TapTap.Common
             });
         }
 
-        public void openReviewInTapGlobal(string appId, Action<bool> callback)
+        public void OpenReviewInTapGlobal(string appId, Action<bool> callback)
         {
             var command = new Command.Builder()
                 .Service(TAP_COMMON_SERVICE)
