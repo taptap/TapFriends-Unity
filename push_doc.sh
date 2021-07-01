@@ -1,8 +1,14 @@
 #!/bin/sh
 # 生成 Doc 文档
-#doxygen Doxyfile   
+doxygen Doxyfile   
 
 currentBranch=$(git symbolic-ref --short -q HEAD)
+
+git add .
+
+git commit -m "feat:update api doc"
+
+git push origin $currentBranch
 
 git branch -D gh-pages
 
