@@ -1,5 +1,15 @@
 # ChangeLog
 
+## 2.1.6
+
+### Optimization and fixed bugs
+
+- 修复调用 [TapMoment close] 不生效的 bug
+
+### Dependencies
+
+- TapTap.Common v2.1.6
+
 ## 2.1.5
 
 ### New Feature
