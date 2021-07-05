@@ -2,7 +2,6 @@
 using TapTap.Bootstrap;
 using UnityEngine;
 using UnityEngine.UI;
-using TapTap.License;
 using TapTap.TapDB;
 using JudgeDevice;
 
@@ -152,8 +151,8 @@ public class Sample : MonoBehaviour
 
         if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice ? 850 : 715, 280, 100), "设置语言", style))
         {
-            var languageType = int.Parse(language);
-            TapBootstrap.SetPreferLanguage((TapLanguage) languageType);
+            // var languageType = int.Parse(language);
+            // TapBootstrap.SetPreferLanguage((TapLanguage) languageType);
         }
     }
 }

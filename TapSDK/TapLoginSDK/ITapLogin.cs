@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
+using JetBrains.Annotations;
+using TapTap.Common;
 
 namespace TapTap.Login
 {
@@ -6,9 +9,22 @@ namespace TapTap.Login
     {
         void ChangeConfig(bool roundCorner, bool isPortrait);
 
-        void GetProfile(Action<Profile> action);
+        Task<Profile> FetchProfile();
 
-        void GetAccessToken(Action<TapLoginToken> action);
+        Task<Profile> GetProfile();
+
+        Task<AccessToken> GetAccessToken();
+
+        Task<AccessToken> Login();
+    }
+
+    public interface ITapLoginResultListener
+    {
+        void LoginCancel();
+
+        void LoginError(TapError error);
+
+        void LoginSuccess(AccessToken token);
     }
 
     public static class TapLoginConstants

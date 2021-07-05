@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using TapTap.Common;
 using UnityEngine;
 
 namespace TapTap.Bootstrap
 {
+    [Obsolete("已弃用")]
     public class AccessToken
     {
         public string kid;
@@ -17,21 +19,20 @@ namespace TapTap.Bootstrap
         public string macKey;
 
         public long expireIn;
-        
+
         public AccessToken()
         {
-            
         }
 
         public AccessToken(string json)
         {
-            var dic = Json.Deserialize(json) as Dictionary<string,object>;
-            kid = SafeDictionary.GetValue<string>(dic,"kid");
-            accessToken = SafeDictionary.GetValue<string>(dic,"access_token");
-            macAlgorithm = SafeDictionary.GetValue<string>(dic,"mac_algorithm");
-            tokenType = SafeDictionary.GetValue<string>(dic,"token_type");
-            macKey = SafeDictionary.GetValue<string>(dic,"mac_key");
-            expireIn = SafeDictionary.GetValue<long>(dic,"expire_in");
+            var dic = Json.Deserialize(json) as Dictionary<string, object>;
+            kid = SafeDictionary.GetValue<string>(dic, "kid");
+            accessToken = SafeDictionary.GetValue<string>(dic, "access_token");
+            macAlgorithm = SafeDictionary.GetValue<string>(dic, "mac_algorithm");
+            tokenType = SafeDictionary.GetValue<string>(dic, "token_type");
+            macKey = SafeDictionary.GetValue<string>(dic, "mac_key");
+            expireIn = SafeDictionary.GetValue<long>(dic, "expire_in");
         }
 
         public string ToJSON()

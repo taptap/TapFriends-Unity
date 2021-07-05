@@ -15,17 +15,20 @@
         <Reference Include="TapTap.Common, Version=2.1.6.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\Assets\TapTap\Common\Plugins\TapTap.Common.dll</HintPath>
         </Reference>
+        <Reference Include="TapTap.Login, Version=2.1.6.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\Assets\TapTap\Login\Plugins\TapTap.Login.dll</HintPath>
+        </Reference>
         <Reference Include="UnityEngine">
           <HintPath>..\..\UnityLibs\UnityEngine.dll</HintPath>
         </Reference>
         <Reference Include="Storage.Unity">
-          <HintPath>..\..\LCLibs\Storage.Unity.dll</HintPath>
+          <HintPath>..\..\Assets\LCLibs\Storage.Unity.dll</HintPath>
         </Reference>
         <Reference Include="Storage">
-          <HintPath>..\..\LCLibs\Storage.dll</HintPath>
+          <HintPath>..\..\Assets\LCLibs\Storage.dll</HintPath>
         </Reference>
         <Reference Include="Common">
-          <HintPath>..\..\LCLibs\Common.dll</HintPath>
+          <HintPath>..\..\Assets\LCLibs\Common.dll</HintPath>
         </Reference>
     </ItemGroup>
 </Project>

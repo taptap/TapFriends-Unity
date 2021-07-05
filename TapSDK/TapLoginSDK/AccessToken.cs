@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TapTap.Login
 {
-    public class TapLoginToken
+    public class AccessToken
     {
         public string kid;
 
@@ -16,17 +16,17 @@ namespace TapTap.Login
 
         public string macAlgorithm;
 
-        public TapLoginToken(string json)
+        public AccessToken(string json)
         {
             var dic = Json.Deserialize(json) as Dictionary<string, object>;
-            this.kid = SafeDictionary.GetValue<string>(dic, "kid");
-            this.accessToken = SafeDictionary.GetValue<string>(dic, "access_token");
-            this.tokenType = SafeDictionary.GetValue<string>(dic, "token_type");
-            this.macKey = SafeDictionary.GetValue<string>(dic, "mac_key");
-            this.macAlgorithm = SafeDictionary.GetValue<string>(dic, "mac_algorithm");
+            kid = SafeDictionary.GetValue<string>(dic, "kid");
+            accessToken = SafeDictionary.GetValue<string>(dic, "access_token");
+            tokenType = SafeDictionary.GetValue<string>(dic, "token_type");
+            macKey = SafeDictionary.GetValue<string>(dic, "mac_key");
+            macAlgorithm = SafeDictionary.GetValue<string>(dic, "mac_algorithm");
         }
 
-        public TapLoginToken()
+        public AccessToken()
         {
             
         }

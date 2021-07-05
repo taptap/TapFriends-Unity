@@ -1,5 +1,6 @@
 namespace TapTap.Bootstrap
 {
+    
     public enum RegionType : int
     {
         CN = 0,

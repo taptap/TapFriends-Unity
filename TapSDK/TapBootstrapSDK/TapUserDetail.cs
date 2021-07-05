@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using TapTap.Common;
 using UnityEngine;
 
 namespace TapTap.Bootstrap
 {
+    [Obsolete("已弃用")]
     public class TapUserDetail
     {
         public string userId;

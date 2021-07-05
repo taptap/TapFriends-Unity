@@ -1,4 +1,4 @@
-namespace TapTap.Bootstrap
+namespace TapTap.Common
 {
     public enum TapLanguage
     {

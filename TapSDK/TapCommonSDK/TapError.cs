@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using TapTap.Common;
 
-namespace TapTap.Bootstrap
+namespace TapTap.Common
 {
     public class TapError
     {

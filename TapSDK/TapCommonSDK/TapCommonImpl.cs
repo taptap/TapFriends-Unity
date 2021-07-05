@@ -236,5 +236,10 @@ namespace TapTap.Common
                 callback(SafeDictionary.GetValue<bool>(dlc, "openReviewInTapGlobal"));
             });
         }
+
+        public void SetLanguage(TapLanguage language)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

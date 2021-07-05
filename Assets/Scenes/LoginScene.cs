@@ -1,15 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using TapTap.Bootstrap;
+using TapTap.Common;
 using TapTap.Login;
+using AccessToken = TapTap.Login.AccessToken;
 
-public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatusChangedListener
+public class LoginScene : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        TapBootstrap.RegisterLoginResultListener(this);
-        TapBootstrap.RegisterUserStatusChangedListener(this);
-
         TapLogin.ChangeConfig(true, true);
     }
 
@@ -20,7 +20,7 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
 
     public void OnLoginSuccess(AccessToken token)
     {
-        label = $"Login Success:{token.ToJSON()}";
+        label = $"Login Success:{token.ToJson()}";
     }
 
     public void OnLoginCancel()
@@ -30,38 +30,7 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
 
     public void OnLoginError(TapError error)
     {
-        if (error != null)
-        {
-            label = $"Login Error:{error.code} desc:{error.errorDescription}";
-        }
-        else
-        {
-            label = "Login Error";
-        }
-    }
-
-    public void OnLogout(TapError error)
-    {
-        if (error != null)
-        {
-            label = $"Logout:{error.code} desc:{error.errorDescription}";
-        }
-        else
-        {
-            label = "Logout";
-        }
-    }
-
-    public void OnBind(TapError error)
-    {
-        if (error != null)
-        {
-            label = $"Bind:{error.code} + desc:{error.errorDescription}";
-        }
-        else
-        {
-            label = $"Bind";
-        }
+        label = error != null ? $"Login Error:{error.code} desc:{error.errorDescription}" : "Login Error";
     }
 
     private string label;
@@ -81,20 +50,7 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
 
         if (GUI.Button(new Rect(60, 150, 180, 100), "登录", style))
         {
-            TapBootstrap.GetAccessToken((token, error) =>
-            {
-                if (token != null)
-                {
-                    label = $"LoginSuccess:{token.ToJSON()}";
-                }
-                else
-                {
-                    TapBootstrap.Login(LoginType.TAPTAP, new[] {"public_profile"});
-                }
-            });
-
-            TapLogin.GetProfile(profile => Debug.Log($"Profile:{profile.ToJson()}"));
-            TapLogin.GetTapToken(token => Debug.Log($"TapLoToken:{token.ToJson()}"));
+            Login();
         }
 
         if (GUI.Button(new Rect(60, 300, 180, 100), "退出登录", style))
@@ -102,29 +58,19 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
             TapBootstrap.Logout();
         }
 
-        if (GUI.Button(new Rect(60, 450, 180, 100), "用户信息", style))
+        if (GUI.Button(new Rect(60, 450, 180, 100), "AccessToken", style))
         {
-            TapBootstrap.GetUser((user, error) =>
-            {
-                label = user != null
-                    ? $"user:{user.ToJSON()}"
-                    : $"Error:{error?.code} Descrption:{error?.errorDescription}";
-            });
+            GetAccessToken();
         }
 
-        if (GUI.Button(new Rect(60, 600, 260, 100), "用户详细信息", style))
+        if (GUI.Button(new Rect(60, 600, 260, 100), "Profile", style))
         {
-            TapBootstrap.GetDetailUser((user, error) =>
-            {
-                label = user != null
-                    ? $"detailUser:{user.ToJSON()}"
-                    : $"Error:{error?.code} Descrption:{error?.errorDescription}";
-            });
+            GetProfile();
         }
 
-        if (GUI.Button(new Rect(60, 750, 260, 100), "用户中心", style))
+        if (GUI.Button(new Rect(60, 750, 260, 100), "Remote Profile", style))
         {
-            // TapBootstrap.OpenUserCenter();
+            GetRemoteProfile();
         }
 
         if (GUI.Button(new Rect(60, 900, 260, 100), "篝火测试", style))
@@ -138,6 +84,78 @@ public class LoginScene : MonoBehaviour, ITapLoginResultListener, ITapUserStatus
         if (GUI.Button(new Rect(60, 1050, 180, 100), "返回", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+        }
+    }
+
+    private static async void Login()
+    {
+        try
+        {
+            var accessToken = await TapLogin.Login();
+            Debug.Log($"accessToken:{accessToken.ToJson()}");
+        }
+        catch (Exception e)
+        {
+            if (e is TapException tapError)
+            {
+                Debug.Log($"get AccessToken exception:{tapError.code} message:{tapError.message}");
+            }
+
+            // ignored
+        }
+    }
+
+    private static async void GetAccessToken()
+    {
+        try
+        {
+            var accessToken = await TapLogin.GetAccessToken();
+            Debug.Log($"accessToken:{accessToken.ToJson()}");
+        }
+        catch (Exception e)
+        {
+            if (e is TapException tapError)
+            {
+                Debug.Log($"get AccessToken exception:{tapError.code} message:{tapError.message}");
+            }
+
+            // ignored
+        }
+    }
+
+    private static async void GetProfile()
+    {
+        try
+        {
+            var accessToken = await TapLogin.GetProfile();
+            Debug.Log($"accessToken:{accessToken.ToJson()}");
+        }
+        catch (Exception e)
+        {
+            if (e is TapException tapError)
+            {
+                Debug.Log($"get profile exception:{tapError.code} message:{tapError.message}");
+            }
+
+            // ignored
+        }
+    }
+
+    private static async void GetRemoteProfile()
+    {
+        try
+        {
+            var accessToken = await TapLogin.FetchProfile();
+            Debug.Log($"remote profile:{accessToken.ToJson()}");
+        }
+        catch (Exception e)
+        {
+            if (e is TapException tapError)
+            {
+                Debug.Log($"get remote profile exception:{tapError.code} message:{tapError.message}");
+            }
+
+            // ignored
         }
     }
 }

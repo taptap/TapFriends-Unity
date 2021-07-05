@@ -5,8 +5,6 @@ namespace TapTap.Common
 {
     public interface ITapCommon
     {
-        void SetLanguage(string language);
-
         void GetRegionCode(Action<bool> callback);
 
         void IsTapTapInstalled(Action<bool> callback);
@@ -21,6 +19,8 @@ namespace TapTap.Common
 
         void OpenReviewInTapGlobal(string appId, Action<bool> callback);
 
+        void SetLanguage(TapLanguage language);
+        
         void SetXua();
     }
 

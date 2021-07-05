@@ -297,6 +297,18 @@
  <Reference Include="nunit.framework">
  <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
+ <Reference Include="Storage">
+ <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Assets/LCLibs/Storage.dll</HintPath>
+ </Reference>
+ <Reference Include="LC.Newtonsoft.Json">
+ <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Assets/LCLibs/LC.Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="Storage.Unity">
+ <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Assets/LCLibs/Storage.Unity.dll</HintPath>
+ </Reference>
+ <Reference Include="Common">
+ <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Assets/LCLibs/Common.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Hub/Editor/2019.4.1f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>

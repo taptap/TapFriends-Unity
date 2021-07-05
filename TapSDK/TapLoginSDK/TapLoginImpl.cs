@@ -1,4 +1,4 @@
-using System;
+using System.Threading.Tasks;
 using TapTap.Common;
 
 namespace TapTap.Login
@@ -38,7 +38,31 @@ namespace TapTap.Login
                 .CommandBuilder());
         }
 
-        public void GetProfile(Action<Profile> action)
+
+        public async Task<Profile> FetchProfile()
+        {
+            var command = new Command.Builder()
+                .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
+                .Method("fetchProfileForCurrentAccessToken")
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+            var result = await EngineBridge.GetInstance().Emit(command);
+            if (!EngineBridge.CheckResult(result))
+            {
+                throw new TapException((int) TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE, "TapSDK fetchProfile Failed!");
+            }
+
+            var loginWrapper = new TapLoginWrapper(result.content);
+            if (loginWrapper.LoginCallbackCode == 0)
+            {
+                return new Profile(loginWrapper.Wrapper);
+            }
+
+            throw new TapException((int) TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE, loginWrapper.Wrapper);
+        }
+
+        public async Task<Profile> GetProfile()
         {
             var command = new Command.Builder()
                 .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
@@ -46,26 +70,16 @@ namespace TapTap.Login
                 .Callback(true)
                 .OnceTime(true)
                 .CommandBuilder();
-
-            EngineBridge.GetInstance().CallHandler(command, result =>
+            var result = await EngineBridge.GetInstance().Emit(command);
+            if (!EngineBridge.CheckResult(result))
             {
-                if (result.code != Result.RESULT_SUCCESS)
-                {
-                    action(null);
-                    return;
-                }
+                throw new TapException((int) TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE, "TapSDK GetProfile Failed!");
+            }
 
-                if (string.IsNullOrEmpty(result.content))
-                {
-                    action(null);
-                    return;
-                }
-
-                action(new Profile(result.content));
-            });
+            return new Profile(result.content);
         }
 
-        public void GetAccessToken(Action<TapLoginToken> action)
+        public async Task<AccessToken> GetAccessToken()
         {
             var command = new Command.Builder()
                 .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
@@ -74,22 +88,79 @@ namespace TapTap.Login
                 .OnceTime(true)
                 .CommandBuilder();
 
+            var result = await EngineBridge.GetInstance().Emit(command);
+
+            if (!EngineBridge.CheckResult(result))
+            {
+                throw new TapException((int) TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE, "TapSDK GetAccessToken Failed!");
+            }
+
+            return new AccessToken(result.content);
+        }
+
+        public async Task<AccessToken> Login()
+        {
+            var tcs = new TaskCompletionSource<AccessToken>();
+            RegisterLoginCallback(tcs);
+            StartLogin();
+            return await tcs.Task;
+        }
+
+        private static void StartLogin()
+        {
+            var command = new Command.Builder()
+                .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
+                .Method("startTapLogin")
+                .Args("permissions", new[] {"public_profile"})
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command);
+        }
+
+        private static void RegisterLoginCallback(TaskCompletionSource<AccessToken> tcs)
+        {
+            var command = new Command.Builder()
+                .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
+                .Method("registerLoginCallback")
+                .Callback(true)
+                .OnceTime(false)
+                .CommandBuilder();
+
             EngineBridge.GetInstance().CallHandler(command, result =>
             {
-                if (result.code != Result.RESULT_SUCCESS)
+                if (!EngineBridge.CheckResult(result))
                 {
-                    action(null);
+                    tcs.TrySetException(new TapException((int) TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE,
+                        "TapSDK Login Failed!"));
                     return;
                 }
 
-                if (string.IsNullOrEmpty(result.content))
+                var wrapper = new TapLoginWrapper(result.content);
+                
+                switch (wrapper.LoginCallbackCode)
                 {
-                    action(null);
-                    return;
+                    case 0:
+                        tcs.TrySetResult(new AccessToken(wrapper.Wrapper));
+                        break;
+                    case 1:
+                        tcs.TrySetCanceled();
+                        break;
+                    default:
+                        var tapError = TapError.SafeConstructorTapError(wrapper.Wrapper);
+                        tcs.TrySetException(new TapException(tapError.code,
+                            tapError.errorDescription));
+                        break;
                 }
-
-                action(new TapLoginToken(result.content));
+                UnRegisterLoginCallback();
             });
+        }
+
+        private static void UnRegisterLoginCallback()
+        {
+            var command = new Command.Builder()
+                .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
+                .Method("unregisterLoginCallback")
+                .CommandBuilder();
+            EngineBridge.GetInstance().CallHandler(command);
         }
     }
 }
