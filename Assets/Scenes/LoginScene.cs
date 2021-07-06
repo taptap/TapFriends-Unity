@@ -1,6 +1,6 @@
 ﻿using System;
-using UnityEngine;
 using TapTap.Bootstrap;
+using UnityEngine;
 using TapTap.Common;
 using TapTap.Login;
 using AccessToken = TapTap.Login.AccessToken;
@@ -55,7 +55,7 @@ public class LoginScene : MonoBehaviour
 
         if (GUI.Button(new Rect(60, 300, 180, 100), "退出登录", style))
         {
-            TapBootstrap.Logout();
+            // TapBootstrap.Logout();
         }
 
         if (GUI.Button(new Rect(60, 450, 180, 100), "AccessToken", style))
@@ -75,10 +75,10 @@ public class LoginScene : MonoBehaviour
 
         if (GUI.Button(new Rect(60, 900, 260, 100), "篝火测试", style))
         {
-            TapBootstrap.GetTestQualification((b, error) =>
-            {
-                label = $"篝火测试资格:{b} Error:{error?.code} Descrption:{error?.errorDescription}";
-            });
+            // TapBootstrap.GetTestQualification((b, error) =>
+            // {
+            //     label = $"篝火测试资格:{b} Error:{error?.code} Descrption:{error?.errorDescription}";
+            // });
         }
 
         if (GUI.Button(new Rect(60, 1050, 180, 100), "返回", style))
@@ -91,8 +91,7 @@ public class LoginScene : MonoBehaviour
     {
         try
         {
-            var accessToken = await TapLogin.Login();
-            Debug.Log($"accessToken:{accessToken.ToJson()}");
+            var tdsUser = await TDSUser.LoginWithTapTap();
         }
         catch (Exception e)
         {

@@ -5,6 +5,19 @@ using UnityEngine;
 
 namespace Editor
 {
+    [InitializeOnLoad]
+    public class GlobalConfig
+    {
+        static GlobalConfig()
+        {
+            PlayerSettings.Android.keyaliasName = "wxlogin";
+            PlayerSettings.Android.keyaliasPass = "111111";
+            PlayerSettings.Android.keystoreName =
+                Application.dataPath.Replace("/Assets", "") + "/sign_password_111111.keystore";
+            PlayerSettings.Android.keystorePass = "111111";
+        }
+    }
+
     public class ExportPackage : UnityEditor.Editor
     {
         static void ExportUnityPackage(string moduleName, string version)

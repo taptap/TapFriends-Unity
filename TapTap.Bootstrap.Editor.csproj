@@ -58,8 +58,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\TapTap\Bootstrap\Editor\TapBootstrapIOSProcessor.cs" />
-     <None Include="Assets\TapTap\Bootstrap\Editor\TapTap.Bootstrap.Editor.asmdef" />
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
@@ -285,6 +283,18 @@
  <Reference Include="TapTap.Login">
  <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Assets/TapTap/Login/Plugins/TapTap.Login.dll</HintPath>
  </Reference>
+ <Reference Include="Common">
+ <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Assets/LCLibs/Common.dll</HintPath>
+ </Reference>
+ <Reference Include="Storage.Unity">
+ <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Assets/LCLibs/Storage.Unity.dll</HintPath>
+ </Reference>
+ <Reference Include="Storage">
+ <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Assets/LCLibs/Storage.dll</HintPath>
+ </Reference>
+ <Reference Include="LC.Newtonsoft.Json">
+ <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Assets/LCLibs/LC.Newtonsoft.Json.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Analytics.Tracker">
  <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
@@ -296,18 +306,6 @@
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
- </Reference>
- <Reference Include="Storage">
- <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Assets/LCLibs/Storage.dll</HintPath>
- </Reference>
- <Reference Include="LC.Newtonsoft.Json">
- <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Assets/LCLibs/LC.Newtonsoft.Json.dll</HintPath>
- </Reference>
- <Reference Include="Storage.Unity">
- <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Assets/LCLibs/Storage.Unity.dll</HintPath>
- </Reference>
- <Reference Include="Common">
- <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Assets/LCLibs/Common.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Hub/Editor/2019.4.1f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -675,6 +673,9 @@
       <Project>{86E461B3-6638-4420-2A0E-9D2DD34A1498}</Project>
       <Name>TapTap.Common.Editor</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\TapTap\Bootstrap" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,12 +1,14 @@
-﻿using System;
-using System.Threading.Tasks;
-using JetBrains.Annotations;
+﻿using System.Threading.Tasks;
 using TapTap.Common;
 
 namespace TapTap.Login
 {
     public interface ITapLogin
     {
+        void Init(string clientID);
+
+        void Init(string clientID, bool isCn, bool roundCorner);
+
         void ChangeConfig(bool roundCorner, bool isPortrait);
 
         Task<Profile> FetchProfile();

@@ -76,8 +76,9 @@ public class Sample : MonoBehaviour
             var config = new TapConfig.Builder()
                 // .ClientID("uZ8Yy6cSXVOR6AMRPj")
                 .ClientID("UBm5x5JP7ZGEgRsXY5")
-                // .ClientSecret("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
-                .ClientSecret("hlPXHzw2XHpATDxGD8FD1Rtwu0iFOBfuGY2XFXR5")
+                // .ClientToken("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
+                .ClientToken("hlPXHzw2XHpATDxGD8FD1Rtwu0iFOBfuGY2XFXR5")
+                .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
                 .RegionType(RegionType.IO)
                 .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
                 .ConfigBuilder();
@@ -91,7 +92,8 @@ public class Sample : MonoBehaviour
         {
             var config = new TapConfig.Builder()
                 .ClientID("uZ8Yy6cSXVOR6AMRPj")
-                .ClientSecret("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
+                .ClientToken("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
+                .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
                 .RegionType(RegionType.CN)
                 .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
                 .ConfigBuilder();
@@ -105,8 +107,9 @@ public class Sample : MonoBehaviour
         {
             var config = new TapConfig.Builder()
                 .ClientID("KFV9Pm9ojdmWkkRJeb")
-                .ClientSecret("7mpVJdXIOLQxvQdqjEEpiz7eLf82cMwYkdgoAZqF")
+                .ClientToken("7mpVJdXIOLQxvQdqjEEpiz7eLf82cMwYkdgoAZqF")
                 .RegionType(RegionType.IO)
+                .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
                 .EnableTapDB(isSwitch)
                 .ConfigBuilder();
 
@@ -117,7 +120,8 @@ public class Sample : MonoBehaviour
         {
             var config = new TapConfig.Builder()
                 .ClientID("0RiAlMny7jiz086FaU")
-                .ClientSecret("8V8wemqkpkxmAN7qKhvlh6v0pXc8JJzEZe3JFUnU")
+                .ClientToken("8V8wemqkpkxmAN7qKhvlh6v0pXc8JJzEZe3JFUnU")
+                .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
                 .RegionType(RegionType.CN)
                 .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
                 .ConfigBuilder();

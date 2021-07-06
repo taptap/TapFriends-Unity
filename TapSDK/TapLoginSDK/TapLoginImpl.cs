@@ -28,6 +28,26 @@ namespace TapTap.Login
             return _sInstance;
         }
 
+        public void Init(string clientID)
+        {
+            EngineBridge.GetInstance().CallHandler(new Command.Builder()
+                .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
+                .Method("init")
+                .Args("clientID", clientID)
+                .CommandBuilder());
+        }
+
+        public void Init(string clientID, bool isCn, bool roundCorner)
+        {
+            EngineBridge.GetInstance().CallHandler(new Command.Builder()
+                .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
+                .Method("initWithClientID")
+                .Args("clientID", clientID)
+                .Args("regionType", isCn)
+                .Args("roundCorner", roundCorner)
+                .CommandBuilder());
+        }
+
         public void ChangeConfig(bool roundCorner, bool isPortrait)
         {
             EngineBridge.GetInstance().CallHandler(new Command.Builder()
@@ -135,7 +155,7 @@ namespace TapTap.Login
                 }
 
                 var wrapper = new TapLoginWrapper(result.content);
-                
+
                 switch (wrapper.LoginCallbackCode)
                 {
                     case 0:
@@ -150,6 +170,7 @@ namespace TapTap.Login
                             tapError.errorDescription));
                         break;
                 }
+
                 UnRegisterLoginCallback();
             });
         }
