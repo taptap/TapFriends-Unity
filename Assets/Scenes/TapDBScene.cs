@@ -13,14 +13,14 @@ public class TapDBScene : MonoBehaviour, IDynamicProperties
     void Start()
     {
         Judge.JudgeDeviceModel();
-        TapBootstrap.GetUser((user, error) =>
-        {
-            if (user != null)
-            {
-                TapDB.EnableLog(true);
-                TapDB.SetUser(user.name);
-            }
-        });
+        // TapBootstrap.GetUser((user, error) =>
+        // {
+        //     if (user != null)
+        //     {
+        //         TapDB.EnableLog(true);
+        //         TapDB.SetUser(user.name);
+        //     }
+        // });
     }
 
     // Update is called once per frame

@@ -4,6 +4,16 @@ namespace TapTap.Login
 {
     public class TapLogin
     {
+        public static void Init(string clientID)
+        {
+            TapLoginImpl.GetInstance().Init(clientID);
+        }
+
+        public static void Init(string clientID, bool isCn, bool roundCorner)
+        {
+            TapLoginImpl.GetInstance().Init(clientID, isCn, roundCorner);
+        }
+
         public static void ChangeConfig(bool roundCorner, bool isPortrait)
         {
             TapLoginImpl.GetInstance().ChangeConfig(roundCorner, isPortrait);
