@@ -92,11 +92,6 @@ namespace TapTap.Bootstrap
             throw new NotImplementedException();
         }
 
-        public static new Task<LCUser> BecomeWithSessionToken(string sessionToken)
-        {
-            throw new NotImplementedException();
-        }
-
         public static new Task RequestPasswordReset(string email)
         {
             throw new NotImplementedException();
@@ -134,6 +129,10 @@ namespace TapTap.Bootstrap
         {
             LCUser user = await LCUser.GetCurrent();
             return user as TDSUser;
+        }
+
+        public static new async Task<TDSUser> BecomeWithSessionToken(string sessionToken) {
+            return (await LCUser.BecomeWithSessionToken(sessionToken)) as TDSUser;
         }
 
         public static new async Task<TDSUser> LoginWithAuthData(Dictionary<string, object> authData, string platform,
