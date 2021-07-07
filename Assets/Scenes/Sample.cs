@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TapTap.TapDB;
 using JudgeDevice;
+using LeanCloud;
 
 public class Sample : MonoBehaviour
 {
@@ -14,6 +15,21 @@ public class Sample : MonoBehaviour
     void Start()
     {
         Judge.JudgeDeviceModel();
+        LCLogger.LogDelegate = (level, message) => {
+            switch (level) {
+                case LCLogLevel.Debug:
+                    Debug.Log($"[DEBUG] {message}");
+                    break;
+                case LCLogLevel.Warn:
+                    Debug.LogWarning($"[WARN] {message}");
+                    break;
+                case LCLogLevel.Error:
+                    Debug.LogError($"[ERROR] {message}");
+                    break;
+                default:
+                    break;
+            }
+        };
     }
 
     // Update is called once per frame
@@ -121,7 +137,7 @@ public class Sample : MonoBehaviour
             var config = new TapConfig.Builder()
                 .ClientID("0RiAlMny7jiz086FaU")
                 .ClientToken("8V8wemqkpkxmAN7qKhvlh6v0pXc8JJzEZe3JFUnU")
-                .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
+                .ServerURL("https://0rialmny.cloud.tds1.tapapis.cn")
                 .RegionType(RegionType.CN)
                 .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
                 .ConfigBuilder();
