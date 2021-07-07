@@ -175,14 +175,21 @@ namespace TapTap.Bootstrap
         private static async Task<Dictionary<string, object>> LoginTapTap()
         {
             var token = await TapLogin.Login();
+
+            var profile = await TapLogin.GetProfile();
+
             var result = new Dictionary<string, object>
             {
                 {"kid", token.kid},
-                {"accessToken", token.accessToken},
-                {"macAlgorithm", token.macAlgorithm},
-                {"tokenType", token.tokenType},
-                {"macKey", token.macKey},
-                // {"expireIn", token.expireIn}
+                {"access_token", token.accessToken},
+                {"token_type", token.tokenType},
+                {"mac_key", token.macKey},
+                {"mac_algorithm", token.macAlgorithm},
+
+                {"openid", profile.openid},
+                {"name", profile.name},
+                {"avatar", profile.avatar},
+                {"unionid", profile.unionid}
             };
             return result;
         }
