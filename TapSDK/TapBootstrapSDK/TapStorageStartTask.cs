@@ -1,4 +1,5 @@
 using LeanCloud;
+using LeanCloud.Storage;
 
 namespace TapTap.Bootstrap
 {
@@ -7,6 +8,7 @@ namespace TapTap.Bootstrap
         public void Invoke(TapConfig config)
         {
             LCApplication.Initialize(config.ClientID, config.ClientToken, config.ServerURL);
+            LCObject.RegisterSubclass("_User", () => new TDSUser());
         }
     }
 }
