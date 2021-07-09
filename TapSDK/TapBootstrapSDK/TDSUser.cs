@@ -160,6 +160,12 @@ namespace TapTap.Bootstrap
             return user as TDSUser;
         }
 
+        public static new async Task Logout() {
+            await LCUser.Logout();
+            // TODO TapSDK 登出操作
+
+        }
+
         public static new LCQuery<TDSUser> GetQuery()
         {
             return new LCQuery<TDSUser>(CLASS_NAME);
