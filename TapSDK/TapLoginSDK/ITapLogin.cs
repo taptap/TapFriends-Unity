@@ -18,6 +18,8 @@ namespace TapTap.Login
         Task<AccessToken> GetAccessToken();
 
         Task<AccessToken> Login();
+
+        void Logout();
     }
 
     public interface ITapLoginResultListener

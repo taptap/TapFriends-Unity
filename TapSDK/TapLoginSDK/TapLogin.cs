@@ -38,5 +38,10 @@ namespace TapTap.Login
         {
             return TapLoginImpl.GetInstance().Login();
         }
+
+        public static void Logout()
+        {
+            TapLoginImpl.GetInstance().Logout();
+        }
     }
 }

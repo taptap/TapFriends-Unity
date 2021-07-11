@@ -126,6 +126,16 @@ namespace TapTap.Login
             return await tcs.Task;
         }
 
+        public void Logout()
+        {
+            var command = new Command.Builder()
+                .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
+                .Method("logout")
+                .CommandBuilder();
+
+            EngineBridge.GetInstance().CallHandler(command);
+        }
+
         private static void StartLogin()
         {
             var command = new Command.Builder()
