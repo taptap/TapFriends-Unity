@@ -56,6 +56,7 @@ public class LoginScene : MonoBehaviour
         if (GUI.Button(new Rect(60, 300, 180, 100), "退出登录", style))
         {
             // TapBootstrap.Logout();
+            TDSUser.Logout();
         }
 
         if (GUI.Button(new Rect(60, 450, 180, 100), "AccessToken", style))
