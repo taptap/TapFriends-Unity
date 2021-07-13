@@ -125,22 +125,47 @@ namespace TapTap.Bootstrap
 
         #region API
 
+        /// <summary>
+        /// Gets the currently logged in TDSUser with a valid session, from
+        /// memory or disk if necessary.
+        /// </summary>
+        /// <returns></returns>
         public static new async Task<TDSUser> GetCurrent()
         {
             LCUser user = await LCUser.GetCurrent();
             return user as TDSUser;
         }
 
+        /// <summary>
+        /// Signs in a user with a sessionToken.
+        /// </summary>
+        /// <param name="sessionToken"></param>
+        /// <returns></returns>
         public static new async Task<TDSUser> BecomeWithSessionToken(string sessionToken) {
             return (await LCUser.BecomeWithSessionToken(sessionToken)) as TDSUser;
         }
 
+        /// <summary>
+        /// Signs up or signs in a user with third party authData.
+        /// </summary>
+        /// <param name="authData"></param>
+        /// <param name="platform"></param>
+        /// <param name="option"></param>
+        /// <returns></returns>
         public static new async Task<TDSUser> LoginWithAuthData(Dictionary<string, object> authData, string platform,
             LCUserAuthDataLoginOption option = null)
         {
             return (await LCUser.LoginWithAuthData(authData, platform, option)) as TDSUser;
         }
 
+        /// <summary>
+        /// Signs up or signs in a user with third party authData and unionId.
+        /// </summary>
+        /// <param name="authData"></param>
+        /// <param name="platform"></param>
+        /// <param name="unionId"></param>
+        /// <param name="option"></param>
+        /// <returns></returns>
         public static new async Task<LCUser> LoginWithAuthDataAndUnionId(Dictionary<string, object> authData,
             string platform, string unionId,
             LCUserAuthDataLoginOption option = null)
@@ -148,11 +173,19 @@ namespace TapTap.Bootstrap
             return (await LCUser.LoginWithAuthDataAndUnionId(authData, platform, unionId, option)) as TDSUser;
         }
 
+        /// <summary>
+        /// Creates an anonymous user.
+        /// </summary>
+        /// <returns></returns>
         public static new async Task<LCUser> LoginAnonymously()
         {
             return (await LCUser.LoginAnonymously()) as TDSUser;
         }
 
+        /// <summary>
+        /// Signs up or signs in a user with TapTap.
+        /// </summary>
+        /// <returns></returns>
         public static async Task<TDSUser> LoginWithTapTap()
         {
             Dictionary<string, object> authData = await LoginTapTap();
@@ -160,17 +193,30 @@ namespace TapTap.Bootstrap
             return user as TDSUser;
         }
 
+        /// <summary>
+        /// Logs out the currently logged in user session.
+        /// </summary>
         public static new async Task Logout()
         {
             TapLogin.Logout();
             await LCUser.Logout();
         }
 
+        /// <summary>
+        /// Constructs a LCQuery for TDSUser.
+        /// </summary>
+        /// <returns></returns>
         public static new LCQuery<TDSUser> GetQuery()
         {
             return new LCQuery<TDSUser>(CLASS_NAME);
         }
 
+        /// <summary>
+        /// Save this user to the cloud.
+        /// </summary>
+        /// <param name="fetchWhenSave"></param>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public new async Task<TDSUser> Save(bool fetchWhenSave = false, LCQuery<LCObject> query = null)
         {
             return (await base.Save(fetchWhenSave, query)) as TDSUser;
