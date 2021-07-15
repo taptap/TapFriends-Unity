@@ -231,7 +231,9 @@ public class TapDBScene : MonoBehaviour, IDynamicProperties
         if (GUI.Button(new Rect(420, Judge.IsIphoneXDevice ? 1190 : 830, 90, Judge.IsIphoneXDevice ? 70 : 50), "充值",
             style))
         {
+            var json = "{\"hello\":\"world\"}";
             TapDB.OnCharge("12345", "890", 1, "eur", "paypal");
+            TapDB.OnCharge("12345", "890", 1, "eur", "paypal", json);
         }
 
         if (GUI.Button(new Rect(420, Judge.IsIphoneXDevice ? 1290 : 910, 270, Judge.IsIphoneXDevice ? 70 : 50),
@@ -246,7 +248,14 @@ public class TapDBScene : MonoBehaviour, IDynamicProperties
             TapDB.CloseFetchTapTapDeviceId();
         }
 
-        if (GUI.Button(new Rect(420, Judge.IsIphoneXDevice ? 1490 : 1070, 100, Judge.IsIphoneXDevice ? 70 : 50), "返回",
+        if (GUI.Button(new Rect(420, Judge.IsIphoneXDevice ? 1490 : 1070, 100, Judge.IsIphoneXDevice ? 70 : 50),
+            "TapTapDID",
+            style))
+        {
+            TapDB.GetTapTapDid(did => { Debug.Log($"did:{did}"); });
+        }
+
+        if (GUI.Button(new Rect(420, Judge.IsIphoneXDevice ? 1590 : 1180, 100, Judge.IsIphoneXDevice ? 70 : 50), "返回",
             style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);

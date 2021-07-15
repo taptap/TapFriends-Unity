@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <AssemblyVersion>2.1.6</AssemblyVersion>
+        <AssemblyVersion>2.1.7</AssemblyVersion>
         <RootNamespace>TapTap.Common</RootNamespace>
         <AssemblyName>TapTap.Common</AssemblyName>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>

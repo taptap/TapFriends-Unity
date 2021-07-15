@@ -741,10 +741,6 @@
       <Project>{2328198A-C518-D88F-95E2-C88FDCE48C09}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="TapTap.Login.Editor.csproj">
-      <Project>{AD7390AA-B0A3-CC24-14B7-B5AFA956416A}</Project>
-      <Name>TapTap.Login.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="TapTap.FriendsUI.Editor.csproj">
       <Project>{CE1BFAD5-74B6-F3C0-4017-9DBCCBB60381}</Project>
       <Name>TapTap.FriendsUI.Editor</Name>

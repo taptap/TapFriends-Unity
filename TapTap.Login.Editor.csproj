@@ -58,8 +58,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\TapTap\Login\Editor\TapLoginIOSProcessor.cs" />
-     <None Include="Assets\TapTap\Login\Editor\TapTap.Login.Editor.asmdef" />
  <Reference Include="UnityEditor.UI">
  <HintPath>/Users/xiaoyi/Documents/tapsdk2-unity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
@@ -675,6 +673,9 @@
       <Project>{86E461B3-6638-4420-2A0E-9D2DD34A1498}</Project>
       <Name>TapTap.Common.Editor</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\TapTap\Login" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

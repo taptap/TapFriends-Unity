@@ -18,6 +18,8 @@ namespace TapTap.TapDB
         void SetServer(string server);
 
         void OnCharge(string orderId, string product, long amount, string currencyType, string payment);
+        
+        void OnCharge(string orderId, string product, long amount, string currencyType, string payment,string properties);
 
         [Obsolete("已弃用,请调用Track(string eventName, Dictionary<string, object> properties)")]
         void OnEvent(string eventCode, string properties);
@@ -51,6 +53,8 @@ namespace TapTap.TapDB
         void ClearUser();
 
         void CloseFetchTapTapDeviceId();
+        
+        void GetTapTapDid(Action<string> action);
 
     }
 
