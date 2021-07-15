@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TapTap.Common;
 
@@ -136,6 +137,28 @@ namespace TapTap.Login
             EngineBridge.GetInstance().CallHandler(command);
         }
 
+        public async Task<bool> GetTestQualification()
+        {
+            var command = new Command.Builder()
+                .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
+                .Method("getTestQualification")
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+
+            var result = await EngineBridge.GetInstance().Emit(command);
+
+            if (!EngineBridge.CheckResult(result))
+            {
+                throw new TapException((int) TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE,
+                    "TapSDK GetTestQualification Failed!");
+            }
+
+            var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+            var testQualification = SafeDictionary.GetValue<int>(dic, "userTestQualification");
+            return testQualification == 1;
+        }
+
         private static void StartLogin()
         {
             var command = new Command.Builder()
@@ -145,6 +168,7 @@ namespace TapTap.Login
                 .CommandBuilder();
             EngineBridge.GetInstance().CallHandler(command);
         }
+
 
         private static void RegisterLoginCallback(TaskCompletionSource<AccessToken> tcs)
         {

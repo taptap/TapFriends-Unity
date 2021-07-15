@@ -76,6 +76,7 @@ public class LoginScene : MonoBehaviour
 
         if (GUI.Button(new Rect(60, 900, 260, 100), "篝火测试", style))
         {
+            GetTestQualification();
             // TapBootstrap.GetTestQualification((b, error) =>
             // {
             //     label = $"篝火测试资格:{b} Error:{error?.code} Descrption:{error?.errorDescription}";
@@ -85,6 +86,19 @@ public class LoginScene : MonoBehaviour
         if (GUI.Button(new Rect(60, 1050, 180, 100), "返回", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+        }
+    }
+
+    private static async void GetTestQualification()
+    {
+        try
+        {
+            var boolean = await TapLogin.GetTestQualification();
+            Debug.Log($"TestQualification:{boolean}");
+        }
+        catch (Exception e)
+        {
+            Debug.Log($"{e}");
         }
     }
 

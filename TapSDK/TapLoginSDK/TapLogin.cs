@@ -43,5 +43,11 @@ namespace TapTap.Login
         {
             TapLoginImpl.GetInstance().Logout();
         }
+
+        public static Task<bool> GetTestQualification()
+        {
+            return TapLoginImpl.GetInstance().GetTestQualification();
+        }
+        
     }
 }
