@@ -41,7 +41,8 @@ namespace Editor
         static void PushUnityPackage()
         {
             string[] moduleNames =
-                {"Common", "Bootstrap", "Moment", "TapDB", "Login", "Friends", "License", "FriendsUI"};
+                {"Common", "Bootstrap", "Moment", "TapDB", "Login", "License"};
+                // {"Common", "Bootstrap", "Moment", "TapDB", "Login", "Friends", "License", "FriendsUI"};
 
             foreach (var module in moduleNames)
             {
