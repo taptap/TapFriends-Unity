@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using UnityEngine;
-using TapTap.Bootstrap;
-using TapTap.TapDB;
-using TapTap.Common;
+﻿using System.Collections.Generic;
 using JudgeDevice;
+using TapTap.Common;
+using TapTap.TapDB;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TapDBScene : MonoBehaviour, IDynamicProperties
 {
@@ -21,6 +19,7 @@ public class TapDBScene : MonoBehaviour, IDynamicProperties
         //         TapDB.SetUser(user.name);
         //     }
         // });
+        TapDB.Init("0RiAlMny7jiz086FaU", "channel", "gameVersion", true);
     }
 
     // Update is called once per frame
@@ -258,7 +257,7 @@ public class TapDBScene : MonoBehaviour, IDynamicProperties
         if (GUI.Button(new Rect(420, Judge.IsIphoneXDevice ? 1590 : 1180, 100, Judge.IsIphoneXDevice ? 70 : 50), "返回",
             style))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+            SceneManager.LoadSceneAsync(0);
         }
     }
 }

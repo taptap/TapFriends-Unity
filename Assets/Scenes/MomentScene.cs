@@ -78,9 +78,15 @@ public class MomentScene : MonoBehaviour
                 new Dictionary<string, object> {{TapMomentConstants.TapMomentPageUserKey, userId}});
         }
 
-        if (GUI.Button(new Rect(60, 750, 180, 100), "返回", style))
+        if (GUI.Button(new Rect(60, 750, 180, 100), "初始化", style))
+        {
+            TapMoment.Init("0RiAlMny7jiz086FaU");
+        }
+        
+        if (GUI.Button(new Rect(60, 900, 180, 100), "返回", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+
         }
     }
 
