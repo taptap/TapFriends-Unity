@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <AssemblyVersion>2.1.6</AssemblyVersion>
+        <AssemblyVersion>3.0.0</AssemblyVersion>
         <RootNamespace>TapTap.Bootstrap</RootNamespace>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
         <AssemblyName>TapTap.Bootstrap</AssemblyName>
@@ -12,14 +12,23 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <Reference Include="TapTap.Common, Version=2.1.6.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="TapTap.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\..\Assets\TapTap\Common\Plugins\TapTap.Common.dll</HintPath>
         </Reference>
-        <Reference Include="UnityEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
+        <Reference Include="TapTap.Login, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\Assets\TapTap\Login\Plugins\TapTap.Login.dll</HintPath>
         </Reference>
-        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/Managed/UnityEngine.dll</HintPath>
+        <Reference Include="UnityEngine">
+          <HintPath>..\..\UnityLibs\UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="Storage.Unity">
+          <HintPath>..\..\Assets\LCLibs\Storage.Unity.dll</HintPath>
+        </Reference>
+        <Reference Include="Storage">
+          <HintPath>..\..\Assets\LCLibs\Storage.dll</HintPath>
+        </Reference>
+        <Reference Include="Common">
+          <HintPath>..\..\Assets\LCLibs\Common.dll</HintPath>
         </Reference>
     </ItemGroup>
 </Project>

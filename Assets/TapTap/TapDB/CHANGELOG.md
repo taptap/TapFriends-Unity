@@ -1,5 +1,21 @@
 # ChangeLog
 
+## 3.0.0
+
+### Dependencies
+
+- TapTap.Common v3.0.0
+
+## 2.1.7
+
+### New Feature
+
+- 充值接口新增支持传入自定义字段的函数
+
+### Dependencies
+
+- TapTap.Common v2.1.7
+
 ## 2.1.6
 
 ### Dependencies

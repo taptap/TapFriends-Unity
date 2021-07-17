@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using UnityEngine;
-using TapTap.Bootstrap;
-using TapTap.TapDB;
-using TapTap.Common;
+﻿using System.Collections.Generic;
 using JudgeDevice;
+using TapTap.Common;
+using TapTap.TapDB;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TapDBScene : MonoBehaviour, IDynamicProperties
 {
@@ -13,14 +11,15 @@ public class TapDBScene : MonoBehaviour, IDynamicProperties
     void Start()
     {
         Judge.JudgeDeviceModel();
-        TapBootstrap.GetUser((user, error) =>
-        {
-            if (user != null)
-            {
-                TapDB.EnableLog(true);
-                TapDB.SetUser(user.name);
-            }
-        });
+        // TapBootstrap.GetUser((user, error) =>
+        // {
+        //     if (user != null)
+        //     {
+        //         TapDB.EnableLog(true);
+        //         TapDB.SetUser(user.name);
+        //     }
+        // });
+        TapDB.Init("0RiAlMny7jiz086FaU", "channel", "gameVersion", true);
     }
 
     // Update is called once per frame
@@ -231,7 +230,9 @@ public class TapDBScene : MonoBehaviour, IDynamicProperties
         if (GUI.Button(new Rect(420, Judge.IsIphoneXDevice ? 1190 : 830, 90, Judge.IsIphoneXDevice ? 70 : 50), "充值",
             style))
         {
+            var json = "{\"hello\":\"world\"}";
             TapDB.OnCharge("12345", "890", 1, "eur", "paypal");
+            TapDB.OnCharge("12345", "890", 1, "eur", "paypal", json);
         }
 
         if (GUI.Button(new Rect(420, Judge.IsIphoneXDevice ? 1290 : 910, 270, Judge.IsIphoneXDevice ? 70 : 50),
@@ -246,10 +247,17 @@ public class TapDBScene : MonoBehaviour, IDynamicProperties
             TapDB.CloseFetchTapTapDeviceId();
         }
 
-        if (GUI.Button(new Rect(420, Judge.IsIphoneXDevice ? 1490 : 1070, 100, Judge.IsIphoneXDevice ? 70 : 50), "返回",
+        if (GUI.Button(new Rect(420, Judge.IsIphoneXDevice ? 1490 : 1070, 100, Judge.IsIphoneXDevice ? 70 : 50),
+            "TapTapDID",
             style))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+            TapDB.GetTapTapDid(did => { Debug.Log($"did:{did}"); });
+        }
+
+        if (GUI.Button(new Rect(420, Judge.IsIphoneXDevice ? 1590 : 1180, 100, Judge.IsIphoneXDevice ? 70 : 50), "返回",
+            style))
+        {
+            SceneManager.LoadSceneAsync(0);
         }
     }
 }

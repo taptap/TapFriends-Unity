@@ -38,7 +38,13 @@ namespace TapTap.TapDB
         {
             TapDBImpl.GetInstance().OnCharge(orderId, product, amount, currencyType, payment);
         }
-        
+
+        public static void OnCharge(string orderId, string product, long amount, string currencyType, string payment,
+            string properties)
+        {
+            TapDBImpl.GetInstance().OnCharge(orderId, product, amount, currencyType, payment, properties);
+        }
+
         [Obsolete("已弃用,请调用trackEvent(string eventName, Dictionary<string, object> properties)")]
         public static void OnEvent(string eventCode, string properties)
         {
@@ -114,9 +120,15 @@ namespace TapTap.TapDB
         {
             TapDBImpl.GetInstance().CloseFetchTapTapDeviceId();
         }
+
         public static void ClearUser()
         {
             TapDBImpl.GetInstance().ClearUser();
+        }
+
+        public static void GetTapTapDid(Action<string> action)
+        {
+            TapDBImpl.GetInstance().GetTapTapDid(action);
         }
     }
 }

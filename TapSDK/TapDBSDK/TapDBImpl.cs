@@ -127,6 +127,23 @@ namespace TapTap.TapDB
             EngineBridge.GetInstance().CallHandler(command);
         }
 
+        public void OnCharge(string orderId, string product, long amount, string currencyType, string payment,
+            string properties)
+        {
+            var dic = new Dictionary<string, object>
+            {
+                {"orderId", orderId},
+                {"product", product},
+                {"amount", amount},
+                {"currencyType", currencyType},
+                {"payment", payment},
+                {"properties", properties}
+            };
+            var command = new Command(TapDBConstants.TAPDB_SERVICE, "onChargeWithProperties", false, dic);
+            EngineBridge.GetInstance().CallHandler(command);
+        }
+
+
         public void OnEvent(string eventCode, string properties)
         {
             var dic = new Dictionary<string, object>
@@ -210,15 +227,34 @@ namespace TapTap.TapDB
 
         public void CloseFetchTapTapDeviceId()
         {
-            if (Platform.IsAndroid())
-            {
-                EngineBridge.GetInstance().CallHandler(new Command.Builder()
-                    .Service(TapDBConstants.TAPDB_SERVICE)
-                    .Method("closeFetchTapTapDeviceId")
-                    .CommandBuilder());
-            }
+            if (!Platform.IsAndroid()) return;
+            EngineBridge.GetInstance().CallHandler(new Command.Builder()
+                .Service(TapDBConstants.TAPDB_SERVICE)
+                .Method("closeFetchTapTapDeviceId")
+                .CommandBuilder());
         }
 
+        public void GetTapTapDid(Action<string> action)
+        {
+            if (!Platform.IsAndroid()) return;
+            var command = new Command.Builder()
+                .Service(TapDBConstants.TAPDB_SERVICE)
+                .Method("getTapTapDID")
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+
+            EngineBridge.GetInstance().CallHandler(command, result =>
+            {
+                if (result.code != Result.RESULT_SUCCESS)
+                {
+                    action(null);
+                    return;
+                }
+
+                action(result.content);
+            });
+        }
 
         public void AdvertiserIDCollectionEnabled(bool enable)
         {

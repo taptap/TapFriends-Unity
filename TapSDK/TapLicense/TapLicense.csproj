@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <ReleaseVersion>2.1.6</ReleaseVersion>
+        <ReleaseVersion>3.0.0</ReleaseVersion>
         <RootNamespace>TapTap.License</RootNamespace>
         <AssemblyName>TapTap.License</AssemblyName>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
@@ -12,14 +12,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Reference Include="TapTap.Common, Version=2.1.6.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="TapTap.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\..\Assets\TapTap\Common\Plugins\TapTap.Common.dll</HintPath>
         </Reference>
-        <Reference Include="UnityEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
+        <Reference Include="UnityEngine">
+            <HintPath>..\..\UnityLibs\UnityEngine.dll</HintPath>
         </Reference>
-        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>/Applications/Unity/Hub/Editor/2018.4.30f1/Unity.app/Contents/Managed/UnityEngine.dll</HintPath>
+        <Reference Include="UnityEngine">
+            <HintPath>..\..\UnityLibs\UnityEditor.dll</HintPath>
         </Reference>
     </ItemGroup>
 </Project>

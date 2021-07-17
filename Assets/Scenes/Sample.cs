@@ -2,9 +2,9 @@
 using TapTap.Bootstrap;
 using UnityEngine;
 using UnityEngine.UI;
-using TapTap.License;
 using TapTap.TapDB;
 using JudgeDevice;
+using LeanCloud;
 
 public class Sample : MonoBehaviour
 {
@@ -15,6 +15,21 @@ public class Sample : MonoBehaviour
     void Start()
     {
         Judge.JudgeDeviceModel();
+        LCLogger.LogDelegate = (level, message) => {
+            switch (level) {
+                case LCLogLevel.Debug:
+                    Debug.Log($"[DEBUG] {message}");
+                    break;
+                case LCLogLevel.Warn:
+                    Debug.LogWarning($"[WARN] {message}");
+                    break;
+                case LCLogLevel.Error:
+                    Debug.LogError($"[ERROR] {message}");
+                    break;
+                default:
+                    break;
+            }
+        };
     }
 
     // Update is called once per frame
@@ -77,8 +92,9 @@ public class Sample : MonoBehaviour
             var config = new TapConfig.Builder()
                 // .ClientID("uZ8Yy6cSXVOR6AMRPj")
                 .ClientID("UBm5x5JP7ZGEgRsXY5")
-                // .ClientSecret("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
-                .ClientSecret("hlPXHzw2XHpATDxGD8FD1Rtwu0iFOBfuGY2XFXR5")
+                // .ClientToken("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
+                .ClientToken("hlPXHzw2XHpATDxGD8FD1Rtwu0iFOBfuGY2XFXR5")
+                .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
                 .RegionType(RegionType.IO)
                 .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
                 .ConfigBuilder();
@@ -92,7 +108,8 @@ public class Sample : MonoBehaviour
         {
             var config = new TapConfig.Builder()
                 .ClientID("uZ8Yy6cSXVOR6AMRPj")
-                .ClientSecret("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
+                .ClientToken("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
+                .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
                 .RegionType(RegionType.CN)
                 .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
                 .ConfigBuilder();
@@ -106,8 +123,9 @@ public class Sample : MonoBehaviour
         {
             var config = new TapConfig.Builder()
                 .ClientID("KFV9Pm9ojdmWkkRJeb")
-                .ClientSecret("7mpVJdXIOLQxvQdqjEEpiz7eLf82cMwYkdgoAZqF")
+                .ClientToken("7mpVJdXIOLQxvQdqjEEpiz7eLf82cMwYkdgoAZqF")
                 .RegionType(RegionType.IO)
+                .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
                 .EnableTapDB(isSwitch)
                 .ConfigBuilder();
 
@@ -118,7 +136,8 @@ public class Sample : MonoBehaviour
         {
             var config = new TapConfig.Builder()
                 .ClientID("0RiAlMny7jiz086FaU")
-                .ClientSecret("8V8wemqkpkxmAN7qKhvlh6v0pXc8JJzEZe3JFUnU")
+                .ClientToken("8V8wemqkpkxmAN7qKhvlh6v0pXc8JJzEZe3JFUnU")
+                .ServerURL("https://0rialmny.cloud.tds1.tapapis.cn")
                 .RegionType(RegionType.CN)
                 .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
                 .ConfigBuilder();
@@ -152,8 +171,8 @@ public class Sample : MonoBehaviour
 
         if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice ? 850 : 715, 280, 100), "设置语言", style))
         {
-            var languageType = int.Parse(language);
-            TapBootstrap.SetPreferLanguage((TapLanguage) languageType);
+            // var languageType = int.Parse(language);
+            // TapBootstrap.SetPreferLanguage((TapLanguage) languageType);
         }
     }
 }

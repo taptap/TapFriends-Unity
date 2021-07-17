@@ -1,55 +1,79 @@
 using System;
+using System.Threading.Tasks;
 
 namespace TapTap.Common
 {
     public class EngineBridge
     {
-        private volatile static EngineBridge sInstance;
+        private static volatile EngineBridge _sInstance;
 
-        private IBridge bridge;
+        private readonly IBridge _bridge;
 
-        private static readonly object locker = new object();
+        private static readonly object Locker = new object();
 
         public static EngineBridge GetInstance()
         {
-            lock (locker)
+            lock (Locker)
             {
-                if (sInstance == null)
+                if (_sInstance == null)
                 {
-                    sInstance = new EngineBridge();
+                    _sInstance = new EngineBridge();
                 }
             }
-            return sInstance;
+
+            return _sInstance;
         }
 
         private EngineBridge()
         {
             if (Platform.IsAndroid())
             {
-                bridge = BridgeAndroid.GetInstance();
+                _bridge = BridgeAndroid.GetInstance();
             }
             else if (Platform.IsIOS())
             {
-                bridge = BridgeIOS.GetInstance();
+                _bridge = BridgeIOS.GetInstance();
             }
         }
 
         public void Register(string serviceClzName, string serviceImplName)
         {
-            bridge?.Register(serviceClzName, serviceImplName);
+            _bridge?.Register(serviceClzName, serviceImplName);
         }
 
         public void CallHandler(Command command)
         {
-            bridge?.Call(command);
+            _bridge?.Call(command);
         }
 
         public void CallHandler(Command command, Action<Result> action)
         {
-            bridge?.Call(command, action);
+            _bridge?.Call(command, action);
         }
 
+        public Task<Result> Emit(Command command)
+        {
+            var tcs = new TaskCompletionSource<Result>();
+            CallHandler(command, result =>
+            {
+                tcs.TrySetResult(result);
+            });
+            return tcs.Task;
+        }
 
+        public static bool CheckResult(Result result)
+        {
+            if (result == null)
+            {
+                return false;
+            }
+
+            if (result.code != Result.RESULT_SUCCESS)
+            {
+                return false;
+            }
+
+            return !string.IsNullOrEmpty(result.content);
+        }
     }
-
 }

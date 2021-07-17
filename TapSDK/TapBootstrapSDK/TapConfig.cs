@@ -5,47 +5,54 @@ namespace TapTap.Bootstrap
 {
     public class TapConfig
     {
-        private readonly string _clientID;
+        public readonly string ClientID;
 
-        private readonly RegionType _regionType;
+        public readonly string ClientToken;
 
-        private readonly string _clientSecret;
+        public readonly RegionType RegionType;
 
-        private readonly TapDBConfig _dbConfig;
+        public readonly string ServerURL;
 
-        private TapConfig(string clientID, string clientSecret, RegionType regionType)
+        public readonly TapDBConfig DBConfig;
+
+        private TapConfig(string clientID, string clientToken, RegionType regionType, string serverUrl)
         {
-            _clientID = clientID;
-            _clientSecret = clientSecret;
-            _regionType = regionType;
+            ClientID = clientID;
+            ClientToken = clientToken;
+            RegionType = regionType;
+            ServerURL = serverUrl;
         }
 
-        private TapConfig(string clientID, string clientSecret, RegionType regionType, bool enableTapDB, string channel,
+        private TapConfig(string clientID, string clientToken, RegionType regionType, string serverUrl,
+            bool enableTapDB, string channel,
             string gameVersion)
         {
-            _clientID = clientID;
-            _clientSecret = clientSecret;
-            _regionType = regionType;
-            _dbConfig = new TapDBConfig(enableTapDB, channel, gameVersion);
+            ClientID = clientID;
+            ClientToken = clientToken;
+            RegionType = regionType;
+            ServerURL = serverUrl;
+            DBConfig = new TapDBConfig(enableTapDB, channel, gameVersion);
         }
-        
-        private TapConfig(string clientID, string clientSecret, RegionType regionType, bool enableTapDB, string channel,
-            string gameVersion,bool advertiserIDCollectionEnabled)
+
+        private TapConfig(string clientID, string clientToken, RegionType regionType, string serverUrl,
+            bool enableTapDB, string channel,
+            string gameVersion, bool advertiserIDCollectionEnabled)
         {
-            _clientID = clientID;
-            _clientSecret = clientSecret;
-            _regionType = regionType;
-            _dbConfig = new TapDBConfig(enableTapDB, channel, gameVersion,advertiserIDCollectionEnabled);
+            ClientID = clientID;
+            ClientToken = clientToken;
+            ServerURL = serverUrl;
+            RegionType = regionType;
+            DBConfig = new TapDBConfig(enableTapDB, channel, gameVersion, advertiserIDCollectionEnabled);
         }
 
         public string ToJson()
         {
             var dic = new Dictionary<string, object>
             {
-                ["clientID"] = _clientID,
-                ["clientSecret"] = _clientSecret,
-                ["isCN"] = _regionType == RegionType.CN,
-                ["dbConfig"] = _dbConfig?.ToDic()
+                ["clientID"] = ClientID,
+                ["clientToken"] = ClientToken,
+                ["isCN"] = RegionType == RegionType.CN,
+                ["dbConfig"] = DBConfig?.ToDic()
             };
             return Json.Serialize(dic);
         }
@@ -54,11 +61,14 @@ namespace TapTap.Bootstrap
         {
             private string _clientID;
 
-            private string _clientSecret;
+            private string _clientToken;
+
+            private string _serverURL;
 
             private RegionType _regionType;
 
             private bool _enableTapDB = true;
+
 
             private string _channel;
 
@@ -76,9 +86,15 @@ namespace TapTap.Bootstrap
                 return this;
             }
 
-            public Builder ClientSecret(string secret)
+            public Builder ClientToken(string secret)
             {
-                _clientSecret = secret;
+                _clientToken = secret;
+                return this;
+            }
+
+            public Builder ServerURL(string serverURL)
+            {
+                _serverURL = serverURL;
                 return this;
             }
 
@@ -114,7 +130,9 @@ namespace TapTap.Bootstrap
 
             public TapConfig ConfigBuilder()
             {
-                return new TapConfig(_clientID, _clientSecret, _regionType, _enableTapDB, _channel, _gameVersion,_advertiserIDCollectionEnabled);
+                return new TapConfig(_clientID, _clientToken, _regionType, _serverURL, _enableTapDB, _channel,
+                    _gameVersion,
+                    _advertiserIDCollectionEnabled);
             }
         }
     }
@@ -122,42 +140,42 @@ namespace TapTap.Bootstrap
 
     public class TapDBConfig
     {
-        private readonly bool _enable;
+        public readonly bool Enable;
 
-        private readonly string _channel;
+        public readonly string Channel;
 
-        private readonly string _gameVersion;
+        public readonly string GameVersion;
 
-        private readonly bool _advertiserIDCollectionEnabled;
+        public readonly bool AdvertiserIDCollectionEnabled;
 
         public TapDBConfig(bool enable)
         {
-            _enable = enable;
+            Enable = enable;
         }
 
         public TapDBConfig(bool enable, string channel, string gameVersion)
         {
-            _enable = enable;
-            _channel = channel;
-            _gameVersion = gameVersion;
+            Enable = enable;
+            Channel = channel;
+            GameVersion = gameVersion;
         }
 
         public TapDBConfig(bool enable, string channel, string gameVersion, bool advertiserIDCollectionEnabled)
         {
-            _enable = enable;
-            _channel = channel;
-            _gameVersion = gameVersion;
-            _advertiserIDCollectionEnabled = advertiserIDCollectionEnabled;
+            Enable = enable;
+            Channel = channel;
+            GameVersion = gameVersion;
+            AdvertiserIDCollectionEnabled = advertiserIDCollectionEnabled;
         }
 
         public Dictionary<string, object> ToDic()
         {
             return new Dictionary<string, object>
             {
-                ["channel"] = _channel,
-                ["gameVersion"] = _gameVersion,
-                ["enable"] = _enable,
-                ["advertiserIDCollectionEnabled"] = _advertiserIDCollectionEnabled
+                ["channel"] = Channel,
+                ["gameVersion"] = GameVersion,
+                ["enable"] = Enable,
+                ["advertiserIDCollectionEnabled"] = AdvertiserIDCollectionEnabled
             };
         }
     }

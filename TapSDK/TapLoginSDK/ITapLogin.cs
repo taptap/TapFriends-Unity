@@ -1,14 +1,36 @@
-﻿using System;
+﻿using System.Threading.Tasks;
+using TapTap.Common;
 
 namespace TapTap.Login
 {
     public interface ITapLogin
     {
+        void Init(string clientID);
+
+        void Init(string clientID, bool isCn, bool roundCorner);
+
         void ChangeConfig(bool roundCorner, bool isPortrait);
 
-        void GetProfile(Action<Profile> action);
+        Task<Profile> FetchProfile();
 
-        void GetAccessToken(Action<TapLoginToken> action);
+        Task<Profile> GetProfile();
+
+        Task<AccessToken> GetAccessToken();
+
+        Task<AccessToken> Login();
+
+        Task<bool> GetTestQualification();
+
+        void Logout();
+    }
+
+    public interface ITapLoginResultListener
+    {
+        void LoginCancel();
+
+        void LoginError(TapError error);
+
+        void LoginSuccess(AccessToken token);
     }
 
     public static class TapLoginConstants
