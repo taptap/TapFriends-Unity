@@ -12,12 +12,8 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <Reference Include="TapTap.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\Assets\TapTap\Common\Plugins\TapTap.Common.dll</HintPath>
-        </Reference>
-        <Reference Include="TapTap.Login, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null">
-          <HintPath>..\..\Assets\TapTap\Login\Plugins\TapTap.Login.dll</HintPath>
-        </Reference>
+        <ProjectReference Include="..\TapCommonSDK\TapCommonSDK.csproj"/>
+        <ProjectReference Include="..\TapLoginSDK\TapLoginSDK.csproj"/>
         <Reference Include="UnityEngine">
           <HintPath>..\..\UnityLibs\UnityEngine.dll</HintPath>
         </Reference>

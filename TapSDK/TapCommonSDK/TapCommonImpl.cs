@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace TapTap.Common
 {
@@ -24,7 +25,7 @@ namespace TapTap.Common
         {
             var xua = new Dictionary<string, string>
             {
-                {Constants.VersionKey, System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()},
+                {Constants.VersionKey, Assembly.GetExecutingAssembly().GetName().Version.ToString()},
                 {Constants.PlatformKey, "Unity"}
             };
             var command = new Command.Builder()
@@ -239,7 +240,13 @@ namespace TapTap.Common
 
         public void SetLanguage(TapLanguage language)
         {
-            throw new NotImplementedException();
+            var command = new Command.Builder()
+                .Service(TAP_COMMON_SERVICE)
+                .Method("setPreferredLanguage")
+                .Args("preferredLanguage", (int) language)
+                .CommandBuilder();
+            
+            EngineBridge.GetInstance().CallHandler(command);
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TapTap.TapDB;
 using JudgeDevice;
 using LeanCloud;
+using TapTap.Common;
 
 public class Sample : MonoBehaviour
 {
@@ -15,8 +16,10 @@ public class Sample : MonoBehaviour
     void Start()
     {
         Judge.JudgeDeviceModel();
-        LCLogger.LogDelegate = (level, message) => {
-            switch (level) {
+        LCLogger.LogDelegate = (level, message) =>
+        {
+            switch (level)
+            {
                 case LCLogLevel.Debug:
                     Debug.Log($"[DEBUG] {message}");
                     break;
@@ -107,9 +110,9 @@ public class Sample : MonoBehaviour
         if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice ? 250 : 150, 280, 100), "RND-CN", style))
         {
             var config = new TapConfig.Builder()
-                .ClientID("uZ8Yy6cSXVOR6AMRPj")
-                .ClientToken("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
-                .ServerURL("https://ikggdre2.lc-cn-n1-shared.com")
+                .ClientID("WsExTi2nldTGyerBiv")
+                .ClientToken("ooKXC7B208wxhHhWtnRqRkrCMXiD80E4xz8kveWG")
+                .ServerURL("https://api.leancloud.cn")
                 .RegionType(RegionType.CN)
                 .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
                 .ConfigBuilder();
@@ -171,8 +174,13 @@ public class Sample : MonoBehaviour
 
         if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice ? 850 : 715, 280, 100), "设置语言", style))
         {
-            // var languageType = int.Parse(language);
-            // TapBootstrap.SetPreferLanguage((TapLanguage) languageType);
+            var languageType = int.Parse(language);
+            TapCommon.SetLanguage((TapLanguage) languageType);
+        }
+        
+        if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice ? 990 : 855, 280, 100), "成就", style))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(6);
         }
     }
 }

@@ -2,13 +2,8 @@ using System;
 
 namespace TapTap.Common
 {
-    public class TapCommon
+    public static class TapCommon
     {
-        public static void SetLanguage(string language)
-        {
-            TapCommonImpl.GetInstance().SetLanguage(language);
-        }
-
         public static void GetRegionCode(Action<bool> callback)
         {
             TapCommonImpl.GetInstance().GetRegionCode(callback);
@@ -47,6 +42,11 @@ namespace TapTap.Common
         public static void SetXua()
         {
             TapCommonImpl.GetInstance().SetXua();
+        }
+
+        public static void SetLanguage(TapLanguage language)
+        {
+            TapCommonImpl.GetInstance().SetLanguage(language);
         }
     }
 }
