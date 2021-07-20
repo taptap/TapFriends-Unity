@@ -40,8 +40,8 @@ public class LoginScene : MonoBehaviour
 
 
         if (GUI.Button(new Rect(60, 300, 300, 100), "退出登录", style))
-        {
-            // TapBootstrap.Logout();
+        {   
+            label = $"logout";
             TDSUser.Logout();
         }
 
@@ -116,7 +116,7 @@ public class LoginScene : MonoBehaviour
         {
             if (e is TapException tapError)
             {
-                Debug.Log($"get AccessToken exception:{tapError.code} message:{tapError.message}");
+                Debug.Log($"glogin exception:{tapError.code} message:{tapError.message}");
             }
 
             // ignored
@@ -128,14 +128,14 @@ public class LoginScene : MonoBehaviour
         try
         {
             var tdsUser = await TDSUser.GetCurrent();
-            label = $"accessToken:{tdsUser?.SessionToken}";
-            Debug.Log($"accessToken:{tdsUser?.SessionToken}");
+            label = $"sessionToken:{tdsUser?.SessionToken}";
+            Debug.Log($"sessionToken:{tdsUser?.SessionToken}");
         }
         catch (Exception e)
         {
             if (e is TapException tapError)
             {
-                Debug.Log($"get AccessToken exception:{tapError.code} message:{tapError.message}");
+                Debug.Log($"get sessionToken exception:{tapError.code} message:{tapError.message}");
             }
 
             // ignored
@@ -148,13 +148,13 @@ public class LoginScene : MonoBehaviour
         {
             var tdsUser = await TDSUser.GetCurrent();
             label = $"objectId:{tdsUser?.ObjectId}";
-            Debug.Log($" objectId:${tdsUser?.ObjectId}");
+            Debug.Log($"objectId:${tdsUser?.ObjectId}");
         }
         catch (Exception e)
         {
             if (e is TapException tapError)
             {
-                Debug.Log($"get profile exception:{tapError.code} message:{tapError.message}");
+                Debug.Log($"get objectId exception:{tapError.code} message:{tapError.message}");
             }
 
             // ignored
