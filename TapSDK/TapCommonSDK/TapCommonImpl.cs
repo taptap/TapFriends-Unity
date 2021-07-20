@@ -1,38 +1,62 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEngine;
 
 namespace TapTap.Common
 {
     public class TapCommonImpl : ITapCommon
     {
-        private static readonly TapCommonImpl SInstance = new TapCommonImpl();
-
         private static readonly string TAP_COMMON_SERVICE = "TDSCommonService";
-
-        public static TapCommonImpl GetInstance()
-        {
-            return SInstance;
-        }
-
+        
+        private readonly AndroidJavaObject _proxyServiceImpl;
+        
         private TapCommonImpl()
         {
             EngineBridge.GetInstance().Register("com.tds.common.wrapper.TDSCommonService",
                 "com.tds.common.wrapper.TDSCommonServiceImpl");
+
+            _proxyServiceImpl = new AndroidJavaObject("com.tds.common.wrapper.TDSCommonServiceImpl");
+        }
+
+        private static volatile TapCommonImpl _sInstance;
+
+        private static readonly object Locker = new object();
+
+        public static TapCommonImpl GetInstance()
+        {
+            lock (Locker)
+            {
+                if (_sInstance == null)
+                {
+                    _sInstance = new TapCommonImpl();
+                }
+            }
+
+            return _sInstance;
         }
 
         public void SetXua()
         {
-            var xua = new Dictionary<string, string>
+            try
             {
-                {Constants.VersionKey, Assembly.GetExecutingAssembly().GetName().Version.ToString()},
-                {Constants.PlatformKey, "Unity"}
-            };
-            var command = new Command.Builder()
-                .Service(TAP_COMMON_SERVICE)
-                .Method("setXUA")
-                .Args("setXUA", Json.Serialize(xua)).CommandBuilder();
-            EngineBridge.GetInstance().CallHandler(command);
+                var xua = new Dictionary<string, string>
+                {
+                    {Constants.VersionKey, Assembly.GetExecutingAssembly().GetName().Version.ToString()},
+                    {Constants.PlatformKey, "Unity"}
+                };
+
+                var command = new Command.Builder()
+                    .Service(TAP_COMMON_SERVICE)
+                    .Method("setXUA")
+                    .Args("setXUA", Json.Serialize(xua)).CommandBuilder();
+
+                EngineBridge.GetInstance().CallHandler(command);
+            }
+            catch (Exception e)
+            {
+                Debug.Log($"exception:{e}");
+            }
         }
 
         public void SetLanguage(string language)
@@ -245,8 +269,36 @@ namespace TapTap.Common
                 .Method("setPreferredLanguage")
                 .Args("preferredLanguage", (int) language)
                 .CommandBuilder();
-            
+
             EngineBridge.GetInstance().CallHandler(command);
+        }
+
+        public void ConsumptionProperties(string key, ITapPropertiesProxy proxy)
+        {
+            if (Platform.IsAndroid())
+            {
+                Debug.Log($"invoke Properties:{key} value:{proxy.GetProperties()}");
+                _proxyServiceImpl?.Call("consumptionProperties", key, new TapPropertiesProxy(proxy));
+            }
+        }
+
+
+        public class TapPropertiesProxy : AndroidJavaProxy
+        {
+            private readonly ITapPropertiesProxy _properties;
+
+            public TapPropertiesProxy(ITapPropertiesProxy properties) :
+                base(new AndroidJavaClass("com.tds.common.wrapper.TapPropertiesProxy"))
+            {
+                _properties = properties;
+            }
+
+            public override AndroidJavaObject Invoke(string methodName, object[] args)
+            {
+                return _properties != null
+                    ? new AndroidJavaObject("java.lang.String", Json.Serialize(_properties.GetProperties()))
+                    : base.Invoke(methodName, args);
+            }
         }
     }
 }

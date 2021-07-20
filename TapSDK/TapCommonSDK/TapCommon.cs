@@ -2,7 +2,7 @@ using System;
 
 namespace TapTap.Common
 {
-    public static class TapCommon
+    public class TapCommon
     {
         public static void GetRegionCode(Action<bool> callback)
         {
@@ -48,5 +48,11 @@ namespace TapTap.Common
         {
             TapCommonImpl.GetInstance().SetLanguage(language);
         }
+
+        public static void ConsumptionProperties(string key, ITapPropertiesProxy proxy)
+        {
+            TapCommonImpl.GetInstance().ConsumptionProperties(key, proxy);
+        }
+        
     }
 }

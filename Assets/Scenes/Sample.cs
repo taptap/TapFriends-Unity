@@ -1,11 +1,12 @@
 ﻿using System.Collections;
-using TapTap.Bootstrap;
-using UnityEngine;
-using UnityEngine.UI;
-using TapTap.TapDB;
 using JudgeDevice;
 using LeanCloud;
+using TapTap.Bootstrap;
 using TapTap.Common;
+using TapTap.TapDB;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Sample : MonoBehaviour
 {
@@ -149,27 +150,27 @@ public class Sample : MonoBehaviour
 
         if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice ? 700 : 600, 280, 100), "登陆", style))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1);
+            SceneManager.LoadSceneAsync(1);
         }
 
         if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice ? 850 : 750, 280, 100), "动态", style))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
+            SceneManager.LoadSceneAsync(2);
         }
 
         if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice ? 1000 : 900, 280, 100), "TapDB", style))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(3);
+            SceneManager.LoadSceneAsync(3);
         }
 
         if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice ? 570 : 425, 280, 100), "TapFriend", style))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4);
+            SceneManager.LoadSceneAsync(4);
         }
 
         if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice ? 710 : 565, 280, 100), "Common", style))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(5);
+            SceneManager.LoadSceneAsync(5);
         }
 
         if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice ? 850 : 715, 280, 100), "设置语言", style))
@@ -180,7 +181,7 @@ public class Sample : MonoBehaviour
         
         if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice ? 990 : 855, 280, 100), "成就", style))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(6);
+            SceneManager.LoadSceneAsync(6);
         }
     }
 }

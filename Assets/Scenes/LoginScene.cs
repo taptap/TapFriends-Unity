@@ -18,21 +18,6 @@ public class LoginScene : MonoBehaviour
     {
     }
 
-    public void OnLoginSuccess(AccessToken token)
-    {
-        label = $"Login Success:{token.ToJson()}";
-    }
-
-    public void OnLoginCancel()
-    {
-        label = "Login Cancel";
-    }
-
-    public void OnLoginError(TapError error)
-    {
-        label = error != null ? $"Login Error:{error.code} desc:{error.errorDescription}" : "Login Error";
-    }
-
     private string label;
 
     private void OnGUI()
@@ -46,54 +31,71 @@ public class LoginScene : MonoBehaviour
             fontSize = 20
         };
 
-        GUI.Label(new Rect(400, 100, 400, 300), label, labelStyle);
+        GUI.Label(new Rect(500, 100, 400, 300), label, labelStyle);
 
-        if (GUI.Button(new Rect(60, 150, 180, 100), "登录", style))
+        if (GUI.Button(new Rect(60, 150, 300, 100), "登录", style))
         {
             Login();
         }
 
-        if (GUI.Button(new Rect(60, 300, 180, 100), "退出登录", style))
+
+        if (GUI.Button(new Rect(60, 300, 300, 100), "退出登录", style))
         {
             // TapBootstrap.Logout();
             TDSUser.Logout();
         }
 
-        if (GUI.Button(new Rect(60, 450, 180, 100), "AccessToken", style))
+        if (GUI.Button(new Rect(60, 450, 300, 100), "SessionToken", style))
         {
-            GetAccessToken();
+            GetSessionToken();
         }
 
-        if (GUI.Button(new Rect(60, 600, 260, 100), "Profile", style))
+        if (GUI.Button(new Rect(60, 600, 300, 100), "Get ObjectId", style))
         {
-            GetProfile();
+            GetObjectId();
         }
 
-        if (GUI.Button(new Rect(60, 750, 260, 100), "Remote Profile", style))
+        if (GUI.Button(new Rect(60, 750, 300, 100), "Get CurrentUser", style))
         {
-            GetRemoteProfile();
+            GetCurrentUser();
         }
 
-        if (GUI.Button(new Rect(60, 900, 260, 100), "篝火测试", style))
+        if (GUI.Button(new Rect(60, 900, 300, 100), "篝火测试", style))
         {
             GetTestQualification();
-            // TapBootstrap.GetTestQualification((b, error) =>
-            // {
-            //     label = $"篝火测试资格:{b} Error:{error?.code} Descrption:{error?.errorDescription}";
-            // });
         }
 
-        if (GUI.Button(new Rect(60, 1050, 180, 100), "返回", style))
+        if (GUI.Button(new Rect(60, 1050, 400, 100), "返回", style))
         {
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
         }
+
+        if (GUI.Button(new Rect(60, 1200, 400, 100), "游客登陆", style))
+        {
+            LoginAnonymously();
+        }
     }
 
-    private static async void GetTestQualification()
+    private async void LoginAnonymously()
+    {
+        try
+        {
+            var tdsUser = await TDSUser.LoginAnonymously();
+            label = $"LoginAnonymously Success:{Json.Serialize(tdsUser)}";
+            Debug.Log($"LoginAnonymously Success:{Json.Serialize(tdsUser)}");
+        }
+        catch (Exception)
+        {
+            //
+        }
+    }
+
+    private async void GetTestQualification()
     {
         try
         {
             var boolean = await TapLogin.GetTestQualification();
+            label = $"test:{boolean}";
             Debug.Log($"TestQualification:{boolean}");
         }
         catch (Exception e)
@@ -102,11 +104,13 @@ public class LoginScene : MonoBehaviour
         }
     }
 
-    private static async void Login()
+    private async void Login()
     {
         try
         {
             var tdsUser = await TDSUser.LoginWithTapTap();
+            label = $"Login Success:{Json.Serialize(tdsUser)}";
+            Debug.Log($"Login Success:{Json.Serialize(tdsUser)}");
         }
         catch (Exception e)
         {
@@ -119,12 +123,13 @@ public class LoginScene : MonoBehaviour
         }
     }
 
-    private static async void GetAccessToken()
+    private async void GetSessionToken()
     {
         try
         {
-            var accessToken = await TapLogin.GetAccessToken();
-            Debug.Log($"accessToken:{accessToken.ToJson()}");
+            var tdsUser = await TDSUser.GetCurrent();
+            label = $"accessToken:{tdsUser?.SessionToken}";
+            Debug.Log($"accessToken:{tdsUser?.SessionToken}");
         }
         catch (Exception e)
         {
@@ -137,12 +142,13 @@ public class LoginScene : MonoBehaviour
         }
     }
 
-    private static async void GetProfile()
+    private async void GetObjectId()
     {
         try
         {
-            var accessToken = await TapLogin.GetProfile();
-            Debug.Log($"accessToken:{accessToken.ToJson()}");
+            var tdsUser = await TDSUser.GetCurrent();
+            label = $"objectId:{tdsUser?.ObjectId}";
+            Debug.Log($" objectId:${tdsUser?.ObjectId}");
         }
         catch (Exception e)
         {
@@ -155,21 +161,17 @@ public class LoginScene : MonoBehaviour
         }
     }
 
-    private static async void GetRemoteProfile()
+    private async void GetCurrentUser()
     {
         try
         {
-            var accessToken = await TapLogin.FetchProfile();
-            Debug.Log($"remote profile:{accessToken.ToJson()}");
+            var tdsUser = await TDSUser.GetCurrent();
+            label = $"currentUser:{Json.Serialize(tdsUser)}";
+            Debug.Log($"currentUser:{Json.Serialize(tdsUser)}");
         }
         catch (Exception e)
         {
-            if (e is TapException tapError)
-            {
-                Debug.Log($"get remote profile exception:{tapError.code} message:{tapError.message}");
-            }
-
-            // ignored
+            // 
         }
     }
 }

@@ -226,6 +226,7 @@ namespace TapTap.Bootstrap
 
         private static async Task<Dictionary<string, object>> LoginTapTap()
         {
+            
             var token = await TapLogin.Login();
 
             var profile = await TapLogin.GetProfile();

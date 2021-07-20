@@ -20,8 +20,15 @@ namespace TapTap.Common
         void OpenReviewInTapGlobal(string appId, Action<bool> callback);
 
         void SetLanguage(TapLanguage language);
-        
+
         void SetXua();
+
+        void ConsumptionProperties(string key, ITapPropertiesProxy proxy);
+    }
+
+    public interface ITapPropertiesProxy
+    {
+        string GetProperties();
     }
 
     [Serializable]
@@ -32,7 +39,7 @@ namespace TapTap.Common
         public CommonRegionWrapper(string json)
         {
             Dictionary<string, object> dic = Json.Deserialize(json) as Dictionary<string, object>;
-            this.isMainland = SafeDictionary.GetValue<bool>(dic, "isMainland");
+            isMainland = SafeDictionary.GetValue<bool>(dic, "isMainland");
         }
     }
 }
