@@ -13,6 +13,7 @@
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/TapDB/Plugins/iOS/TapTap.TapDB.dll" /&gt;
   &lt;Assembly Path="/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapTap/Common/Plugins/TapTap.Common.dll" /&gt;
   &lt;Assembly Path="/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapTap/Common/Plugins/iOS/TapTap.Common.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/tapsdk2-unity/Assets/TapTap/Bootstrap/Plugins/TapTap.Bootstrap.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d2c66398_002Def75_002D4380_002D9ff3_002Dd0ecfa6f3eec/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="StartLogin" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
