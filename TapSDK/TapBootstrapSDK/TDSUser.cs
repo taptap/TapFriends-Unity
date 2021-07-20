@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using LeanCloud.Storage;
@@ -166,7 +166,7 @@ namespace TapTap.Bootstrap
         /// <param name="unionId"></param>
         /// <param name="option"></param>
         /// <returns></returns>
-        public static new async Task<LCUser> LoginWithAuthDataAndUnionId(Dictionary<string, object> authData,
+        public static new async Task<TDSUser> LoginWithAuthDataAndUnionId(Dictionary<string, object> authData,
             string platform, string unionId,
             LCUserAuthDataLoginOption option = null)
         {
@@ -177,7 +177,7 @@ namespace TapTap.Bootstrap
         /// Creates an anonymous user.
         /// </summary>
         /// <returns></returns>
-        public static new async Task<LCUser> LoginAnonymously()
+        public static new async Task<TDSUser> LoginAnonymously()
         {
             return (await LCUser.LoginAnonymously()) as TDSUser;
         }
