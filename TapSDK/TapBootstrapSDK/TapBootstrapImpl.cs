@@ -9,7 +9,7 @@ namespace TapTap.Bootstrap
         private TapBootstrapImpl()
         {
             _taskHolder = new TapStartTaskHolder();
-            
+
             _taskHolder.AddTask(new TapTapLoginStartTask());
             _taskHolder.AddTask(new TapMomentStartTask());
             _taskHolder.AddTask(new TapStorageStartTask());
@@ -34,8 +34,30 @@ namespace TapTap.Bootstrap
 
         public void Init(TapConfig config)
         {
+            TapCommon.RegisterProperties("sessionToken", new SessionTokenProperty());
+            TapCommon.RegisterProperties("objectId", new ObjectIdProperty());
             TapCommon.SetXua();
             _taskHolder.Invoke(config);
+        }
+
+        private class SessionTokenProperty : ITapPropertiesProxy
+        {
+            public string GetProperties()
+            {
+                var task = TDSUser.GetCurrent();
+                task.Wait();
+                return task.Result?.SessionToken;
+            }
+        }
+
+        private class ObjectIdProperty : ITapPropertiesProxy
+        {
+            public string GetProperties()
+            {
+                var task = TDSUser.GetCurrent();
+                task.Wait();
+                return task.Result?.ObjectId;
+            }
         }
     }
 }
