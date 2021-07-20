@@ -204,7 +204,7 @@ namespace TapTap.Login
                             tapError.errorDescription));
                         break;
                 }
-
+                
                 UnRegisterLoginCallback();
             });
         }

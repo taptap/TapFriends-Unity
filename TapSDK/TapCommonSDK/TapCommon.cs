@@ -49,10 +49,9 @@ namespace TapTap.Common
             TapCommonImpl.GetInstance().SetLanguage(language);
         }
 
-        public static void ConsumptionProperties(string key, ITapPropertiesProxy proxy)
+        public static void RegisterProperties(string key, ITapPropertiesProxy proxy)
         {
-            TapCommonImpl.GetInstance().ConsumptionProperties(key, proxy);
+            TapCommonImpl.GetInstance().RegisterProperties(key, proxy);
         }
-        
     }
 }

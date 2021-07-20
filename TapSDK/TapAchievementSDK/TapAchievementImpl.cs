@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TapTap.Bootstrap;
 using TapTap.Common;
 using UnityEngine;
 
