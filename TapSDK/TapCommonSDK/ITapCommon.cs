@@ -23,7 +23,7 @@ namespace TapTap.Common
 
         void SetXua();
 
-        void ConsumptionProperties(string key, ITapPropertiesProxy proxy);
+        void RegisterProperties(string key, ITapPropertiesProxy proxy);
     }
 
     public interface ITapPropertiesProxy

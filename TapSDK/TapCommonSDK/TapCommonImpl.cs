@@ -1,6 +1,9 @@
 using System;
+using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace TapTap.Common
@@ -8,15 +11,19 @@ namespace TapTap.Common
     public class TapCommonImpl : ITapCommon
     {
         private static readonly string TAP_COMMON_SERVICE = "TDSCommonService";
-        
+
         private readonly AndroidJavaObject _proxyServiceImpl;
-        
+
+        private readonly ConcurrentDictionary<string, ITapPropertiesProxy> _propertiesProxies;
+
         private TapCommonImpl()
         {
             EngineBridge.GetInstance().Register("com.tds.common.wrapper.TDSCommonService",
                 "com.tds.common.wrapper.TDSCommonServiceImpl");
 
             _proxyServiceImpl = new AndroidJavaObject("com.tds.common.wrapper.TDSCommonServiceImpl");
+
+            _propertiesProxies = new ConcurrentDictionary<string, ITapPropertiesProxy>();
         }
 
         private static volatile TapCommonImpl _sInstance;
@@ -34,6 +41,11 @@ namespace TapTap.Common
             }
 
             return _sInstance;
+        }
+
+        public ConcurrentDictionary<string, ITapPropertiesProxy> GetProperties()
+        {
+            return _propertiesProxies;
         }
 
         public void SetXua()
@@ -273,15 +285,33 @@ namespace TapTap.Common
             EngineBridge.GetInstance().CallHandler(command);
         }
 
-        public void ConsumptionProperties(string key, ITapPropertiesProxy proxy)
+        public void RegisterProperties(string key, ITapPropertiesProxy proxy)
         {
             if (Platform.IsAndroid())
             {
                 Debug.Log($"invoke Properties:{key} value:{proxy.GetProperties()}");
-                _proxyServiceImpl?.Call("consumptionProperties", key, new TapPropertiesProxy(proxy));
+                _proxyServiceImpl?.Call("registerProperties", key, new TapPropertiesProxy(proxy));
+            }
+            else if (Platform.IsIOS())
+            {
+#if UNITY_IOS
+                registerProperties(key, TapPropertiesDelegateProxy);
+#endif
             }
         }
 
+#if UNITY_IOS
+        private delegate string TapPropertiesDelegate(string key);
+
+        [AOT.MonoPInvokeCallbackAttribute(typeof(TapPropertiesDelegate))]
+        private static string TapPropertiesDelegateProxy(string key)
+        {
+            return _sInstance._propertiesProxies?[key]?.GetProperties();
+        }
+
+        [DllImport("__Internal")]
+        private static extern void registerProperties(string key, TapPropertiesDelegate propertiesDelegate);
+#endif
 
         public class TapPropertiesProxy : AndroidJavaProxy
         {
