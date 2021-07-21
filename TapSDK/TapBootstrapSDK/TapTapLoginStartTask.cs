@@ -6,7 +6,7 @@ namespace TapTap.Bootstrap
     {
         public void Invoke(TapConfig config)
         {
-            TapLogin.Init(config.ClientID, config.RegionType == RegionType.CN, false);
+            TapLogin.Init(config.ClientID, config.RegionType == RegionType.CN, true);
         }
     }
 }
