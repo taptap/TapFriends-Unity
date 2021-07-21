@@ -2,9 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
-#if UNITY_IOS
 using System.Runtime.InteropServices;
-#endif
 using UnityEngine;
 
 namespace TapTap.Common
@@ -290,8 +288,10 @@ namespace TapTap.Common
             else if (Platform.IsIOS())
             {
 #if UNITY_IOS
-                _propertiesProxies[key] = proxy;
-                registerProperties(key, TapPropertiesDelegateProxy);
+                if (_propertiesProxies.TryAdd(key, proxy))
+                {
+                    registerProperties(key, TapPropertiesDelegateProxy);
+                }
 #endif
             }
 
@@ -304,7 +304,8 @@ namespace TapTap.Common
         [AOT.MonoPInvokeCallbackAttribute(typeof(TapPropertiesDelegate))]
         private static string TapPropertiesDelegateProxy(string key)
         {
-            return _sInstance._propertiesProxies?[key]?.GetProperties();
+            Debug.Log($"iOS TapPropertiesDelegateProxy:{_sInstance._propertiesProxies[key].GetProperties()}");
+            return _sInstance._propertiesProxies[key].GetProperties();
         }
 
         [DllImport("__Internal")]

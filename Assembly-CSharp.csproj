@@ -718,6 +718,10 @@
       <Project>{b361e486-3866-2044-2a0e-9d2dd34a1498}</Project>
       <Name>TapTap.Common.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="TapTap.Login.Editor.csproj">
+      <Project>{aa9073ad-a3b0-24cc-14b7-b5afa956416a}</Project>
+      <Name>TapTap.Login.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="TapTap.Moment.Editor.csproj">
       <Project>{a72d8ae4-5b33-3162-af31-23f14ed3f0d4}</Project>
       <Name>TapTap.Moment.Editor</Name>
@@ -725,10 +729,6 @@
     <ProjectReference Include="TapTap.Achievement.Editor.csproj">
       <Project>{1c2951ba-5a21-5fbe-7ee7-bf39bbe2df35}</Project>
       <Name>TapTap.Achievement.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="TapTap.Login.Editor.csproj">
-      <Project>{aa9073ad-a3b0-24cc-14b7-b5afa956416a}</Project>
-      <Name>TapTap.Login.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
