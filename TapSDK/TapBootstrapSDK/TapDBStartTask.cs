@@ -10,8 +10,6 @@ namespace TapTap.Bootstrap
 
         private const string ServiceImpl = "com.tds.tapdb.wrapper.TapDBServiceImpl";
 
-        private const string InitMethod = "init";
-
         public TapDBStartTask()
         {
             EngineBridge.GetInstance().Register(ServiceClz, ServiceImpl);
@@ -28,20 +26,19 @@ namespace TapTap.Bootstrap
             {
                 return;
             }
-
+            
+            // TapDB 初始化
             var command = new Command.Builder()
                 .Service(ServiceName)
-                .Method(InitMethod)
+                .Method("init")
                 .Args("clientId", config.ClientID)
-                .Args("isCN", config.RegionType == RegionType.CN)
                 .Args("channel", config.DBConfig.Channel)
-                .Args("gameVersion", config.DBConfig.GameVersion)
-                .CommandBuilder();
-            // TapDB 初始化
+                .Args("isCN", config.RegionType == RegionType.CN)
+                .Args("gameVersion", config.DBConfig.GameVersion).CommandBuilder();
             EngineBridge.GetInstance().CallHandler(command);
 
             if (!Platform.IsIOS()) return;
-            
+
             var idfaCommand = new Command.Builder()
                 .Service(ServiceName)
                 .Method("advertiserIDCollectionEnabled")

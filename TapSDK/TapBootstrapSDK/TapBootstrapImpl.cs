@@ -1,4 +1,8 @@
+using System.Reflection;
+using System.Threading.Tasks;
+using LeanCloud.Storage;
 using TapTap.Common;
+using UnityEngine;
 
 namespace TapTap.Bootstrap
 {
@@ -13,6 +17,8 @@ namespace TapTap.Bootstrap
             _taskHolder.AddTask(new TapTapLoginStartTask());
             _taskHolder.AddTask(new TapMomentStartTask());
             _taskHolder.AddTask(new TapStorageStartTask());
+            _taskHolder.AddTask(new TapDBStartTask());
+            _taskHolder.AddTask(new TapAchievementStartTask());
         }
 
         private static volatile TapBootstrapImpl _sInstance;
@@ -32,21 +38,27 @@ namespace TapTap.Bootstrap
             return _sInstance;
         }
 
-        public void Init(TapConfig config)
+        public async void Init(TapConfig config)
         {
-            TapCommon.RegisterProperties("sessionToken", new SessionTokenProperty());
-            TapCommon.RegisterProperties("objectId", new ObjectIdProperty());
-            TapCommon.SetXua();
             _taskHolder.Invoke(config);
+
+            TapCommon.SetXua();
+            
+            await TDSUser.GetCurrent();
+            
+            TapCommon.RegisterProperties("sessionToken", new SessionTokenProperty());
+
+            TapCommon.RegisterProperties("objectId", new ObjectIdProperty());
+            
         }
 
         private class SessionTokenProperty : ITapPropertiesProxy
         {
             public string GetProperties()
             {
-                var task = TDSUser.GetCurrent();
-                task.Wait();
-                return task.Result?.SessionToken;
+                Debug.Log($"sessionToken User:{GetCurrentUser()}");
+                var sessionToken = GetCurrentUser()?.SessionToken;
+                return string.IsNullOrEmpty(sessionToken) ? "" : sessionToken;
             }
         }
 
@@ -54,10 +66,16 @@ namespace TapTap.Bootstrap
         {
             public string GetProperties()
             {
-                var task = TDSUser.GetCurrent();
-                task.Wait();
-                return task.Result?.ObjectId;
+                Debug.Log($"objectId User:{GetCurrentUser()}");
+                var objectId = GetCurrentUser()?.ObjectId;
+                return string.IsNullOrEmpty(objectId) ? "" : objectId;
             }
+        }
+
+        private static LCUser GetCurrentUser()
+        {
+            var field = typeof(LCUser).GetField("currentUser", BindingFlags.Static | BindingFlags.NonPublic);
+            return field?.GetValue(new LCUser()) as LCUser;
         }
     }
 }

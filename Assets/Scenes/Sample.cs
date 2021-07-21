@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using JudgeDevice;
 using LeanCloud;
+using LeanCloud.Storage;
 using TapTap.Bootstrap;
 using TapTap.Common;
 using TapTap.TapDB;
@@ -121,7 +122,9 @@ public class Sample : MonoBehaviour
             TapDB.AdvertiserIDCollectionEnabled(isIDFA);
 
             TapBootstrap.Init(config);
+            
         }
+        
 
         if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice ? 400 : 300, 280, 100), "海外", style))
         {
@@ -178,7 +181,7 @@ public class Sample : MonoBehaviour
             var languageType = int.Parse(language);
             TapCommon.SetLanguage((TapLanguage) languageType);
         }
-        
+
         if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice ? 990 : 855, 280, 100), "成就", style))
         {
             SceneManager.LoadSceneAsync(6);

@@ -1,4 +1,5 @@
 using TapTap.Achievement;
+using TapTap.Bootstrap;
 using TapTap.Common;
 using UnityEngine;
 using UnityEngine.SceneManagement;

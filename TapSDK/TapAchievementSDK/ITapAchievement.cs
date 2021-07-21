@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TapTap.Bootstrap;
 using TapTap.Common;
 
 namespace TapTap.Achievement
 {
     public interface ITapAchievement
     {
+        void Init(TapConfig tapConfig);
+
         void InitData();
 
         void RegisterCallback(IAchievementCallback callback);
@@ -18,7 +21,7 @@ namespace TapTap.Achievement
         Task<List<TapAchievementBean>> GetLocalUserAchievementList();
 
         Task<List<TapAchievementBean>> FetchUserAchievementList();
-        
+
         void FetchAllAchievementList(Action<List<TapAchievementBean>, TapError> action);
 
         void GetLocalAllAchievementList(Action<List<TapAchievementBean>, TapError> action);

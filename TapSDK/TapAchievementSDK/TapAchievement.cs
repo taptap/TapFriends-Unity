@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TapTap.Bootstrap;
 using TapTap.Common;
 
 namespace TapTap.Achievement
 {
     public class TapAchievement
     {
+        public static void Init(TapConfig config)
+        {
+            TapAchievementImpl.GetInstance().Init(config);
+        }
+
         public static void RegisterCallback(IAchievementCallback callback)
         {
             TapAchievementImpl.GetInstance().RegisterCallback(callback);

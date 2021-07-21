@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+using LeanCloud.Storage;
 using TapTap.Bootstrap;
 using UnityEngine;
 using TapTap.Common;
@@ -40,7 +42,7 @@ public class LoginScene : MonoBehaviour
 
 
         if (GUI.Button(new Rect(60, 300, 300, 100), "退出登录", style))
-        {   
+        {
             label = $"logout";
             TDSUser.Logout();
         }
@@ -144,11 +146,20 @@ public class LoginScene : MonoBehaviour
 
     private async void GetObjectId()
     {
+        // var info = typeof(LCUser).GetField("currentUser").GetValue(null) as LCUser;
+        
         try
         {
             var tdsUser = await TDSUser.GetCurrent();
             label = $"objectId:{tdsUser?.ObjectId}";
-            Debug.Log($"objectId:${tdsUser?.ObjectId}");
+            Debug.Log($"objectId:{tdsUser?.ObjectId}");
+
+            // var info = typeof(LCUser).GetField("currentUser").GetValue(null) as LCUser;
+            //
+            // var property = typeof(LCUser).GetProperty("currentUser")?.GetValue(null, null) as LCUser;
+            //
+            // Debug.Log($"info:{info?.SessionToken} +  objectId: +{info?.ObjectId}");
+            // Debug.Log($"property:{property?.SessionToken} +  property: +{property?.ObjectId}");
         }
         catch (Exception e)
         {

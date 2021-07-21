@@ -12,8 +12,8 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <ProjectReference Include="..\TapCommonSDK\TapCommonSDK.csproj"/>
-        <ProjectReference Include="..\TapLoginSDK\TapLoginSDK.csproj"/>
+        <ProjectReference Include="..\TapCommonSDK\TapCommonSDK.csproj" />
+        <ProjectReference Include="..\TapLoginSDK\TapLoginSDK.csproj" />
         <Reference Include="UnityEngine">
           <HintPath>..\..\UnityLibs\UnityEngine.dll</HintPath>
         </Reference>

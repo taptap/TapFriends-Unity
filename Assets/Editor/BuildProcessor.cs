@@ -40,7 +40,7 @@ namespace Editor
             proj.SetBuildProperty(unityFrameworkTarget, "CODE_SIGN_STYLE", "Manual");
 
             var parentFolder = Directory.GetParent(Application.dataPath).FullName;
-            
+
             var plistFile = TapFileHelper.RecursionFilterFile(parentFolder + "/Assets/Plugins/", "TDS-Info.plist");
 
             if (!plistFile.Exists)
@@ -68,9 +68,9 @@ namespace Editor
             var dict = plist.root.AsDict();
             var array = dict.CreateArray("CFBundleURLTypes");
 
-            var tapIdList = new List<string>(3)
+            var tapIdList = new List<string>(4)
             {
-                "ttuZ8Yy6cSXVOR6AMRPj", "tt0RiAlMny7jiz086FaU", "ttKFV9Pm9ojdmWkkRJeb"
+                "ttuZ8Yy6cSXVOR6AMRPj", "tt0RiAlMny7jiz086FaU", "ttKFV9Pm9ojdmWkkRJeb", "WsExTi2nldTGyerBiv"
             };
 
             for (var i = 0; i < tapIdList.Capacity; i++)

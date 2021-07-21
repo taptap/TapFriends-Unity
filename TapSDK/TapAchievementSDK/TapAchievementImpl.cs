@@ -32,6 +32,15 @@ namespace TapTap.Achievement
             return _sInstance;
         }
 
+        public void Init(TapConfig tapConfig)
+        {
+            EngineBridge.GetInstance().CallHandler(
+                new Command.Builder()
+                    .Service(TapAchievementConstants.TapAchievementService)
+                    .Method("init")
+                    .Args("initWithConfig", tapConfig.ToJson())
+                    .CommandBuilder());
+        }
 
         public void InitData()
         {

@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace TapTap.Bootstrap
 {
     public interface ITapBootstrap

@@ -1,9 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
+#if UNITY_IOS
 using System.Runtime.InteropServices;
+#endif
 using UnityEngine;
 
 namespace TapTap.Common
@@ -41,11 +42,6 @@ namespace TapTap.Common
             }
 
             return _sInstance;
-        }
-
-        public ConcurrentDictionary<string, ITapPropertiesProxy> GetProperties()
-        {
-            return _propertiesProxies;
         }
 
         public void SetXua()
@@ -289,15 +285,17 @@ namespace TapTap.Common
         {
             if (Platform.IsAndroid())
             {
-                Debug.Log($"invoke Properties:{key} value:{proxy.GetProperties()}");
                 _proxyServiceImpl?.Call("registerProperties", key, new TapPropertiesProxy(proxy));
             }
             else if (Platform.IsIOS())
             {
 #if UNITY_IOS
+                _propertiesProxies[key] = proxy;
                 registerProperties(key, TapPropertiesDelegateProxy);
 #endif
             }
+
+            Debug.Log($"registerProperty:{key == null} value:{proxy == null}");
         }
 
 #if UNITY_IOS
@@ -313,7 +311,7 @@ namespace TapTap.Common
         private static extern void registerProperties(string key, TapPropertiesDelegate propertiesDelegate);
 #endif
 
-        public class TapPropertiesProxy : AndroidJavaProxy
+        private class TapPropertiesProxy : AndroidJavaProxy
         {
             private readonly ITapPropertiesProxy _properties;
 
@@ -326,7 +324,7 @@ namespace TapTap.Common
             public override AndroidJavaObject Invoke(string methodName, object[] args)
             {
                 return _properties != null
-                    ? new AndroidJavaObject("java.lang.String", Json.Serialize(_properties.GetProperties()))
+                    ? new AndroidJavaObject("java.lang.String", _properties.GetProperties())
                     : base.Invoke(methodName, args);
             }
         }

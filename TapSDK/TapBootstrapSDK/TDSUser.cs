@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 using LeanCloud.Storage;
-using TapTap.Common;
 using TapTap.Login;
 
 namespace TapTap.Bootstrap
 {
-    public class TDSUser : LCUser, ITapPropertiesProxy
+    public class TDSUser : LCUser
     {
         public new string Username
         {
@@ -226,14 +224,6 @@ namespace TapTap.Bootstrap
         }
 
         #endregion
-
-        public string GetProperties()
-        {
-            var task = GetCurrent();
-            task.Wait();
-            var user = task.Result;
-            return Json.Serialize(user);
-        }
 
         private static async Task<Dictionary<string, object>> LoginTapTap()
         {
