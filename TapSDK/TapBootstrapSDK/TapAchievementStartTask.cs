@@ -22,7 +22,7 @@ namespace TapTap.Bootstrap
             var command = new Command.Builder()
                 .Service(ServiceName)
                 .Method(InitMethod)
-                .Args("config", config.ToJson())
+                .Args("initWithConfig", config.ToJson())
                 .CommandBuilder();
             EngineBridge.GetInstance().CallHandler(command);
         }
