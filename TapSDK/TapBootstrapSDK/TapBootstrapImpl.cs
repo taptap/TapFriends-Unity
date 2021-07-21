@@ -11,6 +11,7 @@ namespace TapTap.Bootstrap
             _taskHolder = new TapStartTaskHolder();
 
             _taskHolder.AddTask(new TapTapLoginStartTask());
+            _taskHolder.AddTask(new TapDBStartTask());
             _taskHolder.AddTask(new TapMomentStartTask());
             _taskHolder.AddTask(new TapStorageStartTask());
         }
