@@ -290,6 +290,7 @@ namespace TapTap.Common
 #if UNITY_IOS
                 if (_propertiesProxies.TryAdd(key, proxy))
                 {
+                    Debug.Log($"register Properties:{Json.Serialize(_propertiesProxies)}");
                     registerProperties(key, TapPropertiesDelegateProxy);
                 }
 #endif
@@ -304,8 +305,9 @@ namespace TapTap.Common
         [AOT.MonoPInvokeCallbackAttribute(typeof(TapPropertiesDelegate))]
         private static string TapPropertiesDelegateProxy(string key)
         {
-            Debug.Log($"iOS TapPropertiesDelegateProxy:{_sInstance._propertiesProxies[key].GetProperties()}");
-            return _sInstance._propertiesProxies[key].GetProperties();
+            Debug.Log($"key:{key}  register Properties:{Json.Serialize(_sInstance._propertiesProxies)}");
+            var proxy = _sInstance._propertiesProxies[key];
+            return proxy?.GetProperties();
         }
 
         [DllImport("__Internal")]
