@@ -1,18 +1,48 @@
 ﻿using System;
-using System.Reflection;
-using LeanCloud.Storage;
-using TapTap.Bootstrap;
 using UnityEngine;
+using TapTap.Bootstrap;
 using TapTap.Common;
 using TapTap.Login;
-using AccessToken = TapTap.Login.AccessToken;
+using UnityEngine.UI;
 
 public class LoginScene : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    //登录
+    public Button login;
+
+    //退出登录
+    public Button loginout;
+
+    //sessionToken
+    public Button sessionToken;
+
+    //用户详细信息
+    public Button objectId;
+
+    //篝火测试
+    public Button bonfireTest;
+
+    //文本
+    public Text label;
+
+    //返回
+    public Button back;
+
+    public Button guestLogin;
+
     void Start()
     {
         TapLogin.ChangeConfig(true, true);
+
+        login.onClick.AddListener(onLoginClicked);
+        loginout.onClick.AddListener(onLoginOutClicked);
+        sessionToken.onClick.AddListener(GetSessionToken);
+        objectId.onClick.AddListener(GetObjectId);
+        bonfireTest.onClick.AddListener(onBonfireTestClicked);
+        back.onClick.AddListener(onBackClicked);
+        guestLogin.onClick.AddListener(GuestLogin);
     }
 
     // Update is called once per frame
@@ -20,109 +50,37 @@ public class LoginScene : MonoBehaviour
     {
     }
 
-    private string label;
-
-    private void OnGUI()
-    {
-        var style = new GUIStyle(GUI.skin.button) {fontSize = 40};
-
-        GUI.depth = 0;
-
-        var labelStyle = new GUIStyle(GUI.skin.label)
-        {
-            fontSize = 20
-        };
-
-        GUI.Label(new Rect(500, 100, 400, 300), label, labelStyle);
-
-        if (GUI.Button(new Rect(60, 150, 300, 100), "登录", style))
-        {
-            Login();
-        }
-
-
-        if (GUI.Button(new Rect(60, 300, 300, 100), "退出登录", style))
-        {
-            label = $"logout";
-            TDSUser.Logout();
-        }
-
-        if (GUI.Button(new Rect(60, 450, 300, 100), "SessionToken", style))
-        {
-            GetSessionToken();
-        }
-
-        if (GUI.Button(new Rect(60, 600, 300, 100), "Get ObjectId", style))
-        {
-            GetObjectId();
-        }
-
-        if (GUI.Button(new Rect(60, 750, 300, 100), "Get CurrentUser", style))
-        {
-            GetCurrentUser();
-        }
-
-        if (GUI.Button(new Rect(60, 900, 300, 100), "篝火测试", style))
-        {
-            GetTestQualification();
-        }
-
-        if (GUI.Button(new Rect(60, 1050, 400, 100), "返回", style))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
-        }
-
-        if (GUI.Button(new Rect(60, 1200, 400, 100), "游客登陆", style))
-        {
-            LoginAnonymously();
-        }
-    }
-
-    private async void LoginAnonymously()
-    {
-        try
-        {
-            var tdsUser = await TDSUser.LoginAnonymously();
-            label = $"LoginAnonymously Success:{Json.Serialize(tdsUser)}";
-            Debug.Log($"LoginAnonymously Success:{Json.Serialize(tdsUser)}");
-        }
-        catch (Exception)
-        {
-            //
-        }
-    }
-
-    private async void GetTestQualification()
-    {
-        try
-        {
-            var boolean = await TapLogin.GetTestQualification();
-            label = $"test:{boolean}";
-            Debug.Log($"TestQualification:{boolean}");
-        }
-        catch (Exception e)
-        {
-            Debug.Log($"{e}");
-        }
-    }
-
-    private async void Login()
+    private async void onLoginClicked()
     {
         try
         {
             var tdsUser = await TDSUser.LoginWithTapTap();
-            label = $"Login Success:{Json.Serialize(tdsUser)}";
-            Debug.Log($"Login Success:{Json.Serialize(tdsUser)}");
+            label.text = $"login Success:{tdsUser}";
         }
         catch (Exception e)
         {
-            if (e is TapException tapError)
-            {
-                Debug.Log($"glogin exception:{tapError.code} message:{tapError.message}");
-            }
-
-            // ignored
+            label.text = $"Login Error:{e}";
+            Console.WriteLine(e);
+            throw;
         }
+    }
+
+    private async void GuestLogin()
+    {
+        try
+        {
+            var tdsUser = await TDSUser.LoginAnonymously();
+            label.text = $"Guest Login Success: {tdsUser}";
+        }
+        catch (Exception e)
+        {
+            label.text = $"Guest Login failed:{e.Message}";
+        }
+    }
+
+    private void onLoginOutClicked()
+    {
+        TDSUser.Logout();
     }
 
     private async void GetSessionToken()
@@ -130,59 +88,119 @@ public class LoginScene : MonoBehaviour
         try
         {
             var tdsUser = await TDSUser.GetCurrent();
-            label = $"sessionToken:{tdsUser?.SessionToken}";
-            Debug.Log($"sessionToken:{tdsUser?.SessionToken}");
+            label.text = $"sessionToken:{tdsUser.SessionToken}";
         }
         catch (Exception e)
         {
-            if (e is TapException tapError)
-            {
-                Debug.Log($"get sessionToken exception:{tapError.code} message:{tapError.message}");
-            }
-
-            // ignored
+            label.text = $"sessionToken error:{e.Message}";
         }
     }
 
     private async void GetObjectId()
     {
-        // var info = typeof(LCUser).GetField("currentUser").GetValue(null) as LCUser;
-        
         try
         {
             var tdsUser = await TDSUser.GetCurrent();
-            label = $"objectId:{tdsUser?.ObjectId}";
-            Debug.Log($"objectId:{tdsUser?.ObjectId}");
-
-            // var info = typeof(LCUser).GetField("currentUser").GetValue(null) as LCUser;
-            //
-            // var property = typeof(LCUser).GetProperty("currentUser")?.GetValue(null, null) as LCUser;
-            //
-            // Debug.Log($"info:{info?.SessionToken} +  objectId: +{info?.ObjectId}");
-            // Debug.Log($"property:{property?.SessionToken} +  property: +{property?.ObjectId}");
+            label.text = $"ObjectId:{tdsUser.ObjectId}";
         }
         catch (Exception e)
         {
-            if (e is TapException tapError)
-            {
-                Debug.Log($"get objectId exception:{tapError.code} message:{tapError.message}");
-            }
-
-            // ignored
+            label.text = $"ObjectId error:{e.Message}";
         }
     }
 
-    private async void GetCurrentUser()
+    private async void onBonfireTestClicked()
     {
         try
         {
-            var tdsUser = await TDSUser.GetCurrent();
-            label = $"currentUser:{Json.Serialize(tdsUser)}";
-            Debug.Log($"currentUser:{Json.Serialize(tdsUser)}");
+            var test = await TapLogin.GetTestQualification();
+            label.text = $"篝火测试:{test}";
         }
         catch (Exception e)
         {
-            // 
+            label.text = $"篝火测试 error:{e.Message}";
         }
     }
+
+    private void onBackClicked()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+    }
+
+    // private string label;
+
+    // private void OnGUI()
+    // {
+    // var style = new GUIStyle(GUI.skin.button) {fontSize = 40};
+    //
+    // GUI.depth = 0;
+    //
+    // var labelStyle = new GUIStyle(GUI.skin.label)
+    // {
+    //     fontSize = 20
+    // };
+    //
+    // GUI.Label(new Rect(400, 100, 400, 300), label, labelStyle);
+
+    // if (GUI.Button(new Rect(60, 150, 180, 100), "登录", style))
+    // {
+    //     TapBootstrap.GetAccessToken((token, error) =>
+    //     {
+    //         if (token != null)
+    //         {
+    //             label = $"LoginSuccess:{token.ToJSON()}";
+    //         }
+    //         else
+    //         {
+    //             TapBootstrap.Login(LoginType.TAPTAP, new[] {"public_profile"});
+    //         }
+    //     });
+    //
+    //     TapLogin.GetProfile(profile => Debug.Log($"Profile:{profile.ToJson()}"));
+    //     TapLogin.GetTapToken(token => Debug.Log($"TapLoToken:{token.ToJson()}"));
+    // }
+
+    // if (GUI.Button(new Rect(60, 300, 180, 100), "退出登录", style))
+    // {
+    //     TapBootstrap.Logout();
+    // }
+
+    // if (GUI.Button(new Rect(60, 450, 180, 100), "用户信息", style))
+    // {
+    //     TapBootstrap.GetUser((user, error) =>
+    //     {
+    //         label = user != null
+    //             ? $"user:{user.ToJSON()}"
+    //             : $"Error:{error?.code} Descrption:{error?.errorDescription}";
+    //     });
+    // }
+
+    // if (GUI.Button(new Rect(60, 600, 260, 100), "用户详细信息", style))
+    // {
+    //     TapBootstrap.GetDetailUser((user, error) =>
+    //     {
+    //         label = user != null
+    //             ? $"detailUser:{user.ToJSON()}"
+    //             : $"Error:{error?.code} Descrption:{error?.errorDescription}";
+    //     });
+    // }
+
+    // if (GUI.Button(new Rect(60, 750, 260, 100), "用户中心", style))
+    // {
+    // TapBootstrap.OpenUserCenter();
+    // }
+
+    // if (GUI.Button(new Rect(60, 900, 260, 100), "篝火测试", style))
+    // {
+    //     TapBootstrap.GetTestQualification((b, error) =>
+    //     {
+    //         label = $"篝火测试资格:{b} Error:{error?.code} Descrption:{error?.errorDescription}";
+    //     });
+    // }
+
+    // if (GUI.Button(new Rect(60, 1050, 180, 100), "返回", style))
+    // {
+    //     UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+    // }
+    // }
 }
