@@ -30,5 +30,11 @@
         <Reference Include="Common">
           <HintPath>..\..\Assets\LCLibs\Common.dll</HintPath>
         </Reference>
+        <Reference Include="LiveQuery">
+          <HintPath>..\..\Assets\LCLibs\LiveQuery.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="LiveQuery" />
     </ItemGroup>
 </Project>

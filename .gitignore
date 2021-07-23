@@ -12,3 +12,5 @@ TapSDK-UnityPackage
 TapSDK2-Unity
 Products
 .apk
+.vsconfig
+UserSettings/
