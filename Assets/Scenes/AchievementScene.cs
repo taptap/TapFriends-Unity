@@ -31,12 +31,23 @@ public class AchievementScene : MonoBehaviour, IAchievementCallback
 
     private string id;
 
+    public Button makeAchievement;
+
+    public Button growAchievement;
+
+    public Button reachAchievement;
+
     // Start is called before the first frame update
     void Start()
     {
         TapAchievement.RegisterCallback(this);
         TapAchievement.InitData();
 
+        makeAchievement.onClick.AddListener(() => { TapAchievement.MakeSteps(id, int.Parse(step)); });
+
+        growAchievement.onClick.AddListener(() => { TapAchievement.GrowSteps(id, int.Parse(step)); });
+
+        reachAchievement.onClick.AddListener(() => TapAchievement.Reach(id));
 
         fetAllAchievement.onClick.AddListener(() =>
         {
