@@ -70,7 +70,7 @@ namespace TapBootstrapTest {
             LCQuery<LCFriendshipRequest> query1 = annoymous1.GetFriendshipRequestQuery(LCFriendshipRequest.STATUS_PENDING, false, true);
             ReadOnlyCollection<LCFriendshipRequest> reqs1 = await query1.Find();
             foreach (LCFriendshipRequest req in reqs1) {
-                await LCFriendship.AcceptRequest(req);
+                await annoymous1.AcceptFriendshipRequest(req);
             }
 
             // annoymous2
@@ -78,7 +78,7 @@ namespace TapBootstrapTest {
             LCQuery<LCFriendshipRequest> query2 = annoymous2.GetFriendshipRequestQuery(LCFriendshipRequest.STATUS_PENDING, false, true);
             ReadOnlyCollection<LCFriendshipRequest> reqs2 = await query2.Find();
             foreach (LCFriendshipRequest req in reqs2) {
-                await LCFriendship.DeclineRequest(req);
+                await annoymous2.DeclineFriendshipRequest(req);
             }
 
             await tcs.Task;
