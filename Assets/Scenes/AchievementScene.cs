@@ -41,6 +41,7 @@ public class AchievementScene : MonoBehaviour, IAchievementCallback
     void Start()
     {
         TapAchievement.RegisterCallback(this);
+        
         TapAchievement.InitData();
 
         makeAchievement.onClick.AddListener(() => { TapAchievement.MakeSteps(id, int.Parse(step)); });
