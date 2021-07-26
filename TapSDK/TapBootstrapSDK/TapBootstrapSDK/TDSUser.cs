@@ -312,7 +312,7 @@ namespace TapTap.Bootstrap
             return query;
         }
 
-        public LCQuery<LCObject> GetFirendshipQuery() {
+        public LCQuery<LCObject> GetFriendshipQuery() {
             if (string.IsNullOrEmpty(ObjectId)) {
                 throw new ArgumentNullException("user objectId is null.");
             }
@@ -333,10 +333,10 @@ namespace TapTap.Bootstrap
             // 构建 LiveQuery
             LCQuery<LCFriendshipRequest> selfRequestQuery = new LCQuery<LCFriendshipRequest>(LCFriendshipRequest.CLASS_NAME)
                 .WhereEqualTo("user", this);
-            LCQuery<LCFriendshipRequest> otherRuqestQuery = new LCQuery<LCFriendshipRequest>(LCFriendshipRequest.CLASS_NAME)
+            LCQuery<LCFriendshipRequest> otherRequestQuery = new LCQuery<LCFriendshipRequest>(LCFriendshipRequest.CLASS_NAME)
                 .WhereEqualTo("friend", this);
             LCQuery<LCFriendshipRequest> allQuery = LCQuery<LCFriendshipRequest>.Or(new LCQuery<LCFriendshipRequest>[] {
-                selfRequestQuery, otherRuqestQuery
+                selfRequestQuery, otherRequestQuery
             });
 
             friendshipLivequery = await allQuery.Subscribe();

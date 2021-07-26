@@ -85,7 +85,7 @@ namespace TapBootstrapTest {
 
             // annoymous3
             await TDSUser.BecomeWithSessionToken(annoymous3.SessionToken);
-            LCQuery<LCObject> query = annoymous3.GetFirendshipQuery();
+            LCQuery<LCObject> query = annoymous3.GetFriendshipQuery();
             Assert.Greater((await query.Find()).Count, 0);
         }
 
