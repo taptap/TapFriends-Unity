@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using LeanCloud.Storage;
+using LeanCloud.LiveQuery;
 using TapTap.Login;
 
 namespace TapTap.Bootstrap
@@ -167,7 +168,7 @@ namespace TapTap.Bootstrap
         /// <param name="unionId"></param>
         /// <param name="option"></param>
         /// <returns></returns>
-        public static new async Task<LCUser> LoginWithAuthDataAndUnionId(Dictionary<string, object> authData,
+        public static new async Task<TDSUser> LoginWithAuthDataAndUnionId(Dictionary<string, object> authData,
             string platform, string unionId,
             LCUserAuthDataLoginOption option = null)
         {
@@ -178,7 +179,7 @@ namespace TapTap.Bootstrap
         /// Creates an anonymous user.
         /// </summary>
         /// <returns></returns>
-        public static new async Task<LCUser> LoginAnonymously()
+        public static new async Task<TDSUser> LoginAnonymously()
         {
             return (await LCUser.LoginAnonymously()) as TDSUser;
         }
@@ -246,5 +247,142 @@ namespace TapTap.Bootstrap
             };
             return result;
         }
+
+        #region Friendship
+
+        public class FriendshipNotification {
+            public Action<LCFriendshipRequest> OnNewRequestComing { get; set; }
+            public Action<LCFriendshipRequest> OnRequestAccepted { get; set; }
+            public Action<LCFriendshipRequest> OnRequestDeclined { get; set; }
+        }
+
+        private LCLiveQuery friendshipLivequery;
+
+        public Task ApplyFriendship(TDSUser user, Dictionary<string, object> attributes = null) {
+            if (user == null) {
+                throw new ArgumentNullException(nameof(user));
+            }
+            return LCFriendship.Request(user.ObjectId, attributes);
+        }
+
+        public Task AcceptFriendshipRequest(LCFriendshipRequest request, Dictionary<string, object> attributes = null) {
+            return LCFriendship.AcceptRequest(request, attributes);
+        }
+
+        public Task DeclineFriendshipRequest(LCFriendshipRequest request) {
+            return LCFriendship.DeclineRequest(request);
+        }
+
+        public Task DeleteFriendshipRequest(LCFriendshipRequest request) {
+            if (request == null) {
+                throw new ArgumentNullException("request is null.");
+            }
+            return request.Delete();
+        }
+
+        public LCQuery<LCFriendshipRequest> GetFriendshipRequestQuery(int status, bool includeTargetUser, bool reachToCurrentUser) {
+            List<string> statusList = new List<string>();
+            if ((status & LCFriendshipRequest.STATUS_PENDING) == LCFriendshipRequest.STATUS_PENDING) {
+                statusList.Add("pending");
+            }
+            if ((status & LCFriendshipRequest.STATUS_ACCEPTED) == LCFriendshipRequest.STATUS_ACCEPTED) {
+                statusList.Add("accepted");
+            }
+            if ((status & LCFriendshipRequest.STATUS_DECLINED) == LCFriendshipRequest.STATUS_DECLINED) {
+                statusList.Add("declined");
+            }
+            if (statusList.Count < 1) {
+                throw new ArgumentException("status is invalid.");
+            }
+
+            LCQuery<LCFriendshipRequest> query = LCFriendshipRequest.GetQuery();
+            query.WhereContainedIn("status", statusList);
+            if (reachToCurrentUser) {
+                query.WhereEqualTo("friend", this);
+                if (includeTargetUser) {
+                    query.Include("user");
+                }
+            } else {
+                query.WhereEqualTo("user", this);
+                if (includeTargetUser) {
+                    query.Include("friend");
+                }
+            }
+            query.AddDescendingOrder("updatedAt");
+            return query;
+        }
+
+        public LCQuery<LCObject> GetFirendshipQuery() {
+            if (string.IsNullOrEmpty(ObjectId)) {
+                throw new ArgumentNullException("user objectId is null.");
+            }
+            LCQuery<LCObject> query = new LCQuery<LCObject>("_Followee")
+                .WhereEqualTo("user", this)
+                .WhereEqualTo("friendStatus", true)
+                .Include("followee");
+            return query;
+        }
+
+
+        public async Task RegisterFriendshipNotification(FriendshipNotification notification) {
+            if (friendshipLivequery != null) {
+                // 避免重复注册
+                return;
+            }
+
+            // 构建 LiveQuery
+            LCQuery<LCFriendshipRequest> selfRequestQuery = new LCQuery<LCFriendshipRequest>(LCFriendshipRequest.CLASS_NAME)
+                .WhereEqualTo("user", this);
+            LCQuery<LCFriendshipRequest> otherRuqestQuery = new LCQuery<LCFriendshipRequest>(LCFriendshipRequest.CLASS_NAME)
+                .WhereEqualTo("friend", this);
+            LCQuery<LCFriendshipRequest> allQuery = LCQuery<LCFriendshipRequest>.Or(new LCQuery<LCFriendshipRequest>[] {
+                selfRequestQuery, otherRuqestQuery
+            });
+
+            friendshipLivequery = await allQuery.Subscribe();
+            friendshipLivequery.OnCreate = obj => {
+                if (!(obj is LCFriendshipRequest req)) {
+                    return;
+                }
+
+                LCUser friend = req.Friend;
+                if (friend == null || friend.ObjectId != ObjectId) {
+                    return;
+                }
+
+                notification.OnNewRequestComing(req);
+            };
+            friendshipLivequery.OnUpdate = (obj, keys) => {
+                if (!(obj is LCFriendshipRequest req)) {
+                    return;
+                }
+                if (keys == null || !keys.Contains("status")) {
+                    return;
+                }
+
+                LCUser user = req.User;
+                if (user == null || user.ObjectId != ObjectId) {
+                    return;
+                }
+
+                string status = req.Status;
+                if (status == "accepted") {
+                    notification.OnRequestAccepted(req);
+                } else if (status == "declined") {
+                    notification.OnRequestDeclined(req);
+                }
+            };
+        }
+
+        public async Task UnregisterFriendshipNotification() {
+            if (friendshipLivequery == null) {
+                return;
+            }
+
+            await friendshipLivequery.Unsubscribe();
+            friendshipLivequery = null;
+        }
+
+        #endregion
     }
 }

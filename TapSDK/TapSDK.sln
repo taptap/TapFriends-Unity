@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TapAchievementSDK", "TapAch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TapBootstrapSDK", "TapBootstrapSDK\TapBootstrapSDK\TapBootstrapSDK.csproj", "{7EBD3EBF-F51D-4931-8800-1DA76FEB1FFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TapBootstrapTest", "TapBootstrapSDK\TapBootstrapSDK.Test\TapBootstrapTest.csproj", "{07C84B57-0300-489A-8F86-495A503A9A5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,5 +80,13 @@ Global
 		{7EBD3EBF-F51D-4931-8800-1DA76FEB1FFD}.IOS|Any CPU.Build.0 = Debug|Any CPU
 		{7EBD3EBF-F51D-4931-8800-1DA76FEB1FFD}.ANDROID|Any CPU.ActiveCfg = Debug|Any CPU
 		{7EBD3EBF-F51D-4931-8800-1DA76FEB1FFD}.ANDROID|Any CPU.Build.0 = Debug|Any CPU
+		{07C84B57-0300-489A-8F86-495A503A9A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07C84B57-0300-489A-8F86-495A503A9A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07C84B57-0300-489A-8F86-495A503A9A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07C84B57-0300-489A-8F86-495A503A9A5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07C84B57-0300-489A-8F86-495A503A9A5D}.IOS|Any CPU.ActiveCfg = Debug|Any CPU
+		{07C84B57-0300-489A-8F86-495A503A9A5D}.IOS|Any CPU.Build.0 = Debug|Any CPU
+		{07C84B57-0300-489A-8F86-495A503A9A5D}.ANDROID|Any CPU.ActiveCfg = Debug|Any CPU
+		{07C84B57-0300-489A-8F86-495A503A9A5D}.ANDROID|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal
