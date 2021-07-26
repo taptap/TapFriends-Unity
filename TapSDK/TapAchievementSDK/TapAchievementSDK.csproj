@@ -13,7 +13,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\TapCommonSDK\TapCommonSDK.csproj" />
-        <ProjectReference Include="..\TapBootstrapSDK\TapBootstrapSDK.csproj" />
+        <ProjectReference Include="..\TapBootstrapSDK\TapBootstrapSDK\TapBootstrapSDK.csproj" />
         <Reference Include="UnityEngine">
             <HintPath>..\..\UnityLibs\UnityEngine.dll</HintPath>
         </Reference>
