@@ -1,6 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TapBootstrapSDK", "TapBootstrapSDK.csproj", "{EE1779C1-9216-4F7C-82AC-A17A347E9418}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TapBootstrapTest", "..\TapBootstrapTest\TapBootstrapTest.csproj", "{EAD14601-F082-47EF-9C6B-FC7F0155F6F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,5 +17,13 @@ Global
 		{EE1779C1-9216-4F7C-82AC-A17A347E9418}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE1779C1-9216-4F7C-82AC-A17A347E9418}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE1779C1-9216-4F7C-82AC-A17A347E9418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAD14601-F082-47EF-9C6B-FC7F0155F6F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD14601-F082-47EF-9C6B-FC7F0155F6F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAD14601-F082-47EF-9C6B-FC7F0155F6F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAD14601-F082-47EF-9C6B-FC7F0155F6F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAD14601-F082-47EF-9C6B-FC7F0155F6F0}.IOS|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD14601-F082-47EF-9C6B-FC7F0155F6F0}.IOS|Any CPU.Build.0 = Debug|Any CPU
+		{EAD14601-F082-47EF-9C6B-FC7F0155F6F0}.ANDROID|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD14601-F082-47EF-9C6B-FC7F0155F6F0}.ANDROID|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

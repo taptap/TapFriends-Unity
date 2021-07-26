@@ -258,6 +258,9 @@ namespace TapTap.Bootstrap
         private LCLiveQuery friendshipLivequery;
 
         public Task ApplyFriendship(TDSUser user, Dictionary<string, object> attributes = null) {
+            if (user == null) {
+                throw new ArgumentNullException(nameof(user));
+            }
             return LCFriendship.Request(user.ObjectId, attributes);
         }
 
