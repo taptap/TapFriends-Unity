@@ -42,12 +42,16 @@ namespace TapTap.Achievement
 
         public bool isChanged;
 
+        public int type;
+
+        public AchievementStats stats;
+
         //转json
         public string ToJson()
         {
-            return JsonUtility.ToJson(this);
+            return Json.Serialize(this);
         }
-
+        
         //转模型
         public TapAchievementBean(string json)
         {
@@ -65,6 +69,12 @@ namespace TapTap.Achievement
             reachedStep = SafeDictionary.GetValue<int>(dic, "reachedStep");
             reachedTime = SafeDictionary.GetValue<long>(dic, "reachedTime");
             isChanged = SafeDictionary.GetValue<bool>(dic, "isChanged");
+            type = SafeDictionary.GetValue<int>(dic, "type");
+            if (SafeDictionary.GetValue<Dictionary<string, object>>(dic, "stats") is Dictionary<string, object>
+                statsDic)
+            {
+                stats = new AchievementStats(statsDic);
+            }
         }
 
         public TapAchievementBean(Dictionary<string, object> dic)
@@ -82,6 +92,26 @@ namespace TapTap.Achievement
             reachedStep = SafeDictionary.GetValue<int>(dic, "reachedStep");
             reachedTime = SafeDictionary.GetValue<long>(dic, "reachedTime");
             isChanged = SafeDictionary.GetValue<bool>(dic, "isChanged");
+            type = SafeDictionary.GetValue<int>(dic, "type");
+            if (SafeDictionary.GetValue<Dictionary<string, object>>(dic, "stats") is Dictionary<string, object>
+                statsDic)
+            {
+                stats = new AchievementStats(statsDic);
+            }
+        }
+    }
+
+
+    public class AchievementStats
+    {
+        public int level;
+
+        public double rarity;
+
+        public AchievementStats(Dictionary<string, object> dic)
+        {
+            level = SafeDictionary.GetValue<int>(dic, "level");
+            rarity = SafeDictionary.GetValue<double>(dic, "rarity");
         }
     }
 }
