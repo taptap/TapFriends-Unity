@@ -16,7 +16,7 @@ PRODUCT_DIR=./Products
 mkdir -p $PRODUCT_DIR
 
 #编译 Module 
-sh ./compile.sh
+#sh ./compile.sh
 
 sh ./package.sh $PRODUCT_DIR
 

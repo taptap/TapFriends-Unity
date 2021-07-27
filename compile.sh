@@ -11,9 +11,14 @@ echo $rootPath
 function compileDll(){
     cd TapSDK/$1
     dotnet build -c Release
-    
+      
     CopyAndReplease $rootPath/TapSDK/$1/bin/Release/netstandard2.0/TapTap.$2.dll $rootPath/Assets/TapTap/$2/Plugins/TapTap.$2.dll
     CopyAndReplease $rootPath/TapSDK/$1/bin/Release/netstandard2.0/TapTap.$2.pdb $rootPath/Assets/TapTap/$2/Plugins/TapTap.$2.pdb
+      
+    if  [ "$1" == "TapBootstrapSDK" ];then
+        CopyAndReplease $rootPath/TapSDK/$1/$1/bin/Release/netstandard2.0/TapTap.$2.dll $rootPath/Assets/TapTap/$2/Plugins/TapTap.$2.dll
+        CopyAndReplease $rootPath/TapSDK/$1/$1/bin/Release/netstandard2.0/TapTap.$2.pdb $rootPath/Assets/TapTap/$2/Plugins/TapTap.$2.pdb
+    fi
     
     if  [ "$1" == "TapCommonSDK" ];then
         dotnet build -c IOS

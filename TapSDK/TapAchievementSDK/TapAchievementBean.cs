@@ -46,13 +46,6 @@ namespace TapTap.Achievement
 
         public AchievementStats stats;
 
-        //转json
-        public string ToJson()
-        {
-            return Json.Serialize(this);
-        }
-        
-        //转模型
         public TapAchievementBean(string json)
         {
             var dic = Json.Deserialize(json) as Dictionary<string, object>;
@@ -70,10 +63,18 @@ namespace TapTap.Achievement
             reachedTime = SafeDictionary.GetValue<long>(dic, "reachedTime");
             isChanged = SafeDictionary.GetValue<bool>(dic, "isChanged");
             type = SafeDictionary.GetValue<int>(dic, "type");
-            if (SafeDictionary.GetValue<Dictionary<string, object>>(dic, "stats") is Dictionary<string, object>
-                statsDic)
+            if (Platform.IsIOS())
             {
-                stats = new AchievementStats(statsDic);
+                Debug.Log($"AchievementStats:{SafeDictionary.GetValue<string>(dic, "stats")}");
+                stats = new AchievementStats(SafeDictionary.GetValue<string>(dic, "stats"));
+            }
+            else if (Platform.IsAndroid())
+            {
+                if (SafeDictionary.GetValue<Dictionary<string, object>>(dic, "stats") is Dictionary<string, object>
+                    statsDic)
+                {
+                    stats = new AchievementStats(statsDic);
+                }
             }
         }
 
@@ -93,10 +94,18 @@ namespace TapTap.Achievement
             reachedTime = SafeDictionary.GetValue<long>(dic, "reachedTime");
             isChanged = SafeDictionary.GetValue<bool>(dic, "isChanged");
             type = SafeDictionary.GetValue<int>(dic, "type");
-            if (SafeDictionary.GetValue<Dictionary<string, object>>(dic, "stats") is Dictionary<string, object>
-                statsDic)
+            if (Platform.IsIOS())
             {
-                stats = new AchievementStats(statsDic);
+                Debug.Log($"AchievementStats:{SafeDictionary.GetValue<string>(dic, "stats")}");
+                stats = new AchievementStats(SafeDictionary.GetValue<string>(dic, "stats"));
+            }
+            else if (Platform.IsAndroid())
+            {
+                if (SafeDictionary.GetValue<Dictionary<string, object>>(dic, "stats") is Dictionary<string, object>
+                    statsDic)
+                {
+                    stats = new AchievementStats(statsDic);
+                }
             }
         }
     }
@@ -113,5 +122,13 @@ namespace TapTap.Achievement
             level = SafeDictionary.GetValue<int>(dic, "level");
             rarity = SafeDictionary.GetValue<double>(dic, "rarity");
         }
+
+        public AchievementStats(string json)
+        {
+            var dic = Json.Deserialize(json) as Dictionary<string, object>;
+            level = SafeDictionary.GetValue<int>(dic, "level");
+            rarity = SafeDictionary.GetValue<double>(dic, "rarity");
+        }
+        
     }
 }

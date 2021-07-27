@@ -45,7 +45,7 @@ namespace TapTap.Achievement
     {
         void OnAchievementSDKInitSuccess();
 
-        void OnAchievementInitFail(TapError error);
+        void OnAchievementSDKInitFail(TapError error);
 
         void OnAchievementStatusUpdate(TapAchievementBean bean, TapError error);
     }

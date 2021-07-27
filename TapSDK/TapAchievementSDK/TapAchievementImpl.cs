@@ -63,7 +63,7 @@ namespace TapTap.Achievement
             {
                 if (!CheckResult(result))
                 {
-                    callback.OnAchievementInitFail(new TapError(80080,
+                    callback.OnAchievementSDKInitFail(new TapError(80080,
                         "Bridge Execute Register Achievement Callback Error"));
                     return;
                 }
@@ -80,7 +80,7 @@ namespace TapTap.Achievement
                     }
                     else
                     {
-                        callback.OnAchievementInitFail(achievementWrapper.error);
+                        callback.OnAchievementSDKInitFail(achievementWrapper.error);
                     }
 
                     return;
