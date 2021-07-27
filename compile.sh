@@ -9,16 +9,21 @@ rootPath=$(cd `dirname $0`; pwd)
 echo $rootPath
 
 function compileDll(){
+  
     cd TapSDK/$1
-    dotnet build -c Release
-      
-    CopyAndReplease $rootPath/TapSDK/$1/bin/Release/netstandard2.0/TapTap.$2.dll $rootPath/Assets/TapTap/$2/Plugins/TapTap.$2.dll
-    CopyAndReplease $rootPath/TapSDK/$1/bin/Release/netstandard2.0/TapTap.$2.pdb $rootPath/Assets/TapTap/$2/Plugins/TapTap.$2.pdb
-      
+
     if  [ "$1" == "TapBootstrapSDK" ];then
+        cd $1
+        dotnet build -c Release
         CopyAndReplease $rootPath/TapSDK/$1/$1/bin/Release/netstandard2.0/TapTap.$2.dll $rootPath/Assets/TapTap/$2/Plugins/TapTap.$2.dll
         CopyAndReplease $rootPath/TapSDK/$1/$1/bin/Release/netstandard2.0/TapTap.$2.pdb $rootPath/Assets/TapTap/$2/Plugins/TapTap.$2.pdb
-    fi
+        echo "Copy TapBootstrapSDK to $rootPath/Assets/TapTap/Bootstrap/Plugins/iOS"
+        cd ..
+    else 
+        dotnet build -c Release
+        CopyAndReplease $rootPath/TapSDK/$1/bin/Release/netstandard2.0/TapTap.$2.dll $rootPath/Assets/TapTap/$2/Plugins/TapTap.$2.dll
+        CopyAndReplease $rootPath/TapSDK/$1/bin/Release/netstandard2.0/TapTap.$2.pdb $rootPath/Assets/TapTap/$2/Plugins/TapTap.$2.pdb
+    fi 
     
     if  [ "$1" == "TapCommonSDK" ];then
         dotnet build -c IOS
@@ -40,6 +45,9 @@ function compileDll(){
 }
 
 function CopyAndReplease(){
+    
+    echo "Copy path $1 to $2"
+  
    cp -r $1 $2
 }
 
