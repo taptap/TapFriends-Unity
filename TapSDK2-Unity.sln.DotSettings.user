@@ -1,6 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Fxiaoyi_002FDocuments_002FUnityProject_002Ftapsdk2_002Dunity_002FCustomPackages_002FMoq_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Fxiaoyi_002FDownloads_002Fcode_005Fcleary_002Easync_002E1114_002Fpackages_002FMoq_002E4_002E2_002E1409_002E1722_002Flib_002Fnet40_002FMoq_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=8A192823_002D18C5_002D8FD8_002D95E2_002DC88FDCE48C09_002Fd_003AAssets_002Fd_003AScenes_002Ff_003AAchievementScene_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/Bootstrap/Plugins/TapTap.Bootstrap.dll" /&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/TapSDK/TapCommonSDK/bin/IOS/netstandard2.0/TapTap.Common.dll" /&gt;
@@ -13,7 +14,12 @@
   &lt;Assembly Path="/Users/xiaoyi/Documents/UnityProject/tapsdk2-unity/Assets/TapTap/TapDB/Plugins/iOS/TapTap.TapDB.dll" /&gt;
   &lt;Assembly Path="/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapTap/Common/Plugins/TapTap.Common.dll" /&gt;
   &lt;Assembly Path="/Users/taptap-david/Desktop/tapsdk2-unity/Assets/TapTap/Common/Plugins/iOS/TapTap.Common.dll" /&gt;
+  &lt;Assembly Path="/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Achievement/Plugins/TapTap.Achievement.dll" /&gt;
+  &lt;Assembly Path="/Users/xiaoyi/Documents/tapsdk2-unity/Assets/TapTap/Common/Plugins/TapTap.Common.dll" /&gt;
   &lt;Assembly Path="/Users/xiaoyi/Documents/tapsdk2-unity/Assets/TapTap/Bootstrap/Plugins/TapTap.Bootstrap.dll" /&gt;
+  &lt;Assembly Path="/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Bootstrap/Plugins/TapTap.Bootstrap.dll" /&gt;
+  &lt;Assembly Path="/Users/tap-tds/Documents/TapTap/tapsdk2-unity/TapSDK/TapBootstrapSDK/bin/Release/netstandard2.0/TapTap.Bootstrap.dll" /&gt;
+  &lt;Assembly Path="/Users/tap-tds/Documents/TapTap/tapsdk2-unity/TapSDK/TapBootstrapSDK/TapBootstrapSDK/bin/Release/netstandard2.0/TapTap.Bootstrap.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d2c66398_002Def75_002D4380_002D9ff3_002Dd0ecfa6f3eec/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="StartLogin" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;

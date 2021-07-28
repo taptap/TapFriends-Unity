@@ -47,8 +47,9 @@ namespace TapTap.Common
                 var serviceImpl = new AndroidJavaObject(serviceImplName);
                 _mAndroidBridge.Call(registerMethod, serviceClass, serviceImpl);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Debug.Log("register Failed:" + e);
                 //
             }
         }

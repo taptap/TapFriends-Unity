@@ -126,7 +126,7 @@ namespace TapTap.Login
             StartLogin();
             return await tcs.Task;
         }
-
+        
         public void Logout()
         {
             var command = new Command.Builder()
@@ -204,7 +204,7 @@ namespace TapTap.Login
                             tapError.errorDescription));
                         break;
                 }
-
+                
                 UnRegisterLoginCallback();
             });
         }

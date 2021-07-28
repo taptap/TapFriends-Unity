@@ -1,20 +1,11 @@
 var searchData=
 [
-  ['tap_5ffriends_5fclz_689',['TAP_FRIENDS_CLZ',['../class_tap_tap_1_1_friends_1_1_tap_friends_constants.html#adf1f53e86bf1110bf17a0c6caa93ccc1',1,'TapTap::Friends::TapFriendsConstants']]],
-  ['tap_5ffriends_5fimpl_690',['TAP_FRIENDS_IMPL',['../class_tap_tap_1_1_friends_1_1_tap_friends_constants.html#af897c562f51229a52d7c12ddd64af85b',1,'TapTap::Friends::TapFriendsConstants']]],
-  ['tap_5ffriends_5fservice_691',['TAP_FRIENDS_SERVICE',['../class_tap_tap_1_1_friends_1_1_tap_friends_constants.html#a8c5d021870c4e53d1acd6f11edac3bb6',1,'TapTap::Friends::TapFriendsConstants']]],
-  ['tap_5flicense_5fservice_692',['TAP_LICENSE_SERVICE',['../class_tap_tap_1_1_license_1_1_tap_license_constants.html#a3901e0e72474455368ecf425271b8fac',1,'TapTap::License::TapLicenseConstants']]],
-  ['tapdb_5fclz_693',['TAPDB_CLZ',['../class_tap_tap_1_1_tap_d_b_1_1_tap_d_b_constants.html#a9d27ffec155e7bc8756e57947e106c3f',1,'TapTap::TapDB::TapDBConstants']]],
-  ['tapdb_5fimpl_694',['TAPDB_IMPL',['../class_tap_tap_1_1_tap_d_b_1_1_tap_d_b_constants.html#a5aea96a3dc449743ccaf9c68a2d76cdd',1,'TapTap::TapDB::TapDBConstants']]],
-  ['tapdb_5fservice_695',['TAPDB_SERVICE',['../class_tap_tap_1_1_tap_d_b_1_1_tap_d_b_constants.html#a3b52aefdd6427a1ce5e516929ec888dd',1,'TapTap::TapDB::TapDBConstants']]],
-  ['tapmomentpageshortcut_696',['TapMomentPageShortCut',['../class_tap_tap_1_1_moment_1_1_tap_moment_constants.html#ac4f0ee2ba6f0237e4e5bb7c8e3165203',1,'TapTap::Moment::TapMomentConstants']]],
-  ['tapmomentpageshortcutkey_697',['TapMomentPageShortCutKey',['../class_tap_tap_1_1_moment_1_1_tap_moment_constants.html#af29114871191efde922f9b56437d5d9b',1,'TapTap::Moment::TapMomentConstants']]],
-  ['tapmomentpageuser_698',['TapMomentPageUser',['../class_tap_tap_1_1_moment_1_1_tap_moment_constants.html#abd5f98a38ed7a208af6d5b99612eb647',1,'TapTap::Moment::TapMomentConstants']]],
-  ['tapmomentpageuserkey_699',['TapMomentPageUserKey',['../class_tap_tap_1_1_moment_1_1_tap_moment_constants.html#a754cd6479d128a5bc1f4ccd7dc1b3d22',1,'TapTap::Moment::TapMomentConstants']]],
-  ['taptap_700',['TapTap',['../class_tap_tap_1_1_tap_d_b_1_1_tap_d_b_login_type.html#a34c3a20ed3c4978461e9c5ea4c3e9b00',1,'TapTap::TapDB::TapDBLoginType']]],
-  ['tds_5flicense_5fservice_5fclz_701',['TDS_LICENSE_SERVICE_CLZ',['../class_tap_tap_1_1_license_1_1_tap_license_constants.html#abda3304c2b13e91a5cf8ab826edb874a',1,'TapTap::License::TapLicenseConstants']]],
-  ['tds_5flicense_5fservice_5fimpl_702',['TDS_LICENSE_SERVICE_IMPL',['../class_tap_tap_1_1_license_1_1_tap_license_constants.html#a0092c18b9ff7edc29ad6db0f534a81ef',1,'TapTap::License::TapLicenseConstants']]],
-  ['time_703',['time',['../class_tap_tap_1_1_friends_1_1_tap_user_relation_ship.html#a714d81e3ae621524495d59649f7b3641',1,'TapTap::Friends::TapUserRelationShip']]],
-  ['tourist_704',['Tourist',['../class_tap_tap_1_1_tap_d_b_1_1_tap_d_b_login_type.html#a43bd7f3c9da0db4981c3aa7be0af3a69',1,'TapTap::TapDB::TapDBLoginType']]],
-  ['twitter_705',['Twitter',['../class_tap_tap_1_1_tap_d_b_1_1_tap_d_b_login_type.html#a272e038049b9862d9a931153245c5279',1,'TapTap::TapDB::TapDBLoginType']]]
+  ['serverurl_772',['ServerURL',['../class_tap_tap_1_1_bootstrap_1_1_tap_config.html#a0a8fadd1d52da178a9254b2ff80a38cc',1,'TapTap::Bootstrap::TapConfig']]],
+  ['service_773',['service',['../class_tap_tap_1_1_common_1_1_command.html#ab3f155a8bf2c41d5eed9a95c346b69e3',1,'TapTap::Common::Command']]],
+  ['showorder_774',['showOrder',['../class_tap_tap_1_1_achievement_1_1_tap_achievement_bean.html#afad1cd6540300589de3caa2399995cba',1,'TapTap::Achievement::TapAchievementBean']]],
+  ['statereached_775',['StateReached',['../class_tap_tap_1_1_achievement_1_1_tap_achievement_bean.html#ad52032caa40775d835bf426245edb3ef',1,'TapTap::Achievement::TapAchievementBean']]],
+  ['stateunreached_776',['StateUnReached',['../class_tap_tap_1_1_achievement_1_1_tap_achievement_bean.html#aa5c884b87936f42336e5cf4cd2d726c3',1,'TapTap::Achievement::TapAchievementBean']]],
+  ['stats_777',['stats',['../class_tap_tap_1_1_achievement_1_1_tap_achievement_bean.html#a41a80b5e886daeb02eeee5001be005eb',1,'TapTap::Achievement::TapAchievementBean']]],
+  ['step_778',['step',['../class_tap_tap_1_1_achievement_1_1_tap_achievement_bean.html#aae0ca795caa2549c5fc361eef8d87f7c',1,'TapTap::Achievement::TapAchievementBean']]],
+  ['subtitle_779',['subTitle',['../class_tap_tap_1_1_achievement_1_1_tap_achievement_bean.html#ad04d9024459e1294dbc66e509585c9ea',1,'TapTap::Achievement::TapAchievementBean']]]
 ];

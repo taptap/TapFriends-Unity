@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <ReleaseVersion>3.0.0</ReleaseVersion>
+        <ReleaseVersion>3.1.0</ReleaseVersion>
         <RootNamespace>TapTap.License</RootNamespace>
         <AssemblyName>TapTap.License</AssemblyName>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
@@ -12,9 +12,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Reference Include="TapTap.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null">
-            <HintPath>..\..\Assets\TapTap\Common\Plugins\TapTap.Common.dll</HintPath>
-        </Reference>
+        <ProjectReference Include="..\TapCommonSDK\TapCommonSDK.csproj"/>
+
         <Reference Include="UnityEngine">
             <HintPath>..\..\UnityLibs\UnityEngine.dll</HintPath>
         </Reference>

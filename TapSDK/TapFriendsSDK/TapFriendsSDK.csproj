@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <ReleaseVersion>3.0.0</ReleaseVersion>
+        <ReleaseVersion>3.1.0</ReleaseVersion>
         <RootNamespace>TapTap.Friends</RootNamespace>
         <AssemblyName>TapTap.Friends</AssemblyName>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
@@ -12,7 +12,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Reference Include="TapTap.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Reference Include="TapTap.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\..\Assets\TapTap\Common\Plugins\TapTap.Common.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine">

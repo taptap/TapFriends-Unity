@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['bridgeandroid_367',['BridgeAndroid',['../class_tap_tap_1_1_common_1_1_bridge_android.html',1,'TapTap::Common']]],
-  ['bridgecallback_368',['BridgeCallback',['../class_tap_tap_1_1_common_1_1_bridge_callback.html',1,'TapTap::Common']]],
-  ['bridgeios_369',['BridgeIOS',['../class_tap_tap_1_1_common_1_1_bridge_i_o_s.html',1,'TapTap::Common']]],
-  ['builder_370',['Builder',['../class_tap_tap_1_1_bootstrap_1_1_tap_config_1_1_builder.html',1,'TapTap.Bootstrap.TapConfig.Builder'],['../class_tap_tap_1_1_common_1_1_command_1_1_builder.html',1,'TapTap.Common.Command.Builder']]]
+  ['accesstoken_418',['AccessToken',['../class_tap_tap_1_1_login_1_1_access_token.html',1,'TapTap::Login']]],
+  ['achievementlistwrapperbean_419',['AchievementListWrapperBean',['../class_tap_tap_1_1_achievement_1_1_achievement_list_wrapper_bean.html',1,'TapTap::Achievement']]],
+  ['achievementstats_420',['AchievementStats',['../class_tap_tap_1_1_achievement_1_1_achievement_stats.html',1,'TapTap::Achievement']]],
+  ['achievementwrapperbean_421',['AchievementWrapperBean',['../class_tap_tap_1_1_achievement_1_1_achievement_wrapper_bean.html',1,'TapTap::Achievement']]]
 ];

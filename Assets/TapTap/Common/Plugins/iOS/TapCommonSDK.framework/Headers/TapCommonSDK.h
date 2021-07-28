@@ -96,6 +96,7 @@ FOUNDATION_EXPORT const unsigned char TapCommonSDKVersionString[];
 #import <TapCommonSDK/TDSThrottle.h>
 #import <TapCommonSDK/TDSDebounce.h>
 #import <TapCommonSDK/TDSLocalizeManager.h>
+#import <TapCommonSDK/TDSLocalizeUtil.h>
 
 #import <TapCommonSDK/TDSWSSecurity.h>
 #import <TapCommonSDK/TDSWSWebSocket.h>
@@ -109,3 +110,5 @@ FOUNDATION_EXPORT const unsigned char TapCommonSDKVersionString[];
 #import <TapCommonSDK/NetworkStateModel.h>
 #import <TapCommonSDK/TDSTrackerEvent.h>
 #import <TapCommonSDK/TapLoginLogManager.h>
+
+#import <TapCommonSDK/TapPropertiesHolder.h>

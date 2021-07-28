@@ -12,7 +12,7 @@ EXCLUDE_PATTERNS += *.csproj*
 EXCLUDE_PATTERNS += .idea/*
 EXCLUDE_PATTERNS += bin/*
 EXCLUDE_PATTERNS += obj/*
-INPUT = ./TapSDK/TapBootstrapSDK/ ./TapSDK/TapDBSDK/ ./TapSDK/TapMomentSDK/ ./TapSDK/TapCommonSDK/ ./TapSDK/TapFriendsSDK/ ./TapSDK/TapLicense/ 
+INPUT = ./TapSDK/TapBootstrapSDK/TapBootstrapSDK ./TapSDK/TapDBSDK/ ./TapSDK/TapMomentSDK/ ./TapSDK/TapCommonSDK/ ./TapSDK/TapLicense/ ./TapSDK/TapLoginSDK  ./TapSDK/TapAchievementSDK
 #Do not add anything here unless you need to. Doxygen already covers all 
 #common formats like .c/.cc/.cxx/.c++/.cpp/.inl/.h/.hpp
 FILE_PATTERNS = 

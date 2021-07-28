@@ -1,5 +1,18 @@
 # ChangeLog
 
+## 3.1.0
+
+### New Feature
+
+- `TDSUser` 新增好友系统操作
+
+### Dependencies
+
+- TapTap.Login v3.1.0
+- TapTap.Common v3.1.0
+- LeanCloud.Storage v0.9.2
+- LeanCloud.Realtime v0.9.2
+
 ## 3.0.0
 
 TapSDK 3.0 开始，我们在单纯的 TapTap 登录之外，还提供了一个内建账户系统供游戏使用：开发者可以直接用 TapTap OAuth 授权的结果生成一个游戏内的账号（TDSUser），然后用该账号保存更多玩家数据。同时，我们也支持将更多第三方认证登录的结果绑定到这一账号上来（以及后续的解绑操作）。
