@@ -20,9 +20,9 @@ mkdir -p $PRODUCT_DIR
 
 sh ./package.sh $PRODUCT_DIR
 
-zip -q -ry ${CI_PROJECT_TITLE}-tapsdk-macosx.zip $PRODUCT_DIR/TapSDK2-Unity.app
+zip -q -ry ${CI_PROJECT_TITLE}-macosx.zip $PRODUCT_DIR/TapSDK2-Unity.app
 
-java -jar .ci/release.jar nb --af=${CI_PROJECT_TITLE}-tapsdk-macosx.zip
+java -jar .ci/release.jar nb --af=${CI_PROJECT_TITLE}-macosx.zip
 
 sh ./pkg_uploader.sh $PRODUCT_DIR/TapSDK2-Unity.apk com.tds.demo
 
