@@ -34,6 +34,11 @@ namespace TapTap.Common
         /**
          * 桥接回调错误
          */
-        ERROR_CODE_BRIDGE_EXECUTE = 80080
+        ERROR_CODE_BRIDGE_EXECUTE = 80080,
+        
+        /**
+         * 登录取消
+         */
+        ERROR_CODE_LOGIN_CANCEL = 80081
     }
 }

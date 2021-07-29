@@ -142,5 +142,36 @@ namespace Editor
                 Debug.LogError(m.Message);
             }
         }
+
+        static void PackageMacOSX()
+        {
+            var exportPath = "";
+            var unityVersion = "";
+            foreach (var arg in System.Environment.GetCommandLineArgs())
+            {
+                Debug.Log("args:" + arg);
+                if (arg.StartsWith("-EXPORT_PATH"))
+                {
+                    exportPath = arg.Split('=')[1].Trim('"');
+                    Debug.Log("ExportPath:" + exportPath);
+                }
+                else if (arg.StartsWith("-UNITY_VERSION"))
+                {
+                    unityVersion = arg.Split('=')[1].Trim('"');
+                }
+            }
+
+            var path = (exportPath + "/" + "TapSDK2-Unity").Replace("//", "/");
+
+            AssetDatabase.Refresh();
+            try
+            {
+                BuildPipeline.BuildPlayer(GetBuildScenes(), path, BuildTarget.StandaloneOSX, BuildOptions.None);
+            }
+            catch (System.Exception m)
+            {
+                Debug.LogError(m.Message);
+            }
+        }
     }
 }

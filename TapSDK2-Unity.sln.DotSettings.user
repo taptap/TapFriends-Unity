@@ -20,6 +20,7 @@
   &lt;Assembly Path="/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Bootstrap/Plugins/TapTap.Bootstrap.dll" /&gt;
   &lt;Assembly Path="/Users/tap-tds/Documents/TapTap/tapsdk2-unity/TapSDK/TapBootstrapSDK/bin/Release/netstandard2.0/TapTap.Bootstrap.dll" /&gt;
   &lt;Assembly Path="/Users/tap-tds/Documents/TapTap/tapsdk2-unity/TapSDK/TapBootstrapSDK/TapBootstrapSDK/bin/Release/netstandard2.0/TapTap.Bootstrap.dll" /&gt;
+  &lt;Assembly Path="/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Login/Plugins/TapTap.Login.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d2c66398_002Def75_002D4380_002D9ff3_002Dd0ecfa6f3eec/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="StartLogin" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;

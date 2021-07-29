@@ -8,7 +8,7 @@ using TapTap.Common;
 using JudgeDevice;
 using UnityEngine.UI;
 
-public class TapDBScene : MonoBehaviour, IDynamicProperties
+public class TapDBScene : MonoBehaviour
 {
     // Start is called before the first frame update
     //服务器
@@ -235,7 +235,9 @@ public class TapDBScene : MonoBehaviour, IDynamicProperties
     private void OnRegisterDynamicEventClicked()
     {
         //"{"hahah":"xxxxxxxxx"}"
-        TapDBImpl.GetInstance().RegisterDynamicProperties(this);
+# if UNITY_IOS || UNITY_ANDROID
+        TapDBImpl.GetInstance().RegisterDynamicProperties(new TapDBDynamicProperties());
+#endif
     }
 
     private void OnUpdateDevicePropertyClicked()
@@ -397,16 +399,21 @@ public class TapDBScene : MonoBehaviour, IDynamicProperties
     private string userId = "请输入用户id";
     private string loginMethod = "请输入登录方式";
     private string trackEventStr = "跟踪事件json";
-    private string registerDynamicEventStr = "动态事件json";
+    private static string registerDynamicEventStr = "动态事件json";
 
-
-    public Dictionary<string, object> GetDynamicProperties()
+    
+# if UNITY_IOS || UNITY_ANDROID
+    private class TapDBDynamicProperties : IDynamicProperties
     {
-        Dictionary<string, object> dic = Json.Deserialize(registerDynamicEventStr) as Dictionary<string, object>;
-        return dic;
-        // var dic = new Dictionary<string, object> {{"time", DateTime.Now.ToString(CultureInfo.InvariantCulture)}};
-        // return dic;
+        public Dictionary<string, object> GetDynamicProperties()
+        {
+            Dictionary<string, object> dic = Json.Deserialize(registerDynamicEventStr) as Dictionary<string, object>;
+            return dic;
+            // var dic = new Dictionary<string, object> {{"time", DateTime.Now.ToString(CultureInfo.InvariantCulture)}};
+            // return dic;
+        }
     }
+#endif
 
     // private void OnGUI()
     // {

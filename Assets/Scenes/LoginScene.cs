@@ -59,8 +59,14 @@ public class LoginScene : MonoBehaviour
         }
         catch (Exception e)
         {
-            label.text = $"Login Error:{e}";
-            Console.WriteLine(e);
+            if (e is TapException error)
+            {
+                label.text = $"Login Error:{error.code} message:{error.message}";
+            }
+            else
+            {
+                label.text = $"Login Error:{e}";
+            }
             throw;
         }
     }

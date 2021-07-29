@@ -35,6 +35,11 @@ namespace TapTap.Common
             return new TapError(TapErrorCode.ERROR_CODE_UNDEFINED, "UnKnown Error");
         }
 
+        public static TapError LoginCancelError()
+        {
+            return new TapError(TapErrorCode.ERROR_CODE_LOGIN_CANCEL, "Login Cancel");
+        }
+
         public TapError(int code, string errorDescription)
         {
             this.code = code;

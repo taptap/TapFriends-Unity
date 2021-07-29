@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TapTap.Common;
+using TapTap.Login.Internal;
 
 namespace TapTap.Login
 {
@@ -31,11 +32,13 @@ namespace TapTap.Login
 
         public void Init(string clientID)
         {
-            EngineBridge.GetInstance().CallHandler(new Command.Builder()
-                .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
-                .Method("init")
-                .Args("clientID", clientID)
-                .CommandBuilder());
+                EngineBridge.GetInstance().CallHandler(new Command.Builder()
+                    .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
+                    .Method("init")
+                    .Args("clientID", clientID)
+                    .CommandBuilder());
+
+            TapTapSdk.SdkInitialize(clientID);
         }
 
         public void Init(string clientID, bool isCn, bool roundCorner)
@@ -47,6 +50,8 @@ namespace TapTap.Login
                 .Args("regionType", isCn)
                 .Args("roundCorner", roundCorner)
                 .CommandBuilder());
+            
+            TapTapSdk.SdkInitialize(clientID);
         }
 
         public void ChangeConfig(bool roundCorner, bool isPortrait)
@@ -62,6 +67,7 @@ namespace TapTap.Login
 
         public async Task<Profile> FetchProfile()
         {
+            if (!Platform.IsAndroid() && !Platform.IsIOS()) return await LoginHelper.GetProfile();
             var command = new Command.Builder()
                 .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
                 .Method("fetchProfileForCurrentAccessToken")
@@ -81,10 +87,14 @@ namespace TapTap.Login
             }
 
             throw new TapException((int) TapErrorCode.ERROR_CODE_BRIDGE_EXECUTE, loginWrapper.Wrapper);
+
         }
 
         public async Task<Profile> GetProfile()
         {
+            
+            if (!Platform.IsAndroid() && !Platform.IsIOS()) return await LoginHelper.GetProfile();
+            
             var command = new Command.Builder()
                 .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
                 .Method("currentProfile")
@@ -102,6 +112,9 @@ namespace TapTap.Login
 
         public async Task<AccessToken> GetAccessToken()
         {
+            
+            if (!Platform.IsAndroid() && !Platform.IsIOS()) return await LoginHelper.GetAccessToken();
+            
             var command = new Command.Builder()
                 .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
                 .Method("currentAccessToken")
@@ -121,14 +134,23 @@ namespace TapTap.Login
 
         public async Task<AccessToken> Login()
         {
+            
+            if (!Platform.IsAndroid() && !Platform.IsIOS()) return await LoginHelper.Login();
+            
             var tcs = new TaskCompletionSource<AccessToken>();
             RegisterLoginCallback(tcs);
             StartLogin();
             return await tcs.Task;
         }
-        
+
         public void Logout()
         {
+            if (!Platform.IsAndroid() && !Platform.IsIOS())
+            {
+                LoginHelper.Logout();
+                return;
+            }
+            
             var command = new Command.Builder()
                 .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
                 .Method("logout")
@@ -137,7 +159,7 @@ namespace TapTap.Login
             EngineBridge.GetInstance().CallHandler(command);
         }
 
-        public async Task<bool> GetTestQualification()
+        public async Task<bool> GetTestQualification() 
         {
             var command = new Command.Builder()
                 .Service(TapLoginConstants.TAP_LOGIN_SERVICE)
@@ -196,7 +218,7 @@ namespace TapTap.Login
                         tcs.TrySetResult(new AccessToken(wrapper.Wrapper));
                         break;
                     case 1:
-                        tcs.TrySetCanceled();
+                        tcs.TrySetException(new TapException((int)TapErrorCode.ERROR_CODE_BIND_CANCEL,"Login Cancel"));
                         break;
                     default:
                         var tapError = TapError.SafeConstructorTapError(wrapper.Wrapper);
@@ -204,7 +226,7 @@ namespace TapTap.Login
                             tapError.errorDescription));
                         break;
                 }
-                
+
                 UnRegisterLoginCallback();
             });
         }

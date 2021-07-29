@@ -13,13 +13,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\TapCommonSDK\TapCommonSDK.csproj"/>
+        <ProjectReference Include="..\TapCommonSDK\TapCommonSDK.csproj" />
 
         <Reference Include="UnityEngine">
             <HintPath>..\..\UnityLibs\UnityEngine.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine">
             <HintPath>..\..\UnityLibs\UnityEditor.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\UnityLibs\UnityEngine.UI.dll</HintPath>
+        </Reference>
+        <Reference Include="zxing.unity, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\..\Assets\TapTap\Login\Plugins\zxing.unity.dll</HintPath>
         </Reference>
     </ItemGroup>
 </Project>
