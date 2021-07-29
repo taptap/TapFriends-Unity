@@ -24,7 +24,4 @@ zip -q -ry ${CI_PROJECT_TITLE}-macosx.zip $PRODUCT_DIR/TapSDK2-Unity.app
 
 java -jar .ci/release.jar nb --af=${CI_PROJECT_TITLE}-macosx.zip
 
-sh ./pkg_uploader.sh $PRODUCT_DIR/TapSDK2-Unity.apk com.tds.demo
-
-sh ./pkg_uploader.sh $PRODUCT_DIR/demo.ipa com.tdssdk.demo
 
