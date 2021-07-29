@@ -3,13 +3,17 @@ export LANG="en_US.UTF-8"
 
 BUILD_TYPE=$1
 
+THREAD=""
+
 buildFail() {
-    java -jar ./.ci/release.jar message --title="${CI_PROJECT_TITLE} build " --body="<${CI_JOB_URL}|Package Failed>"
+    java -jar ./.ci/release.jar message --title="${CI_PROJECT_TITLE} build " --body="<${CI_JOB_URL}|Package Failed>"  --thread $THREAD
     exit 1
 }
 
-java -jar ./.ci/release.jar message --title="${CI_PROJECT_TITLE} build " --body="<${CI_JOB_URL}|Package Start>"
-
+resultContent=$(java -jar ./.ci/release.jar message --title="${CI_PROJECT_TITLE} build " --body="<${CI_JOB_URL}|Package Start>")
+echo $resultContent
+THREAD=${resultContent#*threadTs=}
+echo $THREAD
 PRODUCT_DIR=./Products
 
 # 生成Product目录
@@ -22,9 +26,9 @@ sh ./package.sh $PRODUCT_DIR
 
 zip -q -ry ${CI_PROJECT_TITLE}-macosx.zip $PRODUCT_DIR/TapSDK2-Unity.app
 
-java -jar .ci/release.jar nb --af=${CI_PROJECT_TITLE}-macosx.zip
+java -jar .ci/release.jar nb --af=${CI_PROJECT_TITLE}-macosx.zip --thread $THREAD
 
-sh ./pkg_uploader.sh $PRODUCT_DIR/demo.ipa com.tdssdk.demo
+sh ./pkg_uploader.sh $PRODUCT_DIR/demo.ipa com.tdssdk.demo $THREAD
 
-sh ./pkg_uploader.sh $PRODUCT_DIR/TapSDK2-Unity.apk com.tds.demo
+sh ./pkg_uploader.sh $PRODUCT_DIR/TapSDK2-Unity.apk com.tds.demo $THREAD
 
