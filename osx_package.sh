@@ -6,4 +6,4 @@ PROJECT_PATH=$(cd "$(dirname "$0")";pwd)
 
 echo "Start To Build MacOSX App in $PROJECT_PATH"
 
-$UNITY_PATH -buildTarget StandaloneOSX  -projectPath $PROJECT_PATH -executeMethod Editor.ExportPackage.PackageMacOSX -UNITY_VERSION=$1 -EXPORT_PATH=$2 
+$UNITY_PATH -buildTarget -batchmode -quit StandaloneOSX  -projectPath $PROJECT_PATH -executeMethod Editor.ExportPackage.PackageMacOSX -UNITY_VERSION=$1 -EXPORT_PATH=$2 
