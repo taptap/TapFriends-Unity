@@ -134,8 +134,8 @@ public class Sample : MonoBehaviour
         TapCommon.AddHost("https://tds-tapsdk.cn.tapapis.com/achievement/api/v1/clients/", "https://tds-api.xdrnd.com/achievement/api/v1/clients/");
 
         var config = new TapConfig.Builder()
-            .ClientID("WsExTi2nldTGyerBiv")
-            .ClientToken("ooKXC7B208wxhHhWtnRqRkrCMXiD80E4xz8kveWG")
+            .ClientID("uZ8Yy6cSXVOR6AMRPj")
+            .ClientToken("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
             .ServerURL("https://api.leancloud.cn")
             .RegionType(RegionType.CN)
             .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
