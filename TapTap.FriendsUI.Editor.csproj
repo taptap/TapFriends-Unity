@@ -55,8 +55,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\TapTap\FriendsUI\Editor\TapFriendsUIIOSProcessor.cs" />
-     <None Include="Assets\TapTap\FriendsUI\Editor\TapTap.FriendsUI.Editor.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2019.4.28f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -714,6 +712,9 @@
       <Project>{86E461B3-6638-4420-2A0E-9D2DD34A1498}</Project>
       <Name>TapTap.Common.Editor</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\TapTap" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

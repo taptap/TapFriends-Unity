@@ -273,9 +273,6 @@
  <Reference Include="TapTap.Common">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Common/Plugins/TapTap.Common.dll</HintPath>
  </Reference>
- <Reference Include="TapTap.Friends">
- <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Friends/Plugins/TapTap.Friends.dll</HintPath>
- </Reference>
  <Reference Include="TapTap.Login">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Login/Plugins/TapTap.Login.dll</HintPath>
  </Reference>
@@ -770,10 +767,6 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{2328198A-C518-D88F-95E2-C88FDCE48C09}</Project>
       <Name>Assembly-CSharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="TapTap.FriendsUI.Editor.csproj">
-      <Project>{CE1BFAD5-74B6-F3C0-4017-9DBCCBB60381}</Project>
-      <Name>TapTap.FriendsUI.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="TapTap.TapDB.Editor.csproj">
       <Project>{5765D10D-359B-E057-2F3A-AF5846471C9B}</Project>

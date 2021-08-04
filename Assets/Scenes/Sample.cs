@@ -79,7 +79,7 @@ public class Sample : MonoBehaviour
 
     private void OnAchievementClick()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(6);
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(5);
     }
     
     private void OnTapdbClicked()
@@ -173,12 +173,12 @@ public class Sample : MonoBehaviour
     
     private void OnTapfriendClicked()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4);
+        // UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4);
     }
     
     private void OnCommonClicked()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(5);
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4);
     }
     
     private void OnSetLanguageClicked()
