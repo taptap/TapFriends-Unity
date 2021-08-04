@@ -53,5 +53,11 @@ namespace TapTap.Common
         {
             TapCommonImpl.GetInstance().RegisterProperties(key, proxy);
         }
+
+        public static void AddHost(string host, string replaceHost)
+        {
+            TapCommonImpl.GetInstance().AddHost(host,replaceHost);
+        }
+        
     }
 }

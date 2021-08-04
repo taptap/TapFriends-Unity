@@ -278,7 +278,8 @@ namespace TapTap.Common
 
             EngineBridge.GetInstance().CallHandler(command);
         }
-
+        
+        
         public void RegisterProperties(string key, ITapPropertiesProxy proxy)
         {
             if (Platform.IsAndroid())
@@ -298,7 +299,7 @@ namespace TapTap.Common
 
             Debug.Log($"registerProperty:{key == null} value:{proxy == null}");
         }
-
+        
 #if UNITY_IOS
         private delegate string TapPropertiesDelegate(string key);
 
@@ -314,6 +315,19 @@ namespace TapTap.Common
         private static extern void registerProperties(string key, TapPropertiesDelegate propertiesDelegate);
 #endif
 
+
+        public void AddHost(string host, string replaceHost)
+        {
+            var command = new Command.Builder()
+                .Service(TAP_COMMON_SERVICE)
+                .Method("addReplacedHostPair")
+                .Args("hostToBeReplaced",host)
+                .Args("replacedHost",host)
+                .CommandBuilder();
+            
+            EngineBridge.GetInstance().CallHandler(command);
+        }
+        
         private class TapPropertiesProxy : AndroidJavaProxy
         {
             private readonly ITapPropertiesProxy _properties;

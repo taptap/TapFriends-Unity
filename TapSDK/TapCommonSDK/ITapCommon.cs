@@ -25,6 +25,8 @@ namespace TapTap.Common
         void SetXua();
 
         void RegisterProperties(string key, ITapPropertiesProxy proxy);
+
+        void AddHost(string host, string replaceHost);
     }
 
     public interface ITapPropertiesProxy

@@ -56,6 +56,7 @@ public class LoginScene : MonoBehaviour
         {
             var tdsUser = await TDSUser.LoginWithTapTap();
             label.text = $"login Success:{tdsUser}";
+            Debug.Log($"login Success:{tdsUser}");
         }
         catch (Exception e)
         {

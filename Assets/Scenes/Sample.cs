@@ -106,8 +106,9 @@ public class Sample : MonoBehaviour
             .RegionType(RegionType.CN)
             .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
             .ConfigBuilder();
+        
         TapBootstrap.Init(config);
-
+        
     }
     
     private void OnOverseasClicked()
@@ -126,6 +127,12 @@ public class Sample : MonoBehaviour
     
     private void OnRnd_cnClicked()
     {
+        TapCommon.AddHost("https://openapi.taptap.com/", "https://open.api.xdrnd.com/");
+        TapCommon.AddHost("https://www.taptap.com/", "https://www.xdrnd.com/");
+        TapCommon.AddHost("https://tds-moment.taptap.com/", "https://tds-moment.xdrnd.com/");
+        TapCommon.AddHost("https://tds-moment.taptap-api.com/", "https://tds-moment.api.xdrnd.com/");
+        TapCommon.AddHost("https://tds-tapsdk.cn.tapapis.com/achievement/api/v1/clients/", "https://tds-api.xdrnd.com/achievement/api/v1/clients/");
+
         var config = new TapConfig.Builder()
             .ClientID("WsExTi2nldTGyerBiv")
             .ClientToken("ooKXC7B208wxhHhWtnRqRkrCMXiD80E4xz8kveWG")
@@ -142,6 +149,12 @@ public class Sample : MonoBehaviour
     
     private void OnRnd_ioClicked()
     {
+        
+        TapCommon.AddHost("https://openapi.tap.io/", "https://open.api.xdrnd.com/");
+        TapCommon.AddHost("https://www.tap.io/", "https://www.xdrnd.com/");
+        TapCommon.AddHost("https://tds-moment.tap.io/", "https://tds-moment-io.xdrnd.com/");
+        TapCommon.AddHost("https://moment.intl.tapapis.com/", "https://tds-moment-io.api.xdrnd.com/");
+
         var config = new TapConfig.Builder()
             // .ClientID("uZ8Yy6cSXVOR6AMRPj")
             .ClientID("UBm5x5JP7ZGEgRsXY5")
