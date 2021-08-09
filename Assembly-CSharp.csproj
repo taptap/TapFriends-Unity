@@ -74,6 +74,7 @@
      <Compile Include="Assets\Scenes\MomentScene.cs" />
      <Compile Include="Assets\Scenes\Sample.cs" />
      <Compile Include="Assets\Scenes\TapDBScene.cs" />
+     <Compile Include="Assets\Scenes\UnityNativeToastsHelper.cs" />
      <None Include="Assets\LCLibs\LC.Google.Protobuf.xml" />
      <None Include="Assets\Lib\Unity3D\3rdLib\link.xml" />
      <None Include="Assets\LCLibs\LC.Newtonsoft.Json.xml" />
@@ -275,9 +276,6 @@
  <Reference Include="TapTap.Login">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Login/Plugins/TapTap.Login.dll</HintPath>
  </Reference>
- <Reference Include="zxing.unity">
- <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Login/Plugins/zxing.unity.dll</HintPath>
- </Reference>
  <Reference Include="Newtonsoft.Json">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/Lib/Unity3D/3rdLib/Newtonsoft.Json.dll</HintPath>
  </Reference>
@@ -325,6 +323,9 @@
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="zxing.unity">
+ <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Login/Plugins/zxing.unity.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Hub/Editor/2019.4.28f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -739,6 +740,12 @@
  </Reference>
  <Reference Include="com.unity.multiplayer-hlapi.Runtime">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityNative.Toasts">
+ <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Library/ScriptAssemblies/UnityNative.Toasts.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityNative.Toasts.Example">
+ <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Library/ScriptAssemblies/UnityNative.Toasts.Example.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

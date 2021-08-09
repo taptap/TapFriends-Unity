@@ -120,6 +120,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unitynative.toasts": {
+      "version": "https://github.com/NicholasSheehan/Unity-Native-Toasts.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0d4c9883139ead2dc083fd636336eb3a4ae4b53b"
+    },
     "nuget.mono-cecil": {
       "version": "0.1.6-preview",
       "depth": 1,

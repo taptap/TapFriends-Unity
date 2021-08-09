@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TapTap.License;
 using TapTap.TapDB;
+using UnityNative.Toasts.Example;
 
 public class Sample : MonoBehaviour
 {
@@ -173,7 +174,6 @@ public class Sample : MonoBehaviour
     
     private void OnTapfriendClicked()
     {
-        // UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4);
     }
     
     private void OnCommonClicked()
