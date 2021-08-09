@@ -16,8 +16,8 @@
         <key>NSUserTrackingUsageDescription</key>
         <string>App需要追踪你的信息</string>
 
-        <key>isRND</key>
-        <false/>
+        <key>isTestMode</key>
+        <true/>
     </dict>
 </plist>
 
