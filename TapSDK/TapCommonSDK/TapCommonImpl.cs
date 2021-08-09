@@ -322,7 +322,7 @@ namespace TapTap.Common
                 .Service(TAP_COMMON_SERVICE)
                 .Method("addReplacedHostPair")
                 .Args("hostToBeReplaced",host)
-                .Args("replacedHost",host)
+                .Args("replacedHost",replaceHost)
                 .CommandBuilder();
             
             EngineBridge.GetInstance().CallHandler(command);
