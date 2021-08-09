@@ -100,6 +100,13 @@ public class Sample : MonoBehaviour
     
     private void OnInlandClicked()
     {
+        
+        TapCommon.AddHost("https://openapi.taptap.com/", "https://openapi.taptap.com/");
+        TapCommon.AddHost("https://www.taptap.com/", "https://www.taptap.com/");
+        TapCommon.AddHost("https://tds-moment.taptap.com/", "https://tds-moment.taptap.com/");
+        TapCommon.AddHost("https://tds-moment.taptap-api.com/", "https://tds-moment.taptap-api.com/");
+        TapCommon.AddHost("https://tds-tapsdk.cn.tapapis.com/achievement/api/v1/clients/", "https://tds-tapsdk.cn.tapapis.com/achievement/api/v1/clients/");
+        
         var config = new TapConfig.Builder()
             .ClientID("0RiAlMny7jiz086FaU")
             .ClientToken("8V8wemqkpkxmAN7qKhvlh6v0pXc8JJzEZe3JFUnU")
@@ -114,6 +121,12 @@ public class Sample : MonoBehaviour
     
     private void OnOverseasClicked()
     {
+        
+        TapCommon.AddHost("https://openapi.tap.io/", "https://openapi.tap.io/");
+        TapCommon.AddHost("https://www.tap.io/", "https://www.tap.io/");
+        TapCommon.AddHost("https://tds-moment.tap.io/", "https://tds-moment.tap.io/");
+        TapCommon.AddHost("https://moment.intl.tapapis.com/", "https://moment.intl.tapapis.com/");
+        
         var config = new TapConfig.Builder()
             .ClientID("KFV9Pm9ojdmWkkRJeb")
             .ClientToken("7mpVJdXIOLQxvQdqjEEpiz7eLf82cMwYkdgoAZqF")
