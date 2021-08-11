@@ -1,6 +1,23 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Ftap_002Dtds_002FDocuments_002FTapTap_002Ftapsdk2_002Dunity_002FAssets_002FTapTap_002FLogin_002FPlugins_002Fzxing_002Eunity_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Ftap_002Dtds_002FDocuments_002FTapTap_002Ftapsdk2_002Dunity_002FUnityLibs_002FUnityEngine_002EUI_002Edll/@EntryIndexedValue">True</s:Boolean>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=68444665_002D1f67_002D4768_002Dafd9_002Dbf092177004b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from Friendship.cs" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;ProjectFile&gt;07C84B57-0300-489A-8F86-495A503A9A5D/f:Friendship.cs&lt;/ProjectFile&gt;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=48c02f71_002D481f_002D4a90_002Dad09_002Da4c4de82f318/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TapGameSnapshotTest #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::BD955EEB-4892-48FA-B654-94A682DCBB75::.NETCoreApp,Version=v3.1::TapGameSnapshot.Test.TapGameSnapshotTest&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=61ace613_002D5d7f_002D42ee_002Da1a7_002Df061e703ee1e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TapGameSnapshotTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::BD955EEB-4892-48FA-B654-94A682DCBB75::.NETCoreApp,Version=v3.1::TapGameSnapshot.Test.TapGameSnapshotTest&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8d5ccd2a_002D1e5a_002D4d59_002D851b_002Df0d4e26ffe50/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TapGameSnapshotTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::BD955EEB-4892-48FA-B654-94A682DCBB75::.NETCoreApp,Version=v3.1::TapGameSnapshot.Test.TapGameSnapshotTest&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	
+	
+	
+	
+	</wpf:ResourceDictionary>

@@ -34,7 +34,6 @@ namespace TapTap.Bootstrap
                     _sInstance = new TapBootstrapImpl();
                 }
             }
-
             return _sInstance;
         }
 
