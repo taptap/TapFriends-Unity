@@ -1,6 +1,6 @@
 # 生成测试报告 xml
 
-resultContent=$(java -jar ./.ci/release.jar message --title="${CI_PROJECT_TITLE} build " --body="<${CI_JOB_URL}|Package Start>")
+resultContent=$(java -jar ./.ci/release.jar message --title="${CI_PROJECT_TITLE} Unit Test " --body="<${CI_JOB_URL}|Test Start>")
 echo $resultContent
 THREAD=${resultContent#*threadTs=}
 
