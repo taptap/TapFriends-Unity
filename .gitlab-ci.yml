@@ -19,6 +19,7 @@ build:
     - ./.ci/build.sh
   only:
     - merge_requests
-      
+  dependencies:
+    - test
   
 
