@@ -1,5 +1,7 @@
 using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using LeanCloud;
 using LeanCloud.Storage;
 
 namespace TapTap.GameSnapshot
@@ -20,9 +22,9 @@ namespace TapTap.GameSnapshot
             set => this["description"] = value;
         }
 
-        public string ModifiedAt
+        public DateTime ModifiedAt
         {
-            get => this["modifiedAt"] as string;
+            get => this["modifiedAt"] is DateTime ? (DateTime) this["modifiedAt"] : default;
             set => this["modifiedAt"] = value;
         }
 
@@ -57,13 +59,11 @@ namespace TapTap.GameSnapshot
 
         public string CoverFilePath
         {
-            get => CoverFilePath;
             set => this["cover"] = new LCFile("_cover", value);
         }
 
         public string GameFilePath
         {
-            get => GameFilePath;
             set => this["gameFile"] = new LCFile("_gameFile", value);
         }
 
@@ -75,29 +75,31 @@ namespace TapTap.GameSnapshot
         public async Task<GameSnapshot> Save()
         {
             var currentUser = await LCUser.GetCurrent();
-            if (currentUser == null)
-            {
-                throw new UnauthorizedAccessException("Not Login");
-            }
-
+            if (currentUser == null) throw new UnauthorizedAccessException("Not Login");
             CheckArguments();
             var acl = new LCACL();
             acl.SetUserWriteAccess(currentUser, true);
             acl.SetUserReadAccess(currentUser, true);
             ACL = acl;
             User = currentUser;
-
             GameFile.ACL = acl;
             GameFile = await GameFile.Save();
-
             if (Cover == null) return await base.Save() as GameSnapshot;
-
             Cover.ACL = acl;
             Cover = await Cover.Save();
             return await base.Save() as GameSnapshot;
         }
 
-        public static LCQuery<GameSnapshot> GetQuery(LCUser user)
+        public static async Task<ReadOnlyCollection<GameSnapshot>> GetCurrentUserSnapshot()
+        {
+            var user = await LCUser.GetCurrent();
+            if (user == null) throw new UnauthorizedAccessException("Not Login");
+            return await ConstructorQueryByUser(user).Find();
+        }   
+        
+        public static LCQuery<GameSnapshot> GetQuery() => new LCQuery<GameSnapshot>(CLASS_NAME);
+        
+        private static LCQuery<GameSnapshot> ConstructorQueryByUser(LCUser user)
         {
             var query = GetQuery();
             query.Include("cover");
@@ -106,13 +108,10 @@ namespace TapTap.GameSnapshot
             return query;
         }
 
-        public static LCQuery<GameSnapshot> GetQuery() => new LCQuery<GameSnapshot>(CLASS_NAME);
-
         private void CheckArguments()
         {
             if (string.IsNullOrEmpty(Name)) throw new ArgumentNullException(nameof(Name));
             if (string.IsNullOrEmpty(Description)) throw new ArgumentNullException(nameof(Description));
-            if (string.IsNullOrEmpty(ModifiedAt)) throw new ArgumentNullException(nameof(ModifiedAt));
             if (GameFile == null) throw new ArgumentNullException(nameof(GameFile));
         }
     }

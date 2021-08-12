@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using System.Threading.Tasks;
 using LeanCloud;
 using LeanCloud.Storage;
@@ -21,7 +20,6 @@ namespace TapGameSnapshot.Test
             LCApplication.Initialize("0RiAlMny7jiz086FaU",
                 "8V8wemqkpkxmAN7qKhvlh6v0pXc8JJzEZe3JFUnU",
                 "https://0rialmny.cloud.tds1.tapapis.cn");
-            LCObject.RegisterSubclass("_User", () => new LCUser());
             LCObject.RegisterSubclass(GameSnapshot.CLASS_NAME, () => new GameSnapshot());
             LCLogger.LogDelegate = Log;
 
@@ -44,24 +42,43 @@ namespace TapGameSnapshot.Test
         }
 
         [Test]
-        public async Task GetAllSnapshot()
+        public async Task SaveSnapshotWithArguments()
         {
-            var user = await LCUser.GetCurrent() ?? await Login();
-
-            var collection = await GameSnapshot.GetQuery(user).Find();
-            Assert.NotNull(collection);
-            foreach (var snapshot in collection)
+            var snapshot = new GameSnapshot();
+            try
             {
-                Assert.NotNull(snapshot.ObjectId);
-                Assert.NotNull(snapshot.Name);
-                Assert.NotNull(snapshot.Description);
-                Assert.NotNull(snapshot.GameFile);
-                var file = snapshot["gameFile"] as LCFile;
-                Assert.NotNull(file);
-                Assert.NotNull(file.ObjectId);
+                await snapshot.Save();
+            }
+            catch (ArgumentNullException e)
+            {
+                Assert.NotNull(e.Message);
             }
         }
 
+        [Test]
+        public async Task GetAllSnapshot()
+        {
+            try
+            {
+                await Login();
+                var collection = await GameSnapshot.GetCurrentUserSnapshot();
+                Assert.NotNull(collection);
+                foreach (var snapshot in collection)
+                {
+                    Assert.NotNull(snapshot.ObjectId);
+                    Assert.NotNull(snapshot.Name);
+                    Assert.NotNull(snapshot.Description);
+                    Assert.NotNull(snapshot.GameFile);
+                    var file = snapshot["gameFile"] as LCFile;
+                    Assert.NotNull(file);
+                    Assert.NotNull(file.ObjectId);
+                }
+            }
+            catch (LCException e)
+            {
+                Log(LCLogLevel.Debug, e.ToString());
+            }
+        }
 
         [Test]
         public async Task SaveSnapShotWithLogin()
@@ -89,17 +106,18 @@ namespace TapGameSnapshot.Test
         {
             var user = await LCUser.GetCurrent() ?? await Login();
 
-            var query = await GameSnapshot.GetQuery(user).Find();
+            var query = await GameSnapshot.GetCurrentUserSnapshot();
+
             if (query.Count > 0)
             {
                 var snapshot = query[0];
-                
+
                 var snapshotObjectId = snapshot.ObjectId;
 
                 await snapshot.Delete();
 
                 var querySnapshot = await new LCQuery<GameSnapshot>(GameSnapshot.CLASS_NAME).Get(snapshotObjectId);
-                
+
                 Assert.Null(querySnapshot.ObjectId);
             }
         }
@@ -109,7 +127,7 @@ namespace TapGameSnapshot.Test
         {
             var user = await LCUser.GetCurrent() ?? await Login();
 
-            var query = await GameSnapshot.GetQuery(user).Find();
+            var query = await GameSnapshot.GetCurrentUserSnapshot();
 
             if (query.Count > 0)
             {
@@ -137,7 +155,7 @@ namespace TapGameSnapshot.Test
         {
             var user = await LCUser.GetCurrent() ?? await Login();
 
-            var query = await GameSnapshot.GetQuery(user).Find();
+            var query = await GameSnapshot.GetCurrentUserSnapshot();
 
             if (query.Count > 0)
             {
@@ -168,7 +186,7 @@ namespace TapGameSnapshot.Test
 
             await SaveSnapshot();
 
-            var query = await GameSnapshot.GetQuery(user).Find();
+            var query = await GameSnapshot.GetCurrentUserSnapshot();
 
             if (query.Count > 0)
             {
@@ -204,15 +222,14 @@ namespace TapGameSnapshot.Test
         {
             return await LCUser.LoginAnonymously();
         }
-
-
+        
         private GameSnapshot Constructor()
         {
             return new GameSnapshot
             {
                 Name = "GameSnapshot_Name",
                 Description = "GameSnapshot_Description",
-                ModifiedAt = DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture),
+                ModifiedAt = DateTime.Now.ToLocalTime(),
                 PlayedTime = 1000L,
                 ProgressValue = 100,
                 CoverFilePath = pic,
