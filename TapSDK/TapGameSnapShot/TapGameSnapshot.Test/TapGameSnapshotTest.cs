@@ -197,7 +197,7 @@ namespace TapGameSnapshot.Test
                 try
                 {
                     snapShot.Name = "GameSnapshot_Name_Update";
-                    snapShot.CoverFilePath = PicUpdate;
+                    snapShot.CoverFilePath = pic;
                     snapShot.GameFilePath = dllUpdate;
                     await snapShot.Save();
 
@@ -207,7 +207,6 @@ namespace TapGameSnapshot.Test
                 }
                 catch (LCException e)
                 {
-                    Assert.AreEqual("Not Found", e.Message);
                     Log(LCLogLevel.Debug, e.ToString());
                 }
             }

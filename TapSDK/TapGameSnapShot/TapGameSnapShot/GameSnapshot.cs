@@ -1,7 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using LeanCloud;
 using LeanCloud.Storage;
 
 namespace TapTap.GameSnapshot
@@ -28,9 +28,9 @@ namespace TapTap.GameSnapshot
             set => this["modifiedAt"] = value;
         }
 
-        public long PlayedTime
+        public double PlayedTime
         {
-            get => this["playedTime"] is long ? (long) this["playedTime"] : -1;
+            get => this["playedTime"] is double ? (double) this["playedTime"] : -1d;
             set => this["playedTime"] = value;
         }
 
@@ -84,9 +84,12 @@ namespace TapTap.GameSnapshot
             User = currentUser;
             GameFile.ACL = acl;
             GameFile = await GameFile.Save();
-            if (Cover == null) return await base.Save() as GameSnapshot;
-            Cover.ACL = acl;
-            Cover = await Cover.Save();
+            if (Cover != null)
+            {
+                Cover.ACL = acl;
+                Cover = await Cover.Save();
+            }
+
             return await base.Save() as GameSnapshot;
         }
 
@@ -95,10 +98,10 @@ namespace TapTap.GameSnapshot
             var user = await LCUser.GetCurrent();
             if (user == null) throw new UnauthorizedAccessException("Not Login");
             return await ConstructorQueryByUser(user).Find();
-        }   
-        
+        }
+
         public static LCQuery<GameSnapshot> GetQuery() => new LCQuery<GameSnapshot>(CLASS_NAME);
-        
+
         private static LCQuery<GameSnapshot> ConstructorQueryByUser(LCUser user)
         {
             var query = GetQuery();
@@ -112,7 +115,19 @@ namespace TapTap.GameSnapshot
         {
             if (string.IsNullOrEmpty(Name)) throw new ArgumentNullException(nameof(Name));
             if (string.IsNullOrEmpty(Description)) throw new ArgumentNullException(nameof(Description));
+            if (Description.Length > 1000) throw new ArgumentOutOfRangeException(nameof(Description));
             if (GameFile == null) throw new ArgumentNullException(nameof(GameFile));
+            if (Cover == null) return;
+            if (!GameSnapshotMimeType.SupportImageMimeType.Contains(Cover.MimeType))
+                throw new ArgumentException("Cover File must be png or jpg");
+        }
+
+        private static class GameSnapshotMimeType
+        {
+            internal static readonly List<string> SupportImageMimeType = new List<string>
+            {
+                "image/png", "image/jpg"
+            };
         }
     }
 }
