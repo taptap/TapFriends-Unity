@@ -8,6 +8,8 @@ test:
   stage: test
   script:
     - ./.ci/test.sh
+  only: 
+    - pushes
 
 build:
   tags:
