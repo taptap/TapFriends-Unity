@@ -9,7 +9,7 @@ cd ./TapSDK
 dotnet test /p:CollectCoverage=true /p:CoverletOutput='./results/' /p:CoverletOutputFormat=opencover
 
 # 测试模块
-module=("TapBootstrapSDK" "TapGameSnapshot")
+module=("TapBootstrapSDK")
 
 for element in ${module[@]}
 do

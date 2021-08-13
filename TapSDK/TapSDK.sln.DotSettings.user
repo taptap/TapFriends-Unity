@@ -5,7 +5,7 @@
 	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=80c3427d_002D1a75_002D4911_002D8c0b_002D612fb3d0358e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TapGameSnapshotTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;NUnit3x::BD955EEB-4892-48FA-B654-94A682DCBB75::.NETCoreApp,Version=v3.1::TapGameSnapshot.Test.TapGameSnapshotTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::07C84B57-0300-489A-8F86-495A503A9A5D::.NETCoreApp,Version=v3.1::TapBootstrapTest.TapGameSnapshotTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	

@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using LeanCloud.Storage;
 
-namespace TapTap.GameSnapshot
+namespace TapTap.Bootstrap
 {
     public class GameSnapshot : LCObject
     {
@@ -16,10 +16,10 @@ namespace TapTap.GameSnapshot
             set => this["name"] = value;
         }
 
-        public string Description
+        public string Summary
         {
-            get => this["description"] as string;
-            set => this["description"] = value;
+            get => this["summary"] as string;
+            set => this["summary"] = value;
         }
 
         public DateTime ModifiedAt
@@ -82,14 +82,14 @@ namespace TapTap.GameSnapshot
             acl.SetUserReadAccess(currentUser, true);
             ACL = acl;
             User = currentUser;
-            GameFile.ACL = acl;
-            GameFile = await GameFile.Save();
             if (Cover != null)
             {
                 Cover.ACL = acl;
                 Cover = await Cover.Save();
             }
-
+            GameFile.ACL = acl;
+            GameFile = await GameFile.Save();
+            
             return await base.Save() as GameSnapshot;
         }
 
@@ -114,12 +114,12 @@ namespace TapTap.GameSnapshot
         private void CheckArguments()
         {
             if (string.IsNullOrEmpty(Name)) throw new ArgumentNullException(nameof(Name));
-            if (string.IsNullOrEmpty(Description)) throw new ArgumentNullException(nameof(Description));
-            if (Description.Length > 1000) throw new ArgumentOutOfRangeException(nameof(Description));
+            if (string.IsNullOrEmpty(Summary)) throw new ArgumentNullException(nameof(Summary));
+            if (Summary.Length > 1000) throw new ArgumentOutOfRangeException(nameof(Summary));
             if (GameFile == null) throw new ArgumentNullException(nameof(GameFile));
             if (Cover == null) return;
             if (!GameSnapshotMimeType.SupportImageMimeType.Contains(Cover.MimeType))
-                throw new ArgumentException("Cover File must be png or jpg");
+                throw new ArgumentException("GameSnapshot Cover File must be png or jpg.");
         }
 
         private static class GameSnapshotMimeType

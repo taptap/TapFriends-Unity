@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using LeanCloud;
 using LeanCloud.Storage;
 using NUnit.Framework;
-using TapTap.GameSnapshot;
+using TapTap.Bootstrap;
 
-namespace TapGameSnapshot.Test
+namespace TapBootstrapTest
 {
     public class TapGameSnapshotTest
     {
@@ -67,7 +67,7 @@ namespace TapGameSnapshot.Test
                 {
                     Assert.NotNull(snapshot.ObjectId);
                     Assert.NotNull(snapshot.Name);
-                    Assert.NotNull(snapshot.Description);
+                    Assert.NotNull(snapshot.Summary);
                     Assert.NotNull(snapshot.GameFile);
                     var file = snapshot["gameFile"] as LCFile;
                     Assert.NotNull(file);
@@ -227,7 +227,7 @@ namespace TapGameSnapshot.Test
             return new GameSnapshot
             {
                 Name = "GameSnapshot_Name",
-                Description = "GameSnapshot_Description",
+                Summary = "GameSnapshot_Description",
                 ModifiedAt = DateTime.Now.ToLocalTime(),
                 PlayedTime = 1000L,
                 ProgressValue = 100,
