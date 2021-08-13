@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Threading.Tasks;
 using LeanCloud.Storage;
 
@@ -59,12 +60,12 @@ namespace TapTap.Bootstrap
 
         public string CoverFilePath
         {
-            set => this["cover"] = new LCFile("_cover", value);
+            set => this["cover"] = new LCFile(Path.GetFileName(value), value);
         }
 
         public string GameFilePath
         {
-            set => this["gameFile"] = new LCFile("_gameFile", value);
+            set => this["gameFile"] = new LCFile(Path.GetFileName(value), value);
         }
 
         public TapGameSave()
@@ -87,9 +88,10 @@ namespace TapTap.Bootstrap
                 Cover.ACL = acl;
                 Cover = await Cover.Save();
             }
+
             GameFile.ACL = acl;
             GameFile = await GameFile.Save();
-            
+
             return await base.Save() as TapGameSave;
         }
 
