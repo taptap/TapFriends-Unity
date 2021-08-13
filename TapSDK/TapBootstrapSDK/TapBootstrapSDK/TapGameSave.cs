@@ -6,9 +6,9 @@ using LeanCloud.Storage;
 
 namespace TapTap.Bootstrap
 {
-    public class GameSnapshot : LCObject
+    public class TapGameSave : LCObject
     {
-        public const string CLASS_NAME = "GameSnapshot";
+        public const string CLASS_NAME = "GameSave";
 
         public string Name
         {
@@ -67,12 +67,12 @@ namespace TapTap.Bootstrap
             set => this["gameFile"] = new LCFile("_gameFile", value);
         }
 
-        public GameSnapshot()
+        public TapGameSave()
             : base(CLASS_NAME)
         {
         }
 
-        public async Task<GameSnapshot> Save()
+        public async Task<TapGameSave> Save()
         {
             var currentUser = await LCUser.GetCurrent();
             if (currentUser == null) throw new UnauthorizedAccessException("Not Login");
@@ -90,19 +90,19 @@ namespace TapTap.Bootstrap
             GameFile.ACL = acl;
             GameFile = await GameFile.Save();
             
-            return await base.Save() as GameSnapshot;
+            return await base.Save() as TapGameSave;
         }
 
-        public static async Task<ReadOnlyCollection<GameSnapshot>> GetCurrentUserSnapshot()
+        public static async Task<ReadOnlyCollection<TapGameSave>> GetCurrentUserSnapshot()
         {
             var user = await LCUser.GetCurrent();
             if (user == null) throw new UnauthorizedAccessException("Not Login");
             return await ConstructorQueryByUser(user).Find();
         }
 
-        public static LCQuery<GameSnapshot> GetQuery() => new LCQuery<GameSnapshot>(CLASS_NAME);
+        public static LCQuery<TapGameSave> GetQuery() => new LCQuery<TapGameSave>(CLASS_NAME);
 
-        private static LCQuery<GameSnapshot> ConstructorQueryByUser(LCUser user)
+        private static LCQuery<TapGameSave> ConstructorQueryByUser(LCUser user)
         {
             var query = GetQuery();
             query.Include("cover");
@@ -119,7 +119,7 @@ namespace TapTap.Bootstrap
             if (GameFile == null) throw new ArgumentNullException(nameof(GameFile));
             if (Cover == null) return;
             if (!GameSnapshotMimeType.SupportImageMimeType.Contains(Cover.MimeType))
-                throw new ArgumentException("GameSnapshot Cover File must be png or jpg.");
+                throw new ArgumentException("GameSave Cover File must be png or jpg.");
         }
 
         private static class GameSnapshotMimeType

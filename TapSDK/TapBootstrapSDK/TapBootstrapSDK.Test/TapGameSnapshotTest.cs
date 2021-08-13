@@ -20,7 +20,7 @@ namespace TapBootstrapTest
             LCApplication.Initialize("0RiAlMny7jiz086FaU",
                 "8V8wemqkpkxmAN7qKhvlh6v0pXc8JJzEZe3JFUnU",
                 "https://0rialmny.cloud.tds1.tapapis.cn");
-            LCObject.RegisterSubclass(GameSnapshot.CLASS_NAME, () => new GameSnapshot());
+            LCObject.RegisterSubclass(TapGameSave.CLASS_NAME, () => new TapGameSave());
             LCLogger.LogDelegate = Log;
 
             await Login();
@@ -44,7 +44,7 @@ namespace TapBootstrapTest
         [Test]
         public async Task SaveSnapshotWithArguments()
         {
-            var snapshot = new GameSnapshot();
+            var snapshot = new TapGameSave();
             try
             {
                 await snapshot.Save();
@@ -61,7 +61,7 @@ namespace TapBootstrapTest
             try
             {
                 await Login();
-                var collection = await GameSnapshot.GetCurrentUserSnapshot();
+                var collection = await TapGameSave.GetCurrentUserSnapshot();
                 Assert.NotNull(collection);
                 foreach (var snapshot in collection)
                 {
@@ -104,22 +104,30 @@ namespace TapBootstrapTest
         [Test]
         public async Task Delete()
         {
-            var user = await LCUser.GetCurrent() ?? await Login();
-
-            var query = await GameSnapshot.GetCurrentUserSnapshot();
-
-            if (query.Count > 0)
+            try
             {
-                var snapshot = query[0];
+                var user = await LCUser.GetCurrent() ?? await Login();
 
-                var snapshotObjectId = snapshot.ObjectId;
+                var query = await TapGameSave.GetCurrentUserSnapshot();
 
-                await snapshot.Delete();
+                if (query.Count > 0)
+                {
+                    var snapshot = query[0];
 
-                var querySnapshot = await new LCQuery<GameSnapshot>(GameSnapshot.CLASS_NAME).Get(snapshotObjectId);
+                    var snapshotObjectId = snapshot.ObjectId;
 
-                Assert.Null(querySnapshot.ObjectId);
+                    await snapshot.Delete();
+
+                    var querySnapshot = await new LCQuery<TapGameSave>(TapGameSave.CLASS_NAME).Get(snapshotObjectId);
+
+                    Assert.Null(querySnapshot.ObjectId);
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
         }
 
         [Test]
@@ -127,7 +135,7 @@ namespace TapBootstrapTest
         {
             var user = await LCUser.GetCurrent() ?? await Login();
 
-            var query = await GameSnapshot.GetCurrentUserSnapshot();
+            var query = await TapGameSave.GetCurrentUserSnapshot();
 
             if (query.Count > 0)
             {
@@ -139,7 +147,7 @@ namespace TapBootstrapTest
                 {
                     await LCUser.Logout();
                     await OtherUserLogin();
-                    var otherUserQuerySnapshot = await GameSnapshot.GetQuery().Get(snapShotObjectId);
+                    var otherUserQuerySnapshot = await TapGameSave.GetQuery().Get(snapShotObjectId);
                     Assert.Null(otherUserQuerySnapshot);
                 }
                 catch (LCException e)
@@ -155,7 +163,7 @@ namespace TapBootstrapTest
         {
             var user = await LCUser.GetCurrent() ?? await Login();
 
-            var query = await GameSnapshot.GetCurrentUserSnapshot();
+            var query = await TapGameSave.GetCurrentUserSnapshot();
 
             if (query.Count > 0)
             {
@@ -186,7 +194,7 @@ namespace TapBootstrapTest
 
             await SaveSnapshot();
 
-            var query = await GameSnapshot.GetCurrentUserSnapshot();
+            var query = await TapGameSave.GetCurrentUserSnapshot();
 
             if (query.Count > 0)
             {
@@ -201,7 +209,7 @@ namespace TapBootstrapTest
                     snapShot.GameFilePath = dllUpdate;
                     await snapShot.Save();
 
-                    var querySnapShot = await GameSnapshot.GetQuery().Get(snapShot.ObjectId);
+                    var querySnapShot = await TapGameSave.GetQuery().Get(snapShot.ObjectId);
                     Assert.NotNull(querySnapShot);
                     Assert.AreEqual("GameSnapshot_Name_Update", querySnapShot.Name);
                 }
@@ -222,9 +230,9 @@ namespace TapBootstrapTest
             return await LCUser.LoginAnonymously();
         }
         
-        private GameSnapshot Constructor()
+        private TapGameSave Constructor()
         {
-            return new GameSnapshot
+            return new TapGameSave
             {
                 Name = "GameSnapshot_Name",
                 Summary = "GameSnapshot_Description",
