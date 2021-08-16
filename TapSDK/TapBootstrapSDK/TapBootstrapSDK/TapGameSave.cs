@@ -86,16 +86,12 @@ namespace TapTap.Bootstrap
             if (Cover != null)
             {
                 Cover.ACL = acl;
-                Cover = await Cover.Save();
             }
-
             GameFile.ACL = acl;
-            GameFile = await GameFile.Save();
-
             return await base.Save() as TapGameSave;
         }
 
-        public static async Task<ReadOnlyCollection<TapGameSave>> GetCurrentUserSnapshot()
+        public static async Task<ReadOnlyCollection<TapGameSave>> GetCurrentUserGameSaves()
         {
             var user = await LCUser.GetCurrent();
             if (user == null) throw new UnauthorizedAccessException("Not Login");

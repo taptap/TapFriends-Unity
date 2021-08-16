@@ -7,6 +7,7 @@
     &lt;TestId&gt;NUnit3x::07C84B57-0300-489A-8F86-495A503A9A5D::.NETCoreApp,Version=v3.1::TapBootstrapTest.TapGameSnapshotTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestRunner/HangingTestRunnerResponse/@EntryValue">KillProcess</s:String>
 	
 	
 	

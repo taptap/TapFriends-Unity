@@ -61,7 +61,7 @@ namespace TapBootstrapTest
             try
             {
                 await Login();
-                var collection = await TapGameSave.GetCurrentUserSnapshot();
+                var collection = await TapGameSave.GetCurrentUserGameSaves();
                 Assert.NotNull(collection);
                 foreach (var snapshot in collection)
                 {
@@ -108,7 +108,7 @@ namespace TapBootstrapTest
             {
                 var user = await LCUser.GetCurrent() ?? await Login();
 
-                var query = await TapGameSave.GetCurrentUserSnapshot();
+                var query = await TapGameSave.GetCurrentUserGameSaves();
 
                 if (query.Count > 0)
                 {
@@ -135,7 +135,7 @@ namespace TapBootstrapTest
         {
             var user = await LCUser.GetCurrent() ?? await Login();
 
-            var query = await TapGameSave.GetCurrentUserSnapshot();
+            var query = await TapGameSave.GetCurrentUserGameSaves();
 
             if (query.Count > 0)
             {
@@ -163,7 +163,7 @@ namespace TapBootstrapTest
         {
             var user = await LCUser.GetCurrent() ?? await Login();
 
-            var query = await TapGameSave.GetCurrentUserSnapshot();
+            var query = await TapGameSave.GetCurrentUserGameSaves();
 
             if (query.Count > 0)
             {
@@ -181,7 +181,7 @@ namespace TapBootstrapTest
                 }
                 catch (LCException e)
                 {
-                    Assert.AreEqual("Not Found", e.Message);
+                    Assert.AreEqual("Forbidden writing by object's ACL.", e.Message);
                     Log(LCLogLevel.Debug, e.ToString());
                 }
             }
@@ -194,7 +194,7 @@ namespace TapBootstrapTest
 
             await SaveSnapshot();
 
-            var query = await TapGameSave.GetCurrentUserSnapshot();
+            var query = await TapGameSave.GetCurrentUserGameSaves();
 
             if (query.Count > 0)
             {
