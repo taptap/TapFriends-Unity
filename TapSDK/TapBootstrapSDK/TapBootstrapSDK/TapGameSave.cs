@@ -87,6 +87,7 @@ namespace TapTap.Bootstrap
             {
                 Cover.ACL = acl;
             }
+
             GameFile.ACL = acl;
             return await base.Save() as TapGameSave;
         }
