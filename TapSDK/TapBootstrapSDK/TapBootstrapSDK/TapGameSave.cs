@@ -96,12 +96,12 @@ namespace TapTap.Bootstrap
         {
             var user = await LCUser.GetCurrent();
             if (user == null) throw new UnauthorizedAccessException("Not Login");
-            return await ConstructorQueryByUser(user).Find();
+            return await GetQueryWithUser(user).Find();
         }
 
         public static LCQuery<TapGameSave> GetQuery() => new LCQuery<TapGameSave>(CLASS_NAME);
 
-        private static LCQuery<TapGameSave> ConstructorQueryByUser(LCUser user)
+        public static LCQuery<TapGameSave> GetQueryWithUser(LCUser user)
         {
             var query = GetQuery();
             query.Include("cover");
@@ -117,11 +117,11 @@ namespace TapTap.Bootstrap
             if (Summary.Length > 1000) throw new ArgumentOutOfRangeException(nameof(Summary));
             if (GameFile == null) throw new ArgumentNullException(nameof(GameFile));
             if (Cover == null) return;
-            if (!GameSnapshotMimeType.SupportImageMimeType.Contains(Cover.MimeType))
+            if (!GameSaveMimeType.SupportImageMimeType.Contains(Cover.MimeType))
                 throw new ArgumentException("GameSave Cover File must be png or jpg.");
         }
 
-        private static class GameSnapshotMimeType
+        private static class GameSaveMimeType
         {
             internal static readonly List<string> SupportImageMimeType = new List<string>
             {

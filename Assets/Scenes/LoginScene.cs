@@ -68,6 +68,7 @@ public class LoginScene : MonoBehaviour
             {
                 label.text = $"Login Error:{e}";
             }
+
             throw;
         }
     }
@@ -88,6 +89,7 @@ public class LoginScene : MonoBehaviour
     private void onLoginOutClicked()
     {
         TDSUser.Logout();
+        label.text = "Login Out";
     }
 
     private async void GetSessionToken()
