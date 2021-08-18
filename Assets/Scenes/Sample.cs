@@ -156,10 +156,10 @@ public class Sample : MonoBehaviour
         {
             TapCommon.AddHost("https://openapi.taptap.com", "https://open.api.xdrnd.com");
             TapCommon.AddHost("https://www.taptap.com", "https://www.xdrnd.com");
-            TapCommon.AddHost("https://tds-moment.taptap.com", "https://tds-moment.xdrnd.com");
-            TapCommon.AddHost("https://tds-moment.taptap-api.com/", "https://tds-moment.api.xdrnd.com/");
-            TapCommon.AddHost("https://tds-tapsdk.cn.tapapis.com/achievement/api/v1/clients",
-                "https://tds-api.xdrnd.com/achievement/api/v1/clients");
+            TapCommon.AddHost("https://tds-moment.taptap.com/", "https://tds-moment.xdrnd.com/");
+            TapCommon.AddHost("https://tds-moment.taptap-api.com", "https://tds-moment.api.xdrnd.com");
+            TapCommon.AddHost("https://tds-tapsdk.cn.tapapis.com",
+                "https://tds-api.xdrnd.com");
         }
         else
         {
@@ -198,8 +198,8 @@ public class Sample : MonoBehaviour
         {
             TapCommon.AddHost("https://openapi.tap.io", "https://open.api.xdrnd.com");
             TapCommon.AddHost("https://www.tap.io", "https://www.xdrnd.com");
-            TapCommon.AddHost("https://tds-moment.tap.io", "https://tds-moment-io.xdrnd.com");
-            TapCommon.AddHost("https://moment.intl.tapapis.com/", "https://tds-moment-io.api.xdrnd.com/");
+            TapCommon.AddHost("https://tds-moment.tap.io/", "https://tds-moment-io.xdrnd.com/");
+            TapCommon.AddHost("https://moment.intl.tapapis.com", "https://tds-moment-io.api.xdrnd.com");
         }
 
         var config = new TapConfig.Builder()
