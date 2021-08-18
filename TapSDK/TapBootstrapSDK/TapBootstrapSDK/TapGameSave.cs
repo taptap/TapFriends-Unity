@@ -9,7 +9,7 @@ namespace TapTap.Bootstrap
 {
     public class TapGameSave : LCObject
     {
-        public const string CLASS_NAME = "GameSave";
+        public const string CLASS_NAME = "_GameSave";
 
         public string Name
         {

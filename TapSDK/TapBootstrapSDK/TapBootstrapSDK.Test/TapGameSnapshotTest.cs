@@ -17,9 +17,9 @@ namespace TapBootstrapTest
         [SetUp]
         public async Task Setup()
         {
-            LCApplication.Initialize("0RiAlMny7jiz086FaU",
-                "8V8wemqkpkxmAN7qKhvlh6v0pXc8JJzEZe3JFUnU",
-                "https://0rialmny.cloud.tds1.tapapis.cn");
+            LCApplication.Initialize("uZ8Yy6cSXVOR6AMRPj",
+                "AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7",
+                "https://beta.leancloud.cn");
             LCObject.RegisterSubclass(TapGameSave.CLASS_NAME, () => new TapGameSave());
             LCLogger.LogDelegate = Log;
 
@@ -222,7 +222,7 @@ namespace TapBootstrapTest
 
         private static async Task<LCUser> Login()
         {
-            return await LCUser.BecomeWithSessionToken("nz30npdqbeovcmvukoxxr2t8d");
+            return await LCUser.LoginAnonymously();
         }
 
         private static async Task<LCUser> OtherUserLogin()
