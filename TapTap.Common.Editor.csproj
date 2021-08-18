@@ -279,6 +279,9 @@
  <Reference Include="TapTap.Login">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Login/Plugins/TapTap.Login.dll</HintPath>
  </Reference>
+ <Reference Include="zxing.unity">
+ <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Login/Plugins/zxing.unity.dll</HintPath>
+ </Reference>
  <Reference Include="Newtonsoft.Json">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/Lib/Unity3D/3rdLib/Newtonsoft.Json.dll</HintPath>
  </Reference>
@@ -326,9 +329,6 @@
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
- </Reference>
- <Reference Include="zxing.unity">
- <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Login/Plugins/zxing.unity.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
