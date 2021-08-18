@@ -68,11 +68,36 @@ namespace TapTap.Bootstrap
             set => this["gameFile"] = new LCFile(Path.GetFileName(value), value);
         }
 
+        private void CheckArguments()
+        {
+            if (string.IsNullOrEmpty(Name)) throw new ArgumentNullException(nameof(Name));
+            if (string.IsNullOrEmpty(Summary)) throw new ArgumentNullException(nameof(Summary));
+            if (Summary.Length > 1000) throw new ArgumentOutOfRangeException(nameof(Summary));
+            if (GameFile == null) throw new ArgumentNullException(nameof(GameFile));
+            if (Cover == null) return;
+            if (!GameSaveMimeType.SupportImageMimeType.Contains(Cover.MimeType))
+                throw new ArgumentException("GameSave Cover File must be png or jpg.");
+        }
+
+        private static class GameSaveMimeType
+        {
+            internal static readonly List<string> SupportImageMimeType = new List<string>
+            {
+                "image/png", "image/jpg"
+            };
+        }
+
         public TapGameSave()
             : base(CLASS_NAME)
         {
         }
 
+        #region API
+
+        /// <summary>
+        /// Save a GameSave to cloud for Current User.
+        /// </summary>
+        /// <returns></returns>
         public async Task<TapGameSave> Save()
         {
             var currentUser = await LCUser.GetCurrent();
@@ -92,6 +117,11 @@ namespace TapTap.Bootstrap
             return await base.Save() as TapGameSave;
         }
 
+
+        /// <summary>
+        /// Get all GameSave by Current User.
+        /// </summary>
+        /// <returns></returns>
         public static async Task<ReadOnlyCollection<TapGameSave>> GetCurrentUserGameSaves()
         {
             var user = await LCUser.GetCurrent();
@@ -99,8 +129,17 @@ namespace TapTap.Bootstrap
             return await GetQueryWithUser(user).Find();
         }
 
+        /// <summary>
+        /// Constrcutor a LCQuery for GameSave.
+        /// </summary>
+        /// <returns></returns>
         public static LCQuery<TapGameSave> GetQuery() => new LCQuery<TapGameSave>(CLASS_NAME);
 
+        /// <summary>
+        /// Constrcutor a LCQuery for GameSave with LCUser
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public static LCQuery<TapGameSave> GetQueryWithUser(LCUser user)
         {
             var query = GetQuery();
@@ -110,23 +149,6 @@ namespace TapTap.Bootstrap
             return query;
         }
 
-        private void CheckArguments()
-        {
-            if (string.IsNullOrEmpty(Name)) throw new ArgumentNullException(nameof(Name));
-            if (string.IsNullOrEmpty(Summary)) throw new ArgumentNullException(nameof(Summary));
-            if (Summary.Length > 1000) throw new ArgumentOutOfRangeException(nameof(Summary));
-            if (GameFile == null) throw new ArgumentNullException(nameof(GameFile));
-            if (Cover == null) return;
-            if (!GameSaveMimeType.SupportImageMimeType.Contains(Cover.MimeType))
-                throw new ArgumentException("GameSave Cover File must be png or jpg.");
-        }
-
-        private static class GameSaveMimeType
-        {
-            internal static readonly List<string> SupportImageMimeType = new List<string>
-            {
-                "image/png", "image/jpg"
-            };
-        }
+        #endregion API
     }
 }
