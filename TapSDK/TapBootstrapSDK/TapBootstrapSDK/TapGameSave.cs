@@ -83,7 +83,7 @@ namespace TapTap.Bootstrap
         {
             internal static readonly List<string> SupportImageMimeType = new List<string>
             {
-                "image/png", "image/jpg", "image/jpeg"
+                "image/png","image/jpeg"
             };
         }
 

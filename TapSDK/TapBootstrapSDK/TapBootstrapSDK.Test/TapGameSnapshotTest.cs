@@ -127,7 +127,6 @@ namespace TapBootstrapTest
             {
                 Console.WriteLine(e);
             }
-            
         }
 
         [Test]
@@ -229,10 +228,10 @@ namespace TapBootstrapTest
         {
             return await LCUser.LoginAnonymously();
         }
-        
+
         private TapGameSave Constructor()
         {
-            return new TapGameSave
+            var gameSave = new TapGameSave
             {
                 Name = "GameSnapshot_Name",
                 Summary = "GameSnapshot_Description",
@@ -242,6 +241,7 @@ namespace TapBootstrapTest
                 CoverFilePath = pic,
                 GameFilePath = dll
             };
+            return gameSave;
         }
 
         private static void Log(LCLogLevel level, string info)
