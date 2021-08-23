@@ -130,13 +130,13 @@ namespace TapTap.Bootstrap
         }
 
         /// <summary>
-        /// Constrcutor a LCQuery for GameSave.
+        /// Constructor a LCQuery for GameSave.
         /// </summary>
         /// <returns></returns>
         public static LCQuery<TapGameSave> GetQuery() => new LCQuery<TapGameSave>(CLASS_NAME);
 
         /// <summary>
-        /// Constrcutor a LCQuery for GameSave with LCUser
+        /// Constructor a LCQuery for GameSave with LCUser
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
