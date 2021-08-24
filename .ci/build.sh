@@ -32,6 +32,10 @@ sh ./pkg_uploader.sh $PRODUCT_DIR/demo.ipa com.tdssdk.demo $THREAD
 
 sh ./pkg_uploader.sh $PRODUCT_DIR/TapSDK2-Unity.apk com.tds.demo $THREAD
 
+rm -r /Users/gitlab-runner/Desktop/QA-Test/Ios/ipa/*
+
+rm -r /Users/gitlab-runner/Desktop/QA-Test/Android/apk/*
+
 cp -r $PRODUCT_DIR/demo.ipa /Users/gitlab-runner/Desktop/QA-Test/Ios/ipa/
 
 cp -r $PRODUCT_DIR/TapSDK2-Unity.apk /Users/gitlab-runner/Desktop/QA-Test/Android/apk/
