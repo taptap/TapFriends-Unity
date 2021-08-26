@@ -11,6 +11,8 @@ namespace TapTap.Bootstrap
     {
         public const string CLASS_NAME = "_GameSave";
 
+        private const string PATH_PREFIX = "gamesaves";
+
         public string Name
         {
             get => this["name"] as string;
@@ -111,9 +113,10 @@ namespace TapTap.Bootstrap
             if (Cover != null)
             {
                 Cover.ACL = acl;
+                Cover.PathPrefix = PATH_PREFIX;
             }
-
             GameFile.ACL = acl;
+            GameFile.PathPrefix = PATH_PREFIX;
             return await base.Save() as TapGameSave;
         }
 

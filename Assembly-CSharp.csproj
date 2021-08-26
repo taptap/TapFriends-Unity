@@ -770,6 +770,27 @@
       <Name>TapTap.Achievement.Editor</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\LCLibs\Common.dll" />
+    <Content Include="Assets\LCLibs\Common.pdb" />
+    <Content Include="Assets\LCLibs\LC.Google.Protobuf.dll" />
+    <Content Include="Assets\LCLibs\LC.Google.Protobuf.pdb" />
+    <Content Include="Assets\LCLibs\LC.Newtonsoft.Json.dll" />
+    <Content Include="Assets\LCLibs\LC.Newtonsoft.Json.pdb" />
+    <Content Include="Assets\LCLibs\LiveQuery.deps.json" />
+    <Content Include="Assets\LCLibs\LiveQuery.dll" />
+    <Content Include="Assets\LCLibs\LiveQuery.pdb" />
+    <Content Include="Assets\LCLibs\Realtime.dll" />
+    <Content Include="Assets\LCLibs\Realtime.pdb" />
+    <Content Include="Assets\LCLibs\Storage.dll" />
+    <Content Include="Assets\LCLibs\Storage.pdb" />
+    <Content Include="Assets\LCLibs\Storage.Unity.dll" />
+    <Content Include="Assets\LCLibs\Storage.Unity.pdb" />
+    <Content Include="Assets\LCLibs\System.Buffers.dll" />
+    <Content Include="Assets\LCLibs\System.Memory.dll" />
+    <Content Include="Assets\LCLibs\System.Numerics.Vectors.dll" />
+    <Content Include="Assets\LCLibs\System.Runtime.CompilerServices.Unsafe.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
