@@ -1,3 +1,5 @@
+using TapTap.Common;
+
 namespace TapTap.Bootstrap
 {
     public interface IStartTask

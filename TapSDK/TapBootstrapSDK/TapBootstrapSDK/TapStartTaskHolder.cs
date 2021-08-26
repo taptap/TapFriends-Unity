@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TapTap.Common;
 
 namespace TapTap.Bootstrap
 {

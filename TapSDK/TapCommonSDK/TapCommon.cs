@@ -4,6 +4,11 @@ namespace TapTap.Common
 {
     public class TapCommon
     {
+        public static void Init(TapConfig config)
+        {
+            TapCommonImpl.GetInstance().Init(config);
+        }
+
         public static void GetRegionCode(Action<bool> callback)
         {
             TapCommonImpl.GetInstance().GetRegionCode(callback);

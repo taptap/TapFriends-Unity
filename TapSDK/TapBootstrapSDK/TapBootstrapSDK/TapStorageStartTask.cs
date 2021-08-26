@@ -1,5 +1,6 @@
 using LeanCloud;
 using LeanCloud.Storage;
+using TapTap.Common;
 
 namespace TapTap.Bootstrap
 {

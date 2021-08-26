@@ -6,6 +6,9 @@ namespace TapTap.Common
 {
     public interface ITapCommon
     {
+
+        void Init(TapConfig config);
+        
         void GetRegionCode(Action<bool> callback);
 
         void IsTapTapInstalled(Action<bool> callback);
