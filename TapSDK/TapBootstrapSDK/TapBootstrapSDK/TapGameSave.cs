@@ -46,13 +46,11 @@ namespace TapTap.Bootstrap
         public LCFile Cover
         {
             get => this["cover"] as LCFile;
-            set => this["cover"] = value;
         }
 
         public LCFile GameFile
         {
             get => this["gameFile"] as LCFile;
-            set => this["gameFile"] = value;
         }
 
         public LCUser User
@@ -85,7 +83,7 @@ namespace TapTap.Bootstrap
         {
             internal static readonly List<string> SupportImageMimeType = new List<string>
             {
-                "image/png","image/jpeg"
+                "image/png", "image/jpeg"
             };
         }
 
@@ -115,6 +113,7 @@ namespace TapTap.Bootstrap
                 Cover.ACL = acl;
                 Cover.PathPrefix = PATH_PREFIX;
             }
+
             GameFile.ACL = acl;
             GameFile.PathPrefix = PATH_PREFIX;
             return await base.Save() as TapGameSave;
