@@ -151,17 +151,17 @@ public class MomentScene : MonoBehaviour
     // }
     // }
 
-    private void OnApplicationPause(bool focus)
-    {
-        Debug.Log($"Moment Scene On Application:{focus}");
-        //进入程序状态更改为前台
-        if (focus)
-        {
-        }
-        else
-        {
-            TapMoment.Close();
-            //离开程序进入到后台状态
-        }
-    }
+    // private void OnApplicationPause(bool focus)
+    // {
+    //     Debug.Log($"Moment Scene On Application:{focus}");
+    //     //进入程序状态更改为前台
+    //     if (focus)
+    //     {
+    //     }
+    //     else
+    //     {
+    //         TapMoment.Close();
+    //         //离开程序进入到后台状态
+    //     }
+    // }
 }
