@@ -22,4 +22,10 @@ build:
   dependencies:
     - test
   
-
+build-manual:
+  tags:
+    - ios-builder
+  stage: build
+  script:
+    - ./.ci/build.sh
+  when: manual
