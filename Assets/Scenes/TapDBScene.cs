@@ -171,7 +171,7 @@ public class TapDBScene : MonoBehaviour
         try
         {
             var user = await TDSUser.GetCurrent();
-            TapDB.SetUser(user.Username);
+            TapDB.SetUser(user.ObjectId);
         }
         catch (Exception e)
         {
