@@ -4,6 +4,7 @@ using LeanCloud;
 using LeanCloud.Storage;
 using NUnit.Framework;
 using TapTap.Bootstrap;
+using TapTap.Login;
 
 namespace TapBootstrapTest
 {
