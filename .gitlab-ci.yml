@@ -1,6 +1,16 @@
 stages:
   - test
   - build
+  - test
+
+test:
+  tags:
+    - ios-builder
+  stage: test
+  script:
+    - ./.ci/test.sh
+  only: 
+    - pushes
 
 test:
   tags:
