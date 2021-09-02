@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <AssemblyVersion>3.1.0</AssemblyVersion>
+        <AssemblyVersion>3.2.0</AssemblyVersion>
         <RootNamespace>TapTap.Bootstrap</RootNamespace>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
         <AssemblyName>TapTap.Bootstrap</AssemblyName>
@@ -12,8 +12,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\TapCommonSDK\TapCommonSDK.csproj"/>
-        <ProjectReference Include="..\..\TapLoginSDK\TapLoginSDK.csproj"/>
+        <ProjectReference Include="..\..\TapCommonSDK\TapCommonSDK.csproj" />
+        <ProjectReference Include="..\..\TapLoginSDK\TapLoginSDK.csproj" />
         <Reference Include="UnityEngine">
             <HintPath>..\..\..\UnityLibs\UnityEngine.dll</HintPath>
         </Reference>

@@ -1,3 +1,4 @@
+using TapTap.Common;
 using TapTap.Login;
 
 namespace TapTap.Bootstrap

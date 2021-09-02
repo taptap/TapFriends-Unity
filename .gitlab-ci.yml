@@ -1,5 +1,15 @@
 stages:
+  - test
   - build
+
+test:
+  tags:
+    - ios-builder
+  stage: test
+  script:
+    - ./.ci/test.sh
+  only: 
+    - pushes
 
 build:
   tags:
@@ -9,4 +19,13 @@ build:
     - ./.ci/build.sh
   only:
     - merge_requests
-
+  dependencies:
+    - test
+  
+build-manual:
+  tags:
+    - ios-builder
+  stage: build
+  script:
+    - ./.ci/build.sh
+  when: manual

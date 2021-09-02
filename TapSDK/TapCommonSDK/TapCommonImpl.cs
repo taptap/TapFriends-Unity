@@ -42,6 +42,17 @@ namespace TapTap.Common
             return _sInstance;
         }
 
+        public void Init(TapConfig config)
+        {
+            var command = new Command.Builder()
+                .Service(TAP_COMMON_SERVICE)
+                .Method("initWithConfig")
+                .Args("initWithConfig", config.ToJson())
+                .Args("versionName", Assembly.GetExecutingAssembly().GetName().Version.ToString()).CommandBuilder();
+            
+            EngineBridge.GetInstance().CallHandler(command);
+        }
+
         public void SetXua()
         {
             try
