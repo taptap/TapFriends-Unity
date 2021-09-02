@@ -28,3 +28,4 @@ build-manual:
   stage: build
   script:
     - ./.ci/build.sh
+  when: manual
