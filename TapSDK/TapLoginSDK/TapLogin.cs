@@ -38,6 +38,11 @@ namespace TapTap.Login
         {
             return TapLoginImpl.GetInstance().Login();
         }
+        
+        public static Task<AccessToken> Login(string[] permissions)
+        {
+            return TapLoginImpl.GetInstance().Login(permissions);
+        }
 
         public static void Logout()
         {

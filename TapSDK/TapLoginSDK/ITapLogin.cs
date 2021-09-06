@@ -19,6 +19,8 @@ namespace TapTap.Login
 
         Task<AccessToken> Login();
 
+        Task<AccessToken> Login(string[] permissions);
+
         Task<bool> GetTestQualification();
 
         void Logout();
