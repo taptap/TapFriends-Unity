@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isCN;
 @property (nonatomic, strong) NSString *clientId;
 @property (nonatomic, strong) TapFriendClientInfo *clientInfo;
-@property (nonatomic, weak) id<TDSAccountProvider>provider;
 @property (nonatomic, weak) id<ComponentMessageDelegate>messageDelegate;
 
 + (nonnull instancetype)sharedInstance;

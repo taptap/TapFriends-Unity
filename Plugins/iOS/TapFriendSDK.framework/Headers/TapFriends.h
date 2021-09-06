@@ -9,12 +9,13 @@
 #import <TapFriendSDK/TapUserRelationShip.h>
 #import <TapFriendSDK/TapFriendConstants.h>
 #import <TapCommonSDK/TapCommonSDK.h>
+#import <TapLoginSDK/TapLoginSDK.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 #define TapFriendSDK                @"TapFriend"
-#define TapFriendSDK_VERSION_NUMBER @"20107001"
-#define TapFriendSDK_VERSION        @"2.1.7"
+#define TapFriendSDK_VERSION_NUMBER @"20108001"
+#define TapFriendSDK_VERSION        @"2.1.8"
 
 typedef void (^TapSimpleHandler)(NSError *_Nullable error);
 typedef void (^TapFriendRelationHandler)(NSArray<TapUserRelationShip *> *_Nullable userList, NSError *_Nullable error);
@@ -24,13 +25,17 @@ typedef void (^TapFriendSendFriendInvitationHandler)(BOOL success, NSError *_Nul
 @interface TapFriends : NSObject
 
 /// 初始化
-/// @param config config
-/// @param provider provider
-+ (void)initWithConfig:(TapConfig *)config accountProvider:(id<TDSAccountProvider>)provider;
+/// @param clientId Tap 应用ID
+/// @param isCN 是否在大陆
++ (void)initWithClientId:(NSString *)clientId region:(BOOL)isCN;
 
 /// 注册消息接收器
 /// @param delegate delegate
 + (void)registerMessageDelegate:(id<ComponentMessageDelegate>)delegate;
+
++ (void)online:(TapSimpleHandler) handler;
+
++ (void)offline;
 
 /// 添加好友
 /// @param userId 用户tds_id
