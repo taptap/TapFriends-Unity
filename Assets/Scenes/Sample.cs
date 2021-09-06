@@ -4,6 +4,7 @@ using TapTap.Common;
 using UnityEngine;
 using UnityEngine.UI;
 using TapTap.License;
+using TapTap.Login;
 using TapTap.TapDB;
 using UnityNative.Toasts.Example;
 
@@ -169,7 +170,7 @@ public class Sample : MonoBehaviour
             .ConfigBuilder();
 
         TapDB.AdvertiserIDCollectionEnabled(isIDFA);
-
+        
         TapBootstrap.Init(config);
     }
 
