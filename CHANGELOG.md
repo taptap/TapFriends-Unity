@@ -30,7 +30,6 @@ TapFriends.Online(error =>
 
 ```cs
 TapFriends.Offline();
-
 ```
 
 
