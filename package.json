@@ -2,7 +2,7 @@
   "name": "com.taptap.tds.friends",
   "displayName": "TapTap Friends",
   "description": "TapTap Develop Service",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "unity": "2018.3",
   "license": "MIT",
   "dependencies": {
