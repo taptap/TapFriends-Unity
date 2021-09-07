@@ -12,7 +12,33 @@
 ```c#
 using TapTap.Friends;
 ```
+### 初始化
+```cs
+TapFriends.Init("tapClientId", true);
+```
+### 上线
+当用户登录或切换账号成功后调用。
 
+```cs
+TapFriends.Online(error =>
+        {
+            if (error != null)
+            {
+                Debug.Log(error.errorDescription);
+            }
+            else
+            {
+               Debug.Log("上线成功");
+            }
+        });
+```
+### 下线
+当用户登出或切换账号前调用。
+
+```cs
+TapFriends.Offline();
+
+```
 ### 添加好友
 
 ```c#
