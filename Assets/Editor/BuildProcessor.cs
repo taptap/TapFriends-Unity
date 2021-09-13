@@ -25,8 +25,8 @@ namespace Editor
             // 企业证书
             proj.SetBuildProperty(target, "CODE_SIGN_IDENTITY",
                 "iPhone Distribution: Shanghai Xindong Enterprise Development Co., Ltd.");
-            proj.SetBuildProperty(target, "PROVISIONING_PROFILE_SPECIFIER", "Everything 2020");
-            proj.SetBuildProperty(target, "PROVISIONING_PROFILE", "6a542e15-b177-4e10-a884-31e7c51c4857");
+            proj.SetBuildProperty(target, "PROVISIONING_PROFILE_SPECIFIER", "Everything 2021");
+            proj.SetBuildProperty(target, "PROVISIONING_PROFILE", "7f7af429-a4fd-46bc-a345-94a836cc5895");
             proj.SetBuildProperty(target, "CODE_SIGN_IDENTITY[sdk=iphoneos*]",
                 "iPhone Distribution: Shanghai Xindong Enterprise Development Co., Ltd.");
             // Dev
