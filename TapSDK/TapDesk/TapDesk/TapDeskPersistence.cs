@@ -8,16 +8,21 @@ namespace TapTap.Desk
     public class TapDeskPersistence
     {
         public static readonly string DeskUuid = ".TapDesk_uuid";
-        
-        public static string ConstructorUuid()
+
+        public static string GetUuid()
         {
             var cacheUuid = ReadText(DeskUuid);
             if (!string.IsNullOrEmpty(cacheUuid)) return cacheUuid;
             var uuid = Guid.NewGuid().ToString();
-            WriteText(DeskUuid,uuid);
+            WriteText(DeskUuid, uuid);
             return uuid;
         }
-        
+
+        public static void Save(string uuid)
+        {
+            WriteText(DeskUuid, uuid);
+        }
+
         public static void WriteText(string filename, string text)
         {
             using (FileStream fs = File.Create(GetFileFullPath(filename)))

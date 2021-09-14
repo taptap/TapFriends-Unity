@@ -1,35 +1,50 @@
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace TapTap.Desk
 {
     public interface ITapDesk
     {
-        void Init(TapDeskConfig config);
+        void Init(string serverUrl, string rootCategoryID, TapDeskCallback callback);
 
-        Task<string> Login(string appId, string sessionToken);
+        Task Login(string appId, string sessionToken);
 
-        Task<string> AnonymousLogin(string uuid);
+        void AnonymousLogin(string uuid);
 
-        Task<string> AnonymousLogin();
+        void AnonymousLogin();
 
         void Resume();
 
         void Pause();
 
-        string ConstructorTapDesk();
+        void SetMetaData(Dictionary<string, object> metaData);
+
+        void SetFieldsData(Dictionary<string, object> fieldsData);
+
+        string GetDeskWebUrl();
+
+        string GetDeskWebUrl(string path);
+
+        string GetDeskWebUrl(string path, Dictionary<string, object> metaData, Dictionary<string, object> fieldsData);
     }
 
-    public class TapDeskContants
+    public class TapDeskConstants
     {
-        public readonly string PathHome = "/";
-        public readonly string PathCategory = "/categories/";
-        public readonly string PathTicketHistory = "/tickets";
-        public readonly string PathTicketNew = "/tickets/new?category_id=";
+        public static readonly string PathHome = "/";
+        public static readonly string PathCategory = "/categories/";
+        public static readonly string PathTicketHistory = "/tickets";
+        public static readonly string PathTicketNew = "/tickets/new?category_id=";
     }
 
-    public enum TapDeskMode
+    internal class TapDeskApiConstants
     {
-        Anonymous,
-        TapSDK
+        public static readonly string Login_URL = "api/2/users";
+        public static readonly string UnRead_URL = "api/2/unread";
+    }
+
+    public class TapDeskCallback
+    {
+        public Action<bool> UnReadStatusChanged { get; set; }
     }
 }
