@@ -31,8 +31,7 @@ namespace TapTap.Desk
 
         private Timer _timer;
 
-
-        private const long MINInterval = 5000L;
+        private const long MINInterval = 10000L;
 
         private const long MAXInterval = 3000000L;
 
@@ -68,6 +67,7 @@ namespace TapTap.Desk
             if (Json.Deserialize(response) is Dictionary<string, string> responseDictionary)
             {
                 _sessionToken = responseDictionary["sessionToken"];
+                return;
             }
 
             throw new TapDeskException(-1, "Login Failed!");
@@ -192,7 +192,7 @@ namespace TapTap.Desk
                 }
                 else if (_interval < MAXInterval)
                 {
-                    _interval += _interval;
+                    _interval += MINInterval;
                 }
                 else
                 {
@@ -200,7 +200,7 @@ namespace TapTap.Desk
                 }
 
                 _timer.Change(_interval, _interval);
-                
+
                 Debug.Log($"FetchUnReadStatus:{_interval}  {hasUnRead}\\n");
                 Debug.Log($"Time:{DateTime.Now.ToString(CultureInfo.InvariantCulture)}\\n");
             }
