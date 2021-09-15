@@ -35,14 +35,19 @@ namespace TapTap.Desk
             TapDeskImpl.GetInstance().Pause();
         }
 
-        public static void SetMetaData(Dictionary<string, object> metaData)
+        public static Task<bool> FetchUnReadStatus()
         {
-            TapDeskImpl.GetInstance().SetMetaData(metaData);
+            return TapDeskImpl.GetInstance().FetchUnReadStatus();
         }
 
-        public static void SetFieldsData(Dictionary<string, object> fieldsData)
+        public static void SetDefaultMetaData(Dictionary<string, object> metaData)
         {
-            TapDeskImpl.GetInstance().SetFieldsData(fieldsData);
+            TapDeskImpl.GetInstance().SetDefaultMetaData(metaData);
+        }
+
+        public static void SetDefaultFieldsData(Dictionary<string, object> fieldsData)
+        {
+            TapDeskImpl.GetInstance().SetDefaultFieldsData(fieldsData);
         }
 
         public static string GetDeskWebUrl()

@@ -18,9 +18,11 @@ namespace TapTap.Desk
 
         void Pause();
 
-        void SetMetaData(Dictionary<string, object> metaData);
+        Task<bool> FetchUnReadStatus();
+        
+        void SetDefaultMetaData(Dictionary<string, object> metaData);
 
-        void SetFieldsData(Dictionary<string, object> fieldsData);
+        void SetDefaultFieldsData(Dictionary<string, object> fieldsData);
 
         string GetDeskWebUrl();
 
@@ -45,6 +47,6 @@ namespace TapTap.Desk
 
     public class TapDeskCallback
     {
-        public Action<bool> UnReadStatusChanged { get; set; }
+        public Action<bool, TapDeskException> UnReadStatusChanged { get; set; }
     }
 }

@@ -21,9 +21,6 @@ namespace TapTap.Desk
 
         private static readonly object Locker = new object();
 
-        private Dictionary<string, string>
-            additionalHeaders = new Dictionary<string, string>();
-
         public static TapDeskHttpClient GetInstance()
         {
             lock (Locker)
@@ -42,24 +39,9 @@ namespace TapTap.Desk
             _httpClient = new HttpClient();
             _server = serverUrl;
             var product =
-                new ProductHeaderValue("TapRTC", Assembly.GetExecutingAssembly().GetName().Version.ToString());
+                new ProductHeaderValue("TapDesk", Assembly.GetExecutingAssembly().GetName().Version.ToString());
             _httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(product));
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        }
-
-        public void AddAddtionalHeader(string key, string value)
-        {
-            if (string.IsNullOrEmpty(key))
-            {
-                return;
-            }
-
-            if (string.IsNullOrEmpty(value))
-            {
-                return;
-            }
-
-            additionalHeaders[key] = value;
         }
 
         public Task<string> Get(string path,
@@ -84,11 +66,13 @@ namespace TapTap.Desk
             Dictionary<string, object> queryParams = null)
         {
             string url = BuildUrl(path, queryParams);
+
             HttpRequestMessage request = new HttpRequestMessage
             {
                 RequestUri = new Uri(url),
                 Method = method,
             };
+
             FillHeaders(request.Headers, headers);
 
             string content = null;
@@ -154,14 +138,6 @@ namespace TapTap.Desk
                 foreach (var kv in reqHeaders)
                 {
                     headers.Add(kv.Key, kv.Value.ToString());
-                }
-            }
-
-            if (additionalHeaders.Count > 0)
-            {
-                foreach (KeyValuePair<string, string> kv in additionalHeaders)
-                {
-                    headers.Add(kv.Key, kv.Value);
                 }
             }
         }

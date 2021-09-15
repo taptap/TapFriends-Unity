@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using TapTap.Bootstrap;
 using TapTap.Common;
+using TapTap.Desk;
 using UnityEngine;
 using UnityEngine.UI;
 using TapTap.License;
@@ -80,11 +82,26 @@ public class Sample : MonoBehaviour
         tapdbSwitch.onValueChanged.AddListener(OnTapdbSwitch);
         idfaSwitch.onValueChanged.AddListener(OnIdfaSwitch);
         achievement.onClick.AddListener(OnAchievementClick);
+
+
+        TapDesk.Init("https://ticket.sdjdd.com", null, new TapDeskCallback
+        {
+            UnReadStatusChanged = (b, exception) => { Console.WriteLine($"hasRead:{b} exception:{exception}"); }
+        });
+
+        TapDesk.AnonymousLogin("364e7e1e-323e-402e-9892-720ee9813f89");
+
+        TapDesk.Resume();
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    private void OnDestroy()
+    {
+        TapDesk.Pause();
     }
 
     private bool isSwitch = true;
@@ -170,7 +187,7 @@ public class Sample : MonoBehaviour
             .ConfigBuilder();
 
         TapDB.AdvertiserIDCollectionEnabled(isIDFA);
-        
+
         TapBootstrap.Init(config);
     }
 
