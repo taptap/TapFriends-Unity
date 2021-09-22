@@ -9,25 +9,25 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace TapTap.Desk
+namespace TapTap.Support
 {
-    public class TapDeskHttpClient
+    public class TapSupportHttpClient
     {
         private HttpClient _httpClient;
 
         private string _server;
 
-        private static TapDeskHttpClient _sInstance;
+        private static TapSupportHttpClient _sInstance;
 
         private static readonly object Locker = new object();
 
-        public static TapDeskHttpClient GetInstance()
+        public static TapSupportHttpClient GetInstance()
         {
             lock (Locker)
             {
                 if (_sInstance == null)
                 {
-                    _sInstance = new TapDeskHttpClient();
+                    _sInstance = new TapSupportHttpClient();
                 }
             }
 
@@ -39,7 +39,7 @@ namespace TapTap.Desk
             _httpClient = new HttpClient();
             _server = serverUrl;
             var product =
-                new ProductHeaderValue("TapDesk", Assembly.GetExecutingAssembly().GetName().Version.ToString());
+                new ProductHeaderValue("TapSupport", Assembly.GetExecutingAssembly().GetName().Version.ToString());
             _httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(product));
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
@@ -101,7 +101,7 @@ namespace TapTap.Desk
             throw HandleErrorResponse(response.StatusCode, resultString);
         }
 
-        TapDeskException HandleErrorResponse(HttpStatusCode statusCode, string responseContent)
+        TapSupportException HandleErrorResponse(HttpStatusCode statusCode, string responseContent)
         {
             int code = (int) statusCode;
             string message = responseContent;
@@ -118,7 +118,7 @@ namespace TapTap.Desk
                 Console.WriteLine(e.Message);
             }
 
-            return new TapDeskException(code, message);
+            return new TapSupportException(code, message);
         }
 
         string BuildUrl(string path, Dictionary<string, object> queryParams = null)

@@ -1,14 +1,14 @@
 using System;
 
-namespace TapTap.Desk
+namespace TapTap.Support
 {
-    public class TapDeskException : Exception
+    public class TapSupportException : Exception
     {
         public int Code { get; set; }
 
         public new string Message { get; set; }
 
-        public TapDeskException(int code, string message)
+        public TapSupportException(int code, string message)
         {
             this.Code = code;
             this.Message = message;

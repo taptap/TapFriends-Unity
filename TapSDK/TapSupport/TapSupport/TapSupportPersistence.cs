@@ -3,9 +3,9 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
-namespace TapTap.Desk
+namespace TapTap.Support
 {
-    public class TapDeskPersistence
+    public class TapSupportPersistence
     {
         public static readonly string DeskUuid = ".TapDesk_uuid";
 
@@ -45,7 +45,6 @@ namespace TapTap.Desk
                 str = Encoding.UTF8.GetString(buffer);
                 buffer = null;
             }
-
             return str;
         }
 

@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace TapTap.Desk
+namespace TapTap.Support
 {
-    public interface ITapDesk
+    public interface ITapSupport
     {
-        void Init(string serverUrl, string rootCategoryID, TapDeskCallback callback);
+        void Init(string serverUrl, string rootCategoryID, TapSupportCallback callback);
 
         Task Login(string appId, string sessionToken);
 
@@ -24,14 +24,14 @@ namespace TapTap.Desk
 
         void SetDefaultFieldsData(Dictionary<string, object> fieldsData);
 
-        string GetDeskWebUrl();
+        string GetSupportWebUrl();
 
-        string GetDeskWebUrl(string path);
+        string GetSupportWebUrl(string path);
 
-        string GetDeskWebUrl(string path, Dictionary<string, object> metaData, Dictionary<string, object> fieldsData);
+        string GetSupportWebUrl(string path, Dictionary<string, object> metaData, Dictionary<string, object> fieldsData);
     }
 
-    public class TapDeskConstants
+    public class TapSupportConstants
     {
         public static readonly string PathHome = "/";
         public static readonly string PathCategory = "/categories/";
@@ -39,14 +39,14 @@ namespace TapTap.Desk
         public static readonly string PathTicketNew = "/tickets/new?category_id=";
     }
 
-    internal class TapDeskApiConstants
+    internal class TapSupportApiConstants
     {
         public static readonly string Login_URL = "api/2/users";
         public static readonly string UnRead_URL = "api/2/unread";
     }
 
-    public class TapDeskCallback
+    public class TapSupportCallback
     {
-        public Action<bool, TapDeskException> UnReadStatusChanged { get; set; }
+        public Action<bool, TapSupportException> UnReadStatusChanged { get; set; }
     }
 }

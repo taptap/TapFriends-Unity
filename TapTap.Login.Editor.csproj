@@ -261,9 +261,6 @@
  <Reference Include="TapTap.Bootstrap">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Bootstrap/Plugins/TapTap.Bootstrap.dll</HintPath>
  </Reference>
- <Reference Include="TapTap.Desk">
- <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Desk/Plugins/TapTap.Desk.dll</HintPath>
- </Reference>
  <Reference Include="TapTap.License">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/License/Plugins/TapTap.License.dll</HintPath>
  </Reference>
@@ -275,6 +272,9 @@
  </Reference>
  <Reference Include="TapTap.Common">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Common/Plugins/TapTap.Common.dll</HintPath>
+ </Reference>
+ <Reference Include="TapTap.Support">
+ <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Support/Plugins/TapTap.Support.dll</HintPath>
  </Reference>
  <Reference Include="TapTap.Login">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Login/Plugins/TapTap.Login.dll</HintPath>

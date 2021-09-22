@@ -2,9 +2,9 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <AssemblyVersion>3.2.0</AssemblyVersion>
-        <RootNamespace>TapTap.Desk</RootNamespace>
+        <RootNamespace>TapTap.Support</RootNamespace>
         <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
-        <AssemblyName>TapTap.Desk</AssemblyName>
+        <AssemblyName>TapTap.Support</AssemblyName>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <DebugSymbols>true</DebugSymbols>

@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 using System.Web;
 using UnityEngine;
 
-namespace TapTap.Desk
+namespace TapTap.Support
 {
-    public class TapDeskImpl : ITapDesk
+    public class TapSupportImpl : ITapSupport
     {
-        private static readonly ITapDesk TapDesk = new TapDeskImpl();
+        private static readonly ITapSupport TapSupport = new TapSupportImpl();
 
-        public static TapDeskImpl GetInstance() => (TapDeskImpl) TapDesk;
+        public static TapSupportImpl GetInstance() => (TapSupportImpl) TapSupport;
 
         private string _serverUrl;
 
         private string _rootCategoryID;
 
-        private TapDeskCallback _callback;
+        private TapSupportCallback _callback;
 
         private string _anonymousId;
 
@@ -37,7 +37,7 @@ namespace TapTap.Desk
 
         private long _interval = MINInterval;
 
-        public void Init(string serverUrl, string rootCategoryID, TapDeskCallback callback)
+        public void Init(string serverUrl, string rootCategoryID, TapSupportCallback callback)
         {
             if (serverUrl.EndsWith("/"))
             {
@@ -51,7 +51,7 @@ namespace TapTap.Desk
             _rootCategoryID = string.IsNullOrEmpty(rootCategoryID) ? "-" : rootCategoryID;
             _callback = callback;
 
-            TapDeskHttpClient.GetInstance().Init(serverUrl);
+            TapSupportHttpClient.GetInstance().Init(serverUrl);
         }
 
         public async Task Login(string appId, string sessionToken)
@@ -62,22 +62,25 @@ namespace TapTap.Desk
                 ["authData"] = sessionToken
             };
 
-            var response = await TapDeskHttpClient.GetInstance()
-                .Post(TapDeskApiConstants.Login_URL, null, requestParams, null);
-            if (Json.Deserialize(response) is Dictionary<string, string> responseDictionary)
-            {
-                _sessionToken = responseDictionary["sessionToken"];
-                return;
-            }
-
-            throw new TapDeskException(-1, "Login Failed!");
+            var response = await TapSupportHttpClient.GetInstance()
+                .Post(TapSupportApiConstants.Login_URL, null, requestParams, null);
+            if (!(Json.Deserialize(response) is Dictionary<string, string> responseDictionary))
+                throw new TapSupportException(-1, "Login Failed!");
+            _sessionToken = responseDictionary["sessionToken"];
         }
 
         public void AnonymousLogin(string uuid)
         {
+            if (string.IsNullOrEmpty(uuid))
+            {
+                AnonymousLogin();
+                return;
+            }
+
             _sessionToken = null;
             _anonymousId = uuid;
-            TapDeskPersistence.Save(uuid);
+            TapSupportPersistence.Save(uuid);
+            Pause();
         }
 
         public void AnonymousLogin()
@@ -85,12 +88,15 @@ namespace TapTap.Desk
             _sessionToken = null;
             if (string.IsNullOrEmpty(_anonymousId))
             {
-                _anonymousId = TapDeskPersistence.GetUuid();
+                _anonymousId = TapSupportPersistence.GetUuid();
             }
+
+            Pause();
         }
 
         public void Resume()
         {
+            _interval = MINInterval;
             if (_timer == null)
             {
                 _timer = new Timer(FetchUnReadStatus, null, 0, _interval);
@@ -127,22 +133,22 @@ namespace TapTap.Desk
             _fieldsData = fieldsData;
         }
 
-        public string GetDeskWebUrl()
+        public string GetSupportWebUrl()
         {
-            return GetDeskWebUrl(null);
+            return GetSupportWebUrl(null);
         }
 
-        public string GetDeskWebUrl(string path)
+        public string GetSupportWebUrl(string path)
         {
-            return GetDeskWebUrl(path, null, null);
+            return GetSupportWebUrl(path, null, null);
         }
 
-        public string GetDeskWebUrl(string path, Dictionary<string, object> metaData,
+        public string GetSupportWebUrl(string path, Dictionary<string, object> metaData,
             Dictionary<string, object> fieldsData)
         {
             if (string.IsNullOrEmpty(path))
             {
-                path = TapDeskConstants.PathHome;
+                path = TapSupportConstants.PathHome;
             }
 
             if (metaData == null || metaData.Count <= 0)
@@ -179,50 +185,58 @@ namespace TapTap.Desk
         {
             if (string.IsNullOrEmpty(_serverUrl))
             {
-                _callback?.UnReadStatusChanged(false, new TapDeskException(-1, "ServerUrl is null!"));
+                _callback?.UnReadStatusChanged(false, new TapSupportException(-1, "ServerUrl is null!"));
             }
 
             try
             {
                 var hasUnRead = await FetchUnReadStatus();
 
-                if (hasUnRead)
-                {
-                    _interval = MINInterval;
-                }
-                else if (_interval < MAXInterval)
-                {
-                    _interval += MINInterval;
-                }
-                else
-                {
-                    _interval = MAXInterval;
-                }
-
-                _timer.Change(_interval, _interval);
+                HandlerIntervalTime(hasUnRead);
 
                 Debug.Log($"FetchUnReadStatus:{_interval}  {hasUnRead}\\n");
                 Debug.Log($"Time:{DateTime.Now.ToString(CultureInfo.InvariantCulture)}\\n");
             }
             catch (Exception e)
             {
-                if (e is TapDeskException exception)
+
+                HandlerIntervalTime(false);
+                
+                if (e is TapSupportException exception)
                 {
                     _callback?.UnReadStatusChanged(false, exception);
                 }
                 else
                 {
-                    _callback?.UnReadStatusChanged(false, new TapDeskException(-1, e.Message));
+                    _callback?.UnReadStatusChanged(false, new TapSupportException(-1, e.Message));
                 }
-
-                Debug.Log(e);
             }
         }
 
+
+        private void HandlerIntervalTime(bool hasUnRead)
+        {
+            if (hasUnRead)
+            {
+                _interval = MINInterval;
+            }
+            else if (_interval < MAXInterval)
+            {
+                _interval += MINInterval;
+            }
+            else
+            {
+                _interval = MAXInterval;
+            }
+
+            _timer.Change(_interval, _interval);
+        }
+        
+
         public async Task<bool> FetchUnReadStatus()
         {
-            var response = await TapDeskHttpClient.GetInstance()
-                .Get(TapDeskApiConstants.UnRead_URL, ConstructorHeaders(), null);
+            var response = await TapSupportHttpClient.GetInstance()
+                .Get(TapSupportApiConstants.UnRead_URL, ConstructorHeaders(), null);
             return response.Equals("true");
         }
 
@@ -244,7 +258,7 @@ namespace TapTap.Desk
                 };
             }
 
-            throw new TapDeskException(-1, "Login First");
+            throw new TapSupportException(-1, "Login First");
         }
 
         private static string ConstructorExpandData(ICollection data)
@@ -254,7 +268,7 @@ namespace TapTap.Desk
                 return "";
             }
 
-            return HttpUtility.UrlDecode(Json.Serialize(data));
+            return HttpUtility.UrlEncode(Json.Serialize(data));
         }
     }
 }

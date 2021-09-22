@@ -4,18 +4,28 @@
 	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/Users/tap-tds/Library/Caches/JetBrains/Rider2021.1/resharper-host/temp/Rider/vAny/CoverageData/_TapSDK.-358344789/Snapshot/snapshot.utdcvr</s:String>
 	
 	
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=53f93223_002D096a_002D401d_002D8f30_002D87f101d4eeaf/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TapDeskTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=53f93223_002D096a_002D401d_002D8f30_002D87f101d4eeaf/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TapDeskTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;NUnit3x::0EF32B53-2463-410F-A01F-D5161592EFC4::.NETCoreApp,Version=v3.1::TapDeskTest.TapDeskTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::454F141C-79E7-479D-B45A-2AF6C8CA1F49::.NETCoreApp,Version=v3.1::TapDeskTest.TapDeskTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bc4b5676_002D518a_002D4951_002D8cc2_002Da955ba75a32a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestTimer" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bc4b5676_002D518a_002D4951_002D8cc2_002Da955ba75a32a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestTimer" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;NUnit3x::0EF32B53-2463-410F-A01F-D5161592EFC4::.NETCoreApp,Version=v3.1::TapDeskTest.TapDeskTest.TestTimer&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::454F141C-79E7-479D-B45A-2AF6C8CA1F49::.NETCoreApp,Version=v3.1::TapDeskTest.TapDeskTest.TestTimer&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	
 	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestRunner/HangingTestRunnerResponse/@EntryValue">KillProcess</s:String>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
