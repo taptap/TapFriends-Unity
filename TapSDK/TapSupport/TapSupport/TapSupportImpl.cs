@@ -31,6 +31,10 @@ namespace TapTap.Support
 
         private Timer _timer;
 
+        private bool _firstReadStatus = true;
+
+        private bool _cacheHasReadStatus;
+
         private const long MINInterval = 10000L;
 
         private const long MAXInterval = 3000000L;
@@ -49,7 +53,27 @@ namespace TapTap.Support
             }
 
             _rootCategoryID = string.IsNullOrEmpty(rootCategoryID) ? "-" : rootCategoryID;
-            _callback = callback;
+            _callback = new TapSupportCallback
+            {
+                UnReadStatusChanged = (hasRead, exception) =>
+                {
+                    if (_firstReadStatus)
+                    {
+                        _firstReadStatus = false;
+                        _cacheHasReadStatus = hasRead;
+                        callback?.UnReadStatusChanged(_cacheHasReadStatus, exception);
+                        return;
+                    }
+
+                    if (_cacheHasReadStatus == hasRead)
+                    {
+                        return;
+                    }
+
+                    _cacheHasReadStatus = hasRead;
+                    callback?.UnReadStatusChanged(_cacheHasReadStatus, exception);
+                }
+            };
 
             TapSupportHttpClient.GetInstance().Init(serverUrl);
         }
@@ -194,14 +218,15 @@ namespace TapTap.Support
 
                 HandlerIntervalTime(hasUnRead);
 
+                _callback?.UnReadStatusChanged(hasUnRead, null);
+
                 Debug.Log($"FetchUnReadStatus:{_interval}  {hasUnRead}\\n");
                 Debug.Log($"Time:{DateTime.Now.ToString(CultureInfo.InvariantCulture)}\\n");
             }
             catch (Exception e)
             {
-
                 HandlerIntervalTime(false);
-                
+
                 if (e is TapSupportException exception)
                 {
                     _callback?.UnReadStatusChanged(false, exception);
@@ -231,7 +256,7 @@ namespace TapTap.Support
 
             _timer.Change(_interval, _interval);
         }
-        
+
 
         public async Task<bool> FetchUnReadStatus()
         {

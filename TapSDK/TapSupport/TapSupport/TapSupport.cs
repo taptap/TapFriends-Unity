@@ -10,7 +10,7 @@ namespace TapTap.Support
             TapSupportImpl.GetInstance().Init(serverUrl, rootCategoryID, callback);
         }
 
-        public static Task Login(string appId, string sessionToken)
+        private static Task Login(string appId, string sessionToken)
         {
             return TapSupportImpl.GetInstance().Login(appId, sessionToken);
         }

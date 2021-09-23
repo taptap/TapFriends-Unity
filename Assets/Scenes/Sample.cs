@@ -306,11 +306,11 @@ public class Sample : MonoBehaviour
 
     public void TestTimer()
     {
-        var webUrl = TapSupport.GetDeskWebUrl(TapSupportConstants.PathHome);
+        var webUrl = TapSupport.GetSupportWebUrl(TapSupportConstants.PathHome);
         Debug.Log($"webUrl:{webUrl}");
 
 
-        var pathCateGory = TapSupport.GetDeskWebUrl(TapSupportConstants.PathCategory + "6108e403928aa97734554ef0",
+        var pathCateGory = TapSupport.GetSupportWebUrl(TapSupportConstants.PathCategory + "6108e403928aa97734554ef0",
             GETMetaData(), GETFieldsData());
 
         Debug.Log($"pathCateGory:{pathCateGory}");
