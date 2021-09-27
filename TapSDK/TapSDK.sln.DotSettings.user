@@ -2,12 +2,30 @@
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Ftap_002Dtds_002FDocuments_002FTapTap_002Ftapsdk2_002Dunity_002FAssets_002FTapTap_002FLogin_002FPlugins_002Fzxing_002Eunity_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002FUsers_002Ftap_002Dtds_002FDocuments_002FTapTap_002Ftapsdk2_002Dunity_002FUnityLibs_002FUnityEngine_002EUI_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/Users/tap-tds/Library/Caches/JetBrains/Rider2021.1/resharper-host/temp/Rider/vAny/CoverageData/_TapSDK.-358344789/Snapshot/snapshot.utdcvr</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=83a61b33_002D3705_002D4dae_002D980c_002D9c41dfdde7e0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TapGameSnapshotTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	
+	
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=53f93223_002D096a_002D401d_002D8f30_002D87f101d4eeaf/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TapDeskTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;NUnit3x::07C84B57-0300-489A-8F86-495A503A9A5D::.NETCoreApp,Version=v3.1::TapBootstrapTest.TapGameSnapshotTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::454F141C-79E7-479D-B45A-2AF6C8CA1F49::.NETCoreApp,Version=v3.1::TapDeskTest.TapDeskTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bc4b5676_002D518a_002D4951_002D8cc2_002Da955ba75a32a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestTimer" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::454F141C-79E7-479D-B45A-2AF6C8CA1F49::.NETCoreApp,Version=v3.1::TapDeskTest.TapDeskTest.TestTimer&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	
 	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestRunner/HangingTestRunnerResponse/@EntryValue">KillProcess</s:String>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

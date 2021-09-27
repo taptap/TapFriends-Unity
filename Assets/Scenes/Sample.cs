@@ -1,12 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections.Generic;
 using TapTap.Bootstrap;
 using TapTap.Common;
-using UnityEngine;
-using UnityEngine.UI;
-using TapTap.License;
-using TapTap.Login;
 using TapTap.TapDB;
-using UnityNative.Toasts.Example;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TapTap.Support;
+using UnityEngine.Assertions;
+
 
 public class Sample : MonoBehaviour
 {
@@ -87,30 +89,54 @@ public class Sample : MonoBehaviour
     {
     }
 
+    private void OnDestroy()
+    {
+        TapSupport.Pause();
+    }
+
     private bool isSwitch = true;
     private bool isIDFA = true;
     private string channel = "输入TapDB：channel";
     private string gameVersion = "输入TapDB：gameVersion";
     private string language = "0";
 
+    private void InitTapSupport()
+    {
+        TapSupport.Init("https://ticket.sdjdd.com", "-", new TapSupportCallback
+        {
+            UnReadStatusChanged = (hasUnRead, exception) =>
+            {
+                Debug.Log($"hasUnRead:{hasUnRead} exception:{exception}");
+            }
+        });
+
+        TapSupport.AnonymousLogin(null);
+
+        TapSupport.Resume();
+
+        TestTimer();
+
+        Debug.Log("init TapSupport Success And Start Looper");
+    }
+
     private void OnAchievementClick()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(5);
+        SceneManager.LoadSceneAsync(5);
     }
 
     private void OnTapdbClicked()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadSceneAsync(3);
     }
 
     private void OnMomentClicked()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(2);
     }
 
     private void OnLoginClicked()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(1);
     }
 
     private void OnInlandClicked()
@@ -124,6 +150,8 @@ public class Sample : MonoBehaviour
             .ConfigBuilder();
 
         TapBootstrap.Init(config);
+
+        InitTapSupport();
     }
 
     private void OnOverseasClicked()
@@ -137,6 +165,8 @@ public class Sample : MonoBehaviour
             .ConfigBuilder();
 
         TapBootstrap.Init(config);
+
+        InitTapSupport();
     }
 
     private void OnRnd_cnClicked()
@@ -170,8 +200,10 @@ public class Sample : MonoBehaviour
             .ConfigBuilder();
 
         TapDB.AdvertiserIDCollectionEnabled(isIDFA);
-        
+
         TapBootstrap.Init(config);
+
+        InitTapSupport();
     }
 
     private void OnRnd_ioClicked()
@@ -204,6 +236,7 @@ public class Sample : MonoBehaviour
         TapDB.AdvertiserIDCollectionEnabled(isIDFA);
 
         TapBootstrap.Init(config);
+        InitTapSupport();
     }
 
     private void OnTapfriendClicked()
@@ -212,7 +245,7 @@ public class Sample : MonoBehaviour
 
     private void OnCommonClicked()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4);
+        SceneManager.LoadSceneAsync(4);
     }
 
     private void OnSetLanguageClicked()
@@ -271,111 +304,53 @@ public class Sample : MonoBehaviour
         return gameVersion;
     }
 
-    // private void OnGUI()
-    // {
-    // GUIStyle style = new GUIStyle(GUI.skin.button);
-    // style.fontSize = 40;
-    //
-    // GUIStyle myToggleStyle = new GUIStyle(GUI.skin.toggle)
-    // {
-    //     fontSize = 35,
-    // };
-    // GUIStyle inputStyle = new GUIStyle(GUI.skin.textArea);
-    // inputStyle.fontSize = 27;
-    //
-    // isSwitch = GUI.Toggle(new Rect(380, Judge.IsIphoneXDevice ? 100 : 0, 200, 55), isSwitch, "TapDB开关",
-    //     myToggleStyle);
-    //
-    // isIDFA = GUI.Toggle(new Rect(380, Judge.IsIphoneXDevice ? 200 : 60, 200, 55), isIDFA, "IDFA 开关", myToggleStyle);
-    //
-    // channel = GUI.TextArea(new Rect(380, Judge.IsIphoneXDevice ? 280 : 135, 330, 70), channel, inputStyle);
-    //
-    // gameVersion = GUI.TextArea(new Rect(380, Judge.IsIphoneXDevice ? 360 : 215, 330, 70), gameVersion, inputStyle);
-    //
-    // language = GUI.TextArea(new Rect(380, Judge.IsIphoneXDevice ? 480 : 295, 330, 70), language, inputStyle);
+    public void TestTimer()
+    {
+        var webUrl = TapSupport.GetSupportWebUrl(TapSupportConstants.PathHome);
+        Debug.Log($"webUrl:{webUrl}");
 
-    // if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice ? 100 : 0, 280, 100), "RND-IO", style))
-    // {
-    //     var config = new TapConfig.Builder()
-    //         // .ClientID("uZ8Yy6cSXVOR6AMRPj")
-    //         .ClientID("UBm5x5JP7ZGEgRsXY5")
-    //         // .ClientToken("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
-    //         .ClientToken("hlPXHzw2XHpATDxGD8FD1Rtwu0iFOBfuGY2XFXR5")
-    //         .RegionType(RegionType.IO)
-    //         .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
-    //         .ConfigBuilder();
-    //
-    //     TapDB.AdvertiserIDCollectionEnabled(isIDFA);
-    //
-    //     TapBootstrap.Init(config);
-    // }
 
-    // if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice ? 250 : 150, 280, 100), "RND-CN", style))
-    // {
-    //     var config = new TapConfig.Builder()
-    //         .ClientID("uZ8Yy6cSXVOR6AMRPj")
-    //         .ClientToken("AVhR1Bu9qfLR1cGbZMAdZ5rzJSxfoEiQaFf1T2P7")
-    //         .RegionType(RegionType.CN)
-    //         .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
-    //         .ConfigBuilder();
-    //
-    //     TapDB.AdvertiserIDCollectionEnabled(isIDFA);
-    //
-    //     TapBootstrap.Init(config);
-    // }
+        var pathCateGory = TapSupport.GetSupportWebUrl(TapSupportConstants.PathCategory + "6108e403928aa97734554ef0",
+            GETMetaData(), GETFieldsData());
 
-    // if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice ? 400 : 300, 280, 100), "海外", style))
-    // {
-    //     var config = new TapConfig.Builder()
-    //         .ClientID("KFV9Pm9ojdmWkkRJeb")
-    //         .ClientToken("7mpVJdXIOLQxvQdqjEEpiz7eLf82cMwYkdgoAZqF")
-    //         .RegionType(RegionType.IO)
-    //         .EnableTapDB(isSwitch)
-    //         .ConfigBuilder();
-    //
-    //     TapBootstrap.Init(config);
-    // }
+        Debug.Log($"pathCateGory:{pathCateGory}");
+    }
 
-    // if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice ? 550 : 450, 280, 100), "国内", style))
-    // {
-    //     var config = new TapConfig.Builder()
-    //         .ClientID("0RiAlMny7jiz086FaU")
-    //         .ClientToken("8V8wemqkpkxmAN7qKhvlh6v0pXc8JJzEZe3JFUnU")
-    //         .RegionType(RegionType.CN)
-    //         .TapDBConfig(isSwitch, channelValue(), gameVersionValue(), isIDFA)
-    //         .ConfigBuilder();
-    //     TapBootstrap.Init(config);
-    // }
+    private Dictionary<string, object> GETDefaultMetaMap()
+    {
+        Dictionary<string, object> testData = new Dictionary<string, object>();
+        testData.Add("default_aaa", "default_a");
+        testData.Add("default_bbb", 1111);
+        testData.Add("default_ccc", true);
+        return testData;
+    }
 
-    // if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice ? 700 : 600, 280, 100), "登陆", style))
-    // {
-    //     UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1);
-    // }
+    public Dictionary<string, object> GETDefaultFiledsMap()
+    {
+        Dictionary<string, object> testData = new Dictionary<string, object>();
+        testData.Add("612c868565a05a00f081b11c", "default_a");
+        testData.Add("6129df889b34d92ea85c59fa", 1111);
+        testData.Add("6108ed29928aa97734557912", "服务器1");
+        return testData;
+    }
 
-    // if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice ? 850 : 750, 280, 100), "动态", style))
-    // {
-    //     UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2);
-    // }
-    //
-    // if (GUI.Button(new Rect(60, Judge.IsIphoneXDevice ? 1000 : 900, 280, 100), "TapDB", style))
-    // {
-    //     UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(3);
-    // }
 
-    // if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice ? 570 : 425, 280, 100), "TapFriend", style))
-    // {
-    //     UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(4);
-    // }
-    //
-    // if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice ? 710 : 565, 280, 100), "Common", style))
-    // {
-    //     UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(5);
-    // }
-    //
-    // if (GUI.Button(new Rect(380, Judge.IsIphoneXDevice ? 850 : 715, 280, 100), "设置语言", style))
-    // {
-    //     var languageType = int.Parse(language);
-    //     TapBootstrap.SetPreferLanguage((TapLanguage) languageType);
-    // }
-    // }
+    public static Dictionary<string, object> GETMetaData()
+    {
+        Dictionary<string, object> testData = new Dictionary<string, object>();
+        testData.Add("Meta_OS", "iOS 15.1");
+        testData.Add("meta_test a", true);
+        testData.Add("meta_test b", 1111111);
+        testData.Add("ccccc", "abcd");
+        return testData;
+    }
+
+    public static Dictionary<string, object> GETFieldsData()
+    {
+        Dictionary<string, object> testData = new Dictionary<string, object>();
+        testData.Add("612c868565a05a00f081b11c", "xxxxx");
+        testData.Add("6129df889b34d92ea85c59fa", 222);
+        testData.Add("6108ed29928aa97734557912", "服务器1");
+        return testData;
+    }
 }

@@ -273,6 +273,9 @@
  <Reference Include="TapTap.Common">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Common/Plugins/TapTap.Common.dll</HintPath>
  </Reference>
+ <Reference Include="TapTap.Support">
+ <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Support/Plugins/TapTap.Support.dll</HintPath>
+ </Reference>
  <Reference Include="TapTap.Login">
  <HintPath>/Users/tap-tds/Documents/TapTap/tapsdk2-unity/Assets/TapTap/Login/Plugins/TapTap.Login.dll</HintPath>
  </Reference>
