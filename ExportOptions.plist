@@ -11,7 +11,7 @@
 	<key>provisioningProfiles</key>
 	<dict>
 		<key>com.tdssdk.demo</key>
-		<string>Everything 2020</string>
+		<string>Everything 2021</string>
 	</dict>
 	<key>signingCertificate</key>
 	<string>Apple Distribution</string>
