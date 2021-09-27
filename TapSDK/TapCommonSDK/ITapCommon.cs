@@ -6,9 +6,8 @@ namespace TapTap.Common
 {
     public interface ITapCommon
     {
-
         void Init(TapConfig config);
-        
+
         void GetRegionCode(Action<bool> callback);
 
         void IsTapTapInstalled(Action<bool> callback);
@@ -30,12 +29,25 @@ namespace TapTap.Common
         void RegisterProperties(string key, ITapPropertiesProxy proxy);
 
         void AddHost(string host, string replaceHost);
+
+        Task<bool> UpdateGameAndFailToWebInTapTap(string appId);
+
+        Task<bool> UpdateGameAndFailToWebInTapGlobal(string appId);
+
+        Task<bool> UpdateGameAndFailToWebInTapTap(string appId, string webUrl);
+
+        Task<bool> UpdateGameAndFailToWebInTapGlobal(string appId, string webUrl);
+
+        Task<bool> OpenWebDownloadUrlOfTapTap(string appId);
+
+        Task<bool> OpenWebDownloadUrlOfTapGlobal(string appId);
+
+        Task<bool> OpenWebDownloadUrl(string url);
     }
 
     public interface ITapPropertiesProxy
     {
         string GetProperties();
-
     }
 
     [Serializable]
