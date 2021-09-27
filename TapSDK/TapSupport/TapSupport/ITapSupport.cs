@@ -19,16 +19,19 @@ namespace TapTap.Support
         void Pause();
 
         Task<bool> FetchUnReadStatus();
-        
+
         void SetDefaultMetaData(Dictionary<string, object> metaData);
 
         void SetDefaultFieldsData(Dictionary<string, object> fieldsData);
+
+        string GetAnonymousId();
 
         string GetSupportWebUrl();
 
         string GetSupportWebUrl(string path);
 
-        string GetSupportWebUrl(string path, Dictionary<string, object> metaData, Dictionary<string, object> fieldsData);
+        string GetSupportWebUrl(string path, Dictionary<string, object> metaData,
+            Dictionary<string, object> fieldsData);
     }
 
     public class TapSupportConstants

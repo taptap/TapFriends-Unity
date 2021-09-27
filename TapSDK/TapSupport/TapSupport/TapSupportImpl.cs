@@ -157,6 +157,15 @@ namespace TapTap.Support
             _fieldsData = fieldsData;
         }
 
+        public string GetAnonymousId()
+        {
+            if (string.IsNullOrEmpty(_anonymousId))
+            {
+                _anonymousId = TapSupportPersistence.GetUuid();
+            }
+            return _anonymousId;
+        }
+
         public string GetSupportWebUrl()
         {
             return GetSupportWebUrl(null);
@@ -292,6 +301,7 @@ namespace TapTap.Support
             {
                 return "";
             }
+
             return UnityWebRequest.EscapeURL(Json.Serialize(data));
         }
     }

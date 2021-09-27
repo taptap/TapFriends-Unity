@@ -25,6 +25,11 @@ namespace TapTap.Support
             TapSupportImpl.GetInstance().AnonymousLogin();
         }
 
+        public static string GetAnonymousId()
+        {
+            return TapSupportImpl.GetInstance().GetAnonymousId();
+        }
+
         public static void Resume()
         {
             TapSupportImpl.GetInstance().Resume();
