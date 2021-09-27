@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 
 namespace TapTap.Common
 {
@@ -61,8 +62,42 @@ namespace TapTap.Common
 
         public static void AddHost(string host, string replaceHost)
         {
-            TapCommonImpl.GetInstance().AddHost(host,replaceHost);
+            TapCommonImpl.GetInstance().AddHost(host, replaceHost);
         }
-        
+
+        public static Task<bool> UpdateGameAndFailToWebInTapTap(string appId)
+        {
+            return TapCommonImpl.GetInstance().UpdateGameAndFailToWebInTapTap(appId);
+        }
+
+        public static Task<bool> UpdateGameAndFailToWebInTapGlobal(string appId)
+        {
+            return TapCommonImpl.GetInstance().UpdateGameAndFailToWebInTapGlobal(appId);
+        }
+
+        public static Task<bool> UpdateGameAndFailToWebInTapTap(string appId, string webUrl)
+        {
+            return TapCommonImpl.GetInstance().UpdateGameAndFailToWebInTapTap(appId, webUrl);
+        }
+
+        public static Task<bool> UpdateGameAndFailToWebInTapGlobal(string appId, string webUrl)
+        {
+            return TapCommonImpl.GetInstance().UpdateGameAndFailToWebInTapGlobal(appId, webUrl);
+        }
+
+        public static Task<bool> OpenWebDownloadUrlOfTapTap(string appId)
+        {
+            return TapCommonImpl.GetInstance().OpenWebDownloadUrlOfTapTap(appId);
+        }
+
+        public static Task<bool> OpenWebDownloadUrlOfTapGlobal(string appId)
+        {
+            return TapCommonImpl.GetInstance().OpenWebDownloadUrlOfTapGlobal(appId);
+        }
+
+        public static Task<bool> OpenWebDownloadUrl(string url)
+        {
+            return TapCommonImpl.GetInstance().OpenWebDownloadUrl(url);
+        }
     }
 }

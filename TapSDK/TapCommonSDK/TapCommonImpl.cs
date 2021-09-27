@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace TapTap.Common
@@ -49,7 +50,7 @@ namespace TapTap.Common
                 .Method("initWithConfig")
                 .Args("initWithConfig", config.ToJson())
                 .Args("versionName", Assembly.GetExecutingAssembly().GetName().Version.ToString()).CommandBuilder();
-            
+
             EngineBridge.GetInstance().CallHandler(command);
         }
 
@@ -289,8 +290,8 @@ namespace TapTap.Common
 
             EngineBridge.GetInstance().CallHandler(command);
         }
-        
-        
+
+
         public void RegisterProperties(string key, ITapPropertiesProxy proxy)
         {
             if (Platform.IsAndroid())
@@ -310,7 +311,7 @@ namespace TapTap.Common
 
             Debug.Log($"registerProperty:{key == null} value:{proxy == null}");
         }
-        
+
 #if UNITY_IOS
         private delegate string TapPropertiesDelegate(string key);
 
@@ -332,13 +333,150 @@ namespace TapTap.Common
             var command = new Command.Builder()
                 .Service(TAP_COMMON_SERVICE)
                 .Method("addReplacedHostPair")
-                .Args("hostToBeReplaced",host)
-                .Args("replacedHost",replaceHost)
+                .Args("hostToBeReplaced", host)
+                .Args("replacedHost", replaceHost)
                 .CommandBuilder();
-            
+
             EngineBridge.GetInstance().CallHandler(command);
         }
-        
+
+        private static void CheckPlatformSupport()
+        {
+            if (Platform.IsIOS())
+            {
+                throw new TapException(-1, "iOS Platform dont support current func");
+            }
+        }
+
+        private static void CheckResult(Result result)
+        {
+            if (!EngineBridge.CheckResult(result))
+            {
+                throw new TapException(-1, $"TapBridge dont support this Command:{result.message}");
+            }
+        }
+
+        public async Task<bool> UpdateGameAndFailToWebInTapTap(string appId)
+        {
+            CheckPlatformSupport();
+            var command = new Command.Builder()
+                .Service(TAP_COMMON_SERVICE)
+                .Method("updateGameAndFailToWebInTapTap")
+                .Args("appId", appId)
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+
+            var result = await EngineBridge.GetInstance().Emit(command);
+            CheckResult(result);
+            var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+            return SafeDictionary.GetValue<bool>(dic, "result");
+        }
+
+        public async Task<bool> UpdateGameAndFailToWebInTapGlobal(string appId)
+        {
+            CheckPlatformSupport();
+            var command = new Command.Builder()
+                .Service(TAP_COMMON_SERVICE)
+                .Method("updateGameAndFailToWebInTapGlobal")
+                .Args("appId", appId)
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+
+            var result = await EngineBridge.GetInstance().Emit(command);
+            CheckResult(result);
+            var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+            return SafeDictionary.GetValue<bool>(dic, "result");
+        }
+
+        public async Task<bool> UpdateGameAndFailToWebInTapTap(string appId, string webUrl)
+        {
+            CheckPlatformSupport();
+            var command = new Command.Builder()
+                .Service(TAP_COMMON_SERVICE)
+                .Method("updateGameAndFailToWebInTapTapWithWebUrl")
+                .Args("appId", appId)
+                .Args("webUrl", webUrl)
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+
+            var result = await EngineBridge.GetInstance().Emit(command);
+            CheckResult(result);
+            var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+            return SafeDictionary.GetValue<bool>(dic, "result");
+        }
+
+        public async Task<bool> UpdateGameAndFailToWebInTapGlobal(string appId, string webUrl)
+        {
+            CheckPlatformSupport();
+            var command = new Command.Builder()
+                .Service(TAP_COMMON_SERVICE)
+                .Method("updateGameAndFailToWebInTapGlobalWithWebUrl")
+                .Args("appId", appId)
+                .Args("webUrl", webUrl)
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+
+            var result = await EngineBridge.GetInstance().Emit(command);
+            CheckResult(result);
+            var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+            return SafeDictionary.GetValue<bool>(dic, "result");
+        }
+
+        public async Task<bool> OpenWebDownloadUrlOfTapTap(string appId)
+        {
+            CheckPlatformSupport();
+            var command = new Command.Builder()
+                .Service(TAP_COMMON_SERVICE)
+                .Method("openWebDownloadUrlOfTapTap")
+                .Args("appId", appId)
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+
+            var result = await EngineBridge.GetInstance().Emit(command);
+            CheckResult(result);
+            var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+            return SafeDictionary.GetValue<bool>(dic, "result");
+        }
+
+        public async Task<bool> OpenWebDownloadUrlOfTapGlobal(string appId)
+        {
+            CheckPlatformSupport();
+            var command = new Command.Builder()
+                .Service(TAP_COMMON_SERVICE)
+                .Method("openWebDownloadUrlOfTapGlobal")
+                .Args("appId", appId)
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+
+            var result = await EngineBridge.GetInstance().Emit(command);
+            CheckResult(result);
+            var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+            return SafeDictionary.GetValue<bool>(dic, "result");
+        }
+
+        public async Task<bool> OpenWebDownloadUrl(string url)
+        {
+            CheckPlatformSupport();
+            var command = new Command.Builder()
+                .Service(TAP_COMMON_SERVICE)
+                .Method("openWebDownloadUrl")
+                .Args("appId", url)
+                .Callback(true)
+                .OnceTime(true)
+                .CommandBuilder();
+
+            var result = await EngineBridge.GetInstance().Emit(command);
+            CheckResult(result);
+            var dic = Json.Deserialize(result.content) as Dictionary<string, object>;
+            return SafeDictionary.GetValue<bool>(dic, "result");
+        }
+
         private class TapPropertiesProxy : AndroidJavaProxy
         {
             private readonly ITapPropertiesProxy _properties;
