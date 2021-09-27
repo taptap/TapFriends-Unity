@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace TapTap.Support
 {
@@ -292,8 +292,7 @@ namespace TapTap.Support
             {
                 return "";
             }
-
-            return HttpUtility.UrlEncode(Json.Serialize(data));
+            return UnityWebRequest.EscapeURL(Json.Serialize(data));
         }
     }
 }
