@@ -15,3 +15,6 @@ Products
 TapSDK-XCode
 tapsdkxcode
 *.Editor.csproj
+
+.vsconfig
+UserSettings

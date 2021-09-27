@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>TapTap.Friends</RootNamespace>
+    <AssemblyName>TapTap.Friends</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Storage.Standard" />
+    <None Remove="Storage" />
+    <None Remove="Common" />
+    <None Remove="Realtime" />
+    <None Remove="Internal\" />
+    <None Remove="Public\" />
+    <None Remove="LC.Newtonsoft.Json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Storage.Standard">
+      <HintPath>..\..\..\Assets\LCLibs\Storage.Standard.dll</HintPath>
+    </Reference>
+    <Reference Include="Storage">
+      <HintPath>..\..\..\Assets\LCLibs\Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Common">
+      <HintPath>..\..\..\Assets\LCLibs\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Realtime">
+      <HintPath>..\..\..\Assets\LCLibs\Realtime.dll</HintPath>
+    </Reference>
+    <Reference Include="LC.Newtonsoft.Json">
+      <HintPath>..\..\..\Assets\LCLibs\LC.Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Internal\" />
+    <Folder Include="Public\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TapBootstrapSDK\TapBootstrapSDK\TapBootstrapSDK.csproj" />
+  </ItemGroup>
+</Project>

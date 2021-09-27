@@ -1010,12 +1010,12 @@
         </member>
         <member name="F:LC.Newtonsoft.Json.DateParseHandling.DateTime">
             <summary>
-            Date formatted strings, e.g. <c>"\/Date(1198908717056)\/"</c> and <c>"2012-03-21T05:40Z"</c>, are parsed to <see cref="T:System.DateTime"/>.
+            Date formatted strings, e.g. <c>"\/Date(1198908717056)\/"</c> and <c>"2012-03-21T05:40Z"</c>, are parsed to <see cref="F:LC.Newtonsoft.Json.DateParseHandling.DateTime"/>.
             </summary>
         </member>
         <member name="F:LC.Newtonsoft.Json.DateParseHandling.DateTimeOffset">
             <summary>
-            Date formatted strings, e.g. <c>"\/Date(1198908717056)\/"</c> and <c>"2012-03-21T05:40Z"</c>, are parsed to <see cref="T:System.DateTimeOffset"/>.
+            Date formatted strings, e.g. <c>"\/Date(1198908717056)\/"</c> and <c>"2012-03-21T05:40Z"</c>, are parsed to <see cref="F:LC.Newtonsoft.Json.DateParseHandling.DateTimeOffset"/>.
             </summary>
         </member>
         <member name="T:LC.Newtonsoft.Json.DateTimeZoneHandling">
@@ -3102,7 +3102,7 @@
         </member>
         <member name="M:LC.Newtonsoft.Json.JsonSerializer.Deserialize(System.IO.TextReader,System.Type)">
             <summary>
-            Deserializes the JSON structure contained by the specified <see cref="T:System.IO.TextReader"/>
+            Deserializes the JSON structure contained by the specified <see cref="T:System.IO.StringReader"/>
             into an instance of the specified type.
             </summary>
             <param name="reader">The <see cref="T:System.IO.TextReader"/> containing the object.</param>
@@ -7331,10 +7331,6 @@
             <summary>
             Returns the indented JSON for this token.
             </summary>
-            <remarks>
-            <c>ToString()</c> returns a non-JSON string value for tokens with a type of <see cref="F:LC.Newtonsoft.Json.Linq.JTokenType.String"/>.
-            If you want the JSON for all token types then you should use <see cref="M:LC.Newtonsoft.Json.Linq.JToken.WriteTo(LC.Newtonsoft.Json.JsonWriter,LC.Newtonsoft.Json.JsonConverter[])"/>.
-            </remarks>
             <returns>
             The indented JSON for this token.
             </returns>
@@ -7968,38 +7964,38 @@
         </member>
         <member name="M:LC.Newtonsoft.Json.Linq.JToken.SelectToken(System.String)">
             <summary>
-            Selects a <see cref="T:LC.Newtonsoft.Json.Linq.JToken"/> using a JSONPath expression. Selects the token that matches the object path.
+            Selects a <see cref="T:LC.Newtonsoft.Json.Linq.JToken"/> using a JPath expression. Selects the token that matches the object path.
             </summary>
             <param name="path">
-            A <see cref="T:System.String"/> that contains a JSONPath expression.
+            A <see cref="T:System.String"/> that contains a JPath expression.
             </param>
             <returns>A <see cref="T:LC.Newtonsoft.Json.Linq.JToken"/>, or <c>null</c>.</returns>
         </member>
         <member name="M:LC.Newtonsoft.Json.Linq.JToken.SelectToken(System.String,System.Boolean)">
             <summary>
-            Selects a <see cref="T:LC.Newtonsoft.Json.Linq.JToken"/> using a JSONPath expression. Selects the token that matches the object path.
+            Selects a <see cref="T:LC.Newtonsoft.Json.Linq.JToken"/> using a JPath expression. Selects the token that matches the object path.
             </summary>
             <param name="path">
-            A <see cref="T:System.String"/> that contains a JSONPath expression.
+            A <see cref="T:System.String"/> that contains a JPath expression.
             </param>
             <param name="errorWhenNoMatch">A flag to indicate whether an error should be thrown if no tokens are found when evaluating part of the expression.</param>
             <returns>A <see cref="T:LC.Newtonsoft.Json.Linq.JToken"/>.</returns>
         </member>
         <member name="M:LC.Newtonsoft.Json.Linq.JToken.SelectTokens(System.String)">
             <summary>
-            Selects a collection of elements using a JSONPath expression.
+            Selects a collection of elements using a JPath expression.
             </summary>
             <param name="path">
-            A <see cref="T:System.String"/> that contains a JSONPath expression.
+            A <see cref="T:System.String"/> that contains a JPath expression.
             </param>
             <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:LC.Newtonsoft.Json.Linq.JToken"/> that contains the selected elements.</returns>
         </member>
         <member name="M:LC.Newtonsoft.Json.Linq.JToken.SelectTokens(System.String,System.Boolean)">
             <summary>
-            Selects a collection of elements using a JSONPath expression.
+            Selects a collection of elements using a JPath expression.
             </summary>
             <param name="path">
-            A <see cref="T:System.String"/> that contains a JSONPath expression.
+            A <see cref="T:System.String"/> that contains a JPath expression.
             </param>
             <param name="errorWhenNoMatch">A flag to indicate whether an error should be thrown if no tokens are found when evaluating part of the expression.</param>
             <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:LC.Newtonsoft.Json.Linq.JToken"/> that contains the selected elements.</returns>
@@ -8633,10 +8629,6 @@
             <summary>
             Returns a <see cref="T:System.String"/> that represents this instance.
             </summary>
-            <remarks>
-            <c>ToString()</c> returns a non-JSON string value for tokens with a type of <see cref="F:LC.Newtonsoft.Json.Linq.JTokenType.String"/>.
-            If you want the JSON for all token types then you should use <see cref="M:LC.Newtonsoft.Json.Linq.JValue.WriteTo(LC.Newtonsoft.Json.JsonWriter,LC.Newtonsoft.Json.JsonConverter[])"/>.
-            </remarks>
             <returns>
             A <see cref="T:System.String"/> that represents this instance.
             </returns>
@@ -9906,6 +9898,31 @@
             <param name="currentObject">The current object.</param>
             <param name="errorContext">The error context.</param>
         </member>
+        <member name="T:LC.Newtonsoft.Json.Serialization.ExpressionValueProvider">
+            <summary>
+            Get and set values for a <see cref="T:System.Reflection.MemberInfo"/> using dynamic methods.
+            </summary>
+        </member>
+        <member name="M:LC.Newtonsoft.Json.Serialization.ExpressionValueProvider.#ctor(System.Reflection.MemberInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LC.Newtonsoft.Json.Serialization.ExpressionValueProvider"/> class.
+            </summary>
+            <param name="memberInfo">The member info.</param>
+        </member>
+        <member name="M:LC.Newtonsoft.Json.Serialization.ExpressionValueProvider.SetValue(System.Object,System.Object)">
+            <summary>
+            Sets the value.
+            </summary>
+            <param name="target">The target to set the value on.</param>
+            <param name="value">The value to set on the target.</param>
+        </member>
+        <member name="M:LC.Newtonsoft.Json.Serialization.ExpressionValueProvider.GetValue(System.Object)">
+            <summary>
+            Gets the value.
+            </summary>
+            <param name="target">The target to get the value from.</param>
+            <returns>The value.</returns>
+        </member>
         <member name="T:LC.Newtonsoft.Json.Serialization.IAttributeProvider">
             <summary>
             Provides methods to get attributes.
@@ -10653,50 +10670,6 @@
             <param name="args">Optional arguments to pass to an initializing constructor of the JsonConverter.
             If <c>null</c>, the default constructor is used.</param>
         </member>
-        <member name="T:LC.Newtonsoft.Json.Serialization.KebabCaseNamingStrategy">
-            <summary>
-            A kebab case naming strategy.
-            </summary>
-        </member>
-        <member name="M:LC.Newtonsoft.Json.Serialization.KebabCaseNamingStrategy.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the <see cref="T:LC.Newtonsoft.Json.Serialization.KebabCaseNamingStrategy"/> class.
-            </summary>
-            <param name="processDictionaryKeys">
-            A flag indicating whether dictionary keys should be processed.
-            </param>
-            <param name="overrideSpecifiedNames">
-            A flag indicating whether explicitly specified property names should be processed,
-            e.g. a property name customized with a <see cref="T:LC.Newtonsoft.Json.JsonPropertyAttribute"/>.
-            </param>
-        </member>
-        <member name="M:LC.Newtonsoft.Json.Serialization.KebabCaseNamingStrategy.#ctor(System.Boolean,System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the <see cref="T:LC.Newtonsoft.Json.Serialization.KebabCaseNamingStrategy"/> class.
-            </summary>
-            <param name="processDictionaryKeys">
-            A flag indicating whether dictionary keys should be processed.
-            </param>
-            <param name="overrideSpecifiedNames">
-            A flag indicating whether explicitly specified property names should be processed,
-            e.g. a property name customized with a <see cref="T:LC.Newtonsoft.Json.JsonPropertyAttribute"/>.
-            </param>
-            <param name="processExtensionDataNames">
-            A flag indicating whether extension data names should be processed.
-            </param>
-        </member>
-        <member name="M:LC.Newtonsoft.Json.Serialization.KebabCaseNamingStrategy.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:LC.Newtonsoft.Json.Serialization.KebabCaseNamingStrategy"/> class.
-            </summary>
-        </member>
-        <member name="M:LC.Newtonsoft.Json.Serialization.KebabCaseNamingStrategy.ResolvePropertyName(System.String)">
-            <summary>
-            Resolves the specified property name.
-            </summary>
-            <param name="name">The property name to resolve.</param>
-            <returns>The resolved property name.</returns>
-        </member>
         <member name="T:LC.Newtonsoft.Json.Serialization.MemoryTraceWriter">
             <summary>
             Represents a trace writer that writes to memory. When the trace message limit is
@@ -10992,40 +10965,6 @@
             or <see cref="M:LC.Newtonsoft.Json.JsonSerializer.Serialize(LC.Newtonsoft.Json.JsonWriter,System.Object,System.Type)"/>.
             </summary>
         </member>
-        <member name="T:LC.Newtonsoft.Json.Utilities.AotHelper">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:LC.Newtonsoft.Json.Utilities.AotHelper.Ensure(System.Action)">
-            <summary>
-            Don't run action but let a compiler detect the code in action as an executable block.
-            </summary>
-        </member>
-        <member name="M:LC.Newtonsoft.Json.Utilities.AotHelper.EnsureType``1">
-            <summary>
-            Ensure(() => new T());
-            </summary>
-        </member>
-        <member name="M:LC.Newtonsoft.Json.Utilities.AotHelper.EnsureList``1">
-            <summary>
-            Ensure generic list type can be (de)deserializable on AOT environment.
-            </summary>
-            <typeparam name="T">The type of elements in the list</typeparam>
-        </member>
-        <member name="M:LC.Newtonsoft.Json.Utilities.AotHelper.EnsureDictionary``2">
-            <summary>
-            Ensure generic dictionary type can be (de)deserializable on AOT environment.
-            </summary>
-            <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
-            <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
-        </member>
-        <member name="M:LC.Newtonsoft.Json.Utilities.AotHelper.IsFalse">
-            <summary>
-            Always return false but compiler doesn't know it.
-            </summary>
-            <returns>False</returns>
-        </member>
         <member name="M:LC.Newtonsoft.Json.Utilities.CollectionUtils.IsNullOrEmpty``1(System.Collections.Generic.ICollection{``0})">
             <summary>
             Determines whether the collection is <c>null</c> or empty.
@@ -11203,44 +11142,6 @@
             <summary>
             A <see cref="T:LC.Newtonsoft.Json.JsonWriter"/> write method has not been called.
             </summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.NotNullAttribute">
-            <summary>Specifies that an output will not be null even if the corresponding type allows it.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
-            <summary>Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>, the parameter will not be null even if the corresponding type allows it.</summary>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
-            <summary>Initializes the attribute with the specified return value condition.</summary>
-            <param name="returnValue">
-            The return value condition. If the method returns this value, the associated parameter will not be null.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
-            <summary>Gets the return value condition.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute">
-            <summary>Specifies that an output may be null even if the corresponding type disallows it.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
-            <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>
-        </member>
-        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute">
-            <summary>
-            Specifies that the method will not return if the associated Boolean parameter is passed the specified value.
-            </summary>
-        </member>
-        <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)">
-            <summary>
-            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute"/> class.
-            </summary>
-            <param name="parameterValue">
-            The condition parameter value. Code after the method will be considered unreachable by diagnostics if the argument to
-            the associated parameter matches this value.
-            </param>
-        </member>
-        <member name="P:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.ParameterValue">
-            <summary>Gets the condition parameter value.</summary>
         </member>
     </members>
 </doc>

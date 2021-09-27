@@ -7,120 +7,92 @@ using TapTap.Login;
 
 namespace TapTap.Bootstrap
 {
-    public class TDSUser : LCUser
-    {
-        public new string Username
-        {
+    public class TDSUser : LCUser {
+        public new string Password {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }
         }
 
-        public new string Password
-        {
+        public new string Email {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }
         }
 
-        public new string Email
-        {
+        public new string Mobile {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }
         }
 
-        public new string Mobile
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
-
-        public new bool EmailVerified
-        {
+        public new bool EmailVerified {
             get { throw new NotImplementedException(); }
         }
 
-        public new bool MobileVerified
-        {
+        public new bool MobileVerified {
             get { throw new NotImplementedException(); }
         }
 
-        public new Task<TDSUser> SignUp()
-        {
+        public new Task<TDSUser> SignUp() {
             throw new NotImplementedException();
         }
 
-        public static new Task RequestLoginSMSCode(string mobile)
-        {
+        public static new Task RequestLoginSMSCode(string mobile) {
             throw new NotImplementedException();
         }
 
-        public static new Task<TDSUser> SignUpOrLoginByMobilePhone(string mobile, string code)
-        {
+        public static new Task<TDSUser> SignUpOrLoginByMobilePhone(string mobile, string code) {
             throw new NotImplementedException();
         }
 
-        public static new Task<TDSUser> Login(string username, string password)
-        {
+        public static new Task<TDSUser> Login(string username, string password) {
             throw new NotImplementedException();
         }
 
-        public static new Task<TDSUser> LoginByEmail(string email, string password)
-        {
+        public static new Task<TDSUser> LoginByEmail(string email, string password) {
             throw new NotImplementedException();
         }
 
-        public static new Task<TDSUser> LoginByMobilePhoneNumber(string mobile, string password)
-        {
+        public static new Task<TDSUser> LoginByMobilePhoneNumber(string mobile, string password) {
             throw new NotImplementedException();
         }
 
-        public static new Task<TDSUser> LoginBySMSCode(string mobile, string code)
-        {
+        public static new Task<TDSUser> LoginBySMSCode(string mobile, string code) {
             throw new NotImplementedException();
         }
 
-        public static new Task RequestEmailVerify(string email)
-        {
+        public static new Task RequestEmailVerify(string email) {
             throw new NotImplementedException();
         }
 
-        public static new Task RequestMobilePhoneVerify(string mobile)
-        {
+        public static new Task RequestMobilePhoneVerify(string mobile) {
             throw new NotImplementedException();
         }
 
-        public static new Task VerifyMobilePhone(string mobile, string code)
-        {
+        public static new Task VerifyMobilePhone(string mobile, string code) {
             throw new NotImplementedException();
         }
 
-        public static new Task RequestPasswordReset(string email)
-        {
+        public static new Task RequestPasswordReset(string email) {
             throw new NotImplementedException();
         }
 
-        public static new Task RequestPasswordResetBySmsCode(string mobile)
-        {
+        public static new Task RequestPasswordResetBySmsCode(string mobile) {
             throw new NotImplementedException();
         }
 
-        public static new Task ResetPasswordBySmsCode(string mobile, string code, string newPassword)
-        {
+        public static new Task ResetPasswordBySmsCode(string mobile, string code, string newPassword) {
             throw new NotImplementedException();
         }
 
-        public new Task UpdatePassword(string oldPassword, string newPassword)
-        {
+        public new Task UpdatePassword(string oldPassword, string newPassword) {
             throw new NotImplementedException();
         }
 
         public static new Task RequestSMSCodeForUpdatingPhoneNumber(string mobile, int ttl = 360,
-            string captchaToken = null)
-        {
+            string captchaToken = null) {
             throw new NotImplementedException();
         }
 
-        public static new Task VerifyCodeForUpdatingPhoneNumber(string mobile, string code)
-        {
+        public static new Task VerifyCodeForUpdatingPhoneNumber(string mobile, string code) {
             throw new NotImplementedException();
         }
 
@@ -131,8 +103,7 @@ namespace TapTap.Bootstrap
         /// memory or disk if necessary.
         /// </summary>
         /// <returns></returns>
-        public static new async Task<TDSUser> GetCurrent()
-        {
+        public static new async Task<TDSUser> GetCurrent() {
             LCUser user = await LCUser.GetCurrent();
             return user as TDSUser;
         }
@@ -142,8 +113,7 @@ namespace TapTap.Bootstrap
         /// </summary>
         /// <param name="sessionToken"></param>
         /// <returns></returns>
-        public static new async Task<TDSUser> BecomeWithSessionToken(string sessionToken)
-        {
+        public static new async Task<TDSUser> BecomeWithSessionToken(string sessionToken) {
             return (await LCUser.BecomeWithSessionToken(sessionToken)) as TDSUser;
         }
 
@@ -155,8 +125,7 @@ namespace TapTap.Bootstrap
         /// <param name="option"></param>
         /// <returns></returns>
         public static new async Task<TDSUser> LoginWithAuthData(Dictionary<string, object> authData, string platform,
-            LCUserAuthDataLoginOption option = null)
-        {
+            LCUserAuthDataLoginOption option = null) {
             return (await LCUser.LoginWithAuthData(authData, platform, option)) as TDSUser;
         }
 
@@ -170,8 +139,7 @@ namespace TapTap.Bootstrap
         /// <returns></returns>
         public static new async Task<TDSUser> LoginWithAuthDataAndUnionId(Dictionary<string, object> authData,
             string platform, string unionId,
-            LCUserAuthDataLoginOption option = null)
-        {
+            LCUserAuthDataLoginOption option = null) {
             return (await LCUser.LoginWithAuthDataAndUnionId(authData, platform, unionId, option)) as TDSUser;
         }
 
@@ -179,8 +147,7 @@ namespace TapTap.Bootstrap
         /// Creates an anonymous user.
         /// </summary>
         /// <returns></returns>
-        public static new async Task<TDSUser> LoginAnonymously()
-        {
+        public static new async Task<TDSUser> LoginAnonymously() {
             return (await LCUser.LoginAnonymously()) as TDSUser;
         }
 
@@ -188,8 +155,7 @@ namespace TapTap.Bootstrap
         /// Signs up or signs in a user with TapTap.
         /// </summary>
         /// <returns></returns>
-        public static async Task<TDSUser> LoginWithTapTap()
-        {
+        public static async Task<TDSUser> LoginWithTapTap() {
             Dictionary<string, object> authData = await LoginTapTap();
             LCUser user = await LoginWithAuthData(authData, "taptap");
             return user as TDSUser;
@@ -198,8 +164,7 @@ namespace TapTap.Bootstrap
         /// <summary>
         /// Logs out the currently logged in user session.
         /// </summary>
-        public static new async Task Logout()
-        {
+        public static new async Task Logout() {
             TapLogin.Logout();
             await LCUser.Logout();
         }
@@ -208,8 +173,7 @@ namespace TapTap.Bootstrap
         /// Constructs a LCQuery for TDSUser.
         /// </summary>
         /// <returns></returns>
-        public static new LCQuery<TDSUser> GetQuery()
-        {
+        public static new LCQuery<TDSUser> GetQuery() {
             return new LCQuery<TDSUser>(CLASS_NAME);
         }
 
@@ -219,15 +183,13 @@ namespace TapTap.Bootstrap
         /// <param name="fetchWhenSave"></param>
         /// <param name="query"></param>
         /// <returns></returns>
-        public new async Task<TDSUser> Save(bool fetchWhenSave = false, LCQuery<LCObject> query = null)
-        {
+        public new async Task<TDSUser> Save(bool fetchWhenSave = false, LCQuery<LCObject> query = null) {
             return (await base.Save(fetchWhenSave, query)) as TDSUser;
         }
 
         #endregion
 
-        private static async Task<Dictionary<string, object>> LoginTapTap()
-        {
+        private static async Task<Dictionary<string, object>> LoginTapTap() {
             var token = await TapLogin.Login();
 
             var profile = await TapLogin.GetProfile();
@@ -259,23 +221,36 @@ namespace TapTap.Bootstrap
         private LCLiveQuery friendshipLivequery;
 
         public Task ApplyFriendship(TDSUser user, Dictionary<string, object> attributes = null) {
-            if (user == null) {
-                throw new ArgumentNullException(nameof(user));
+            if (user == null || string.IsNullOrEmpty(user.ObjectId)) {
+                throw new ArgumentNullException("User or userId is null.");
             }
-            return LCFriendship.Request(user.ObjectId, attributes);
+            return ApplyFriendship(user.ObjectId, attributes);
+        }
+
+        public Task ApplyFriendship(string userId, Dictionary<string, object> attributes = null) {
+            if (string.IsNullOrEmpty(userId)) {
+                throw new ArgumentNullException(nameof(userId));
+            }
+            return LCFriendship.Request(userId, attributes);
         }
 
         public Task AcceptFriendshipRequest(LCFriendshipRequest request, Dictionary<string, object> attributes = null) {
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request));
+            }
             return LCFriendship.AcceptRequest(request, attributes);
         }
 
         public Task DeclineFriendshipRequest(LCFriendshipRequest request) {
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request));
+            }
             return LCFriendship.DeclineRequest(request);
         }
 
         public Task DeleteFriendshipRequest(LCFriendshipRequest request) {
             if (request == null) {
-                throw new ArgumentNullException("request is null.");
+                throw new ArgumentNullException(nameof(request));
             }
             return request.Delete();
         }

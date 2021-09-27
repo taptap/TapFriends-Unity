@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TDSFriends\TDSFriends.csproj" />
+    <ProjectReference Include="..\..\TapBootstrapSDK\TapBootstrapSDK\TapBootstrapSDK.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Storage.Standard" />
+    <None Remove="Storage" />
+    <None Remove="Common" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Storage.Standard">
+      <HintPath>..\..\..\Assets\LCLibs\Storage.Standard.dll</HintPath>
+    </Reference>
+    <Reference Include="Storage">
+      <HintPath>..\..\..\Assets\LCLibs\Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Common">
+      <HintPath>..\..\..\Assets\LCLibs\Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
