@@ -1,0 +1,15 @@
+{
+    "name": "TapTap.Friends.Runtime",
+    "references": [
+        "GUID:0ab0f87386c0640798a09051c047d4ab"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
